@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Grace Jesus Ministry | Silver & Navy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Hide scrollbar for horizontal scrolling areas */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Mobile Drawer */"The site is currently too light. Please rewrite the index.html with a 'Premium Executive Blue' aesthetic.
+
+Color Palette: Use Steel Blue (#1e293b) for the main background. Use Deep Navy (#0f172a) for the Navigation and Footer. Use White only for content cards to create contrast.
+
+Navigation: Ensure the 'SKY GRACE' logo is prominent. Add a 'Glassmorphism' effect to the header.
+
+Bible Verse: Place the 'Bible Verse of the Day' in a thin, elegant Gold bar at the very top of the page.
+
+Animations: Use AOS.js to make the sections 'Slide Up' as I scroll.
+
+Media: Keep the 9:16 Prophetic Shorts section, but give the cards a subtle blue outer glow.
+
+Studio: Show the 4-chair/camera section using a 'Dark Mode' card style with silver text.
+
+JavaScript: Ensure the 'Verse of the Day' script and a 'Mobile Menu' toggle script are included."
+        .drawer { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        .drawer.open { transform: translateX(0); }
+        
+        /* Glassmorphism */
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.8); /* Deep Navy with opacity */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-800 text-slate-100 font-sans antialiased selection:bg-slate-300 selection:text-slate-900">
+
+    <!-- Bible Verse Bar (Silver) -->
+    <div id="daily-manna-bar" class="bg-slate-300 text-slate-900 py-2 text-center px-4 text-sm font-medium tracking-wide shadow-md z-50 relative">
+        <span class="font-bold uppercase mr-2 opacity-90">Verse of the Day:</span>
+        <span id="manna-text" class="italic">"Loading..."</span>
+        <span id="manna-ref" class="font-bold ml-2 not-italic bg-slate-800 text-white px-2 py-0.5 rounded text-xs"></span>
+    </div>
+
+    <!-- Navigation (Glassmorphism Deep Navy) -->
+    <nav class="sticky top-0 z-40 nav-glass">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="assets/images/logo.png" alt="Sky Grace Logo" class="w-10 h-10 object-contain group-hover:scale-105 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="hidden w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-slate-300 border border-slate-500"><i class="fas fa-church"></i></div>
+                <div class="flex flex-col">
+                    <h1 class="text-lg font-bold text-white leading-none tracking-tight">SKY GRACE <span class="text-slate-300">MINISTRY</span></h1>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-1">Media Department</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-400">
+                <a href="#home" class="hover:text-slate-200 transition">Home</a>
+                <a href="#studio" class="hover:text-slate-200 transition">Studio</a>
+                <a href="#shorts" class="hover:text-slate-200 transition">Shorts</a>
+                <a href="#charity" class="hover:text-slate-200 transition">Charity</a>
+                <a href="#ebooks" class="hover:text-slate-200 transition">Shop</a>
+                <a href="#" class="bg-slate-300 hover:bg-white text-slate-900 px-6 py-2.5 rounded-full transition shadow-lg shadow-slate-500/20 flex items-center gap-2 font-bold">
+                    <i class="fas fa-play-circle"></i> Watch Live
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden text-2xl text-slate-300 hover:text-white transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-slate-900 drawer lg:hidden flex flex-col border-l border-slate-700">
+        <div class="p-6 flex justify-between items-center border-b border-slate-800">
+            <span class="font-bold text-lg text-white">Menu</span>
+            <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-red-500 transition"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="flex-1 flex flex-col p-8 gap-6 text-lg font-medium text-slate-300 overflow-y-auto">
+            <a href="#home" class="hover:text-white transition">Home</a>
+            <a href="#studio" class="hover:text-white transition">Studio</a>
+            <a href="#shorts" class="hover:text-white transition">Prophetic Shorts</a>
+            <a href="#charity" class="hover:text-white transition">Charity Gallery</a>
+            <a href="#ebooks" class="hover:text-white transition">Resource Shop</a>
+            <a href="#" class="mt-4 bg-slate-300 text-slate-900 py-3 rounded-xl text-center shadow-lg font-bold">Watch Live Stream</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-20 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+                <span class="inline-block py-1 px-3 rounded-full bg-slate-700/50 border border-slate-500 text-slate-300 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">Welcome Home</span>
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-8 leading-tight tracking-tight drop-shadow-2xl">
+                    Grace & Truth <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-400">For A New Generation</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Connecting the world to the heart of Jesus through high-quality media, compassionate charity, and sound biblical teaching.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#studio" class="px-8 py-4 bg-slate-300 text-slate-900 font-bold rounded-full hover:bg-white transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                        Explore Our Studio
+                    </a>
+                    <a href="#ebooks" class="px-8 py-4 bg-transparent border border-slate-500 text-slate-300 font-bold rounded-full hover:bg-slate-800/50 transition">
+                        Browse Resources
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/90 to-slate-800"></div>
+             <img src="assets/images/hero.jpg" alt="Background" class="w-full h-full object-cover opacity-30 mix-blend-overlay" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <!-- Talk Show Studio (White Card Style) -->
+    <section id="studio" class="py-24 bg-slate-800 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Image Side -->
+                <div class="lg:w-1/2" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-slate-300">
+                        <img src="assets/images/studio-setup.jpg" alt="Sky Grace Studio" class="w-full h-auto object-cover" onerror="this.src='https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=1200'">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
+                            <p class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Live Broadcast Set</p>
+                            <h3 class="text-white text-xl font-bold">Professional 4-Chair Setup</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Side (White Card) -->
+                <div class="lg:w-1/2 bg-white p-8 rounded-2xl border border-slate-300 shadow-xl" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <span class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2 block">The Media Hub</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">A Professional Space for <br>Global Impact.</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Our state-of-the-art studio is designed to facilitate meaningful conversations. With a professional 4-chair setup and multi-camera 4K capabilities, we bring the Gospel to life with clarity and excellence.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">4K</h4>
+                            <p class="text-sm text-slate-500">Ultra HD Streaming</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">4-Chair</h4>
+                            <p class="text-sm text-slate-500">Panel Discussion Set</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">Global</h4>
+                            <p class="text-sm text-slate-500">Reach & Audience</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">Hybrid</h4>
+                            <p class="text-sm text-slate-500">Zoom Integration</p>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-slate-700 font-bold hover:text-slate-900 inline-flex items-center gap-2 transition">
+                        View Behind the Scenes <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prophetic Shorts (White Cards with Silver Border) -->
+    <section id="shorts" class="py-24 bg-slate-800 border-y border-slate-700">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Prophetic Moments</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Short, powerful messages designed for the digital generation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="0">
+                    <img src="assets/images/short-1.jpg" alt="Short 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=600'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Word of the Day</span>
+                        <h3 class="text-white font-bold text-lg leading-tight">The Power of Grace</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/short-2.jpg" alt="Short 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=600'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Worship</span>
+                        <h3 class="text-white font-bold text-lg leading-tight">Sunday Highlights</h3>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/short-3.jpg" alt="Short 3" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Studio Talk</span>
+                        <h3 class="text-white font-bold text-lg leading-tight">Faith & Finance</h3>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/images/short-4.jpg" alt="Short 4" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Prophetic</span>
+                        <h3 class="text-white font-bold text-lg leading-tight">A Word for You</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charity Gallery (White Cards for Contrast) -->
+    <section id="charity" class="py-24 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Ministry in Action</h2>
+                    <p class="text-slate-400">Extending love and support to our community.</p>
+                </div>
+                <a href="#" class="text-slate-300 font-bold hover:text-white mt-4 md:mt-0">View All Projects &rarr;</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/gallery-1.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800'">
+                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Food Drive</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Community Feeding</h3>
+                        <p class="text-slate-600 text-sm">Providing meals to over 500 families in Windhoek.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/gallery-2.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800'">
+                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Outreach</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">School Supplies</h3>
+                        <p class="text-slate-600 text-sm">Equipping the next generation with tools for success.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="assets/images/gallery-3.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=800'">
+                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Support</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Elderly Care</h3>
+                        <p class="text-slate-600 text-sm">Visiting and supporting our cherished elders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- eBook Shop (White Cards for Contrast) -->
+    <section id="ebooks" class="py-24 bg-slate-800 border-t border-slate-700">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Digital Resources</h2>
+                <p class="text-slate-400">Grow your faith with our curated collection of eBooks.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Book 1 (Free) -->
+                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
+                        <img src="assets/images/book-1.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600'">
+                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow">FREE</div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Understanding Grace</h3>
+                    <p class="text-slate-500 text-sm mb-3">By Apostle John Doe</p>
+                    <button class="w-full py-2 rounded-lg border border-slate-900 text-slate-900 font-bold text-sm hover:bg-slate-900 hover:text-white transition">Download</button>
+                </div>
+
+                <!-- Book 2 (Paid) -->
+                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
+                        <img src="assets/images/book-2.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=600'">
+                        <div class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded">N$ 150</div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">The Prophetic Voice</h3>
+                    <p class="text-slate-500 text-sm mb-3">By Prophet Jane Doe</p>
+                    <button class="w-full py-2 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition">Buy Now</button>
+                </div>
+
+                <!-- Book 3 (Free) -->
+                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
+                        <img src="assets/images/book-3.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600'">
+                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow">FREE</div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Prayer Manual</h3>
+                    <p class="text-slate-500 text-sm mb-3">Ministry Team</p>
+                    <button class="w-full py-2 rounded-lg border border-slate-900 text-slate-900 font-bold text-sm hover:bg-slate-900 hover:text-white transition">Download</button>
+                </div>
+
+                <!-- Book 4 (Paid) -->
+                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
+                        <img src="assets/images/book-4.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600'">
+                        <div class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded">N$ 200</div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Leadership 101</h3>
+                    <p class="text-slate-500 text-sm mb-3">By Dr. Smith</p>
+                    <button class="w-full py-2 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Deep Navy) -->
+    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/images/logo.png" alt="Logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'">
+                        <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-300 border border-slate-600" style="display:none;" id="footer-logo-fallback"><i class="fas fa-church"></i></div>
+                        <div>
+                            <h4 class="font-black text-white leading-none">SKY GRACE JESUS <span class="text-slate-300">MINISTRY</span></h4>
+                            <p class="text-[10px] text-slate-400 tracking-widest uppercase mt-1">Media Department</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Spreading the Gospel of Grace to the ends of the earth through media and technology.
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#home" class="hover:text-slate-200 transition">Home</a></li>
+                        <li><a href="#studio" class="hover:text-slate-200 transition">Studio</a></li>
+                        <li><a href="#charity" class="hover:text-slate-200 transition">Charity</a></li>
+                        <li><a href="#ebooks" class="hover:text-slate-200 transition">Shop</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-slate-300"></i> 123 Grace Avenue, Windhoek</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-slate-300"></i> admin@skygraceministry.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-slate-300"></i> +264 81 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-xs pt-8 border-t border-slate-800">
+                &copy; 2025 Sky Grace Jesus Ministry. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+        });
+
+        // Mobile Drawer Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const drawer = document.getElementById('mobile-drawer');
+        const links = drawer.querySelectorAll('a');
+
+        function toggleDrawer() {
+            drawer.classList.toggle('open');
+        }
+
+        menuBtn.addEventListener('click', toggleDrawer);
+        closeMenuBtn.addEventListener('click', toggleDrawer);
+        links.forEach(link => link.addEventListener('click', toggleDrawer));
+
+        // Daily Manna Logic
+        const verses = [
+            { text: "The Lord is my shepherd; I shall not want.", ref: "Psalm 23:1" },
+            { text: "I can do all things through Christ who strengthens me.", ref: "Philippians 4:13" },
+            { text: "For I know the plans I have for you, declares the Lord.", ref: "Jeremiah 29:11" },
+            { text: "But they who wait for the Lord shall renew their strength.", ref: "Isaiah 40:31" },
+            { text: "Trust in the Lord with all your heart.", ref: "Proverbs 3:5" }
+        ];
+
+        const today = new Date().getDay(); // 0-6
+        const verse = verses[today % verses.length]; // Simple rotation based on day of week
+
+        document.getElementById('manna-text').textContent = `"${verse.text}"`;
+        document.getElementById('manna-ref').textContent = verse.ref;
+        document.getElementById('daily-manna-bar').classList.remove('hidden');
+
+        // Image Fallback Logic for Footer Logo
+        const footerLogo = document.querySelector('footer img');
+        if(footerLogo) {
+            footerLogo.onerror = function() {
+                this.style.display = 'none';
+                document.getElementById('footer-logo-fallback').style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>
