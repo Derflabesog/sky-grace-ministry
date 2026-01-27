@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Student | Sky Grace Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 flex min-h-screen">
+
+    <!-- Admin Sidebar Mount Point -->
+    <div id="admin-sidebar-mount"></div>
+    <script src="admin-sidebar.js" defer></script>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0">
+        
+        <!-- Top Bar -->
+        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-slate-500 text-xl" aria-label="Open sidebar"><i class="fas fa-bars"></i></button>
+                <h2 class="font-bold text-slate-700 text-lg">Theology School</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">View Live Site <i class="fas fa-external-link-alt ml-1"></i></a>
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-200">AP</div>
+            </div>
+        </header>
+
+        <main class="p-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a href="manage-students.html" onclick="sessionStorage.removeItem('editStudentId')" class="text-slate-400 hover:text-blue-600 text-xs font-bold uppercase tracking-widest mb-4 inline-block"><i class="fas fa-arrow-left mr-2"></i> Back to Directory</a>
+                    <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Enroll New Student</h1>
+                    <p class="text-slate-500 text-sm">Manually register a student into the theology program.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                    <form id="addStudentForm" class="p-8 space-y-8">
+                        <!-- Personal Information -->
+                        <div>
+                            <h3 class="text-xs font-black text-blue-500 uppercase tracking-widest border-b border-slate-100 pb-2 mb-6">Student Identity</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="studentName" class="block text-xs font-bold text-slate-500 uppercase mb-2">Full Name</label>
+                                    <input type="text" id="studentName" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="e.g. John Doe">
+                                </div>
+                                <div>
+                                    <label for="studentEmail" class="block text-xs font-bold text-slate-500 uppercase mb-2">Email Address</label>
+                                    <input type="email" id="studentEmail" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="john@example.com">
+                                </div>
+                                <div>
+                                    <label for="studentPhone" class="block text-xs font-bold text-slate-500 uppercase mb-2">Phone Number</label>
+                                    <input type="tel" id="studentPhone" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="+264...">
+                                </div>
+                                <div>
+                                    <label for="studentDob" class="block text-xs font-bold text-slate-500 uppercase mb-2">Date of Birth</label>
+                                    <input type="date" id="studentDob" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Academic Information -->
+                        <div>
+                            <h3 class="text-xs font-black text-blue-500 uppercase tracking-widest border-b border-slate-100 pb-2 mb-6">Academic Details</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="studentCourse" class="block text-xs font-bold text-slate-500 uppercase mb-2">Course Selection</label>
+                                    <select id="studentCourse" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
+                                        <option value="">Select Course...</option>
+                                        <option value="foundations">Foundations of Grace</option>
+                                        <option value="prophetic">Prophetic Ministry</option>
+                                        <option value="leadership">Apostolic Leadership</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="studentBranch" class="block text-xs font-bold text-slate-500 uppercase mb-2">Branch / Campus</label>
+                                    <select id="studentBranch" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
+                                        <option value="okahandja">Okahandja HQ</option>
+                                        <option value="windhoek">Windhoek Branch</option>
+                                        <option value="online">Online Campus</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="studentEnrollDate" class="block text-xs font-bold text-slate-500 uppercase mb-2">Enrollment Date</label>
+                                    <input type="date" id="studentEnrollDate" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
+                                </div>
+                                <div>
+                                    <label for="studentStatus" class="block text-xs font-bold text-slate-500 uppercase mb-2">Initial Status</label>
+                                    <select id="studentStatus" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
+                                        <option value="active">Active</option>
+                                        <option value="pending">Pending Payment</option>
+                                        <option value="waitlist">Waitlist</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-6 border-t border-slate-100 flex justify-end gap-4">
+                            <a href="manage-students.html" onclick="sessionStorage.removeItem('editStudentId')" class="px-6 py-3 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-50 transition uppercase tracking-widest">Cancel</a>
+                            <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                                <i class="fas fa-check mr-2"></i> Enroll Student
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const editId = sessionStorage.getItem('editStudentId');
+            if (editId) {
+                // Edit Mode Setup
+                document.title = 'Edit Student | Sky Grace Admin';
+                document.querySelector('h1').innerText = 'Edit Student Details';
+                document.querySelector('p.text-slate-500').innerText = 'Update student information and academic records.';
+                document.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save mr-2"></i> Update Student';
+                
+                const students = JSON.parse(localStorage.getItem('theologyStudents')) || [];
+                const student = students.find(s => s.id === editId);
+                
+                if (student) {
+                    document.getElementById('studentName').value = student.name;
+                    document.getElementById('studentEmail').value = student.email;
+                    document.getElementById('studentPhone').value = student.phone;
+                    document.getElementById('studentDob').value = student.dob;
+                    
+                    const courseSelect = document.getElementById('studentCourse');
+                    for (let i = 0; i < courseSelect.options.length; i++) {
+                        if (courseSelect.options[i].text === student.course) {
+                            courseSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+
+                    document.getElementById('studentBranch').value = student.branch;
+                    document.getElementById('studentEnrollDate').value = student.enrollDate;
+                    document.getElementById('studentStatus').value = student.status;
+                }
+            }
+        });
+
+        document.getElementById('addStudentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Gather form data
+            const editId = sessionStorage.getItem('editStudentId');
+            let students = JSON.parse(localStorage.getItem('theologyStudents')) || [];
+            const courseSelect = document.getElementById('studentCourse');
+            
+            const studentData = {
+                id: editId || 'TS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000),
+                name: document.getElementById('studentName').value,
+                email: document.getElementById('studentEmail').value,
+                phone: document.getElementById('studentPhone').value,
+                dob: document.getElementById('studentDob').value,
+                course: courseSelect.options[courseSelect.selectedIndex].text, // Get text instead of value
+                branch: document.getElementById('studentBranch').value,
+                enrollDate: document.getElementById('studentEnrollDate').value,
+                status: document.getElementById('studentStatus').value,
+                progress: editId ? (students.find(s => s.id === editId)?.progress || 0) : 0
+            };
+
+            // Save to LocalStorage
+            if (editId) {
+                const index = students.findIndex(s => s.id === editId);
+                if (index !== -1) {
+                    students[index] = studentData;
+                }
+                sessionStorage.removeItem('editStudentId');
+                sessionStorage.setItem('studentUpdated', 'true');
+            } else {
+                students.push(studentData);
+                sessionStorage.setItem('studentAdded', 'true');
+            }
+            
+            localStorage.setItem('theologyStudents', JSON.stringify(students));
+
+            window.location.href = 'manage-students.html';
+        });
+    </script>
+</body>
+</html>

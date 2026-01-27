@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream | Sky Grace Jesus Ministry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body class="bg-[#020617] text-white font-sans overflow-x-hidden">
+<div id="site-header"></div>
+<script src="header.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Global Header: Master Template with Sermons Dropdown -->
+<style>
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
+</style>
+
+<!-- Mobile Menu Drawer -->
+<script>
+(() => {
+  const openBtn = document.querySelector('[data-menu-open]');
+  const overlay = document.querySelector('[data-menu-overlay]');
+  const drawer  = document.querySelector('[data-menu-drawer]');
+  const closeBtns = document.querySelectorAll('[data-menu-close]');
+
+  if (!openBtn || !overlay || !drawer) return;
+
+  const open = () => {
+    overlay.classList.remove('hidden');
+    requestAnimationFrame(() => drawer.classList.remove('-translate-x-full'));
+  };
+
+  const close = () => {
+    drawer.classList.add('-translate-x-full');
+    setTimeout(() => overlay.classList.add('hidden'), 250);
+  };
+
+  openBtn.addEventListener('click', open);
+  closeBtns.forEach(b => b.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close();
+  });
+})();
+</script>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-6">
+            
+            <div class="lg:w-9/12">
+                <div class="aspect-video bg-black rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/live_stream?channel=UCM5-QqxBV1E_J0wJ7t_ZQlQ" title="Live Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="mt-6">
+                    <h2 class="text-2xl font-bold">The Elijah Mandate: 2026 Vision Night</h2>
+                    <p class="text-slate-400 text-sm mt-2">Apostle Poliano Jose Gomes Rodrigues | Streaming from Windhoek HQ</p>
+                </div>
+            </div>
+
+            <div class="lg:w-3/12 flex flex-col gap-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl flex-grow min-h-[400px] flex flex-col">
+                    <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                        <span class="text-[10px] font-black uppercase tracking-widest">Live Chat</span>
+                        <span class="text-[10px] text-slate-500">2.4k Watching</span>
+                    </div>
+                    <div class="flex-grow p-4 space-y-4 overflow-y-auto text-xs">
+                        <p><span class="text-amber-500 font-bold">Sister Grace:</span> Amen! Receiving from Namibia.</p>
+                        <p><span class="text-blue-400 font-bold">Brother John:</span> The glory is here!</p>
+                        <p><span class="text-slate-500 font-bold">Admin:</span> Please submit prayer requests on the Prayer Wall.</p>
+                    </div>
+                    <div class="p-4">
+                        <input type="text" placeholder="Join the conversation..." class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                
+                <a href="give.html" class="bg-amber-500 text-slate-900 py-4 rounded-2xl text-center font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition">
+                    Sow a Seed Locally
+                </a>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 mt-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-amber-500">Sermon Notes</span>
+                        <div class="flex gap-2">
+                            <button onclick="shareNotes()" class="text-[9px] bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded-md transition">
+                                <i class="fas fa-share-alt mr-1"></i> Share
+                            </button>
+                            <button onclick="downloadNotesAsPDF()" class="text-[9px] bg-amber-500 text-slate-900 hover:bg-amber-400 px-3 py-1 rounded-md transition font-bold">
+                                <i class="fas fa-file-pdf mr-1"></i> Download PDF
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="liveNotes" class="w-full h-48 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 outline-none focus:border-amber-500 transition resize-none" placeholder="Capture the revelation here..."></textarea>
+                    <p class="text-[9px] text-slate-500 mt-2 italic text-center">Notes are automatically saved to this device.</p>
+                    <button onclick="openPrayerModal()" class="w-full mt-4 border border-amber-500/30 text-amber-500 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-500 hover:text-slate-900 transition">
+                        <i class="fas fa-hands-praying mr-2"></i> Need Prayer?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="prayerModal" class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl">
+            <div class="bg-slate-900 p-8 text-center text-white">
+                <h3 class="text-xl font-bold uppercase tracking-widest">Submit Prayer Request</h3>
+                <p class="text-slate-400 text-[10px] mt-2">Our intercessors are standing by to pray with you.</p>
+            </div>
+            <form class="p-8 space-y-4">
+                <input type="text" placeholder="Your Name" class="w-full bg-slate-100 p-4 rounded-xl text-slate-900 outline-none focus:ring-2 ring-amber-500">
+                <textarea placeholder="Tell us how we can pray for you..." class="w-full bg-slate-100 p-4 rounded-xl text-slate-900 h-32 outline-none focus:ring-2 ring-amber-500 resize-none"></textarea>
+                <button type="button" onclick="closePrayerModal()" class="w-full bg-amber-500 text-slate-900 py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition">
+                    Send to the Intercessors
+                </button>
+                <button type="button" onclick="closePrayerModal()" class="w-full text-slate-400 text-[10px] font-bold uppercase">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Auto-save logic
+        const notesArea = document.getElementById('liveNotes');
+        
+        // Load existing notes
+        notesArea.value = localStorage.getItem('skyGraceLiveNotes') || "";
+
+        // Save on every keystroke
+        notesArea.addEventListener('input', () => {
+            localStorage.setItem('skyGraceLiveNotes', notesArea.value);
+        });
+
+        async function downloadNotesAsPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const notesText = document.getElementById('liveNotes').value;
+            const date = new Date().toLocaleDateString();
+
+            // PDF Styling
+            doc.setFontSize(22);
+            doc.setTextColor(15, 23, 42); // Navy color
+            doc.text("SKY GRACE JESUS MINISTRY", 20, 20);
+            
+            doc.setFontSize(12);
+            doc.setTextColor(100, 116, 139); // Slate color
+            doc.text(`Sermon Notes Archive - ${date}`, 20, 30);
+            doc.line(20, 35, 190, 35);
+
+            doc.setFontSize(11);
+            doc.setTextColor(0, 0, 0);
+            // Split text into lines to fit page width
+            const splitText = doc.splitTextToSize(notesText, 170);
+            doc.text(splitText, 20, 50);
+
+            doc.save(`Sermon-Notes-${date}.pdf`);
+        }
+
+        async function shareNotes() {
+            const notesText = document.getElementById('liveNotes').value;
+            const shareData = {
+                title: 'My Sermon Notes - Sky Grace Jesus Ministry',
+                text: `Check out these insights from today's service:\n\n${notesText}`,
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Share cancelled');
+                }
+            } else {
+                // Fallback: Copy to Clipboard
+                navigator.clipboard.writeText(notesText);
+                alert("Notes copied to clipboard! You can now paste them in an email or social post.");
+            }
+        }
+
+        function openPrayerModal() { document.getElementById('prayerModal').classList.remove('hidden'); }
+        function closePrayerModal() { document.getElementById('prayerModal').classList.add('hidden'); }
+    </script>
+    <script>
+        function toggleDarkMode() {
+            const htmlElement = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check for saved preference on load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
+        }
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Sky Grace Jesus Ministry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-50 flex min-h-screen">
+
+    <!-- Admin Sidebar Mount Point -->
+    <div id="admin-sidebar-mount"></div>
+    <script src="admin-sidebar.js" defer></script>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0">
+        
+        <!-- Top Bar -->
+        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-slate-500 text-xl" aria-label="Open sidebar"><i class="fas fa-bars"></i></button>
+                <h2 class="font-bold text-slate-700 text-lg">Ministry Command Center</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">View Live Site <i class="fas fa-external-link-alt ml-1"></i></a>
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-200">AP</div>
+            </div>
+        </header>
+
+        <main class="p-8 overflow-y-auto">
+            
+            <!-- Welcome Section -->
+            <div class="mb-10">
+                <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Welcome, Apostle.</h1>
+                <p class="text-slate-500">Here is the overview of the ministry's digital operations.</p>
+            </div>
+
+            <!-- Quick Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Total Members</p>
+                    <p class="text-2xl font-black text-slate-900 mt-1">1,248</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Prayer Requests</p>
+                    <p class="text-2xl font-black text-blue-600 mt-1">15 New</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Upcoming Events</p>
+                    <p class="text-2xl font-black text-amber-500 mt-1">3</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Donations (Mth)</p>
+                    <p class="text-2xl font-black text-green-600 mt-1">N$ 45k</p>
+                </div>
+            </div>
+
+            <!-- Management Grid -->
+            <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-2">Content & Management</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+                
+                <a href="manage-blog.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-pen-nib"></i></div>
+                    <h4 class="font-bold text-slate-900">Blog Articles</h4>
+                    <p class="text-xs text-slate-500 mt-1">Write and edit revelations.</p>
+                </a>
+
+                <a href="sermon-series.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-microphone"></i></div>
+                    <h4 class="font-bold text-slate-900">Sermons</h4>
+                    <p class="text-xs text-slate-500 mt-1">Upload audio and video.</p>
+                </a>
+
+                <a href="manage-events.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-calendar-check"></i></div>
+                    <h4 class="font-bold text-slate-900">Events</h4>
+                    <p class="text-xs text-slate-500 mt-1">Manage conferences & services.</p>
+                </a>
+
+                <a href="manage-volunteers.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-users"></i></div>
+                    <h4 class="font-bold text-slate-900">Volunteers</h4>
+                    <p class="text-xs text-slate-500 mt-1">Approve team applications.</p>
+                </a>
+
+                <a href="manage-students.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-graduation-cap"></i></div>
+                    <h4 class="font-bold text-slate-900">Students</h4>
+                    <p class="text-xs text-slate-500 mt-1">Manage theology enrollments.</p>
+                </a>
+
+                <a href="member-directory.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-address-book"></i></div>
+                    <h4 class="font-bold text-slate-900">Members</h4>
+                    <p class="text-xs text-slate-500 mt-1">View church directory.</p>
+                </a>
+
+                <a href="manage-branches.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-church"></i></div>
+                    <h4 class="font-bold text-slate-900">Branches</h4>
+                    <p class="text-xs text-slate-500 mt-1">Update location details.</p>
+                </a>
+
+                <a href="manage-tasks.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-tasks"></i></div>
+                    <h4 class="font-bold text-slate-900">Tasks</h4>
+                    <p class="text-xs text-slate-500 mt-1">Assign ministry duties.</p>
+                </a>
+
+                <a href="manage-testimonies.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-comment-dots"></i></div>
+                    <h4 class="font-bold text-slate-900">Testimonies</h4>
+                    <p class="text-xs text-slate-500 mt-1">Moderate praise reports.</p>
+                </a>
+
+                <a href="manage-calendar.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fas fa-calendar-alt"></i></div>
+                    <h4 class="font-bold text-slate-900">Calendar</h4>
+                    <p class="text-xs text-slate-500 mt-1">Schedule ministry dates.</p>
+                </a>
+            </div>
+
+            <!-- Ministry Operations Grid -->
+            <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-2">Ministry Operations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+                
+                <a href="manage-prayer-wall.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-pray"></i></div>
+                    <h4 class="font-bold text-slate-900">Prayer Wall</h4>
+                    <p class="text-xs text-slate-500 mt-1">Manage prayer requests.</p>
+                </a>
+
+                <a href="inbox.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-inbox"></i></div>
+                    <h4 class="font-bold text-slate-900">Inbox</h4>
+                    <p class="text-xs text-slate-500 mt-1">Read messages & inquiries.</p>
+                </a>
+
+                <a href="donation-history.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h4 class="font-bold text-slate-900">Donations</h4>
+                    <p class="text-xs text-slate-500 mt-1">View financial reports.</p>
+                </a>
+
+                <a href="media-manager.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-video"></i></div>
+                    <h4 class="font-bold text-slate-900">Media Manager</h4>
+                    <p class="text-xs text-slate-500 mt-1">Live stream & gallery.</p>
+                </a>
+
+                <a href="media-schedule.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-clock"></i></div>
+                    <h4 class="font-bold text-slate-900">Media Schedule</h4>
+                    <p class="text-xs text-slate-500 mt-1">Manage broadcast shifts.</p>
+                </a>
+
+                <a href="leadership-portal.html" class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition"><i class="fas fa-crown"></i></div>
+                    <h4 class="font-bold text-slate-900">Leadership</h4>
+                    <p class="text-xs text-slate-500 mt-1">Executive resources.</p>
+                </a>
+            </div>
+
+            <!-- Analytics Section -->
+            <section class="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl mb-10">
+                <div class="flex items-center justify-between mb-10">
+                    <div>
+                        <h3 class="text-2xl font-black uppercase tracking-tight">Global Reach Analytics</h3>
+                        <p class="text-slate-400 text-sm">Real-time traffic and visitor behavior.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="text-[10px] font-black uppercase text-blue-400 tracking-[0.2em]">Weekly Visitor Flow</h4>
+                        </div>
+                        <div class="h-64">
+                            <canvas id="visitorChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                        <h4 class="text-[10px] font-black uppercase text-blue-400 tracking-[0.2em] mb-6">Top Content</h4>
+                        <div class="space-y-4 text-xs">
+                            <div class="flex justify-between"><span>/ministry-blog</span><span class="text-blue-400">4,209</span></div>
+                            <div class="flex justify-between"><span>/watch-live</span><span class="text-blue-400">2,810</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscribers Section -->
+            <section class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 mb-10">
+                <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-6">Email Subscribers</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-slate-100 text-[10px] text-slate-400 uppercase font-black">
+                                <th class="py-4">Date Joined</th>
+                                <th class="py-4">Email Address</th>
+                                <th class="py-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-slate-50">
+                                <td class="py-4">Jan 12, 2026</td>
+                                <td class="py-4 font-bold">john.doe@example.com</td>
+                                <td class="py-4"><span class="px-2 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Recent Activity Feed -->
+            <section class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 mb-10">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Recent Activity</h3>
+                    <a href="system-logs.html" class="text-xs font-bold text-blue-500 hover:text-blue-700 uppercase tracking-widest">View All Logs</a>
+                </div>
+                <div class="space-y-4">
+                    <!-- Activity Item 1 -->
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-900"><span class="font-bold">Apostle Poliano</span> updated the <span class="font-bold">Sunday Service</span> event details.</p>
+                            <p class="text-xs text-slate-500 mt-1">2 hours ago</p>
+                        </div>
+                    </div>
+                    <!-- Activity Item 2 -->
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-900"><span class="font-bold">Admin Sarah</span> approved <span class="font-bold">5 new volunteers</span>.</p>
+                            <p class="text-xs text-slate-500 mt-1">5 hours ago</p>
+                        </div>
+                    </div>
+                    <!-- Activity Item 3 -->
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-900"><span class="font-bold">Media Team</span> published a new blog post: <span class="italic">"Walking in the Spirit"</span>.</p>
+                            <p class="text-xs text-slate-500 mt-1">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Links -->
+            <div class="flex gap-4 mt-8 pt-8 border-t border-slate-200">
+                <a href="site-settings.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition">Site Settings</a>
+                <span class="text-slate-300">|</span>
+                <a href="admin-settings.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition">Admin Settings</a>
+                <span class="text-slate-300">|</span>
+                <a href="admin-help.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition">Help & Docs</a>
+                <span class="text-slate-300">|</span>
+                <a href="system-logs.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition">System Logs</a>
+                <span class="text-slate-300">|</span>
+                <a href="internal-docs.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition">Internal Docs</a>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('visitorChart').getContext('2d');
+            
+            const visitorChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Visitors',
+                        data: [850, 920, 1200, 980, 1100, 1800, 2400],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 10, weight: 'bold' } }, border: { display: false } },
+                        x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 10, weight: 'bold' } }, border: { display: false } }
+                    }
+                }
+            });
+
+            // Simulate real-time traffic updates
+            setInterval(() => {
+                // Generate random data for the 7 days
+                const newData = visitorChart.data.datasets[0].data.map(() => 
+                    Math.floor(Math.random() * (2500 - 800 + 1) + 800)
+                );
+                visitorChart.data.datasets[0].data = newData;
+                visitorChart.update();
+            }, 3000); // Update every 3 seconds
+        });
+    </script>
+</body>
+</html>

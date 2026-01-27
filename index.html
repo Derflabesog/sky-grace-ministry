@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -7,118 +8,112 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
         /* Hide scrollbar for horizontal scrolling areas */
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Mobile Drawer */"The site is currently too light. Please rewrite the index.html with a 'Premium Executive Blue' aesthetic.
-
-Color Palette: Use Steel Blue (#1e293b) for the main background. Use Deep Navy (#0f172a) for the Navigation and Footer. Use White only for content cards to create contrast.
-
-Navigation: Ensure the 'SKY GRACE' logo is prominent. Add a 'Glassmorphism' effect to the header.
-
-Bible Verse: Place the 'Bible Verse of the Day' in a thin, elegant Gold bar at the very top of the page.
-
-Animations: Use AOS.js to make the sections 'Slide Up' as I scroll.
-
-Media: Keep the 9:16 Prophetic Shorts section, but give the cards a subtle blue outer glow.
-
-Studio: Show the 4-chair/camera section using a 'Dark Mode' card style with silver text.
-
-JavaScript: Ensure the 'Verse of the Day' script and a 'Mobile Menu' toggle script are included."
+        .no-scrollbar { -ms-overflow-style: none; }
+        @supports (scrollbar-width: none) { .no-scrollbar { scrollbar-width: none; } }
+        
+        /* Mobile Drawer */
         .drawer { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
         .drawer.open { transform: translateX(0); }
         
         /* Glassmorphism */
         .nav-glass {
-            background: rgba(15, 23, 42, 0.8); /* Deep Navy with opacity */
+            background: rgba(253, 251, 247, 0.8); /* Cream with opacity */
+            -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        .bg-sermon-card {
+            background-image: url('assets/images/altar-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Card Styles using local images */
+        .bg-altar-card      { background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/images/altar-pillar.jpg'); }
+        .bg-school-card     { background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/images/school-pillar.jpg'); }
+        .bg-fellowship-card { background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/images/fellowship-pillar.jpg'); }
+        .bg-golden-card     { background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/images/golden-pillar.jpg'); }
+
+        .pillar-card {
+            background-size: cover;
+            background-position: center;
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
-<body class="bg-slate-800 text-slate-100 font-sans antialiased selection:bg-slate-300 selection:text-slate-900">
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased selection:bg-slate-200 selection:text-slate-900">
+<div id="site-header"></div>
+<script src="header.js" defer></script>
 
-    <!-- Bible Verse Bar (Silver) -->
-    <div id="daily-manna-bar" class="bg-slate-300 text-slate-900 py-2 text-center px-4 text-sm font-medium tracking-wide shadow-md z-50 relative">
-        <span class="font-bold uppercase mr-2 opacity-90">Verse of the Day:</span>
-        <span id="manna-text" class="italic">"Loading..."</span>
-        <span id="manna-ref" class="font-bold ml-2 not-italic bg-slate-800 text-white px-2 py-0.5 rounded text-xs"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="liveAlert" class="bg-red-600 text-white py-2 px-6 hidden justify-between items-center z-[100] sticky top-0">
+        <span class="text-[10px] font-black uppercase tracking-widest animate-pulse">
+            <i class="fas fa-circle mr-2"></i> Apostle Poliano is LIVE
+        </span>
+        <a href="live.html" class="bg-white text-red-600 px-4 py-1 rounded-full text-[9px] font-black uppercase">Watch Now</a>
     </div>
 
-    <!-- Navigation (Glassmorphism Deep Navy) -->
-    <nav class="sticky top-0 z-40 nav-glass">
-        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="assets/images/logo.png" alt="Sky Grace Logo" class="w-10 h-10 object-contain group-hover:scale-105 transition duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                <div class="hidden w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-slate-300 border border-slate-500"><i class="fas fa-church"></i></div>
-                <div class="flex flex-col">
-                    <h1 class="text-lg font-bold text-white leading-none tracking-tight">SKY GRACE <span class="text-slate-300">MINISTRY</span></h1>
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-1">Media Department</span>
-                </div>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-400">
-                <a href="#home" class="hover:text-slate-200 transition">Home</a>
-                <a href="#studio" class="hover:text-slate-200 transition">Studio</a>
-                <a href="#shorts" class="hover:text-slate-200 transition">Shorts</a>
-                <a href="#charity" class="hover:text-slate-200 transition">Charity</a>
-                <a href="#ebooks" class="hover:text-slate-200 transition">Shop</a>
-                <a href="#" class="bg-slate-300 hover:bg-white text-slate-900 px-6 py-2.5 rounded-full transition shadow-lg shadow-slate-500/20 flex items-center gap-2 font-bold">
-                    <i class="fas fa-play-circle"></i> Watch Live
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="lg:hidden text-2xl text-slate-300 hover:text-white transition">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-slate-900 drawer lg:hidden flex flex-col border-l border-slate-700">
-        <div class="p-6 flex justify-between items-center border-b border-slate-800">
-            <span class="font-bold text-lg text-white">Menu</span>
-            <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-red-500 transition"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="flex-1 flex flex-col p-8 gap-6 text-lg font-medium text-slate-300 overflow-y-auto">
-            <a href="#home" class="hover:text-white transition">Home</a>
-            <a href="#studio" class="hover:text-white transition">Studio</a>
-            <a href="#shorts" class="hover:text-white transition">Prophetic Shorts</a>
-            <a href="#charity" class="hover:text-white transition">Charity Gallery</a>
-            <a href="#ebooks" class="hover:text-white transition">Resource Shop</a>
-            <a href="#" class="mt-4 bg-slate-300 text-slate-900 py-3 rounded-xl text-center shadow-lg font-bold">Watch Live Stream</a>
-        </div>
-    </div>
-
     <!-- Hero Section -->
-    <section id="home" class="relative pt-20 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
-                <span class="inline-block py-1 px-3 rounded-full bg-slate-700/50 border border-slate-500 text-slate-300 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">Welcome Home</span>
-                <h1 class="text-5xl md:text-7xl font-black text-white mb-8 leading-tight tracking-tight drop-shadow-2xl">
-                    Grace & Truth <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-400">For A New Generation</span>
+                <span id="hero-welcome" class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400 text-blue-200 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">Welcome Home</span>
+                <h1 id="hero-mission" class="text-4xl md:text-6xl font-black text-white mb-4 leading-tight tracking-tight drop-shadow-2xl">
+                    A Ministry of the<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Glory of Christ in Us</span>
                 </h1>
-                <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Connecting the world to the heart of Jesus through high-quality media, compassionate charity, and sound biblical teaching.
+                <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                    Under the Apostolic Leadership of Poliano Jose Gomes Rodrigues
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#studio" class="px-8 py-4 bg-slate-300 text-slate-900 font-bold rounded-full hover:bg-white transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-                        Explore Our Studio
+                    <a id="btn-explore" href="#ministries" class="px-8 py-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-400 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                        Explore Our Ministries
                     </a>
-                    <a href="#ebooks" class="px-8 py-4 bg-transparent border border-slate-500 text-slate-300 font-bold rounded-full hover:bg-slate-800/50 transition">
-                        Browse Resources
+                    <a id="btn-blog" href="#blog" class="px-8 py-4 bg-white/10 text-white border border-white/20 font-bold rounded-full hover:bg-white/20 transition backdrop-blur-md">
+                        Read Weekly Articles
                     </a>
                 </div>
             </div>
@@ -126,332 +121,518 @@ JavaScript: Ensure the 'Verse of the Day' script and a 'Mobile Menu' toggle scri
         
         <!-- Background -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/90 to-slate-800"></div>
-             <img src="assets/images/hero.jpg" alt="Background" class="w-full h-full object-cover opacity-30 mix-blend-overlay" onerror="this.style.display='none'">
+             <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black"></div>
+             <img src="assets/images/apostle.jpg" alt="Apostle Poliano" class="w-full h-full object-cover object-top opacity-50" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2000'">
         </div>
     </section>
 
-    <!-- Talk Show Studio (White Card Style) -->
-    <section id="studio" class="py-24 bg-slate-800 relative">
+    <!-- Altar of the Word: Sermon highlight -->
+    <section class="py-24 bg-slate-950 text-white overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Image Side -->
-                <div class="lg:w-1/2" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-slate-300">
-                        <img src="assets/images/studio-setup.jpg" alt="Sky Grace Studio" class="w-full h-auto object-cover" onerror="this.src='https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=1200'">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
-                            <p class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Live Broadcast Set</p>
-                            <h3 class="text-white text-xl font-bold">Professional 4-Chair Setup</h3>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-xl" data-aos="fade-right">
+                    <h4 class="text-blue-500 font-black text-xs uppercase tracking-[0.3em] mb-3">Prophetic Archives</h4>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter leading-tight">The Altar of the Word</h2>
+                    <p class="text-slate-400 mt-4 text-sm">Access the undiluted Glory of Christ through the teachings and revelations of Apostle Poliano.</p>
+                </div>
+                <a href="sermons.html" class="group flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:border-blue-600 transition-all">
+                    Enter Library <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 group relative overflow-hidden rounded-[2.5rem] bg-slate-900 border border-white/5 shadow-2xl" data-aos="zoom-in">
+                    <div class="aspect-video relative overflow-hidden bg-black">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/ctDqcgFzKlg" 
+                            frameborder="0" 
+                            title="Sermon Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-blue-400">Latest Prophetic Message</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-600">Jan 11, 2026</span>
+                        </div>
+                        <h3 class="text-2xl font-bold uppercase tracking-tight">Walking in the Spirit of Elijah</h3>
+                    </div>
+                </div>
+
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <i class="fas fa-quote-left text-4xl text-blue-400"></i>
+                        <div>
+                            <h3 class="text-2xl font-black uppercase leading-tight mb-4">Missed a Sunday Service?</h3>
+                            <p class="text-blue-100 text-sm mb-8">Every revelation is archived to help you grow in the mandate of the Lord.</p>
+                            <a href="blog-archive.html" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-colors">Browse Archive</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Devotional -->
+    <section class="py-16 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-lg border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10 text-9xl text-amber-500 font-serif">"</div>
                 
-                <!-- Content Side (White Card) -->
-                <div class="lg:w-1/2 bg-white p-8 rounded-2xl border border-slate-300 shadow-xl" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <span class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2 block">The Media Hub</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">A Professional Space for <br>Global Impact.</h2>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
-                        Our state-of-the-art studio is designed to facilitate meaningful conversations. With a professional 4-chair setup and multi-camera 4K capabilities, we bring the Gospel to life with clarity and excellence.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <h4 class="text-2xl font-bold text-slate-900 mb-1">4K</h4>
-                            <p class="text-sm text-slate-500">Ultra HD Streaming</p>
+                <span class="text-amber-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">Daily Manna</span>
+                
+                <div id="devotional-content">
+                    <!-- Content injected via JS -->
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                    <p class="text-xs text-slate-400 uppercase font-bold" id="devotional-date">Today's Word</p>
+                    <button onclick="shareDevotional()" class="text-slate-500 hover:text-amber-500 transition" aria-label="Share Devotional"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HQ Info Bar -->
+    <div class="bg-gradient-to-r from-slate-300 to-slate-100 text-slate-900 py-4 text-center px-4 font-bold tracking-wide shadow-lg uppercase border-y border-slate-200">
+        Main HQ: Okahandja Shopping Centre, Shop 32 | <span class="lowercase">skygrace@rimonnamibia.com</span>
+    </div>
+
+    <!-- Mission Statement -->
+    <section class="py-16 bg-[#FDFBF7] border-b border-slate-900/20">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h2 class="text-2xl md:text-4xl font-bold text-slate-900 leading-relaxed max-w-5xl mx-auto">
+                "To challenge you to fulfill your destiny and maximize your potential through the Word of Life [Jesus Christ] â€” Philippians 4:13"
+            </h2>
+            <p class="mt-6 text-slate-600 font-bold uppercase tracking-widest text-sm">Official Mission of Sky Grace Jesus Ministry</p>
+        </div>
+    </section>
+
+    <!-- Ministry Calendar Section -->
+    <section class="py-20 bg-white border-b border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl" data-aos="fade-right">
+                    <h4 class="text-blue-500 font-black text-xs uppercase tracking-[0.3em] mb-3">ðŸ“… Coming Events</h4>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter leading-tight">Ministry Calendar</h2>
+                    <p class="text-slate-500 mt-4 text-sm">Stay updated with our upcoming services, conferences, seminars, and ministry events. Mark your calendar and don't miss important announcements.</p>
+                </div>
+                <a href="calendar.html" class="group flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg">
+                    View Full Calendar <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Upcoming Events Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Event 1: Spirit of Elijah Conference -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-[2rem] border border-white/10 group hover:border-blue-500/50 transition shadow-xl" data-aos="fade-up">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="bg-blue-600 text-white p-4 rounded-xl text-center min-w-[80px]">
+                            <span class="block text-2xl font-black leading-none">18</span>
+                            <span class="text-[9px] uppercase font-bold tracking-tighter">JAN</span>
                         </div>
-                        <div>
-                            <h4 class="text-2xl font-bold text-slate-900 mb-1">4-Chair</h4>
-                            <p class="text-sm text-slate-500">Panel Discussion Set</p>
-                        </div>
-                        <div>
-                            <h4 class="text-2xl font-bold text-slate-900 mb-1">Global</h4>
-                            <p class="text-sm text-slate-500">Reach & Audience</p>
-                        </div>
-                        <div>
-                            <h4 class="text-2xl font-bold text-slate-900 mb-1">Hybrid</h4>
-                            <p class="text-sm text-slate-500">Zoom Integration</p>
+                        <div class="flex-grow">
+                            <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">Major Conference</p>
+                            <h3 class="text-white font-black text-lg mb-2">Spirit of Elijah Conference</h3>
+                            <p class="text-slate-400 text-sm"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>Windhoek Main Hall</p>
                         </div>
                     </div>
+                    <a href="calendar.html" class="inline-block w-full text-center py-3 bg-amber-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-amber-400 transition transform hover:scale-105">
+                        Register Now
+                    </a>
+                </div>
 
-                    <a href="#" class="text-slate-700 font-bold hover:text-slate-900 inline-flex items-center gap-2 transition">
-                        View Behind the Scenes <i class="fas fa-arrow-right"></i>
+                <!-- Event 2: Couples Seminar -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-[2rem] border border-white/10 group hover:border-blue-500/50 transition shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="bg-slate-700 text-white p-4 rounded-xl text-center min-w-[80px]">
+                            <span class="block text-2xl font-black leading-none">14</span>
+                            <span class="text-[9px] uppercase font-bold tracking-tighter">FEB</span>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">Couples Ministry</p>
+                            <h3 class="text-white font-black text-lg mb-2">Couples In Christ Seminar</h3>
+                            <p class="text-slate-400 text-sm"><i class="fas fa-heart mr-2 text-red-500"></i>Strengthen your marriage in Christ</p>
+                        </div>
+                    </div>
+                    <a href="calendar.html" class="inline-block w-full text-center py-3 bg-amber-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-amber-400 transition transform hover:scale-105">
+                        Register Now
                     </a>
                 </div>
             </div>
+
+            <!-- Calendar CTA -->
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-slate-600 mb-4">Want to see all upcoming events and ministry schedules?</p>
+                <a href="calendar.html" class="inline-block px-8 py-3 bg-slate-100 text-slate-900 font-bold rounded-full hover:bg-slate-200 transition">
+                    <i class="fas fa-calendar-alt mr-2"></i>View Ministry Calendar
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Prophetic Shorts (White Cards with Silver Border) -->
-    <section id="shorts" class="py-24 bg-slate-800 border-y border-slate-700">
+    <!-- Apostolic Welcome -->
+    <section class="py-20 bg-[#FDFBF7] text-center border-b border-slate-200">
+        <div class="container mx-auto px-6 max-w-5xl" data-aos="fade-up">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl opacity-75 blur"></div>
+                        <img src="https://scontent.fers1-1.fna.fbcdn.net/v/t39.30808-6/605630909_847691781360992_7304364056503011438_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=JoTvTa7Qzp4Q7kNvwG7eXQx&_nc_oc=AdmLQtXzK4D3L8RFpUUO4pDYfDLkKlcCIG6L-4Db81pHSTCYvyXuXjvZ1iKKXQ9n7jI&_nc_zt=23&_nc_ht=scontent.fers1-1.fna&_nc_gid=-f738yt52lLqz7aUR6MnRg&oh=00_AfpTo0eJ7oA9WOHvwxGrMBl7FQL6VrlOsVA1VYtrcPA47w&oe=696DEB39" alt="Apostle Poliano Jose Gomes Rodrigues" class="relative w-full max-w-sm h-auto rounded-3xl shadow-2xl object-cover">
+                    </div>
+                </div>
+                
+                <!-- Text -->
+                <div class="text-left md:text-left">
+                    <i class="fas fa-quote-left text-4xl text-slate-300 mb-6 block"></i>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed italic mb-6">
+                        "We are raising a generation that carries the Spirit of Elijah, walking in the undiluted Glory of Christ."
+                    </h2>
+                    <p class="text-slate-600 font-bold uppercase tracking-widest text-sm">- Apostle Poliano Jose Gomes Rodrigues</p>
+                    <p class="text-slate-500 text-sm mt-4">Apostolic Leader | Founder of Sky Grace Jesus Ministry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement of Faith (Article 4) -->
+    <section class="py-20 bg-white border-b border-slate-200">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Prophetic Moments</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Short, powerful messages designed for the digital generation.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Statement of Faith</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Our foundational beliefs rooted in Scripture (Article 4).</p>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="0">
-                    <img src="assets/images/short-1.jpg" alt="Short 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=600'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Trinity -->
+                <div class="p-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center text-slate-700 text-2xl mb-4 border border-slate-200">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Word of the Day</span>
-                        <h3 class="text-white font-bold text-lg leading-tight">The Power of Grace</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">The Trinity</h3>
+                    <p class="text-slate-600">We believe in the Father, Son, and Holy Spirit.</p>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/images/short-2.jpg" alt="Short 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=600'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
+                <!-- Resurrection -->
+                <div class="p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center text-slate-700 text-2xl mb-4 border border-slate-200">
+                        <i class="fas fa-cross"></i>
                     </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Worship</span>
-                        <h3 class="text-white font-bold text-lg leading-tight">Sunday Highlights</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">The Resurrection</h3>
+                    <p class="text-slate-600">We believe in the death and resurrection of Jesus Christ.</p>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/images/short-3.jpg" alt="Short 3" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
+                <!-- Holy Spirit -->
+                <div class="p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center text-slate-700 text-2xl mb-4 border border-slate-200">
+                        <i class="fas fa-dove"></i>
                     </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Studio Talk</span>
-                        <h3 class="text-white font-bold text-lg leading-tight">Faith & Finance</h3>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="group relative aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border border-slate-300 transition-all duration-300 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/images/short-4.jpg" alt="Short 4" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-14 h-14 bg-slate-300/80 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 border border-white">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 block">Prophetic</span>
-                        <h3 class="text-white font-bold text-lg leading-tight">A Word for You</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">The Holy Spirit</h3>
+                    <p class="text-slate-600">We believe in His presence in the life of the believer.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Charity Gallery (White Cards for Contrast) -->
-    <section id="charity" class="py-24 bg-slate-800">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Ministry in Action</h2>
-                    <p class="text-slate-400">Extending love and support to our community.</p>
-                </div>
-                <a href="#" class="text-slate-300 font-bold hover:text-white mt-4 md:mt-0">View All Projects &rarr;</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="0">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="assets/images/gallery-1.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800'">
-                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Food Drive</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Community Feeding</h3>
-                        <p class="text-slate-600 text-sm">Providing meals to over 500 families in Windhoek.</p>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="assets/images/gallery-2.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800'">
-                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Outreach</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">School Supplies</h3>
-                        <p class="text-slate-600 text-sm">Equipping the next generation with tools for success.</p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition bg-white border border-slate-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="assets/images/gallery-3.jpg" alt="Charity" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=800'">
-                        <div class="absolute top-4 left-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm">Support</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Elderly Care</h3>
-                        <p class="text-slate-600 text-sm">Visiting and supporting our cherished elders.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- eBook Shop (White Cards for Contrast) -->
-    <section id="ebooks" class="py-24 bg-slate-800 border-t border-slate-700">
+    <!-- Subdomain Hub (Ministry Cards) -->
+    <section id="ministries" class="py-24 bg-slate-100 relative">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Digital Resources</h2>
-                <p class="text-slate-400">Grow your faith with our curated collection of eBooks.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Four Pillars</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Our ministry objectives as defined in Article 3.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Book 1 (Free) -->
-                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="0">
-                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
-                        <img src="assets/images/book-1.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600'">
-                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow">FREE</div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="pillar-card bg-altar-card shadow-lg flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-2xl mb-6 border border-white/20">
+                        <i class="fas fa-bible"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Understanding Grace</h3>
-                    <p class="text-slate-500 text-sm mb-3">By Apostle John Doe</p>
-                    <button class="w-full py-2 rounded-lg border border-slate-900 text-slate-900 font-bold text-sm hover:bg-slate-900 hover:text-white transition">Download</button>
+                    <h3 class="text-xl font-bold mb-2">Altar</h3>
+                    <p class="text-blue-100 text-sm mb-6">Spiritual foundations and preaching.</p>
                 </div>
 
-                <!-- Book 2 (Paid) -->
-                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
-                        <img src="assets/images/book-2.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=600'">
-                        <div class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded">N$ 150</div>
+                <div class="pillar-card bg-school-card shadow-lg flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-2xl mb-6 border border-white/20">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">The Prophetic Voice</h3>
-                    <p class="text-slate-500 text-sm mb-3">By Prophet Jane Doe</p>
-                    <button class="w-full py-2 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition">Buy Now</button>
+                    <h3 class="text-xl font-bold mb-2">School</h3>
+                    <p class="text-blue-100 text-sm">Theology for biblical education.</p>
                 </div>
 
-                <!-- Book 3 (Free) -->
-                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
-                        <img src="assets/images/book-3.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600'">
-                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow">FREE</div>
+                <div class="pillar-card bg-fellowship-card shadow-lg flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-2xl mb-6 border border-white/20">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Prayer Manual</h3>
-                    <p class="text-slate-500 text-sm mb-3">Ministry Team</p>
-                    <button class="w-full py-2 rounded-lg border border-slate-900 text-slate-900 font-bold text-sm hover:bg-slate-900 hover:text-white transition">Download</button>
+                    <h3 class="text-xl font-bold mb-2">Fellowship</h3>
+                    <p class="text-blue-100 text-sm">Menâ€™s, Womenâ€™s, and Youth.</p>
                 </div>
 
-                <!-- Book 4 (Paid) -->
-                <div class="group bg-white rounded-lg p-4 shadow-lg hover:shadow-2xl transition duration-300 border border-slate-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative aspect-[2/3] bg-slate-100 rounded-lg overflow-hidden mb-4 border border-slate-200 shadow-inner">
-                        <img src="assets/images/book-4.jpg" alt="Book" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600'">
-                        <div class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded">N$ 200</div>
+                <div class="pillar-card bg-golden-card shadow-lg flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-2xl mb-6 border border-white/20">
+                        <i class="fas fa-hand-holding-heart"></i>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">Leadership 101</h3>
-                    <p class="text-slate-500 text-sm mb-3">By Dr. Smith</p>
-                    <button class="w-full py-2 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition">Buy Now</button>
+                    <h3 class="text-xl font-bold mb-2">Golden Years</h3>
+                    <p class="text-blue-100 text-sm">Welfare for the elderly.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Deep Navy) -->
-    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
+    <!-- Youth & Faith Highlight -->
+    <section id="youth" class="py-24 bg-slate-100 border-y border-slate-200">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <img src="assets/images/youth.jpg" alt="Youth Ministry" class="rounded-2xl shadow-2xl border border-slate-300 w-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200'">
+            </div>
+            <div class="md:w-1/2" data-aos="fade-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Youth & Faith: Navigating the Digital Age with the <span class="text-slate-600">Spirit of Elijah</span></h2>
+                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                    In a world of constant connection, we help the next generation find their true connection with God. Our Youth & Faith ministry tackles real-world challenges with biblical wisdom, creating a safe space for questions, growth, and genuine community.
+                </p>
+                <a href="https://www.google.com/search?q=youth.skygrace.com" target="_blank" rel="noopener noreferrer" class="text-slate-800 font-bold hover:text-slate-900 inline-flex items-center gap-2 border-b border-slate-300 pb-1">
+                    Join the Movement <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-24 bg-[#FDFBF7] border-y border-slate-200">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <!-- Brand -->
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="assets/images/logo.png" alt="Logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'">
-                        <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-300 border border-slate-600" style="display:none;" id="footer-logo-fallback"><i class="fas fa-church"></i></div>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Locations</h2>
+                <p class="text-slate-600">Join us for service at one of our branches.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <!-- Okahandja -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Okahandja HQ</h3>
+                    <p class="text-slate-600 mb-6"><i class="fas fa-map-marker-alt mr-2 text-slate-400"></i> Okahandja Shopping Centre, Shop 32</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="font-bold text-slate-700">Sunday Service</span>
+                            <span class="text-slate-600">09:00 AM</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="font-bold text-slate-700">Wednesday Bible Study</span>
+                            <span class="text-slate-600">06:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Windhoek -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Windhoek Branch</h3>
+                    <p class="text-slate-600 mb-6"><i class="fas fa-map-marker-alt mr-2 text-slate-400"></i> Windhoek, Namibia</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between border-b border-slate-100 pb-2">
+                            <span class="font-bold text-slate-700">Sunday Service</span>
+                            <span class="text-slate-600">10:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Altar of the Word: Sermon highlight -->
+    <section class="py-24 bg-slate-950 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-xl">
+                    <h4 class="text-blue-500 font-black text-xs uppercase tracking-[0.3em] mb-3">Prophetic Archives</h4>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter">Deliverance & The Word</h2>
+                    <p class="text-slate-400 mt-4 text-sm leading-relaxed">Experience the undiluted Glory of Christ through the teachings of Apostle Poliano. Click below to enter our full library.</p>
+                </div>
+                <a href="sermons.html" class="group flex items-center gap-3 bg-white/5 border border-white/10 px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:border-blue-600 transition-all">
+                    Enter Sermon Library <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="group relative overflow-hidden rounded-[2.5rem] bg-slate-900 border border-white/5 shadow-2xl">
+                    <div class="aspect-video relative overflow-hidden bg-black">
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.youtube.com/embed/X7fGOHSavrM" 
+                            frameborder="0" 
+                            title="Latest Prophetic Message"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-400">Latest Prophetic Word</span>
+                        <h3 class="text-2xl font-bold uppercase tracking-tight mt-2">Breaking the Chains of Limitation</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-600 rounded-[2.5rem] p-10 flex flex-col justify-center items-center text-center shadow-xl bg-sermon-card relative overflow-hidden">
+                    <div class="absolute inset-0 bg-blue-900/80 z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <h3 class="text-3xl font-black uppercase leading-tight mb-4">View All 2026<br>Messages</h3>
+                        <p class="text-blue-100 text-sm mb-8">Access our full database of teaching and ministry updates.</p>
+                        <a href="blog-archive.html" class="bg-white text-blue-600 px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-colors">Open Archives</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Request Form (Silver & Navy) -->
+    <section id="prayer" class="py-24 bg-slate-200 border-t border-slate-300">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white p-8 md:p-12 rounded-2xl border border-slate-200 shadow-2xl" data-aos="fade-up">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Prayer Request</h2>
+                    <p class="text-slate-600">How can we stand in faith with you today?</p>
+                </div>
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <h4 class="font-black text-white leading-none">SKY GRACE JESUS <span class="text-slate-300">MINISTRY</span></h4>
-                            <p class="text-[10px] text-slate-400 tracking-widest uppercase mt-1">Media Department</p>
+                            <label class="block text-slate-700 text-sm font-bold mb-2">Name</label>
+                            <input type="text" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-500 transition" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 text-sm font-bold mb-2">WhatsApp Number</label>
+                            <input type="tel" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-500 transition" placeholder="+264...">
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Spreading the Gospel of Grace to the ends of the earth through media and technology.
-                    </p>
-                </div>
-
-                <!-- Links -->
-                <div>
-                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#home" class="hover:text-slate-200 transition">Home</a></li>
-                        <li><a href="#studio" class="hover:text-slate-200 transition">Studio</a></li>
-                        <li><a href="#charity" class="hover:text-slate-200 transition">Charity</a></li>
-                        <li><a href="#ebooks" class="hover:text-slate-200 transition">Shop</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h4 class="text-white font-bold mb-4">Contact Us</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-slate-300"></i> 123 Grace Avenue, Windhoek</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-slate-300"></i> admin@skygraceministry.com</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone text-slate-300"></i> +264 81 123 4567</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center text-slate-500 text-xs pt-8 border-t border-slate-800">
-                &copy; 2025 Sky Grace Jesus Ministry. All rights reserved.
+                    <div>
+                        <label class="block text-slate-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-500 transition" placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 text-sm font-bold mb-2">Prayer Request</label>
+                        <textarea rows="4" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-500 transition" placeholder="Share your prayer need..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition shadow-lg">Send Request</button>
+                </form>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Scripts -->
+    <!-- Floating Socials -->
+    <div class="fixed z-50 transition-all duration-300
+                bottom-0 left-0 w-full flex justify-center gap-8 p-4 bg-white/90 backdrop-blur-lg border-t border-slate-200
+                lg:bottom-auto lg:left-auto lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-auto lg:flex-col lg:gap-4 lg:p-4 lg:rounded-l-2xl lg:border-y lg:border-l lg:border-r-0 lg:bg-white/60 lg:backdrop-blur-md lg:border-slate-200">
+        
+        <!-- WhatsApp -->
+        <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 border border-slate-200 text-slate-600 text-2xl transition-all duration-300 hover:scale-110 hover:text-white hover:bg-green-600 hover:border-green-400 hover:shadow-[0_0_20px_rgba(203,213,225,0.5)]">
+            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+
+        <!-- Facebook -->
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 border border-slate-200 text-slate-600 text-2xl transition-all duration-300 hover:scale-110 hover:text-white hover:bg-blue-600 hover:border-blue-400 hover:shadow-[0_0_20px_rgba(203,213,225,0.5)]">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@skygraceministryTV" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 border border-slate-200 text-slate-600 text-xl transition-all duration-300 hover:scale-110 hover:text-white hover:bg-red-600 hover:border-red-400 hover:shadow-[0_0_20px_rgba(203,213,225,0.5)]">
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <!-- Ministry Blog Section -->
+    <section id="blog" class="py-24 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] mb-2 block">Weekly Updates</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Ministry Blog</h2>
+                </div>
+                <a href="blog-archive.html" class="hidden md:block text-blue-500 font-bold text-sm hover:underline">View All Articles â†’</a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="group cursor-pointer" data-aos="fade-up">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 h-64">
+                        <img src="https://images.unsplash.com/photo-1504052434464-18d9607ec75c?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Sermon Update">
+                        <div class="absolute top-4 left-4 bg-blue-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">New Revelation</div>
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold mb-2">January 13, 2026 â€¢ By Apostle Poliano</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition mb-3">Walking in the Spirit of Elijah in 2026</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3">Understanding the prophetic mandate for the church this year and how we must position ourselves...</p>
+                </article>
+
+                <article class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 h-64">
+                        <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Grace Study">
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold mb-2">January 06, 2026 â€¢ Ministry Update</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition mb-3">Expanding Our Reach: The Windhoek Project</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3">The miracle of our new branch and what it means for our community outreach programs...</p>
+                </article>
+
+                <article class="group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden rounded-2xl mb-4 h-64">
+                        <img src="https://images.unsplash.com/photo-1519491050282-cf00c82424b4?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Faith Update">
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold mb-2">December 30, 2025 â€¢ Theology School</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition mb-3">Faith vs. Feeling: A Devotional Study</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3">A deep dive into the foundations of our faith as we prepare for the 2026 School of Theology semester...</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+    <script src="footer.js" defer></script>
+
+
+
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            once: true,
-            offset: 100,
-            duration: 800,
-        });
+        // Initialize Animations
+        AOS.init({ duration: 800, once: true });
 
-        // Mobile Drawer Logic
-        const menuBtn = document.getElementById('menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const drawer = document.getElementById('mobile-drawer');
-        const links = drawer.querySelectorAll('a');
+        // Mobile Menu Logic
+        (() => {
+            const openBtn = document.querySelector('[data-menu-open]');
+            const overlay = document.querySelector('[data-menu-overlay]');
+            const drawer  = document.querySelector('[data-menu-drawer]');
+            const closeBtns = document.querySelectorAll('[data-menu-close]');
+            if (!openBtn || !overlay || !drawer) return;
+            const open = () => { overlay.classList.remove('hidden'); requestAnimationFrame(() => drawer.classList.remove('translate-x-full')); };
+            const close = () => { drawer.classList.add('translate-x-full'); setTimeout(() => overlay.classList.add('hidden'), 250); };
+            openBtn.addEventListener('click', open);
+            closeBtns.forEach(b => b.addEventListener('click', close));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close(); });
+        })();
 
-        function toggleDrawer() {
-            drawer.classList.toggle('open');
-        }
-
-        menuBtn.addEventListener('click', toggleDrawer);
-        closeMenuBtn.addEventListener('click', toggleDrawer);
-        links.forEach(link => link.addEventListener('click', toggleDrawer));
-
-        // Daily Manna Logic
-        const verses = [
-            { text: "The Lord is my shepherd; I shall not want.", ref: "Psalm 23:1" },
-            { text: "I can do all things through Christ who strengthens me.", ref: "Philippians 4:13" },
-            { text: "For I know the plans I have for you, declares the Lord.", ref: "Jeremiah 29:11" },
-            { text: "But they who wait for the Lord shall renew their strength.", ref: "Isaiah 40:31" },
-            { text: "Trust in the Lord with all your heart.", ref: "Proverbs 3:5" }
+        // Daily Devotional Logic
+        const devotionals = [
+            { text: "The Spirit of Elijah is moving in our generation to restore the hearts of the children to the Father.", ref: "Malachi 4:6" },
+            { text: "Grace is not just a concept; it is the person of Jesus Christ living through you.", ref: "Galatians 2:20" },
+            { text: "Your potential is maximized only when your life is fully surrendered to the Word.", ref: "Philippians 4:13" }
         ];
 
-        const today = new Date().getDay(); // 0-6
-        const verse = verses[today % verses.length]; // Simple rotation based on day of week
+        function loadDevotional() {
+            const today = new Date();
+            const index = today.getDate() % devotionals.length;
+            const selection = devotionals[index];
+            
+            document.getElementById('devotional-content').innerHTML = `
+                <h3 class="text-2xl md:text-3xl font-black text-slate-900 leading-tight mb-4 italic">
+                    "${selection.text}"
+                </h3>
+                <p class="text-amber-600 font-bold uppercase tracking-widest text-sm">â€” ${selection.ref}</p>
+            `;
+            document.getElementById('devotional-date').innerText = today.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
 
-        document.getElementById('manna-text').textContent = `"${verse.text}"`;
-        document.getElementById('manna-ref').textContent = verse.ref;
-        document.getElementById('daily-manna-bar').classList.remove('hidden');
+        window.onload = loadDevotional;
 
-        // Image Fallback Logic for Footer Logo
-        const footerLogo = document.querySelector('footer img');
-        if(footerLogo) {
-            footerLogo.onerror = function() {
-                this.style.display = 'none';
-                document.getElementById('footer-logo-fallback').style.display = 'flex';
+        function shareDevotional() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Daily Manna - Sky Grace',
+                    text: document.getElementById('devotional-content').innerText,
+                    url: window.location.href
+                });
             }
         }
     </script>

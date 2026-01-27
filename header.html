@@ -1,0 +1,155 @@
+<!-- TOP MARQUEE (only once, now centralized) -->
+<div class="bg-blue-600 overflow-hidden py-2 border-b border-blue-700">
+  <div class="whitespace-nowrap animate-marquee flex items-center">
+    <span class="text-[10px] font-black uppercase tracking-tighter px-4 text-white">
+      🔥 LATEST: Apostle Poliano Live Broadcast starting at 19:00 CAT
+    </span>
+    <span class="text-[10px] font-black uppercase tracking-tighter px-4 text-white">
+      • 2026 Vision Conference Registrations Opening Soon
+    </span>
+    <span class="text-[10px] font-black uppercase tracking-tighter px-4 text-white">
+      • New Sermon Summary PDF available for download
+    </span>
+  </div>
+</div>
+
+<nav class="bg-slate-900 border-b border-white/10 sticky top-0 z-[100] h-20 flex items-center shadow-2xl">
+  <div class="container mx-auto px-6 flex justify-between items-center w-full">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/images/logo.png" alt="Sky Grace Logo" class="h-14 md:h-16 w-auto brightness-200">
+      <div class="hidden sm:block">
+        <span class="block text-xs font-black uppercase tracking-tighter text-white">Sky Grace</span>
+        <span class="block text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em]">Jesus Ministry</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden lg:flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-slate-300">
+      <a href="index.html" class="hover:text-blue-400 transition nav-link">Home</a>
+      <a href="welcome-packet.html" class="hover:text-blue-400 transition nav-link">Welcome Packet</a>
+
+      <!-- Sermons Dropdown -->
+      <div class="relative group">
+        <button type="button"
+                class="flex items-center gap-2 hover:text-blue-400 transition uppercase text-slate-300"
+                aria-label="Open sermons menu"
+                title="Open sermons menu">
+          Sermons
+          <i class="fas fa-chevron-down text-[8px] group-hover:rotate-180 transition-transform" aria-hidden="true"></i>
+        </button>
+
+        <div class="absolute top-full left-0 mt-4 w-56 bg-slate-900 border border-white/10 rounded-xl shadow-2xl
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+          <a href="sermon-1.html" class="block p-3 hover:bg-white/5 rounded-lg transition nav-link">Latest Message</a>
+          <a href="sermon-archive-2025.html" class="block p-3 hover:bg-white/5 rounded-lg transition nav-link">2025 Archives</a>
+          <a href="sermons.html" class="block p-3 hover:bg-white/5 rounded-lg transition nav-link">All Sermons</a>
+          <a href="testimonies.html" class="block p-3 hover:bg-white/5 rounded-lg transition border-t border-white/10 nav-link">Testimonies</a>
+        </div>
+      </div>
+
+      <!-- Ministry Dropdown -->
+      <div class="relative group">
+        <button type="button"
+                class="flex items-center gap-2 hover:text-blue-400 transition uppercase text-slate-300"
+                aria-label="Open ministry menu"
+                title="Open ministry menu">
+          Ministry
+          <i class="fas fa-chevron-down text-[8px] group-hover:rotate-180 transition-transform" aria-hidden="true"></i>
+        </button>
+
+        <div class="absolute top-full left-0 mt-4 w-56 bg-slate-900 border border-white/10 rounded-xl shadow-2xl
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+          <a href="give.html" class="block p-3 hover:bg-white/5 rounded-lg transition nav-link">Give / Tithes</a>
+          <a href="live.html" class="block p-3 hover:bg-white/5 rounded-lg transition text-red-500 nav-link">Watch Live</a>
+          <a href="volunteer.html" class="block p-3 hover:bg-white/5 rounded-lg transition nav-link">Volunteer</a>
+          <a href="prayer-wall.html" class="block p-3 hover:bg-white/5 rounded-lg transition border-t border-white/10 nav-link">Prayer Wall</a>
+        </div>
+      </div>
+
+      <a href="theology-register.html" class="hover:text-blue-400 transition nav-link">Theology School</a>
+      <a href="contact.html" class="hover:text-blue-400 transition nav-link">Contact</a>
+    </div>
+
+    <!-- Right side -->
+    <div class="flex items-center gap-4">
+      <a href="live.html"
+         class="hidden md:flex items-center gap-2 bg-red-600 px-4 py-2 rounded-full text-[9px] font-black uppercase text-white hover:bg-red-500 transition animate-pulse nav-link">
+        <i class="fas fa-circle text-[6px] animate-pulse" aria-hidden="true"></i> Live Now
+      </a>
+
+      <button type="button"
+              class="lg:hidden text-white p-2"
+              aria-label="Open menu"
+              title="Open menu"
+              data-menu-open>
+        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer (NO IDs, safe forever) -->
+<div class="fixed inset-0 z-40 lg:hidden hidden" data-menu-overlay>
+  <button type="button"
+          class="absolute inset-0 bg-black/60"
+          aria-label="Close menu"
+          title="Close menu"
+          data-menu-close></button>
+
+  <aside class="absolute left-0 top-0 h-full w-[85%] max-w-sm bg-slate-900/95 border-r border-slate-700
+                transform transition-transform duration-300 -translate-x-full flex flex-col"
+         data-menu-drawer
+         role="dialog"
+         aria-modal="true"
+         aria-label="Mobile navigation">
+
+    <div class="p-6 flex justify-between items-center border-b border-slate-700">
+      <span class="font-bold text-lg text-white">Menu</span>
+      <button type="button"
+              class="text-2xl text-slate-400 hover:text-white transition"
+              aria-label="Close menu"
+              title="Close menu"
+              data-menu-close>
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
+      <a href="index.html" class="hover:text-blue-400 transition nav-link">Home</a>
+      <a href="welcome-packet.html" class="hover:text-blue-400 transition nav-link">Welcome Packet</a>
+
+      <div class="border-t border-slate-700 pt-3 mt-2">
+        <span class="text-blue-400 font-bold">🎙️ Sermons</span>
+        <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4 nav-link">Latest Message</a>
+        <a href="sermon-archive-2025.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">2025 Archives</a>
+        <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">All Sermons</a>
+        <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Testimonies</a>
+      </div>
+
+      <div class="border-t border-slate-700 pt-3">
+        <span class="text-blue-400 font-bold">🙏 Ministry</span>
+        <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4 nav-link">Give / Tithes</a>
+        <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4 nav-link">Watch Live</a>
+        <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Volunteer</a>
+        <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Prayer Wall</a>
+      </div>
+
+      <div class="border-t border-slate-700 pt-3">
+        <a href="theology-register.html" class="hover:text-blue-400 transition nav-link">Theology School</a>
+        <a href="contact.html" class="hover:text-blue-400 transition mt-2 block nav-link">Contact</a>
+      </div>
+
+      <div class="border-t border-slate-700 pt-3">
+        <span class="text-slate-400 font-bold text-xs">Support</span>
+        <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4 nav-link">Privacy Policy</a>
+        <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Terms of Service</a>
+        <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Cookie Policy</a>
+        <a href="admin/login.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4 nav-link">Admin Portal</a>
+      </div>
+
+      <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition nav-link">
+        🔴 Watch Live
+      </a>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,461 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Manage Blog | Sky Grace Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 flex min-h-screen">
+
+    <!-- Admin Sidebar -->
+    <div id="admin-sidebar-mount"></div>
+    <script src="admin-sidebar.js" defer></script>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0">
+        
+        <!-- Top Bar -->
+        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-slate-500 text-xl" aria-label="Open menu"><i class="fas fa-bars" aria-hidden="true"></i></button>
+                <h2 class="font-bold text-slate-700 text-lg">Blog Management</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">View Site <i class="fas fa-external-link-alt ml-1"></i></a>
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-200">AP</div>
+            </div>
+        </header>
+
+        <main class="p-8">
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Article Library</h3>
+                    <p class="text-slate-500 text-sm">Create, edit, and publish ministry revelations.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="bg-white border border-slate-200 text-slate-600 px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 transition">
+                        <i class="fas fa-filter mr-2"></i> Filter
+                    </button>
+                    <a href="create-post.html" class="bg-blue-600 text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-200 flex items-center">
+                        <i class="fas fa-pen-nib mr-2"></i> Write New Article
+                    </a>
+                </div>
+            </div>
+
+            <!-- Blog Table -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 border-b border-slate-100">
+                            <tr>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Article Details</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Author</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Status</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Views</th>
+                                <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blogTableBody" class="text-sm divide-y divide-slate-50">
+                            <!-- Article 1 -->
+                            <tr class="hover:bg-blue-50/30 transition group">
+                                <td class="py-5 px-6">
+                                    <span class="font-bold text-slate-900 block text-base">Walking in the Spirit of Elijah</span>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase">Jan 13, 2026</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-600">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-500">AP</div>
+                                        <span class="text-xs font-bold">Apostle Poliano</span>
+                                    </div>
+                                </td>
+                                <td class="py-5 px-6">
+                                    <span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-wide">Published</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-500 font-bold">1,204</td>
+                                <td class="py-5 px-6 text-right space-x-2">
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Article 2 -->
+                            <tr class="hover:bg-blue-50/30 transition group">
+                                <td class="py-5 px-6">
+                                    <span class="font-bold text-slate-900 block text-base">The Windhoek Branch Project</span>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase">Jan 06, 2026</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-600">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-500">AD</div>
+                                        <span class="text-xs font-bold">Admin Team</span>
+                                    </div>
+                                </td>
+                                <td class="py-5 px-6">
+                                    <span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-wide">Published</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-500 font-bold">892</td>
+                                <td class="py-5 px-6 text-right space-x-2">
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+
+                             <!-- Article 3 -->
+                             <tr class="hover:bg-blue-50/30 transition group">
+                                <td class="py-5 px-6">
+                                    <span class="font-bold text-slate-900 block text-base">Faith vs. Feeling: A Devotional</span>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase">Dec 30, 2025</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-600">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-500">TS</div>
+                                        <span class="text-xs font-bold">Theology School</span>
+                                    </div>
+                                </td>
+                                <td class="py-5 px-6">
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-500 text-[10px] font-black rounded-full uppercase tracking-wide">Draft</span>
+                                </td>
+                                <td class="py-5 px-6 text-slate-500 font-bold">-</td>
+                                <td class="py-5 px-6 text-right space-x-2">
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="p-6 border-t border-slate-100 flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing 3 of 24 Articles</span>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
+                        <button class="px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50">Next</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tbody = document.getElementById('blogTableBody');
+            const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+            // Render posts from LocalStorage
+            posts.forEach(post => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-blue-50/30 transition group';
+                row.innerHTML = `
+                    <td class="py-5 px-6">
+                        <span class="font-bold text-slate-900 block text-base">${post.title}</span>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase">${post.date}</span>
+                    </td>
+                    <td class="py-5 px-6 text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-500">AP</div>
+                            <span class="text-xs font-bold">${post.author}</span>
+                        </div>
+                    </td>
+                    <td class="py-5 px-6">
+                        <span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-wide">${post.status}</span>
+                    </td>
+                    <td class="py-5 px-6 text-slate-500 font-bold">${post.views}</td>
+                    <td class="py-5 px-6 text-right space-x-2">
+                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete" onclick="deletePost(${post.id})"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                    </td>
+                `;
+                // Insert new posts at the top
+                tbody.insertBefore(row, tbody.firstChild);
+            });
+        });
+
+        function deletePost(id) {
+            if(confirm('Are you sure you want to delete this article?')) {
+                let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+                posts = posts.filter(p => p.id !== id);
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
+        </div>
+      </div>
+
+      <!-- Ministry Dropdown -->
+      <div class="relative group">
+        <button class="flex items-center gap-2 hover:text-blue-400 transition uppercase text-slate-300">
+          Ministry <i class="fas fa-chevron-down text-[8px] group-hover:rotate-180 transition-transform"></i>
+        </button>
+        <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+          <a href="give.html" class="block p-3 hover:bg-white/5 rounded-lg transition">Give / Tithes</a>
+          <a href="live.html" class="block p-3 hover:bg-white/5 rounded-lg transition text-red-500">Watch Live</a>
+          <a href="volunteer.html" class="block p-3 hover:bg-white/5 rounded-lg transition">Volunteer</a>
+          <a href="prayer-wall.html" class="block p-3 hover:bg-white/5 rounded-lg transition border-t border-white/10">Prayer Wall</a>
+        </div>
+      </div>
+      
+      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
+      <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="live.html" class="hidden md:flex items-center gap-2 bg-red-600 px-4 py-2 rounded-full text-[9px] font-black uppercase text-white hover:bg-red-500 transition animate-pulse">
+        <i class="fas fa-circle text-[6px] animate-pulse"></i> Live Now
+      </a>
+      <button id="menu-btn" class="lg:hidden text-white p-2">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
+</style>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-drawer" class="fixed inset-0 z-40 bg-slate-900/95 drawer lg:hidden flex flex-col border-l border-slate-700 transform transition-transform duration-300 -translate-x-full">
+  <div class="p-6 flex justify-between items-center border-b border-slate-700">
+    <span class="font-bold text-lg text-white">Menu</span>
+    <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
+    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+    <a href="welcome-packet.html" class="hover:text-blue-400 transition">Welcome Packet</a>
+    
+    <!-- Sermons Section -->
+    <div class="border-t border-slate-700 pt-3 mt-2">
+      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">🎙️ Sermons</a>
+      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
+      <a href="sermon-archive-2025.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
+      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
+      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
+    </div>
+
+    <!-- Ministry Section -->
+    <div class="border-t border-slate-700 pt-3">
+      <span class="text-blue-400 font-bold">🙏 Ministry</span>
+      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
+      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
+      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
+      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
+    </div>
+
+    <!-- Main Pages -->
+    <div class="border-t border-slate-700 pt-3">
+      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
+      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
+    </div>
+
+    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">🔴 Watch Live</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+  });
+  document.getElementById('close-menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+  });
+</script>
+
+
+<style>
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
+</style>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-drawer" class="fixed inset-0 z-40 bg-slate-900/95 drawer lg:hidden flex flex-col border-l border-slate-700 transform transition-transform duration-300 -translate-x-full">
+  <div class="p-6 flex justify-between items-center border-b border-slate-700">
+    <span class="font-bold text-lg text-white">Menu</span>
+    <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
+    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+    
+    <!-- Sermons Section -->
+    <div class="border-t border-slate-700 pt-3 mt-2">
+      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">🎙️ Sermons</a>
+      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
+      <a href="sermon-archive-2025.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
+      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
+      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
+    </div>
+
+    <!-- Ministry Section -->
+    <div class="border-t border-slate-700 pt-3">
+      <span class="text-blue-400 font-bold">🙏 Ministry</span>
+      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
+      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
+      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
+      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
+    </div>
+
+    <!-- Main Pages -->
+    <div class="border-t border-slate-700 pt-3">
+      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
+      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
+    </div>
+
+    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">🔴 Watch Live</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+  });
+  document.getElementById('close-menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+  });
+</script>
+
+
+<style>
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
+</style>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-drawer" class="fixed inset-0 z-40 bg-slate-900/95 drawer lg:hidden flex flex-col border-l border-slate-700 transform transition-transform duration-300 -translate-x-full">
+  <div class="p-6 flex justify-between items-center border-b border-slate-700">
+    <span class="font-bold text-lg text-white">Menu</span>
+    <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
+    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+    
+    <!-- Sermons Section -->
+    <div class="border-t border-slate-700 pt-3 mt-2">
+      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">🎙️ Sermons</a>
+      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
+      <a href="sermon-archive-2025.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
+      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
+      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
+    </div>
+
+    <!-- Ministry Section -->
+    <div class="border-t border-slate-700 pt-3">
+      <span class="text-blue-400 font-bold">🙏 Ministry</span>
+      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
+      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
+      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
+      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
+    </div>
+
+    <!-- Main Pages -->
+    <div class="border-t border-slate-700 pt-3">
+      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
+      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
+    </div>
+
+    <!-- Support Section -->
+    <div class="border-t border-slate-700 pt-3">
+      <span class="text-slate-400 font-bold text-xs">Support</span>
+      <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Privacy Policy</a>
+      <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Terms of Service</a>
+      <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Cookie Policy</a>
+      <a href="admin/login.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Admin Portal</a>
+    </div>
+
+    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">🔴 Watch Live</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+  });
+  document.getElementById('close-menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+  });
+</script>
+
+
+<style>
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
+</style>
+
+<!-- Mobile Menu Drawer -->
+<div id="mobile-drawer" class="fixed inset-0 z-40 bg-slate-900/95 drawer lg:hidden flex flex-col border-l border-slate-700 transform transition-transform duration-300 -translate-x-full">
+  <div class="p-6 flex justify-between items-center border-b border-slate-700">
+    <span class="font-bold text-lg text-white">Menu</span>
+    <button id="close-menu-btn" class="text-2xl text-slate-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
+    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+    <a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a>
+    <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
+    <a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a>
+    <a href="give.html" class="hover:text-blue-400 transition">Give</a>
+    <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
+    <a href="live.html" class="mt-4 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">Watch Live</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+  });
+  document.getElementById('close-menu-btn')?.addEventListener('click', function() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+  });
+</script>
+
+
+    <main class="p-8 max-w-6xl mx-auto">
+        <section class="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 mb-8">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Article Library</h3>
+                    <p class="text-slate-500 text-sm">Edit or remove past revelations and updates.</p>
+                </div>
+                <div class="relative w-full md:w-64">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Find article..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+        
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 border-b border-slate-100">
+                        <tr>
+                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400">Article Title</th>
+                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400">Date</th>
+                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400">Stats</th>
+                            <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400">Manage</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-slate-50 hover:bg-blue-50/30 transition">
+                            <td class="py-4 px-6">
+                                <span class="font-bold text-slate-900 block">Walking in the Spirit of Elijah</span>
+                                <span class="text-[9px] text-blue-500 font-bold uppercase">New Revelation</span>
+                            </td>
+                            <td class="py-4 px-6 text-slate-500">Jan 13, 2026</td>
+                            <td class="py-4 px-6">
+                                <span class="text-xs text-slate-600"><i class="fas fa-eye mr-1"></i> 1,204</span>
+                            </td>
+                            <td class="py-4 px-6 text-right space-x-2">
+                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-blue-500 hover:text-white transition"><i class="fas fa-edit text-xs"></i></button>
+                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-red-500 hover:text-white transition"><i class="fas fa-trash text-xs"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

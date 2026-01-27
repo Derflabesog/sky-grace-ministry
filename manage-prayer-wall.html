@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Prayer Wall | Sky Grace Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 flex min-h-screen">
+
+    <!-- Admin Sidebar Mount Point -->
+    <div id="admin-sidebar-mount"></div>
+    <script src="admin-sidebar.js" defer></script>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0">
+        
+        <!-- Top Bar -->
+        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-slate-500 text-xl" aria-label="Open sidebar"><i class="fas fa-bars"></i></button>
+                <h2 class="font-bold text-slate-700 text-lg">Prayer Wall Management</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">View Live Site <i class="fas fa-external-link-alt ml-1"></i></a>
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-200">AP</div>
+            </div>
+        </header>
+
+        <main class="p-8">
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Prayer Requests</h3>
+                    <p class="text-slate-500 text-sm">Review, approve, and intercede for incoming prayer needs.</p>
+                </div>
+                <div class="flex gap-3">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="requestSearch" placeholder="Search requests..." class="bg-white border border-slate-200 text-slate-600 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <button onclick="if(confirm('Clear all requests?')) { localStorage.removeItem('prayerRequests'); location.reload(); }" class="bg-white text-red-500 border border-slate-200 px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-red-50 transition shadow-sm">
+                        <i class="fas fa-trash-alt mr-2"></i> Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Requests Table -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 border-b border-slate-100">
+                            <tr>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Date</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Name</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest w-1/2">Request</th>
+                                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Status</th>
+                                <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestsTableBody" class="text-sm divide-y divide-slate-50">
+                            <!-- Rows populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="p-6 border-t border-slate-100 flex justify-between items-center">
+                    <span id="requestCount" class="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing 0 Requests</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
+
+            // Seed data if empty for demonstration
+            if (requests.length === 0) {
+                requests = [
+                    { id: 1, name: 'Sarah M.', date: '2026-01-12', text: 'Praying for healing for my mother who is in the hospital.', status: 'Pending' },
+                    { id: 2, name: 'John D.', date: '2026-01-13', text: 'Seeking guidance for a new job opportunity and financial breakthrough.', status: 'Approved' }
+                ];
+                localStorage.setItem('prayerRequests', JSON.stringify(requests));
+            }
+            renderRequests(requests);
+
+            // Search Filter
+            document.getElementById('requestSearch').addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase();
+                const filtered = requests.filter(r => r.name.toLowerCase().includes(term) || r.text.toLowerCase().includes(term));
+                renderRequests(filtered);
+            });
+        });
+
+        function renderRequests(requests) {
+            const tbody = document.getElementById('requestsTableBody');
+            tbody.innerHTML = '';
+            document.getElementById('requestCount').innerText = `Showing ${requests.length} Requests`;
+
+            requests.sort((a, b) => b.id - a.id).forEach(req => {
+                const statusColor = req.status === 'Approved' ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600';
+                const row = `
+                    <tr class="hover:bg-blue-50/30 transition group">
+                        <td class="py-5 px-6 text-slate-500">${req.date}</td>
+                        <td class="py-5 px-6 font-bold text-slate-900">${req.name}</td>
+                        <td class="py-5 px-6 text-slate-600 italic">"${req.text}"</td>
+                        <td class="py-5 px-6">
+                            <span class="px-3 py-1 ${statusColor} text-[10px] font-black rounded-full uppercase tracking-wide">${req.status}</span>
+                        </td>
+                        <td class="py-5 px-6 text-right space-x-2">
+                            <button onclick="toggleStatus(${req.id})" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" title="Toggle Status"><i class="fas fa-check"></i></button>
+                            <button onclick="deleteRequest(${req.id})" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" title="Delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        function toggleStatus(id) {
+            let requests = JSON.parse(localStorage.getItem('prayerRequests'));
+            const req = requests.find(r => r.id === id);
+            if(req) req.status = req.status === 'Pending' ? 'Approved' : 'Pending';
+            localStorage.setItem('prayerRequests', JSON.stringify(requests));
+            renderRequests(requests);
+        }
+
+        function deleteRequest(id) {
+            if(!confirm('Delete this request?')) return;
+            let requests = JSON.parse(localStorage.getItem('prayerRequests'));
+            requests = requests.filter(r => r.id !== id);
+            localStorage.setItem('prayerRequests', JSON.stringify(requests));
+            renderRequests(requests);
+        }
+    </script>
+</body>
+</html>

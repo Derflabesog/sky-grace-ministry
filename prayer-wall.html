@@ -1,0 +1,183 @@
+﻿﻿﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Wall | Sky Grace Ministry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-100 text-slate-900">
+<div id="site-header"></div>
+<script src="header.js" defer></script>
+
+<main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="bg-white rounded-3xl p-8 shadow-xl border border-blue-100 mb-12">
+                <h3 class="text-xl font-black uppercase mb-4">Submit a Request</h3>
+                <div class="space-y-4">
+                    <input type="text" id="prayerName" placeholder="Your Name (or Anonymous)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400">
+                    <textarea id="prayerText" rows="3" placeholder="What are we believing God for?" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400"></textarea>
+                    <button onclick="postPrayer()" class="bg-blue-500 text-white px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition">Post to Wall</button>
+                </div>
+            </div>
+
+            <div id="wallContainer" class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                    <p class="text-slate-600 italic mb-4 text-sm">"Believing for a total recovery for my mother who is in the hospital. We stand on Isaiah 53:5."</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-50">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">â€” Sarah, Windhoek</span>
+                        <button class="flex items-center gap-2 text-xs font-bold text-blue-500 hover:bg-blue-50 px-3 py-1 rounded-full transition">
+                            <i class="fas fa-hands-praying"></i> I Prayed
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadPublicPrayers);
+
+        function loadPublicPrayers() {
+            const wall = document.getElementById('wallContainer');
+            const requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
+            const approved = requests.filter(r => r.status === 'Approved');
+
+            if (approved.length > 0) {
+                wall.innerHTML = ''; // Clear static example
+                // Sort by ID descending (newest first)
+                approved.sort((a, b) => b.id - a.id).forEach(req => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition animate-fade-up";
+                    card.innerHTML = `
+                        <p class="text-slate-600 italic mb-4 text-sm">"${req.text}"</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-slate-50">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">&mdash; ${req.name} <span class="hidden md:inline">• ${req.date}</span></span>
+                            <button onclick="this.classList.toggle('text-green-500')" class="flex items-center gap-2 text-xs font-bold text-blue-500 hover:bg-blue-50 px-3 py-1 rounded-full transition">
+                                <i class="fas fa-hands-praying"></i> I Prayed
+                            </button>
+                        </div>
+                    `;
+                    wall.appendChild(card);
+                });
+            }
+        }
+
+        function postPrayer() {
+            const nameInput = document.getElementById('prayerName');
+            const textInput = document.getElementById('prayerText');
+            const name = nameInput.value || "Anonymous";
+            const text = textInput.value;
+            
+            if(!text) return alert("Please enter a prayer request.");
+
+            const newRequest = {
+                id: Date.now(),
+                name: name,
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                text: text,
+                status: 'Pending' // Default to Pending for admin review
+            };
+
+            // Save to LocalStorage
+            let requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
+            requests.push(newRequest);
+            localStorage.setItem('prayerRequests', JSON.stringify(requests));
+
+            alert("Your prayer request has been submitted and is pending approval.");
+            
+            nameInput.value = "";
+            textInput.value = "";
+        }
+    </script>
+
+    <footer class="bg-slate-950 text-white pt-20 pb-12 mt-20 border-t border-white/5">
+    <div class="container mx-auto px-6">
+        <!-- 5-Column Footer Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            <!-- Column 1: Our Mandate + Social -->
+            <div class="space-y-6">
+                <h4 class="text-blue-500 font-black text-xs uppercase tracking-widest">Our Mandate</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">Raising a generation to walk in the undiluted Glory of Christ through the Word of Life.</p>
+                <div class="flex gap-4 pt-4">
+                    <a href="https://www.facebook.com/SkyGraceGlobal" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-400 transition" aria-label="Follow us on Facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@skygraceministryTV" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-500 transition" title="YouTube" aria-label="Subscribe to our YouTube channel"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition" aria-label="Contact us on WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Main Navigation -->
+            <div class="space-y-4">
+                <h4 class="text-white font-black text-xs uppercase tracking-widest">Main Navigation</h4>
+                <ul class="text-[10px] font-bold uppercase tracking-widest space-y-3 text-slate-500">
+                    <li><a href="index.html" class="hover:text-blue-400 transition">Home</a></li>
+                    <li><a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a></li>
+                    <li><a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a></li>
+                    <li><a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Ministry -->
+            <div class="space-y-4">
+                <h4 class="text-white font-black text-xs uppercase tracking-widest">Ministry</h4>
+                <ul class="text-[10px] font-bold uppercase tracking-widest space-y-3 text-slate-500">
+                    <li><a href="give.html" class="hover:text-blue-400 transition">Give / Tithes</a></li>
+                    <li><a href="live.html" class="hover:text-red-500 transition">Watch Live</a></li>
+                    <li><a href="volunteer.html" class="hover:text-blue-400 transition">Volunteer</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-400 transition">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Media & Sermons -->
+            <div class="space-y-4">
+                <h4 class="text-white font-black text-xs uppercase tracking-widest">Media & Sermons</h4>
+                <ul class="text-[10px] font-bold uppercase tracking-widest space-y-3 text-slate-500">
+                    <li><a href="sermon-1.html" class="hover:text-blue-400 transition">Latest Message</a></li>
+                    <li><a href="sermon-archive-2025.html" class="hover:text-blue-400 transition">2025 Archives</a></li>
+                    <li><a href="blog-archive.html" class="hover:text-blue-400 transition">All Revelations</a></li>
+                    <li><a href="testimonies.html" class="hover:text-blue-400 transition">Testimonies</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 5: Legal & Support -->
+            <div class="space-y-4">
+                <h4 class="text-white font-black text-xs uppercase tracking-widest">Legal & Support</h4>
+                <ul class="text-[10px] font-bold uppercase tracking-widest space-y-3 text-slate-500">
+                    <li><a href="privacy-policy.html" class="hover:text-blue-400 transition">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="hover:text-blue-400 transition">Terms of Service</a></li>
+                    <li><a href="cookie-policy.html" class="hover:text-blue-400 transition">Cookie Policy</a></li>
+                    <li><a href="admin/login.html" class="hover:text-blue-400 transition">Admin Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Border + Copyright + Contact -->
+        <div class="border-t border-white/5 pt-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <p class="text-[11px] text-slate-400"><strong>HQ Address:</strong> Okahandja Shopping Centre, Shop 32, Namibia</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[11px] text-slate-400"><strong>Email:</strong> info@skygraceministry.com</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-[11px] text-slate-400"><strong>Phone:</strong> +264 81 234 5678</p>
+                </div>
+            </div>
+            <div class="text-center border-t border-white/5 pt-6">
+                <p class="text-[10px] text-slate-500">Â© 2025 Sky Grace Jesus Ministry. All rights reserved. <span class="text-blue-400">Built with <i class="fas fa-heart text-red-500"></i> for God's Glory</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+<script src="assets/js/back-to-top.js"></script>
+</body>
+</html>
