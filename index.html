@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -588,20 +587,6 @@
     <script>
         // Initialize Animations
         AOS.init({ duration: 800, once: true });
-
-        // Mobile Menu Logic
-        (() => {
-            const openBtn = document.querySelector('[data-menu-open]');
-            const overlay = document.querySelector('[data-menu-overlay]');
-            const drawer  = document.querySelector('[data-menu-drawer]');
-            const closeBtns = document.querySelectorAll('[data-menu-close]');
-            if (!openBtn || !overlay || !drawer) return;
-            const open = () => { overlay.classList.remove('hidden'); requestAnimationFrame(() => drawer.classList.remove('translate-x-full')); };
-            const close = () => { drawer.classList.add('translate-x-full'); setTimeout(() => overlay.classList.add('hidden'), 250); };
-            openBtn.addEventListener('click', open);
-            closeBtns.forEach(b => b.addEventListener('click', close));
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close(); });
-        })();
 
         // Daily Devotional Logic
         const devotionals = [
