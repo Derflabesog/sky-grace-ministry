@@ -1,11 +1,11 @@
-﻿(async function () {
+﻿﻿(async function () {
   const mount = document.getElementById("site-header");
   if (!mount) return;
 
   // Load partial
   const scriptUrl = document.currentScript.src;
   const baseUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf("/") + 1);
-  const response = await fetch(baseUrl + "partials/header.html", { cache: "no-cache" });
+  const response = await fetch(baseUrl + "header.html", { cache: "no-cache" });
   if (!response.ok) {
     console.warn("Header partial not found:", response.status);
     return;
