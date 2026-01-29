@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,54 +15,7 @@
 </head>
 <body class="bg-[#020617] text-white font-sans overflow-x-hidden">
 <div id="site-header"></div>
-<script src="header.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Global Header: Master Template with Sermons Dropdown -->
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<!-- Mobile Menu Drawer -->
-<script>
-(() => {
-  const openBtn = document.querySelector('[data-menu-open]');
-  const overlay = document.querySelector('[data-menu-overlay]');
-  const drawer  = document.querySelector('[data-menu-drawer]');
-  const closeBtns = document.querySelectorAll('[data-menu-close]');
-
-  if (!openBtn || !overlay || !drawer) return;
-
-  const open = () => {
-    overlay.classList.remove('hidden');
-    requestAnimationFrame(() => drawer.classList.remove('-translate-x-full'));
-  };
-
-  const close = () => {
-    drawer.classList.add('-translate-x-full');
-    setTimeout(() => overlay.classList.add('hidden'), 250);
-  };
-
-  openBtn.addEventListener('click', open);
-  closeBtns.forEach(b => b.addEventListener('click', close));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close();
-  });
-})();
-</script>
+<script src="./header.js" defer></script>
 
     <main class="container mx-auto px-4 py-8">
         <div class="flex flex-col lg:flex-row gap-6">
@@ -219,9 +172,7 @@
             document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
         }
     </script>
+<div id="site-footer"></div>
+<script src="./footer.js" defer></script>
 </body>
 </html>
-
-
-
-
