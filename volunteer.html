@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -194,6 +194,8 @@
         </div>
     </section>
 
+    <div id="site-footer"></div>
+    <script src="./footer.js" defer></script>
     <script>
         // Check for saved preference on load
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -216,7 +218,3 @@
     </script>
 </body>
 </html>
-
-
-
-
