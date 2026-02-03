@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,11 +13,7 @@
 
   <style>
     /* Hide duplicate placeholders if they stay empty */
-    #header:empty,
-    #header-container:empty,
     #site-header:empty,
-    #footer:empty,
-    #footer-container:empty,
     #site-footer:empty { display: none; }
 
     /* Small page-only helpers (won’t break your global design) */
@@ -62,10 +57,9 @@
 
 <body>
 
-  <!-- ✅ HEADER placeholders (your header.js will inject into one of these) -->
-  <div id="header"></div>
-  <div id="header-container"></div>
+  <!-- ✅ HEADER placeholder -->
   <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
   <main class="page-wrap">
     <!-- HERO -->
@@ -239,7 +233,7 @@
 
         <div class="wp-actions" style="margin-top:16px;">
           <a class="wp-btn primary" href="give.html">Support the Ministry</a>
-          <a class="wp-btn" href="events.html">See Events</a>
+          <a class="wp-btn" href="calendar.html">See Events</a>
           <a class="wp-btn" href="sermons.html">Watch Sermons</a>
         </div>
       </div>
@@ -262,13 +256,10 @@
     </section>
   </main>
 
-  <!-- ✅ FOOTER placeholders (your footer.js will inject into one of these) -->
-  <div id="footer"></div>
-  <div id="footer-container"></div>
+  <!-- ✅ FOOTER placeholder -->
   <div id="site-footer"></div>
 
-  <!-- ✅ Use your existing injectors (no duplicated HTML) -->
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
+  <!-- ✅ Use your existing injectors -->
+  <script src="./footer.js" defer></script>
 </body>
 </html>
