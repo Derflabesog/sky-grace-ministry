@@ -1,4 +1,4 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,13 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
-    <meta name="theme-color" content="#0f172a">
 </head>
 <body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased">
 <div id="site-header"></div>
-<script src="header.js" defer></script>
+<script src="./header.js" defer></script>
 
 <!-- Header -->
     <section class="py-20 bg-slate-900 text-center relative overflow-hidden">
@@ -56,8 +53,13 @@
             
             <!-- Card 1 -->
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="spirit-of-elijah" data-aos="fade-up">
-                <div class="aspect-video bg-slate-900">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sermon Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="aspect-video bg-slate-900 relative group">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </a>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
@@ -73,7 +75,7 @@
                         <span class="text-sm font-bold text-slate-700">Apostle Poliano</span>
                     </div>
                     <div class="flex gap-2">
-                        <a href="#" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
+                        <a href="assets/pdfs/sermons/2023/elijah-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
                             <i class="fas fa-file-pdf mr-2"></i> Download
                         </a>
                         <button onclick="shareSermon('Walking in the Power of Elijah', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">
@@ -85,8 +87,13 @@
 
             <!-- Card 2 -->
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="identity" data-aos="fade-up" data-aos-delay="100">
-                <div class="aspect-video bg-slate-900">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sermon Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="aspect-video bg-slate-900 relative group">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </a>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
@@ -102,7 +109,7 @@
                         <span class="text-sm font-bold text-slate-700">Apostle Poliano</span>
                     </div>
                     <div class="flex gap-2">
-                        <a href="#" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
+                        <a href="assets/pdfs/sermons/2023/identity-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
                             <i class="fas fa-file-pdf mr-2"></i> Download
                         </a>
                         <button onclick="shareSermon('Who You Are in Christ', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">
@@ -114,8 +121,13 @@
 
              <!-- Card 3 -->
              <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="youth" data-aos="fade-up" data-aos-delay="200">
-                <div class="aspect-video bg-slate-900">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sermon Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="aspect-video bg-slate-900 relative group">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </a>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-4">
@@ -131,7 +143,7 @@
                         <span class="text-sm font-bold text-slate-700">Youth Pastor</span>
                     </div>
                     <div class="flex gap-2">
-                        <a href="#" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
+                        <a href="assets/pdfs/sermons/2023/youth-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
                             <i class="fas fa-file-pdf mr-2"></i> Download
                         </a>
                         <button onclick="shareSermon('Navigating the Digital Age', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">

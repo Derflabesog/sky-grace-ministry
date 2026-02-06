@@ -7,30 +7,44 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-900 text-white">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
 <div id="site-header"></div>
-<script src="header.js" defer></script>
+<script src="./header.js" defer></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container mx-auto px-6 py-12">
-    <a href="sermons.html" class="text-blue-400 font-bold hover:underline">â† Back to Sermons</a>
-    <h1 class="text-4xl font-black mt-6">2025 Prophetic Series Archive</h1>
-    <p class="text-slate-300 mt-4">A list of sermons delivered in 2025.</p>
-    <ul class="mt-8 space-y-4">
-      <li><a href="sermon-1.html" class="text-blue-300 hover:underline">Breaking the Chains of Limitation</a></li>
-      <li><a href="sermon-2.html" class="text-blue-300 hover:underline">Walking in the Glory</a></li>
-    </ul>
+  <div class="container mx-auto px-6 py-12 max-w-4xl">
+    <a href="sermons.html" class="text-blue-600 font-bold hover:underline text-sm uppercase tracking-widest mb-6 inline-block">
+      <i class="fas fa-arrow-left mr-2"></i> Back to Sermons
+    </a>
+    
+    <h1 class="text-4xl font-black text-slate-900 mt-6 mb-2">2025 Prophetic Series Archive</h1>
+    <p class="text-slate-500 mb-10">A complete list of sermons delivered in the year 2025.</p>
+    
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+      <ul class="divide-y divide-slate-100">
+        <li>
+          <a href="sermon-1.html" class="block p-6 hover:bg-slate-50 transition group">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Breaking the Chains of Limitation</h3>
+                <p class="text-sm text-slate-500 mt-1">Jan 2026 • Apostle Poliano</p>
+              </div>
+              <i class="fas fa-chevron-right text-slate-300 group-hover:text-blue-500 transition"></i>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="sermon-2.html" class="block p-6 hover:bg-slate-50 transition group">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">Walking in the Glory</h3>
+                <p class="text-sm text-slate-500 mt-1">Jan 11, 2026 • Sunday Service</p>
+              </div>
+              <i class="fas fa-chevron-right text-slate-300 group-hover:text-blue-500 transition"></i>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 <div id="site-footer"></div>
 <script src="./footer.js" defer></script>
