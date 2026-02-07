@@ -3,339 +3,318 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sky Grace Jesus Ministry | Sermons, Teachings & Learning Aids</title>
+  <title>Sky Grace Jesus Ministry | Home</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Sky Grace Jesus Ministry — watch sermons, read summaries, and download PDF learning aids for spiritual growth and Bible study." />
-  <meta name="keywords" content="Sky Grace Jesus Ministry, sermons, bible teaching, christian ministry, Namibia ministry, sermon summaries, PDF learning aids" />
-  <meta name="author" content="Sky Grace Jesus Ministry" />
-
-  <!-- Tailwind -->
+  <meta name="description" content="Sky Grace Jesus Ministry — raising a generation to walk in the undiluted Glory of Christ through the Word of Life." />
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- Optional: Theme tweaks -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          boxShadow: {
-            soft: "0 10px 30px rgba(2, 6, 23, 0.12)"
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 
-<body class="bg-slate-950 text-slate-100 antialiased">
-  <!-- Header injection -->
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased">
+
+  <!-- Shared Header -->
   <div id="site-header"></div>
   <script src="./header.js" defer></script>
 
-  <!-- HERO (Option A: Modern split hero) -->
-  <section class="relative overflow-hidden">
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-slate-900">
     <div class="absolute inset-0">
-      <div class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-indigo-600/30 blur-3xl"></div>
-      <div class="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-sky-500/20 blur-3xl"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900"></div>
+      <img src="assets/images/hero.jpg" alt="Sky Grace Jesus Ministry" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900"></div>
     </div>
 
-    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:py-24">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div data-aos="fade-up">
-          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">
-            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-            Sermons • Teachings • PDF Learning Aids
-          </div>
+    <div class="container mx-auto px-6 py-24 md:py-28 relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-slate-300 bg-white/10 border border-white/10 px-4 py-2 rounded-full"
+              data-aos="fade-down">
+          <i class="fa-solid fa-bolt text-amber-400"></i>
+          Raising a generation for God’s Glory
+        </span>
 
-          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Grow in the Word with
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
-              Sermons & Study Aids
-            </span>
-          </h1>
+        <h1 class="text-4xl md:text-6xl font-black text-white mt-6 leading-tight" data-aos="fade-up">
+          Sky Grace Jesus Ministry
+        </h1>
 
-          <p class="mt-5 text-lg text-slate-300 leading-relaxed max-w-xl">
-            Watch recent messages, then download a PDF summary & learning aid for deeper understanding.
-            We’ll upload sermon summaries after manual transcription so you can study offline.
-          </p>
+        <p class="text-lg md:text-xl text-slate-200 mt-6 max-w-2xl font-light" data-aos="fade-up" data-aos-delay="100">
+          We are committed to teaching the Word of Life, building disciples, and equipping believers to walk in the
+          undiluted Glory of Christ.
+        </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#sermons"
-               class="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-5 py-3 font-semibold shadow-soft hover:bg-slate-200 transition">
-              <i class="fa-solid fa-play mr-2"></i>
-              Watch Sermons
-            </a>
-
-            <a href="#learning-aids"
-               class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white hover:bg-white/10 transition">
-              <i class="fa-solid fa-file-arrow-down mr-2"></i>
-              Download Learning Aids
-            </a>
-          </div>
-
-          <div class="mt-8 grid grid-cols-2 gap-4 max-w-xl">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p class="text-2xl font-extrabold">YouTube</p>
-              <p class="text-sm text-slate-300">Sermon archive & playlists</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p class="text-2xl font-extrabold">PDF</p>
-              <p class="text-sm text-slate-300">Manual transcript summaries</p>
-            </div>
-          </div>
+        <div class="flex flex-col sm:flex-row gap-3 mt-8" data-aos="fade-up" data-aos-delay="150">
+          <a href="sermons.html"
+             class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-black px-6 py-4 rounded-2xl shadow-lg transition">
+            <i class="fa-brands fa-youtube"></i> Watch Sermons
+          </a>
+          <a href="contact.html"
+             class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-black px-6 py-4 rounded-2xl border border-white/15 transition">
+            <i class="fa-solid fa-envelope"></i> Contact Us
+          </a>
         </div>
 
-        <!-- Hero Card -->
-        <div class="relative" data-aos="fade-left">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm text-slate-300">Featured Sermon</p>
-                <h2 class="text-xl font-bold mt-1">This Week’s Message</h2>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="220">
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-5">
+            <p class="text-white font-black text-2xl">Word</p>
+            <p class="text-slate-200 text-sm mt-1">Sound doctrine & revelation.</p>
+          </div>
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-5">
+            <p class="text-white font-black text-2xl">Prayer</p>
+            <p class="text-slate-200 text-sm mt-1">Intercession & breakthrough.</p>
+          </div>
+          <div class="bg-white/10 border border-white/10 rounded-2xl p-5">
+            <p class="text-white font-black text-2xl">Discipleship</p>
+            <p class="text-slate-200 text-sm mt-1">Growing believers in Christ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div data-aos="fade-right">
+          <span class="text-xs font-black tracking-widest uppercase text-slate-500">Our Mandate</span>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-3">
+            Raising a generation to walk in the undiluted Glory of Christ
+          </h2>
+          <p class="text-slate-600 mt-4 leading-relaxed">
+            Sky Grace Jesus Ministry exists to proclaim Christ with clarity, power, and love.
+            We teach the Word, train believers, and build communities of faith through worship, discipleship, and outreach.
+          </p>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center mb-3">
+                <i class="fa-solid fa-book-bible"></i>
               </div>
-              <span class="rounded-full bg-emerald-400/15 text-emerald-200 px-3 py-1 text-xs font-semibold border border-emerald-400/20">
-                NEW
-              </span>
+              <p class="font-black text-slate-900">Bible Teaching</p>
+              <p class="text-sm text-slate-600 mt-1">Scripture-based, practical and prophetic.</p>
             </div>
 
-            <div class="mt-5 aspect-video overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
-              <!-- Replace VIDEO_ID -->
-              <iframe
-                class="h-full w-full"
-                src="https://www.youtube.com/embed/VIDEO_ID"
-                title="Featured Sermon"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+            <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-900 flex items-center justify-center mb-3">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <p class="font-black text-slate-900">Ministry & Care</p>
+              <p class="text-sm text-slate-600 mt-1">Prayer, counseling and community support.</p>
             </div>
+          </div>
 
-            <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <a href="https://youtube.com"
-                 target="_blank"
-                 class="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-4 py-2 font-semibold hover:bg-indigo-400 transition">
-                <i class="fa-brands fa-youtube mr-2"></i>
-                Open on YouTube
-              </a>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="ministry.html"
+               class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black px-6 py-3 rounded-2xl transition">
+              Learn More <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="welcome-packet.html"
+               class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-900 font-black px-6 py-3 rounded-2xl transition">
+              Welcome Packet <i class="fa-solid fa-file"></i>
+            </a>
+          </div>
+        </div>
 
-              <!-- PDF button next to sermon (learning aid) -->
-              <a href="./pdf/featured-sermon-learning-aid.pdf"
-                 class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition"
-                 download>
-                <i class="fa-solid fa-file-pdf mr-2"></i>
-                Download PDF Aid
-              </a>
+        <div class="relative" data-aos="fade-left">
+          <div class="absolute -inset-4 bg-gradient-to-tr from-amber-500/20 to-slate-900/10 blur-2xl rounded-3xl"></div>
+          <div class="relative bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
+            <img src="assets/images/about.jpg" alt="Ministry" class="w-full h-[420px] object-cover" />
+            <div class="p-6">
+              <p class="text-xs font-black tracking-widest uppercase text-slate-500">Location</p>
+              <p class="font-black text-slate-900 mt-1">Okahandja, Namibia</p>
+              <p class="text-slate-600 text-sm mt-2">
+                Join us for services, conferences, and discipleship programs.
+              </p>
             </div>
-
-            <p class="mt-4 text-sm text-slate-300">
-              Tip: Place your PDF file in <code class="text-slate-200">/pdf/</code> and update the filename above.
-            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST / QUICK LINKS -->
-  <section class="mx-auto max-w-7xl px-6 py-12">
-    <div class="grid gap-6 md:grid-cols-3" data-aos="fade-up">
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <div class="flex items-center gap-3">
-          <span class="grid h-10 w-10 place-items-center rounded-xl bg-sky-500/15 border border-sky-400/20">
-            <i class="fa-solid fa-book-bible text-sky-300"></i>
-          </span>
-          <h3 class="text-lg font-bold">Bible-Based Teaching</h3>
-        </div>
-        <p class="mt-3 text-slate-300">Sermons rooted in Scripture, built for spiritual growth and practical application.</p>
-      </div>
-
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <div class="flex items-center gap-3">
-          <span class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/15 border border-emerald-400/20">
-            <i class="fa-solid fa-file-lines text-emerald-300"></i>
-          </span>
-          <h3 class="text-lg font-bold">PDF Learning Aids</h3>
-        </div>
-        <p class="mt-3 text-slate-300">Download sermon summaries, key points, and study questions for offline learning.</p>
-      </div>
-
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-        <div class="flex items-center gap-3">
-          <span class="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/15 border border-indigo-400/20">
-            <i class="fa-solid fa-people-group text-indigo-300"></i>
-          </span>
-          <h3 class="text-lg font-bold">Community Growth</h3>
-        </div>
-        <p class="mt-3 text-slate-300">Share messages easily and grow with others through consistent teaching resources.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERMONS -->
-  <section id="sermons" class="mx-auto max-w-7xl px-6 py-14">
-    <div class="flex items-end justify-between gap-4" data-aos="fade-up">
-      <div>
-        <h2 class="text-3xl font-extrabold">Latest Sermons</h2>
-        <p class="mt-2 text-slate-300">Watch on YouTube and download a PDF learning aid next to each sermon.</p>
-      </div>
-
-      <a href="https://www.youtube.com"
-         target="_blank"
-         class="hidden sm:inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition">
-        <i class="fa-brands fa-youtube mr-2"></i>
-        View Channel
-      </a>
-    </div>
-
-    <!-- Sermon Cards -->
-    <div class="mt-8 grid gap-6 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
-      <!-- CARD 1 -->
-      <article class="rounded-3xl border border-white/10 bg-white/5 overflow-hidden shadow-soft">
-        <div class="aspect-video bg-slate-900 border-b border-white/10">
-          <!-- Replace VIDEO_ID_1 -->
-          <iframe class="h-full w-full"
-                  src="https://www.youtube.com/embed/VIDEO_ID_1"
-                  title="Sermon 1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold">Sermon Title One</h3>
-          <p class="mt-2 text-sm text-slate-300">Short description of the sermon topic (1–2 lines).</p>
-
-          <div class="mt-5 flex flex-col gap-3">
-            <a class="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-4 py-2 font-semibold hover:bg-indigo-400 transition"
-               href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank">
-              <i class="fa-solid fa-play mr-2"></i> Watch on YouTube
-            </a>
-
-            <!-- PDF button next to YouTube sermon -->
-            <a class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition"
-               href="./pdf/sermon-1-learning-aid.pdf" download>
-              <i class="fa-solid fa-file-pdf mr-2"></i> Download PDF Aid
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 2 -->
-      <article class="rounded-3xl border border-white/10 bg-white/5 overflow-hidden shadow-soft">
-        <div class="aspect-video bg-slate-900 border-b border-white/10">
-          <iframe class="h-full w-full"
-                  src="https://www.youtube.com/embed/VIDEO_ID_2"
-                  title="Sermon 2"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold">Sermon Title Two</h3>
-          <p class="mt-2 text-sm text-slate-300">Short description of the sermon topic (1–2 lines).</p>
-
-          <div class="mt-5 flex flex-col gap-3">
-            <a class="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-4 py-2 font-semibold hover:bg-indigo-400 transition"
-               href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank">
-              <i class="fa-solid fa-play mr-2"></i> Watch on YouTube
-            </a>
-            <a class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition"
-               href="./pdf/sermon-2-learning-aid.pdf" download>
-              <i class="fa-solid fa-file-pdf mr-2"></i> Download PDF Aid
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 3 -->
-      <article class="rounded-3xl border border-white/10 bg-white/5 overflow-hidden shadow-soft">
-        <div class="aspect-video bg-slate-900 border-b border-white/10">
-          <iframe class="h-full w-full"
-                  src="https://www.youtube.com/embed/VIDEO_ID_3"
-                  title="Sermon 3"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold">Sermon Title Three</h3>
-          <p class="mt-2 text-sm text-slate-300">Short description of the sermon topic (1–2 lines).</p>
-
-          <div class="mt-5 flex flex-col gap-3">
-            <a class="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-4 py-2 font-semibold hover:bg-indigo-400 transition"
-               href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank">
-              <i class="fa-solid fa-play mr-2"></i> Watch on YouTube
-            </a>
-            <a class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition"
-               href="./pdf/sermon-3-learning-aid.pdf" download>
-              <i class="fa-solid fa-file-pdf mr-2"></i> Download PDF Aid
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- LEARNING AIDS SECTION -->
-  <section id="learning-aids" class="mx-auto max-w-7xl px-6 pb-20">
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft" data-aos="fade-up">
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+  <!-- LATEST SERMONS + PDF DOWNLOAD -->
+  <section class="py-20 bg-white border-y border-slate-200">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <div>
-          <h2 class="text-3xl font-extrabold">PDF Learning Aids</h2>
-          <p class="mt-2 text-slate-300">
-            Each PDF can include: key scripture, sermon summary, main points, practical steps, reflection questions, and a short prayer.
+          <span class="text-xs font-black tracking-widest uppercase text-slate-500">Watch & Learn</span>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-3">
+            Latest Sermons (with PDF Learning Aids)
+          </h2>
+          <p class="text-slate-600 mt-3 max-w-2xl">
+            Each message can include a downloadable PDF summary + key scriptures. (We transcribe manually and upload.)
           </p>
         </div>
-        <a href="./pdf/"
-           class="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-5 py-3 font-semibold hover:bg-slate-200 transition">
-          <i class="fa-solid fa-folder-open mr-2"></i>
-          Open PDF Folder
+
+        <!-- TODO: Replace with your real YouTube channel link -->
+        <a href="https://www.youtube.com/" target="_blank"
+           class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-black px-6 py-3 rounded-2xl transition">
+          <i class="fa-brands fa-youtube"></i> Visit Our YouTube Channel
         </a>
       </div>
 
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-          <h3 class="font-bold">Suggested PDF Structure</h3>
-          <ul class="mt-3 space-y-2 text-slate-300 text-sm">
-            <li>• Title + Date + Preacher</li>
-            <li>• Key Scriptures</li>
-            <li>• Summary (short + extended)</li>
-            <li>• Main Points + Notes</li>
-            <li>• Reflection Questions</li>
-            <li>• Prayer / Declaration</li>
-          </ul>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Sermon 1 -->
+        <div class="bg-[#f8fafc] border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up">
+          <div class="relative aspect-video bg-slate-900">
+            <img src="assets/images/sermon-1.jpg" alt="Sermon thumbnail" class="w-full h-full object-cover opacity-95" />
+            <!-- TODO: Replace with your real video link -->
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+               class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/10 transition">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl">
+                <i class="fas fa-play text-xl ml-1"></i>
+              </div>
+            </a>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-black text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Latest</span>
+              <span class="text-xs font-black bg-slate-200 text-slate-700 px-2 py-1 rounded-lg">Teaching</span>
+            </div>
+
+            <h3 class="text-xl font-black text-slate-900">Sermon Title One</h3>
+            <p class="text-slate-600 text-sm mt-2 line-clamp-3">
+              Short description about the sermon message. Replace with the real summary.
+            </p>
+
+            <div class="mt-5 flex gap-2">
+              <!-- PDF download -->
+              <a href="assets/pdfs/sermons/latest/sermon-1.pdf"
+                 class="flex-1 text-center bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-2xl transition text-sm"
+                 download>
+                <i class="fa-solid fa-file-pdf mr-2"></i> Download PDF
+              </a>
+
+              <a href="sermons.html"
+                 class="text-center bg-white border border-slate-200 hover:bg-slate-50 text-slate-900 font-black px-4 py-3 rounded-2xl transition text-sm">
+                View
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-          <h3 class="font-bold">How to Add PDFs</h3>
-          <ol class="mt-3 space-y-2 text-slate-300 text-sm">
-            <li>1) Create folder: <code class="text-slate-200">/pdf</code></li>
-            <li>2) Save PDFs like: <code class="text-slate-200">sermon-1-learning-aid.pdf</code></li>
-            <li>3) Update each button link in this file.</li>
-          </ol>
+        <!-- Sermon 2 -->
+        <div class="bg-[#f8fafc] border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative aspect-video bg-slate-900">
+            <img src="assets/images/sermon-2.jpg" alt="Sermon thumbnail" class="w-full h-full object-cover opacity-95" />
+            <!-- TODO: Replace with your real video link -->
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+               class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/10 transition">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl">
+                <i class="fas fa-play text-xl ml-1"></i>
+              </div>
+            </a>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-black text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Latest</span>
+              <span class="text-xs font-black bg-amber-100 text-amber-800 px-2 py-1 rounded-lg">Conference</span>
+            </div>
+
+            <h3 class="text-xl font-black text-slate-900">Sermon Title Two</h3>
+            <p class="text-slate-600 text-sm mt-2 line-clamp-3">
+              Short description about the sermon message. Replace with the real summary.
+            </p>
+
+            <div class="mt-5 flex gap-2">
+              <a href="assets/pdfs/sermons/latest/sermon-2.pdf"
+                 class="flex-1 text-center bg-slate-900 hover:bg-slate-800 text-white font-black py-3 rounded-2xl transition text-sm"
+                 download>
+                <i class="fa-solid fa-file-pdf mr-2"></i> Download PDF
+              </a>
+
+              <a href="sermons.html"
+                 class="text-center bg-white border border-slate-200 hover:bg-slate-50 text-slate-900 font-black px-4 py-3 rounded-2xl transition text-sm">
+                View
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sermon 3 (PDF Coming Soon example) -->
+        <div class="bg-[#f8fafc] border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative aspect-video bg-slate-900">
+            <img src="assets/images/sermon-3.jpg" alt="Sermon thumbnail" class="w-full h-full object-cover opacity-95" />
+            <!-- TODO: Replace with your real video link -->
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+               class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/10 transition">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl">
+                <i class="fas fa-play text-xl ml-1"></i>
+              </div>
+            </a>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-black text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Latest</span>
+              <span class="text-xs font-black bg-slate-200 text-slate-700 px-2 py-1 rounded-lg">Sunday Service</span>
+            </div>
+
+            <h3 class="text-xl font-black text-slate-900">Sermon Title Three</h3>
+            <p class="text-slate-600 text-sm mt-2 line-clamp-3">
+              Short description about the sermon message. Replace with the real summary.
+            </p>
+
+            <div class="mt-5 flex gap-2">
+              <button class="flex-1 text-center bg-slate-200 text-slate-600 font-black py-3 rounded-2xl cursor-not-allowed text-sm">
+                <i class="fa-solid fa-file-pdf mr-2"></i> PDF Coming Soon
+              </button>
+
+              <a href="sermons.html"
+                 class="text-center bg-white border border-slate-200 hover:bg-slate-50 text-slate-900 font-black px-4 py-3 rounded-2xl transition text-sm">
+                View
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="sermons.html"
+           class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-black px-7 py-4 rounded-2xl transition">
+          Browse All Sermons <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="bg-slate-900 rounded-3xl p-10 md:p-14 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-white/5"></div>
+        <div class="relative">
+          <h2 class="text-3xl md:text-4xl font-black">Need Prayer or Counseling?</h2>
+          <p class="text-slate-200 mt-3 max-w-2xl">
+            Send us a message and we will stand with you in prayer. You are not alone.
+          </p>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a href="contact.html"
+               class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-black px-7 py-4 rounded-2xl transition shadow-lg">
+              <i class="fa-solid fa-envelope"></i> Contact Us
+            </a>
+            <a href="give.html"
+               class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-black px-7 py-4 rounded-2xl transition border border-white/15">
+              <i class="fa-solid fa-hand-holding-dollar"></i> Give / Tithes
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER injection -->
+  <!-- Shared Footer -->
   <div id="site-footer"></div>
   <script src="./footer.js" defer></script>
 
-  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 650,
-      once: true,
-      offset: 60
-    });
+    AOS.init({ once: true, duration: 800 });
   </script>
 </body>
 </html>
