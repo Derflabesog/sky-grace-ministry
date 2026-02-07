@@ -1,104 +1,473 @@
-﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stewardship & Giving | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Give / Tithes | Sky Grace Jesus Ministry</title>
+  <meta name="description" content="Support the work of Sky Grace Jesus Ministry. Give by EFT, mobile money, or online." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+
+  <style>
+    /* Toast */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+  </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-900 font-sans antialiased">
-<div id="site-header"></div>
-<script src="./header.js" defer></script>
 
-<main>
-        <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <span class="text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block" data-aos="fade-down">Faithful Stewardship</span>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight" data-aos="fade-up">Honoring God with <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-slate-100">Our Substance</span></h1>
-                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed italic">
-                    "Honor the Lord with your wealth and with the firstfruits of all your produce; then your barns will be filled with plenty." â€” Proverbs 3:9-10
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
+
+  <!-- ✅ Dynamic Header Injection -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
+
+  <main class="container mx-auto px-6 py-16 md:py-20">
+    <!-- Page Title -->
+    <div class="max-w-3xl">
+      <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+        Give / Tithes
+      </p>
+      <h1 class="mt-3 text-3xl md:text-5xl font-black leading-tight">
+        Support the Ministry
+      </h1>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+        Thank you for partnering with Sky Grace Jesus Ministry. Your giving supports preaching, discipleship, outreaches, and media work.
+      </p>
+    </div>
+
+    <!-- Top Options -->
+    <section class="mt-10 grid lg:grid-cols-3 gap-6">
+      <!-- EFT -->
+      <a href="#eft"
+         class="group rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 hover:shadow-xl transition">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center">
+            <i class="fas fa-building-columns"></i>
+          </div>
+          <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        </div>
+        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">Bank / EFT</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Copy banking details, use the reference, and send proof of payment.
+        </p>
+      </a>
+
+      <!-- Mobile Money -->
+      <a href="#mobile-money"
+         class="group rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 hover:shadow-xl transition">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center">
+            <i class="fas fa-mobile-screen-button"></i>
+          </div>
+          <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        </div>
+        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">Mobile Money</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Pay via MTC / eWallet / PayToday (add your preferred method).
+        </p>
+      </a>
+
+      <!-- Online/Card -->
+      <a href="#online"
+         class="group rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 hover:shadow-xl transition">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        </div>
+        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">Card / Online</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Optional: add PayPal / PayFast / Flutterwave / PayToday link later.
+        </p>
+      </a>
+    </section>
+
+    <!-- Main Grid -->
+    <section class="mt-10 grid lg:grid-cols-3 gap-6 items-start">
+
+      <!-- LEFT: EFT + Mobile + Online -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- EFT Card -->
+        <div id="eft" class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm">
+          <div class="flex items-start justify-between gap-6">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-emerald-600 dark:text-emerald-400">
+                Bank / EFT Details
+              </p>
+              <h2 class="mt-2 text-2xl font-black">Copy & Pay Securely</h2>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Use the reference exactly so we can identify your giving.
+              </p>
+            </div>
+
+            <div class="hidden md:flex w-12 h-12 rounded-2xl bg-emerald-500 text-white items-center justify-center">
+              <i class="fas fa-building-columns"></i>
+            </div>
+          </div>
+
+          <!-- Fields -->
+          <div class="mt-6 grid md:grid-cols-2 gap-4">
+            <!-- Account Name -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Account Name</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="acc-name" class="font-mono text-sm text-slate-900 dark:text-white break-all">
+                  REPLACE_ACCOUNT_NAME
                 </p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="acc-name"
+                        aria-label="Copy account name">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
             </div>
-            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-        </section>
 
-        <section class="py-20 container mx-auto px-6 -mt-16 relative z-20">
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-10 transform hover:-translate-y-2 transition duration-500" data-aos="fade-right">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Okahandja</h2>
-                            <p class="text-blue-500 font-bold text-xs uppercase tracking-widest">Main Headquarters</p>
-                        </div>
-                        <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-400 text-xl">
-                            <i class="fas fa-church"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <p class="text-[10px] font-black text-slate-400 uppercase mb-2">EFT / Bank Details</p>
-                            <h3 class="font-bold text-slate-900">Bank Windhoek</h3>
-                            <p class="text-sm text-slate-600">Account: 8001234567</p>
-                            <p class="text-sm text-slate-600">Branch Code: 483-872</p>
-                            <p class="text-sm text-slate-600 font-mono mt-2">Ref: [Your Name] - OKA</p>
-                        </div>
-                        
-                        <button class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-xs uppercase tracking-widest hover:bg-blue-600 transition shadow-lg shadow-slate-200">
-                            Give via PayToday
-                        </button>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-10 transform hover:-translate-y-2 transition duration-500" data-aos="fade-left">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <h2 class="text-3xl font-black text-slate-900 uppercase tracking-tighter">Windhoek</h2>
-                            <p class="text-blue-500 font-bold text-xs uppercase tracking-widest">Branch Altar</p>
-                        </div>
-                        <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-400 text-xl">
-                            <i class="fas fa-city"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <p class="text-[10px] font-black text-slate-400 uppercase mb-2">EFT / Bank Details</p>
-                            <h3 class="font-bold text-slate-900">FNB Namibia</h3>
-                            <p class="text-sm text-slate-600">Account: 62287654321</p>
-                            <p class="text-sm text-slate-600">Branch Code: 280-172</p>
-                            <p class="text-sm text-slate-600 font-mono mt-2">Ref: [Your Name] - WHK</p>
-                        </div>
-                        
-                        <button class="w-full bg-blue-500 text-white font-black py-4 rounded-xl text-xs uppercase tracking-widest hover:bg-blue-600 transition shadow-lg shadow-blue-100">
-                            Give via Card (Online)
-                        </button>
-                    </div>
-                </div>
-
+            <!-- Bank Name -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Bank</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="bank-name" class="font-mono text-sm text-slate-900 dark:text-white break-all">
+                  REPLACE_BANK_NAME
+                </p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="bank-name"
+                        aria-label="Copy bank name">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
             </div>
-        </section>
 
-        <section class="py-10 container mx-auto px-6 max-w-4xl text-center">
-            <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8">Giving Categories</h3>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="px-6 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Tithes</span>
-                <span class="px-6 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Missions Seed</span>
-                <span class="px-6 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Building Fund</span>
-                <span class="px-6 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold text-slate-600">Welfare</span>
+            <!-- Account Number -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Account Number</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="acc-number" class="font-mono text-sm text-slate-900 dark:text-white break-all">
+                  REPLACE_ACCOUNT_NUMBER
+                </p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="acc-number"
+                        aria-label="Copy account number">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
             </div>
-        </section>
-    </main>
 
-    
+            <!-- Branch Code -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Branch Code</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="branch-code" class="font-mono text-sm text-slate-900 dark:text-white break-all">
+                  REPLACE_BRANCH_CODE
+                </p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="branch-code"
+                        aria-label="Copy branch code">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
+            </div>
 
+            <!-- Reference -->
+            <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-black text-white p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-white/70">Payment Reference</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="reference" class="font-mono text-sm text-white break-all">
+                  REPLACE_REFERENCE_FORMAT
+                </p>
+                <button class="copy-btn text-white/70 hover:text-white"
+                        data-copy-target="reference"
+                        aria-label="Copy reference">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
+              <p class="mt-2 text-xs text-white/70">
+                Tip: Include your name + “Tithe” or “Offering”.
+              </p>
+            </div>
+          </div>
 
-    <div id="site-footer"></div>
-    <script src="./footer.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+          <!-- Proof Buttons -->
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a id="whatsapp-proof"
+               href="https://wa.me/REPLACE_WHATSAPP_NUMBER?text=Hello%20Sky%20Grace%20Jesus%20Ministry%2C%20I%20have%20made%20a%20donation.%20Amount%3A%20%5BAmount%5D%20Reference%3A%20%5BReference%5D%20Please%20find%20my%20proof%20of%20payment%20attached."
+               target="_blank"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-emerald-500 transition">
+              <i class="fab fa-whatsapp"></i>
+              Send Proof on WhatsApp
+            </a>
+
+            <a id="email-proof"
+               href="mailto:skygrace@rimonnamibia.com?subject=Donation%20Proof%20-%20Sky%20Grace%20Jesus%20Ministry&body=Hello%20Sky%20Grace%20Jesus%20Ministry%2C%0A%0AI%20have%20made%20a%20donation.%0AAmount%3A%20%5BAmount%5D%0AReference%3A%20%5BReference%5D%0AMethod%3A%20EFT%0ADate%3A%20%5BDate%5D%0A%0AI%20will%20attach%20my%20proof%20of%20payment.%0A%0AThank%20you."
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-black uppercase text-[11px] tracking-widest hover:shadow-lg transition">
+              <i class="fas fa-envelope"></i>
+              Email Proof of Payment
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Money -->
+        <div id="mobile-money" class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm">
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-600 dark:text-amber-400">
+            Mobile Money
+          </p>
+          <h2 class="mt-2 text-2xl font-black">Fast Giving on Mobile</h2>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Add your preferred giving method here. Replace the placeholders with your real numbers.
+          </p>
+
+          <div class="mt-6 grid md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">MTC Mobile Home (Placeholder)</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="mtc-number" class="font-mono text-sm break-all">REPLACE_MTC_NUMBER</p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="mtc-number" aria-label="Copy MTC number">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">eWallet / PayToday (Placeholder)</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="ewallet-number" class="font-mono text-sm break-all">REPLACE_EWALLET_OR_PAYTODAY</p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                        data-copy-target="ewallet-number" aria-label="Copy eWallet/PayToday">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-black text-white p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-white/70">Reference</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="mm-ref" class="font-mono text-sm text-white break-all">REPLACE_REFERENCE_FORMAT</p>
+                <button class="copy-btn text-white/70 hover:text-white" data-copy-target="mm-ref" aria-label="Copy reference">
+                  <i class="far fa-copy"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Online / Card -->
+        <div id="online" class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm">
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
+            Card / Online (Optional)
+          </p>
+          <h2 class="mt-2 text-2xl font-black">Add a Payment Link Later</h2>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            If you later add PayPal / PayFast / Flutterwave / PayToday link, paste it here.
+          </p>
+
+          <div class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Payment Link (Placeholder)</p>
+            <p class="mt-2 font-mono text-sm break-all">REPLACE_ONLINE_PAYMENT_LINK</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Confirmation Form -->
+      <aside class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm lg:sticky lg:top-6">
+        <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+          Confirmation
+        </p>
+        <h2 class="mt-2 text-2xl font-black">I Have Given</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Fill in the details below and we’ll open an email with everything prefilled (no login, no backend).
+        </p>
+
+        <form id="donationForm" class="mt-6 space-y-4">
+          <div>
+            <label class="text-xs font-black uppercase tracking-widest text-slate-500">Full Name</label>
+            <input id="donorName" type="text" required
+                   class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400"
+                   placeholder="Your name" />
+          </div>
+
+          <div>
+            <label class="text-xs font-black uppercase tracking-widest text-slate-500">Amount</label>
+            <input id="donationAmount" type="text" required
+                   class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400"
+                   placeholder="e.g. N$ 200" />
+          </div>
+
+          <div>
+            <label class="text-xs font-black uppercase tracking-widest text-slate-500">Reference</label>
+            <input id="donationReference" type="text" required
+                   class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400"
+                   placeholder="e.g. YourName Tithe" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-black uppercase tracking-widest text-slate-500">Date</label>
+              <input id="donationDate" type="date" required
+                     class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400" />
+            </div>
+
+            <div>
+              <label class="text-xs font-black uppercase tracking-widest text-slate-500">Method</label>
+              <select id="donationMethod" required
+                      class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400">
+                <option value="EFT">EFT</option>
+                <option value="Mobile Money">Mobile Money</option>
+                <option value="Online/Card">Online/Card</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit"
+                  class="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-amber-500 text-black font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+            <i class="fas fa-paper-plane"></i>
+            Send Confirmation Email
+          </button>
+
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Tip: You can attach your proof of payment in the email after it opens.
+          </p>
+        </form>
+
+        <div class="mt-6 border-t border-slate-200 dark:border-slate-800 pt-5">
+          <p class="text-xs font-black uppercase tracking-widest text-slate-500">Need help?</p>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            If you have any questions about giving, please contact us.
+          </p>
+          <a href="contact.html"
+             class="mt-3 inline-flex items-center gap-2 text-sm font-black text-blue-600 hover:underline">
+            Contact page <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">
+    <div class="rounded-2xl bg-black text-white px-5 py-3 shadow-2xl border border-white/10">
+      <p id="toastText" class="text-sm font-black tracking-wide">Copied!</p>
+    </div>
+  </div>
+
+  <!-- ✅ Dynamic Footer Injection -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <script>
+    // Safe GA helper
+    function track(eventName, params = {}) {
+      try {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, params);
+        }
+      } catch (e) {}
+    }
+
+    // Toast
+    const toastEl = document.getElementById("toast");
+    const toastTextEl = document.getElementById("toastText");
+    let toastTimer = null;
+
+    function showToast(text) {
+      if (!toastEl || !toastTextEl) return;
+      toastTextEl.textContent = text;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1600);
+    }
+
+    // Copy to clipboard
+    async function copyFromElementId(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const text = (el.textContent || "").trim();
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Copied!");
+        track("copy_click", { field: id });
+      } catch (err) {
+        // Fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast("Copied!");
+        track("copy_click", { field: id });
+      }
+    }
+
+    document.querySelectorAll(".copy-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-copy-target");
+        if (target) copyFromElementId(target);
+      });
+    });
+
+    // Track proof clicks
+    const wa = document.getElementById("whatsapp-proof");
+    const em = document.getElementById("email-proof");
+    if (wa) wa.addEventListener("click", () => track("donate_whatsapp"));
+    if (em) em.addEventListener("click", () => track("donate_email"));
+
+    // Confirmation form -> opens mailto with filled details
+    const donationForm = document.getElementById("donationForm");
+    donationForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("donorName")?.value?.trim() || "";
+      const amount = document.getElementById("donationAmount")?.value?.trim() || "";
+      const ref = document.getElementById("donationReference")?.value?.trim() || "";
+      const date = document.getElementById("donationDate")?.value || "";
+      const method = document.getElementById("donationMethod")?.value || "";
+
+      const to = "skygrace@rimonnamibia.com";
+      const subject = encodeURIComponent("Donation Confirmation - Sky Grace Jesus Ministry");
+      const body = encodeURIComponent(
+        `Hello Sky Grace Jesus Ministry,\n\n` +
+        `I have given a donation.\n\n` +
+        `Name: ${name}\n` +
+        `Amount: ${amount}\n` +
+        `Reference: ${ref}\n` +
+        `Date: ${date}\n` +
+        `Method: ${method}\n\n` +
+        `I will attach proof of payment if needed.\n\n` +
+        `Thank you.`
+      );
+
+      track("donate_submitted", { method: method });
+
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      showToast("Opening email...");
+    });
+  </script>
 </body>
 </html>
