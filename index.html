@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -13,10 +13,10 @@
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- AOS (optional animations) -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <!-- PWA (optional) -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="assets/images/icon-192.png">
   <meta name="theme-color" content="#0f172a">
@@ -24,6 +24,41 @@
   <script>
     tailwind.config = { darkMode: 'class' };
   </script>
+
+  <style>
+    /* Background image card helper */
+    .bg-card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .bg-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform .7s ease;
+      filter: saturate(1.05) contrast(1.02);
+      z-index: -2;
+    }
+    .bg-card:hover::before { transform: scale(1.10); }
+
+    .bg-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(2,6,23,0.86) 0%,
+        rgba(2,6,23,0.62) 55%,
+        rgba(2,6,23,0.92) 100%
+      );
+      z-index: -1;
+    }
+  </style>
 </head>
 
 <body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
@@ -32,87 +67,320 @@
   <div id="site-header"></div>
   <script src="./header.js" defer></script>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-slate-950">
-    <div class="absolute inset-0 opacity-30 bg-gradient-to-br from-blue-600 via-slate-900 to-slate-950"></div>
-    <div class="container mx-auto px-6 py-20 md:py-28 relative z-10">
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-black min-h-[85vh] flex items-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src="assets/images/hero-elohim.jpg"
+        alt="Year of Elohim - Sky Grace Jesus Ministry"
+        class="w-full h-full object-cover object-center md:object-[50%_35%]"
+      />
+    </div>
+
+    <!-- Overlays -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/65 to-black/95"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.28),transparent_55%)]"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-6 py-24 md:py-32">
       <div class="max-w-4xl">
-        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-blue-300 mb-6" data-aos="fade-down">
-          <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-400 mb-6" data-aos="fade-down">
+          <span class="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_16px_rgba(245,158,11,0.9)]"></span>
           Sky Grace Jesus Ministry
         </p>
 
-        <h1 class="text-4xl md:text-6xl font-black leading-[1.05] text-white" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-black leading-tight text-white" data-aos="fade-up">
           Raising a Generation<br />
-          <span class="text-blue-400">For God’s Glory</span>
+          <span class="text-amber-400 drop-shadow-[0_8px_35px_rgba(245,158,11,0.6)]">For God’s Glory</span>
         </h1>
 
-        <p class="mt-6 text-slate-300 max-w-2xl text-base md:text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        <p class="mt-6 text-slate-200 max-w-2xl text-base md:text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
           Dive deep into the Word, grow in the Spirit, and walk in biblical authority through sermons, prayer, and discipleship.
         </p>
 
-        <div class="mt-10 flex flex-col sm:flex-row gap-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="mt-10 flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="150">
           <a href="live.html"
-             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-red-600 text-white font-black uppercase text-xs tracking-widest hover:bg-red-500 transition">
+             class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-red-600 text-white font-black uppercase text-xs tracking-widest
+                    hover:bg-red-500 transition shadow-[0_20px_40px_rgba(220,38,38,0.4)]">
             <i class="fas fa-circle-play"></i>
             Watch Live
           </a>
 
           <a href="sermons.html"
-             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white/10 text-white font-black uppercase text-xs tracking-widest border border-white/10 hover:bg-white/15 transition">
+             class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white/10 text-white font-black uppercase text-xs tracking-widest
+                    border border-white/15 hover:bg-white/15 transition backdrop-blur">
             <i class="fas fa-layer-group"></i>
             Sermon Archive
           </a>
 
           <a href="give.html"
-             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-amber-500 text-slate-950 font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+             class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-amber-500 text-black font-black uppercase text-xs tracking-widest
+                    hover:bg-amber-400 transition shadow-[0_20px_40px_rgba(245,158,11,0.4)]">
             <i class="fas fa-hand-holding-heart"></i>
             Give / Tithes
           </a>
         </div>
+
+        <div class="mt-12 text-xs font-black uppercase tracking-widest text-white/70 flex items-center gap-3" data-aos="fade-up" data-aos-delay="250">
+          <span class="inline-block w-10 h-[2px] bg-white/30"></span>
+          Scroll
+          <i class="fas fa-arrow-down-long animate-bounce"></i>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Highlights -->
+  <!-- HIGHLIGHTS (background images) -->
   <section class="py-16 bg-white dark:bg-slate-900">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40" data-aos="fade-up">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center mb-5">
-            <i class="fas fa-book-bible"></i>
+
+        <div class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition"
+             style="--bg: url('assets/images/cards/word.jpg');"
+             data-aos="fade-up">
+          <div class="relative z-10 p-8">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center mb-5">
+              <i class="fas fa-book-bible"></i>
+            </div>
+            <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">Word & Doctrine</h3>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Structured teachings and biblical foundations for spiritual maturity and clarity.
+            </p>
           </div>
-          <h3 class="font-black uppercase text-sm tracking-widest mb-2">Word & Doctrine</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Structured teachings and biblical foundations for spiritual maturity and clarity.
-          </p>
         </div>
 
-        <div class="p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mb-5">
-            <i class="fas fa-fire"></i>
+        <div class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition"
+             style="--bg: url('assets/images/cards/prayer.jpg');"
+             data-aos="fade-up" data-aos-delay="100">
+          <div class="relative z-10 p-8">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mb-5">
+              <i class="fas fa-fire"></i>
+            </div>
+            <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">Prayer & Revival</h3>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Prayer wall, prophetic direction, and revival activations for this generation.
+            </p>
           </div>
-          <h3 class="font-black uppercase text-sm tracking-widest mb-2">Prayer & Revival</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Prayer wall, prophetic direction, and revival activations for this generation.
-          </p>
         </div>
 
-        <div class="p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-5">
-            <i class="fas fa-users"></i>
+        <div class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition"
+             style="--bg: url('assets/images/cards/discipleship.jpg');"
+             data-aos="fade-up" data-aos-delay="200">
+          <div class="relative z-10 p-8">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-5">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">Discipleship</h3>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Community, mentoring, and spiritual training through School of Theology and ministry service.
+            </p>
           </div>
-          <h3 class="font-black uppercase text-sm tracking-widest mb-2">Discipleship</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Community, mentoring, and spiritual training through School of Theology and ministry service.
-          </p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Featured Links -->
-  <section class="py-16">
+  <!-- Scripture + Latest Sermon -->
+  <section class="py-16 bg-[#f1f5f9] dark:bg-slate-950">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+        <!-- Scripture -->
+        <div class="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 p-8 md:p-10 shadow-sm"
+             data-aos="fade-up">
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-500 mb-3">
+            Scripture of the Season
+          </p>
+
+          <h2 class="text-2xl md:text-3xl font-black leading-tight">
+            Walking in the authority of <span class="text-amber-500">ELOHIM</span>
+          </h2>
+
+          <p class="mt-5 text-slate-600 dark:text-slate-300 leading-relaxed">
+            This year, we move with divine authority and glory — anchored in the Word, led by the Spirit, and established in God’s power.
+          </p>
+
+          <div class="mt-6 rounded-2xl bg-black text-white p-6 border border-white/10">
+            <p class="text-sm md:text-base leading-relaxed text-white/90">
+              “Hear, O Israel: The LORD our God, the LORD is one.”
+            </p>
+            <p class="mt-3 text-xs font-black uppercase tracking-widest text-amber-300">
+              Deuteronomy 6:4
+            </p>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="prayer-wall.html"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-black font-black uppercase text-[11px] tracking-widest hover:bg-amber-400 transition">
+              <i class="fas fa-hands-praying"></i>
+              Submit Prayer
+            </a>
+
+            <a href="contact.html"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 text-slate-900 dark:text-white font-black uppercase text-[11px] tracking-widest border border-slate-200 dark:border-white/10 hover:bg-white/20 transition">
+              <i class="fas fa-envelope"></i>
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <!-- Latest Sermon (Video 1) -->
+        <div class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-8 md:p-10 shadow-sm"
+             data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">
+                Latest Sermon
+              </p>
+              <h2 class="text-2xl md:text-3xl font-black uppercase">
+                Watch & Grow
+              </h2>
+            </div>
+            <a href="https://www.youtube.com/@skygraceministryTV" target="_blank"
+               class="text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">
+              Channel →
+            </a>
+          </div>
+
+          <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-black">
+            <div class="relative w-full pt-[56.25%]">
+              <iframe
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/PXR21OXl8To"
+                title="Latest Sermon - Sky Grace Ministry TV"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <h3 class="font-black text-lg leading-snug">
+              Featured Message (Latest Upload)
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Watch the latest message from Sky Grace Ministry TV. Be strengthened in the Word, built in faith, and stirred for prayer.
+            </p>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <a href="https://www.youtube.com/watch?v=PXR21OXl8To" target="_blank"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-red-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-red-500 transition">
+                <i class="fas fa-circle-play"></i>
+                Watch on YouTube
+              </a>
+
+              <a href="give.html"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-black font-black uppercase text-[11px] tracking-widest hover:bg-amber-400 transition">
+                <i class="fas fa-hand-holding-heart"></i>
+                Support Ministry
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Sermons (5 videos) -->
+  <section class="py-16 bg-white dark:bg-slate-900">
+    <div class="container mx-auto px-6">
+      <div class="flex items-end justify-between gap-4 mb-8">
+        <div>
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Sermons</p>
+          <h2 class="text-2xl md:text-3xl font-black uppercase">Featured Videos</h2>
+        </div>
+        <a href="sermons.html" class="text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">
+          Sermon Archive →
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 1 -->
+        <a href="https://www.youtube.com/watch?v=PXR21OXl8To" target="_blank"
+           class="group rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 hover:shadow-xl transition"
+           data-aos="fade-up">
+          <img class="w-full aspect-video object-cover" src="https://img.youtube.com/vi/PXR21OXl8To/hqdefault.jpg" alt="Sermon thumbnail 1">
+          <div class="p-6">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Featured</p>
+            <p class="mt-2 font-black text-base leading-snug group-hover:underline">Sermon 1</p>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a href="https://youtu.be/ctDqcgFzKlg" target="_blank"
+           class="group rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 hover:shadow-xl transition"
+           data-aos="fade-up" data-aos-delay="50">
+          <img class="w-full aspect-video object-cover" src="https://img.youtube.com/vi/ctDqcgFzKlg/hqdefault.jpg" alt="Sermon thumbnail 2">
+          <div class="p-6">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Featured</p>
+            <p class="mt-2 font-black text-base leading-snug group-hover:underline">Sermon 2</p>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a href="https://www.youtube.com/watch?v=LfRVz5LyppQ" target="_blank"
+           class="group rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 hover:shadow-xl transition"
+           data-aos="fade-up" data-aos-delay="100">
+          <img class="w-full aspect-video object-cover" src="https://img.youtube.com/vi/LfRVz5LyppQ/hqdefault.jpg" alt="Sermon thumbnail 3">
+          <div class="p-6">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Featured</p>
+            <p class="mt-2 font-black text-base leading-snug group-hover:underline">Sermon 3</p>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a href="https://www.youtube.com/watch?v=X9q_au1sEDk" target="_blank"
+           class="group rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 hover:shadow-xl transition"
+           data-aos="fade-up" data-aos-delay="150">
+          <img class="w-full aspect-video object-cover" src="https://img.youtube.com/vi/X9q_au1sEDk/hqdefault.jpg" alt="Sermon thumbnail 4">
+          <div class="p-6">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Featured</p>
+            <p class="mt-2 font-black text-base leading-snug group-hover:underline">Sermon 4</p>
+          </div>
+        </a>
+
+        <!-- 5 -->
+        <a href="https://www.youtube.com/watch?v=Hp9HZBYYtDI" target="_blank"
+           class="group rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 hover:shadow-xl transition"
+           data-aos="fade-up" data-aos-delay="200">
+          <img class="w-full aspect-video object-cover" src="https://img.youtube.com/vi/Hp9HZBYYtDI/hqdefault.jpg" alt="Sermon thumbnail 5">
+          <div class="p-6">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-500">Featured</p>
+            <p class="mt-2 font-black text-base leading-snug group-hover:underline">Sermon 5</p>
+          </div>
+        </a>
+
+        <!-- Channel Card -->
+        <a href="https://www.youtube.com/@skygraceministryTV" target="_blank"
+           class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-black text-white p-8 hover:shadow-xl transition flex flex-col justify-between"
+           data-aos="fade-up" data-aos-delay="250">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-300">Sky Grace Ministry TV</p>
+            <h3 class="mt-2 text-2xl font-black leading-tight">
+              Subscribe & Stay Updated
+            </h3>
+            <p class="mt-4 text-sm text-white/80 leading-relaxed">
+              Watch sermons, teachings, and ministry moments directly from our YouTube channel.
+            </p>
+          </div>
+          <div class="mt-8">
+            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-red-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-red-500 transition">
+              <i class="fas fa-bell"></i>
+              Visit Channel
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Ministry -->
+  <section class="py-16 bg-[#f1f5f9] dark:bg-slate-950">
     <div class="container mx-auto px-6">
       <div class="flex items-end justify-between gap-4 mb-8">
         <div>
@@ -125,34 +393,49 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="welcome-packet.html" class="group p-8 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-xl transition" data-aos="fade-up">
-          <div class="flex items-center justify-between">
-            <h3 class="font-black uppercase text-sm tracking-widest">Welcome Packet</h3>
-            <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        <a href="welcome-packet.html"
+           class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 hover:shadow-xl transition block"
+           style="--bg: url('assets/images/cards/welcome.jpg');"
+           data-aos="fade-up">
+          <div class="relative z-10 p-8">
+            <div class="flex items-center justify-between">
+              <h3 class="font-black uppercase text-sm tracking-widest text-white">Welcome Packet</h3>
+              <i class="fas fa-arrow-right text-white/70"></i>
+            </div>
+            <p class="mt-3 text-sm text-slate-200">Get started with our mandate, ministry structure, and next steps.</p>
           </div>
-          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Get started with our mandate, ministry structure, and next steps.</p>
         </a>
 
-        <a href="prayer-wall.html" class="group p-8 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center justify-between">
-            <h3 class="font-black uppercase text-sm tracking-widest">Prayer Wall</h3>
-            <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        <a href="prayer-wall.html"
+           class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 hover:shadow-xl transition block"
+           style="--bg: url('assets/images/cards/prayer-wall.jpg');"
+           data-aos="fade-up" data-aos-delay="100">
+          <div class="relative z-10 p-8">
+            <div class="flex items-center justify-between">
+              <h3 class="font-black uppercase text-sm tracking-widest text-white">Prayer Wall</h3>
+              <i class="fas fa-arrow-right text-white/70"></i>
+            </div>
+            <p class="mt-3 text-sm text-slate-200">Submit a prayer request and stand in faith with us.</p>
           </div>
-          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Submit a prayer request and stand in faith with us.</p>
         </a>
 
-        <a href="theology-register.html" class="group p-8 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-between">
-            <h3 class="font-black uppercase text-sm tracking-widest">School of Theology</h3>
-            <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
+        <a href="theology-register.html"
+           class="bg-card rounded-[2rem] border border-slate-200 dark:border-slate-800 hover:shadow-xl transition block"
+           style="--bg: url('assets/images/cards/theology.jpg');"
+           data-aos="fade-up" data-aos-delay="200">
+          <div class="relative z-10 p-8">
+            <div class="flex items-center justify-between">
+              <h3 class="font-black uppercase text-sm tracking-widest text-white">School of Theology</h3>
+              <i class="fas fa-arrow-right text-white/70"></i>
+            </div>
+            <p class="mt-3 text-sm text-slate-200">Enroll and grow through structured scriptural training.</p>
           </div>
-          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Enroll and grow through structured scriptural training.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Dynamic Footer Injection (MUST be right before </body>) -->
+  <!-- ✅ Dynamic Footer Injection -->
   <div id="site-footer"></div>
   <script src="./footer.js" defer></script>
 
