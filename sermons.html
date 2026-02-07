@@ -1,220 +1,439 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sermon Archive | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sermon Archive | Sky Grace Jesus Ministry</title>
+
+  <!-- Tailwind + Icons + AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
+
 <body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased">
-<div id="site-header"></div>
-<script src="./header.js" defer></script>
 
-<!-- Header -->
-    <section class="py-20 bg-slate-900 text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <span class="text-slate-400 font-bold tracking-widest uppercase text-xs mb-4 block" data-aos="fade-down">Media Library</span>
-            <h1 class="text-4xl md:text-6xl font-black text-white mb-6" data-aos="fade-up">Sermon Archive</h1>
-            <p class="text-xl text-slate-300 max-w-2xl mx-auto font-light" data-aos="fade-up" data-aos-delay="100">
-                Dive deep into the Word with our collection of teachings, conferences, and Sunday services.
-            </p>
-        </div>
-    </section>
+  <!-- Shared Header -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
-    <!-- Filter Section -->
-    <section class="py-10 bg-white border-b border-slate-200 sticky top-20 z-40 shadow-sm">
-        <div class="container mx-auto px-6 overflow-x-auto">
-            <div class="flex gap-4 md:justify-center min-w-max">
-                <button class="filter-btn active px-6 py-2 rounded-full bg-slate-900 text-white font-bold text-sm transition hover:bg-slate-800" data-filter="all">All Sermons</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900" data-filter="spirit-of-elijah">The Spirit of Elijah</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900" data-filter="identity">Identity in God</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900" data-filter="youth">Youth Conference</button>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="py-20 bg-slate-900 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <span class="text-slate-400 font-bold tracking-widest uppercase text-xs mb-4 block" data-aos="fade-down">
+        Media Library
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6" data-aos="fade-up">Sermon Archive</h1>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto font-light" data-aos="fade-up" data-aos-delay="100">
+        Watch the message, then download the <span class="font-semibold text-white">PDF Learning Aid</span> (summary + key scriptures + reflection questions).
+      </p>
 
-    <div class="bg-white border-b border-slate-200 py-8">
-        <div class="container mx-auto px-6">
-            <div class="relative max-w-2xl mx-auto">
-                <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" id="sermonSearch" onkeyup="filterSermons()" 
-                    placeholder="Search by title, scripture, or theme (e.g., 'Elijah', 'Article 10')..." 
-                    class="w-full bg-slate-50 border border-slate-200 py-5 pl-14 pr-6 rounded-2xl outline-none focus:ring-2 ring-amber-500 transition shadow-sm">
-            </div>
+      <!-- Channel / Subscribe -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center" data-aos="fade-up" data-aos-delay="180">
+        <!-- TODO: Replace with your real channel link(s) -->
+        <a href="https://www.youtube.com/" target="_blank"
+           class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition">
+          <i class="fa-brands fa-youtube"></i> Visit Our YouTube Channel
+        </a>
+        <a href="https://www.youtube.com/" target="_blank"
+           class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white font-bold px-6 py-3 rounded-xl border border-white/20 transition">
+          <i class="fa-solid fa-bell"></i> Subscribe & Turn On Notifications
+        </a>
+      </div>
+
+      <p class="text-slate-400 text-sm mt-4" data-aos="fade-up" data-aos-delay="220">
+        Tip: If a PDF is not available yet, the button will show <b>“Coming Soon”</b>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Utility Bar: Filters + Search -->
+  <section class="bg-white border-b border-slate-200 sticky top-20 z-40 shadow-sm">
+    <div class="container mx-auto px-6 py-6 space-y-5">
+
+      <!-- Filters -->
+      <div class="overflow-x-auto">
+        <div class="flex gap-3 md:justify-center min-w-max">
+          <button class="filter-btn active px-6 py-2.5 rounded-full bg-slate-900 text-white font-bold text-sm transition hover:bg-slate-800"
+                  data-filter="all">
+            All Sermons
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900"
+                  data-filter="spirit-of-elijah">
+            The Spirit of Elijah
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900"
+                  data-filter="identity">
+            Identity in God
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold text-sm transition hover:bg-slate-200 hover:text-slate-900"
+                  data-filter="youth">
+            Youth Conference
+          </button>
         </div>
+      </div>
+
+      <!-- Search -->
+      <div class="relative max-w-3xl mx-auto">
+        <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input
+          type="text"
+          id="sermonSearch"
+          onkeyup="filterSermons()"
+          placeholder="Search by title, speaker, scripture, or theme (e.g., 'Elijah', 'Identity', 'Romans')..."
+          class="w-full bg-slate-50 border border-slate-200 py-4 pl-14 pr-6 rounded-2xl outline-none focus:ring-2 ring-amber-500 transition shadow-sm"
+        />
+      </div>
+
+      <!-- Quick Notes -->
+      <div class="max-w-3xl mx-auto grid sm:grid-cols-3 gap-3 text-sm">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex gap-3 items-start">
+          <div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800">PDF Learning Aid</p>
+            <p class="text-slate-600">Manual transcript + summary + questions.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex gap-3 items-start">
+          <div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600">
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800">Share</p>
+            <p class="text-slate-600">Send the message to a friend.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex gap-3 items-start">
+          <div class="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800">Watch</p>
+            <p class="text-slate-600">Opens sermon in YouTube.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sermon Grid -->
+  <section class="py-16 container mx-auto px-6">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900">All Messages</h2>
+        <p class="text-slate-600">Watch the sermon, then download the learning aid PDF.</p>
+      </div>
+
+      <!-- Optional: playlist link -->
+      <!-- TODO: Replace with your real playlist link -->
+      <a href="https://www.youtube.com/" target="_blank"
+         class="inline-flex items-center gap-2 text-sm font-bold bg-slate-900 text-white px-5 py-3 rounded-xl hover:bg-slate-800 transition">
+        <i class="fa-brands fa-youtube"></i> View Playlists
+      </a>
     </div>
 
-    <!-- Sermon Grid -->
-    <section class="py-20 container mx-auto px-6">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="sermon-grid">
-            
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="spirit-of-elijah" data-aos="fade-up">
-                <div class="aspect-video bg-slate-900 relative group">
-                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Oct 15, 2023</span>
-                        <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">Spirit of Elijah</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Walking in the Power of Elijah</h3>
-                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
-                        Apostle Poliano explores the prophetic significance of the Spirit of Elijah in these end times and how we can walk in that same anointing.
-                    </p>
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs"><i class="fas fa-user"></i></div>
-                        <span class="text-sm font-bold text-slate-700">Apostle Poliano</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="assets/pdfs/sermons/2023/elijah-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
-                            <i class="fas fa-file-pdf mr-2"></i> Download
-                        </a>
-                        <button onclick="shareSermon('Walking in the Power of Elijah', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">
-                            <i class="fas fa-share-nodes"></i> SHARE
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="sermon-grid">
 
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="identity" data-aos="fade-up" data-aos-delay="100">
-                <div class="aspect-video bg-slate-900 relative group">
-                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Nov 05, 2023</span>
-                        <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">Identity</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Who You Are in Christ</h3>
-                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
-                        Discovering your true identity as a son and daughter of the Most High God. Moving from insecurity to authority.
-                    </p>
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs"><i class="fas fa-user"></i></div>
-                        <span class="text-sm font-bold text-slate-700">Apostle Poliano</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="assets/pdfs/sermons/2023/identity-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
-                            <i class="fas fa-file-pdf mr-2"></i> Download
-                        </a>
-                        <button onclick="shareSermon('Who You Are in Christ', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">
-                            <i class="fas fa-share-nodes"></i> SHARE
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <!-- CARD TEMPLATE NOTE:
+        - data-category controls the category filter
+        - data-title / data-desc / data-speaker / data-scripture are used by search
+        - data-pdf="" means coming soon; otherwise provide a pdf path
+      -->
 
-             <!-- Card 3 -->
-             <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card" data-category="youth" data-aos="fade-up" data-aos-delay="200">
-                <div class="aspect-video bg-slate-900 relative group">
-                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider"><i class="far fa-calendar-alt mr-1"></i> Dec 12, 2023</span>
-                        <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">Youth</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Navigating the Digital Age</h3>
-                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">
-                        Practical wisdom for young people living in a hyper-connected world. Keeping your faith strong online.
-                    </p>
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs"><i class="fas fa-user"></i></div>
-                        <span class="text-sm font-bold text-slate-700">Youth Pastor</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <a href="assets/pdfs/sermons/2023/youth-notes.pdf" class="flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition text-sm">
-                            <i class="fas fa-file-pdf mr-2"></i> Download
-                        </a>
-                        <button onclick="shareSermon('Navigating the Digital Age', 'sermons.html')" class="flex items-center gap-2 border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition">
-                            <i class="fas fa-share-nodes"></i> SHARE
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <!-- Card 1 -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card"
+               data-category="spirit-of-elijah"
+               data-title="Walking in the Power of Elijah"
+               data-desc="Prophetic significance of the Spirit of Elijah and walking in the same anointing."
+               data-speaker="Apostle Poliano"
+               data-scripture="Malachi 4, 1 Kings 18"
+               data-pdf="assets/pdfs/sermons/2023/elijah-notes.pdf"
+               data-aos="fade-up">
 
+        <div class="aspect-video bg-slate-900 relative group">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail"
+               class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+          <!-- TODO: Replace with your real YouTube video link -->
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+             class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+              <i class="fas fa-play text-xl ml-1"></i>
+            </div>
+          </a>
         </div>
-    </section>
 
-    <div id="site-footer"></div>
-    <script src="./footer.js" defer></script>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true, duration: 800 });
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4 gap-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
+              <i class="far fa-calendar-alt mr-1"></i> Oct 15, 2023
+            </span>
+            <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded whitespace-nowrap">
+              Spirit of Elijah
+            </span>
+          </div>
 
-        // Simple Filter Logic
-        const buttons = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.sermon-card');
+          <h3 class="text-xl font-black text-slate-900 mb-2">Walking in the Power of Elijah</h3>
 
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                buttons.forEach(b => {
-                    b.classList.remove('bg-slate-900', 'text-white');
-                    b.classList.add('bg-slate-100', 'text-slate-600');
-                });
-                btn.classList.remove('bg-slate-100', 'text-slate-600');
-                btn.classList.add('bg-slate-900', 'text-white');
-                const filter = btn.getAttribute('data-filter');
-                cards.forEach(card => {
-                    card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'block' : 'none';
-                });
-            });
+          <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+            Apostle Poliano explores the prophetic significance of the Spirit of Elijah in these end times and how we can walk in that same anointing.
+          </p>
+
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 bg-slate-100 border border-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="leading-tight">
+              <p class="text-sm font-bold text-slate-800">Apostle Poliano</p>
+              <p class="text-xs text-slate-500">Key: Malachi 4 • 1 Kings 18</p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <a href="assets/pdfs/sermons/2023/elijah-notes.pdf"
+               class="pdf-btn flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition text-sm"
+               download>
+              <i class="fas fa-file-pdf mr-2"></i> Download PDF
+            </a>
+
+            <button type="button"
+                    onclick="shareSermon('Walking in the Power of Elijah')"
+                    class="flex items-center justify-center gap-2 border border-slate-200 text-slate-700 px-4 py-3 rounded-xl text-xs font-black hover:bg-slate-50 transition">
+              <i class="fas fa-share-nodes"></i> SHARE
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card"
+               data-category="identity"
+               data-title="Who You Are in Christ"
+               data-desc="Discovering your identity as a son and daughter of the Most High; moving from insecurity to authority."
+               data-speaker="Apostle Poliano"
+               data-scripture="Ephesians 1, Romans 8"
+               data-pdf="assets/pdfs/sermons/2023/identity-notes.pdf"
+               data-aos="fade-up" data-aos-delay="100">
+
+        <div class="aspect-video bg-slate-900 relative group">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail"
+               class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+          <!-- TODO: Replace with your real YouTube video link -->
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+             class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+              <i class="fas fa-play text-xl ml-1"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4 gap-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
+              <i class="far fa-calendar-alt mr-1"></i> Nov 05, 2023
+            </span>
+            <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded whitespace-nowrap">
+              Identity
+            </span>
+          </div>
+
+          <h3 class="text-xl font-black text-slate-900 mb-2">Who You Are in Christ</h3>
+
+          <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+            Discovering your true identity as a son and daughter of the Most High God. Moving from insecurity to authority.
+          </p>
+
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 bg-slate-100 border border-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="leading-tight">
+              <p class="text-sm font-bold text-slate-800">Apostle Poliano</p>
+              <p class="text-xs text-slate-500">Key: Ephesians 1 • Romans 8</p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <a href="assets/pdfs/sermons/2023/identity-notes.pdf"
+               class="pdf-btn flex-1 text-center bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition text-sm"
+               download>
+              <i class="fas fa-file-pdf mr-2"></i> Download PDF
+            </a>
+
+            <button type="button"
+                    onclick="shareSermon('Who You Are in Christ')"
+                    class="flex items-center justify-center gap-2 border border-slate-200 text-slate-700 px-4 py-3 rounded-xl text-xs font-black hover:bg-slate-50 transition">
+              <i class="fas fa-share-nodes"></i> SHARE
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 (PDF Coming Soon example) -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition duration-300 sermon-card"
+               data-category="youth"
+               data-title="Navigating the Digital Age"
+               data-desc="Practical wisdom for young people living in a hyper-connected world."
+               data-speaker="Youth Pastor"
+               data-scripture="Romans 12:2"
+               data-pdf=""
+               data-aos="fade-up" data-aos-delay="200">
+
+        <div class="aspect-video bg-slate-900 relative group">
+          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Sermon Thumbnail"
+               class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" loading="lazy">
+          <!-- TODO: Replace with your real YouTube video link -->
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
+             class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition">
+              <i class="fas fa-play text-xl ml-1"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4 gap-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
+              <i class="far fa-calendar-alt mr-1"></i> Dec 12, 2023
+            </span>
+            <span class="text-xs font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded whitespace-nowrap">
+              Youth
+            </span>
+          </div>
+
+          <h3 class="text-xl font-black text-slate-900 mb-2">Navigating the Digital Age</h3>
+
+          <p class="text-slate-600 text-sm mb-4 line-clamp-3">
+            Practical wisdom for young people living in a hyper-connected world. Keeping your faith strong online.
+          </p>
+
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 bg-slate-100 border border-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="leading-tight">
+              <p class="text-sm font-bold text-slate-800">Youth Pastor</p>
+              <p class="text-xs text-slate-500">Key: Romans 12:2</p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <a href="#"
+               class="pdf-btn flex-1 text-center bg-slate-200 text-slate-600 font-black py-3 rounded-xl cursor-not-allowed text-sm"
+               onclick="return false;">
+              <i class="fas fa-file-pdf mr-2"></i> PDF Coming Soon
+            </a>
+
+            <button type="button"
+                    onclick="shareSermon('Navigating the Digital Age')"
+                    class="flex items-center justify-center gap-2 border border-slate-200 text-slate-700 px-4 py-3 rounded-xl text-xs font-black hover:bg-slate-50 transition">
+              <i class="fas fa-share-nodes"></i> SHARE
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden mt-14 text-center">
+      <div class="max-w-xl mx-auto bg-white border border-slate-200 rounded-2xl p-10 shadow-sm">
+        <div class="w-14 h-14 bg-slate-100 border border-slate-200 rounded-2xl mx-auto flex items-center justify-center text-slate-600 mb-4">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <h3 class="text-xl font-black text-slate-900">No sermons found</h3>
+        <p class="text-slate-600 mt-2">Try a different search keyword or change the category filter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <!-- AOS + Page JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+
+    const buttons = document.querySelectorAll(".filter-btn");
+    const grid = document.getElementById("sermon-grid");
+    const emptyState = document.getElementById("emptyState");
+    let activeFilter = "all";
+
+    function normalize(str) {
+      return (str || "").toLowerCase().trim();
+    }
+
+    function applyFilters() {
+      const q = normalize(document.getElementById("sermonSearch").value);
+      const cards = Array.from(document.querySelectorAll(".sermon-card"));
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const cat = card.getAttribute("data-category");
+        const title = normalize(card.getAttribute("data-title"));
+        const desc = normalize(card.getAttribute("data-desc"));
+        const speaker = normalize(card.getAttribute("data-speaker"));
+        const scripture = normalize(card.getAttribute("data-scripture"));
+
+        const matchesCategory = (activeFilter === "all") || (cat === activeFilter);
+        const matchesSearch = !q || title.includes(q) || desc.includes(q) || speaker.includes(q) || scripture.includes(q);
+
+        const show = matchesCategory && matchesSearch;
+        card.style.display = show ? "block" : "none";
+        if (show) visibleCount++;
+      });
+
+      emptyState.classList.toggle("hidden", visibleCount !== 0);
+    }
+
+    // Category buttons
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => {
+          b.classList.remove("bg-slate-900", "text-white");
+          b.classList.add("bg-slate-100", "text-slate-600");
         });
 
-        function filterSermons() {
-            let input = document.getElementById('sermonSearch').value.toLowerCase();
-            let cards = document.getElementsByClassName('sermon-card'); // Ensure your sermon divs have this class
+        btn.classList.remove("bg-slate-100", "text-slate-600");
+        btn.classList.add("bg-slate-900", "text-white");
 
-            for (let card of cards) {
-                let title = card.querySelector('h3').innerText.toLowerCase();
-                let description = card.querySelector('p').innerText.toLowerCase();
-                
-                if (title.includes(input) || description.includes(input)) {
-                    card.style.display = "";
-                } else {
-                    card.style.display = "none";
-                }
-            }
-        }
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        applyFilters();
+      });
+    });
 
-        async function shareSermon(title, url) {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: title,
-                        text: 'Check out this powerful sermon from Sky Grace Jesus Ministry:',
-                        url: window.location.href, // This shares the current page link
-                    });
-                    console.log('Sermon shared successfully');
-                } catch (err) {
-                    console.log('Error sharing:', err);
-                }
-            } else {
-                // Fallback for desktop browsers that don't support Web Share
-                alert("Copy this link to share: " + window.location.href);
-            }
-        }
-    </script>
+    // Search hook
+    function filterSermons() {
+      applyFilters();
+    }
+
+    // Share
+    async function shareSermon(title) {
+      const url = window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: title,
+            text: "Watch this sermon and download the PDF Learning Aid from Sky Grace Jesus Ministry:",
+            url: url,
+          });
+        } catch (err) {}
+      } else {
+        // Desktop fallback
+        navigator.clipboard?.writeText(url);
+        alert("Link copied (or copy manually): " + url);
+      }
+    }
+
+    // On load
+    applyFilters();
+  </script>
 </body>
 </html>
