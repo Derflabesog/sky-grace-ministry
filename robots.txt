@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://derflabesog.github.io/sky-grace-ministry/sitemap.xml

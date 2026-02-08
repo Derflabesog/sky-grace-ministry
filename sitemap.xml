@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/index.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/sermons.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/give.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/live.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/contact.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/theology-register.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>
