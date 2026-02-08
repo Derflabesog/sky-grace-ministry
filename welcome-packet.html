@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Packet | Sky Grace Ministry</title>
+
+  <meta name="description" content="Welcome to Sky Grace Ministry. Learn what to expect, how to connect, service times, and next steps." />
+  <meta name="keywords" content="Sky Grace Ministry, Welcome Packet, Church, Ministry, Namibia" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+
+  <style>
+    /* Hide placeholders if injection fails */
+    #site-header:empty,
+    #site-footer:empty { display: none; }
+
+    /* AI image cards (same style language as your index cards) */
+    .bg-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:var(--bg);
+      background-size:cover;
+      background-position:center;
+      transform:scale(1.03);
+      transition:transform .7s ease;
+      filter:saturate(1.05);
+    }
+    .bg-card:hover::before{ transform:scale(1.09); }
+    .bg-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(2,6,23,.78) 0%, rgba(2,6,23,.55) 55%, rgba(2,6,23,.88) 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
+
+  <!-- Dynamic Header -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
+
+  <main class="min-h-[70vh]">
+
+    <!-- HERO (same image as index.html) -->
+    <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Sky Grace Ministry"
+          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+        />
+      </div>
+
+      <!-- overlays to keep your theme -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/90"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(59,130,246,0.20),transparent_55%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(245,158,11,0.18),transparent_60%)]"></div>
+
+      <div class="relative z-10 container mx-auto px-6 py-16">
+        <div class="max-w-3xl">
+          <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
+            <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.8)]"></span>
+            Welcome Packet
+          </p>
+
+          <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+            Welcome to <span class="text-amber-300 drop-shadow-[0_8px_35px_rgba(245,158,11,0.45)]">Sky Grace Ministry</span>
+          </h1>
+
+          <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
+            We’re honored to have you here. This guide helps you understand who we are, what to expect in a service,
+            and how to connect, grow, and serve with us.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#next-steps"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-xs tracking-widest hover:bg-blue-500 transition">
+              <i class="fas fa-shoe-prints"></i>
+              Your Next Steps
+            </a>
+
+            <a href="#service-times"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 text-white font-black uppercase text-xs tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
+              <i class="fas fa-calendar-day"></i>
+              Service Times
+            </a>
+
+            <a href="contact.html"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-slate-950 font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+              <i class="fas fa-hands-praying"></i>
+              Request Prayer
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK AI IMAGE CARDS (clean + premium, same theme) -->
+    <section class="py-12 md:py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- Mission -->
+          <article
+            class="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-card shadow-sm hover:shadow-xl transition"
+            style="--bg:url('assets/images/cards/word.jpg');">
+            <div class="relative z-10 p-8">
+              <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-4">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">Our Mission</h3>
+              <p class="text-sm text-slate-200 leading-relaxed">
+                To exalt Jesus Christ, teach the Word, make disciples, and raise a community rooted in faith, love, and truth.
+              </p>
+            </div>
+          </article>
+
+          <!-- Expect -->
+          <article
+            class="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-card shadow-sm hover:shadow-xl transition"
+            style="--bg:url('assets/images/cards/prayer.jpg');">
+            <div class="relative z-10 p-8">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mb-4">
+                <i class="fas fa-church"></i>
+              </div>
+              <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">What to Expect</h3>
+              <p class="text-sm text-slate-200 leading-relaxed">
+                A welcoming atmosphere, worship, prayer, Bible teaching, and a clear invitation to connect with the ministry.
+              </p>
+            </div>
+          </article>
+
+          <!-- Connect -->
+          <article
+            class="relative overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-card shadow-sm hover:shadow-xl transition"
+            style="--bg:url('assets/images/cards/discipleship.jpg');">
+            <div class="relative z-10 p-8">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-4">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h3 class="font-black uppercase text-sm tracking-widest mb-2 text-white">How to Connect</h3>
+              <p class="text-sm text-slate-200 leading-relaxed">
+                Join services regularly, follow announcements, connect through groups, and reach out to leadership for guidance.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE + VALUES -->
+    <section class="py-12 md:py-16 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-6">
+
+          <div class="rounded-[2rem] bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-8">
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">About</p>
+            <h2 class="mt-2 text-2xl font-black mb-3">Who We Are</h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Sky Grace Ministry is a Christ-centered ministry committed to worship, prayer, discipleship, and community impact.
+              We believe the Word of God transforms lives and brings direction for everyday living.
+            </p>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black text-slate-900 dark:text-white">Worship & Prayer</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">A Spirit-led atmosphere.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black text-slate-900 dark:text-white">Word & Doctrine</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Practical Bible teaching.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black text-slate-900 dark:text-white">Discipleship</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Growth with community.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black text-slate-900 dark:text-white">Impact</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Serving real needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-8">
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Culture</p>
+            <h2 class="mt-2 text-2xl font-black mb-3">Core Values</h2>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black">Faith</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Trusting God fully.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black">Love</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Serving with compassion.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black">Integrity</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Truth in word and action.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4">
+                <p class="font-black">Excellence</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Doing God’s work with honor.</p>
+              </div>
+              <div class="rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 sm:col-span-2">
+                <p class="font-black">Service</p>
+                <p class="text-slate-600 dark:text-slate-300 mt-1">Ministry that meets real needs.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE TIMES -->
+    <section class="py-12 md:py-16" id="service-times">
+      <div class="container mx-auto px-6">
+        <div class="flex items-end justify-between gap-4 mb-6">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Plan Your Visit</p>
+            <h2 class="text-2xl md:text-3xl font-black">Service Times & Location</h2>
+          </div>
+          <a href="contact.html" class="text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">
+            Ask a Question →
+          </a>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+            <h3 class="font-black uppercase text-sm tracking-widest mb-3">Weekly Services</h3>
+            <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-200">
+              <li><strong>Sunday Service:</strong> 09:00 – 11:00</li>
+              <li><strong>Midweek Service:</strong> Wednesday 18:00 – 19:30</li>
+              <li><strong>Prayer Meeting:</strong> Friday 18:00 – 19:00</li>
+            </ul>
+            <p class="mt-4 text-xs text-slate-500 dark:text-slate-400">
+              (Update these times to match your ministry schedule.)
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+            <h3 class="font-black uppercase text-sm tracking-widest mb-3">Venue</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <strong>Address:</strong> Add your venue address here<br>
+              <strong>City:</strong> Windhoek / Okahandja<br>
+              <strong>Parking:</strong> Add parking details
+            </p>
+            <div class="mt-5">
+              <a href="calendar.html"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-black uppercase text-xs tracking-widest hover:bg-slate-800 transition dark:bg-white dark:text-slate-950">
+                <i class="fas fa-calendar"></i>
+                See Events
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT STEPS -->
+    <section class="py-12 md:py-16 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800" id="next-steps">
+      <div class="container mx-auto px-6">
+        <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Get Connected</p>
+        <h2 class="mt-2 text-2xl md:text-3xl font-black">Your Next Steps</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300 max-w-2xl">
+          Here are simple ways to connect and grow with Sky Grace Ministry.
+        </p>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="rounded-[2rem] bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-8">
+            <p class="text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-300">Step 1</p>
+            <h3 class="mt-2 font-black text-lg">Visit Again</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Growth happens over time. Come again next week and bring a friend or family member.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-8">
+            <p class="text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-300">Step 2</p>
+            <h3 class="mt-2 font-black text-lg">Join a Group</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Join discipleship, a small group, or volunteer team and build relationships in a supportive space.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-8">
+            <p class="text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-300">Step 3</p>
+            <h3 class="mt-2 font-black text-lg">Request Prayer</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              If you need prayer, counseling, or encouragement, reach out through our contact page.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="give.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-slate-950 font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+            <i class="fas fa-hand-holding-heart"></i>
+            Support the Ministry
+          </a>
+          <a href="sermons.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-slate-900 font-black uppercase text-xs tracking-widest border border-slate-200 hover:bg-slate-50 transition dark:bg-white/10 dark:text-white dark:border-white/10">
+            <i class="fas fa-circle-play"></i>
+            Watch Sermons
+          </a>
+          <a href="index.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-xs tracking-widest hover:bg-blue-500 transition">
+            <i class="fas fa-home"></i>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-12 md:py-16">
+      <div class="container mx-auto px-6">
+        <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Help</p>
+        <h2 class="mt-2 text-2xl md:text-3xl font-black">Frequently Asked Questions</h2>
+
+        <div class="mt-6 space-y-3">
+          <details class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+            <summary class="cursor-pointer font-black">Is there a dress code?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+              Come as you are. We welcome everyone and want you to feel comfortable.
+            </p>
+          </details>
+
+          <details class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+            <summary class="cursor-pointer font-black">Do you have programs for children?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+              Yes. We create a family-friendly environment. (Update this with the exact children’s program details.)
+            </p>
+          </details>
+
+          <details class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+            <summary class="cursor-pointer font-black">How can I support the ministry?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">
+              You can volunteer, pray with us, attend events, and give through the giving page.
+            </p>
+          </details>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="contact.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-black uppercase text-xs tracking-widest hover:bg-slate-800 transition dark:bg-white dark:text-slate-950">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+          <a href="calendar.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-slate-900 font-black uppercase text-xs tracking-widest border border-slate-200 hover:bg-slate-50 transition dark:bg-white/10 dark:text-white dark:border-white/10">
+            <i class="fas fa-calendar"></i>
+            See Events
+          </a>
+          <a href="give.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-slate-950 font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+            <i class="fas fa-hand-holding-heart"></i>
+            Give / Tithes
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+</body>
+</html>
