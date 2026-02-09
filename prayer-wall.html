@@ -1,101 +1,190 @@
-﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prayer Wall | Sky Grace Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayer Wall | Sky Grace Ministry</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
 </head>
-<body class="bg-slate-100 text-slate-900">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
-<main class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            
-            <div class="bg-white rounded-3xl p-8 shadow-xl border border-blue-100 mb-12">
-                <h3 class="text-xl font-black uppercase mb-4">Submit a Request</h3>
-                <div class="space-y-4">
-                    <input type="text" id="prayerName" placeholder="Your Name (or Anonymous)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400">
-                    <textarea id="prayerText" rows="3" placeholder="What are we believing God for?" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400"></textarea>
-                    <button onclick="postPrayer()" class="bg-blue-500 text-white px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition">Post to Wall</button>
-                </div>
-            </div>
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
-            <div id="wallContainer" class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-                    <p class="text-slate-600 italic mb-4 text-sm">"Believing for a total recovery for my mother who is in the hospital. We stand on Isaiah 53:5."</p>
-                    <div class="flex justify-between items-center pt-4 border-t border-slate-50">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">â€” Sarah, Windhoek</span>
-                        <button class="flex items-center gap-2 text-xs font-bold text-blue-500 hover:bg-blue-50 px-3 py-1 rounded-full transition">
-                            <i class="fas fa-hands-praying"></i> I Prayed
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <!-- HERO (same as index.html image) -->
+  <section class="relative overflow-hidden bg-black min-h-[45vh] flex items-center">
+    <div class="absolute inset-0">
+      <img
+        src="assets/images/hero-elohim.jpg"
+        alt="Prayer Wall - Sky Grace Jesus Ministry"
+        class="w-full h-full object-cover object-center md:object-[50%_35%]"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/90"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.20),transparent_55%)]"></div>
 
+    <div class="relative z-10 container mx-auto px-6 py-16">
+      <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
+        <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.8)]"></span>
+        Prayer Wall
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+        Submit a Prayer Request
+      </h1>
+      <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
+        Share what you are believing God for. Requests are submitted for approval before appearing publicly.
+      </p>
+
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="#submit"
+           class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-slate-950 font-black uppercase text-[11px] tracking-widest hover:bg-amber-400 transition">
+          <i class="fas fa-pen-to-square"></i> Submit Request
+        </a>
+        <a href="#wall"
+           class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 text-white font-black uppercase text-[11px] tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
+          <i class="fas fa-hands-praying"></i> View Prayer Wall
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container mx-auto px-6 py-12">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Submit -->
+      <section id="submit" class="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-200 dark:border-slate-800 mb-12">
+        <h3 class="text-xl font-black uppercase mb-4">Submit a Request</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mb-6">
+          Your request will be saved and marked as <b>Pending</b> until it’s approved by the admin.
+        </p>
+
+        <div class="space-y-4">
+          <input
+            type="text"
+            id="prayerName"
+            placeholder="Your Name (or Anonymous)"
+            class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400 transition"
+          />
+
+          <textarea
+            id="prayerText"
+            rows="4"
+            placeholder="What are we believing God for?"
+            class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-400 transition"
+          ></textarea>
+
+          <button
+            type="button"
+            onclick="postPrayer()"
+            class="bg-blue-600 text-white px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition">
+            Post to Wall
+          </button>
         </div>
-    </main>
+      </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', loadPublicPrayers);
+      <!-- Wall -->
+      <section id="wall">
+        <div class="flex items-end justify-between gap-4 mb-6">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Community</p>
+            <h2 class="text-2xl md:text-3xl font-black">Prayer Wall</h2>
+          </div>
+        </div>
 
-        function loadPublicPrayers() {
-            const wall = document.getElementById('wallContainer');
-            const requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
-            const approved = requests.filter(r => r.status === 'Approved');
+        <div id="wallContainer" class="grid md:grid-cols-2 gap-6">
+          <!-- Default example (will be replaced if approved prayers exist) -->
+          <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition">
+            <p class="text-slate-600 dark:text-slate-300 italic mb-4 text-sm">
+              "Believing for a total recovery for my mother who is in the hospital. We stand on Isaiah 53:5."
+            </p>
+            <div class="flex justify-between items-center pt-4 border-t border-slate-100 dark:border-slate-800">
+              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">— Sarah, Windhoek</span>
+              <button class="flex items-center gap-2 text-xs font-bold text-blue-600 hover:bg-blue-50 dark:hover:bg-white/5 px-3 py-1 rounded-full transition">
+                <i class="fas fa-hands-praying"></i> I Prayed
+              </button>
+            </div>
+          </div>
+        </div>
 
-            if (approved.length > 0) {
-                wall.innerHTML = ''; // Clear static example
-                // Sort by ID descending (newest first)
-                approved.sort((a, b) => b.id - a.id).forEach(req => {
-                    const card = document.createElement('div');
-                    card.className = "bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition animate-fade-up";
-                    card.innerHTML = `
-                        <p class="text-slate-600 italic mb-4 text-sm">"${req.text}"</p>
-                        <div class="flex justify-between items-center pt-4 border-t border-slate-50">
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">&mdash; ${req.name} <span class="hidden md:inline">• ${req.date}</span></span>
-                            <button onclick="this.classList.toggle('text-green-500')" class="flex items-center gap-2 text-xs font-bold text-blue-500 hover:bg-blue-50 px-3 py-1 rounded-full transition">
-                                <i class="fas fa-hands-praying"></i> I Prayed
-                            </button>
-                        </div>
-                    `;
-                    wall.appendChild(card);
-                });
-            }
-        }
+      </section>
 
-        function postPrayer() {
-            const nameInput = document.getElementById('prayerName');
-            const textInput = document.getElementById('prayerText');
-            const name = nameInput.value || "Anonymous";
-            const text = textInput.value;
-            
-            if(!text) return alert("Please enter a prayer request.");
+    </div>
+  </main>
 
-            const newRequest = {
-                id: Date.now(),
-                name: name,
-                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-                text: text,
-                status: 'Pending' // Default to Pending for admin review
-            };
+  <script>
+    document.addEventListener('DOMContentLoaded', loadPublicPrayers);
 
-            // Save to LocalStorage
-            let requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
-            requests.push(newRequest);
-            localStorage.setItem('prayerRequests', JSON.stringify(requests));
+    function loadPublicPrayers() {
+      const wall = document.getElementById('wallContainer');
+      const requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
+      const approved = requests.filter(r => r.status === 'Approved');
 
-            alert("Your prayer request has been submitted and is pending approval.");
-            
-            nameInput.value = "";
-            textInput.value = "";
-        }
-    </script>
+      if (approved.length > 0) {
+        wall.innerHTML = '';
+        approved.sort((a, b) => b.id - a.id).forEach(req => {
+          const card = document.createElement('div');
+          card.className = "bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md transition";
+          card.innerHTML = `
+            <p class="text-slate-600 dark:text-slate-300 italic mb-4 text-sm">"${escapeHtml(req.text)}"</p>
+            <div class="flex justify-between items-center pt-4 border-t border-slate-100 dark:border-slate-800">
+              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                &mdash; ${escapeHtml(req.name)} <span class="hidden md:inline">• ${escapeHtml(req.date)}</span>
+              </span>
+              <button onclick="this.classList.toggle('text-emerald-500')"
+                class="flex items-center gap-2 text-xs font-bold text-blue-600 hover:bg-blue-50 dark:hover:bg-white/5 px-3 py-1 rounded-full transition">
+                <i class="fas fa-hands-praying"></i> I Prayed
+              </button>
+            </div>
+          `;
+          wall.appendChild(card);
+        });
+      }
+    }
 
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
-<script src="assets/js/back-to-top.js"></script>
+    function postPrayer() {
+      const nameInput = document.getElementById('prayerName');
+      const textInput = document.getElementById('prayerText');
+      const name = (nameInput.value || "Anonymous").trim();
+      const text = (textInput.value || "").trim();
+
+      if (!text) return alert("Please enter a prayer request.");
+
+      const newRequest = {
+        id: Date.now(),
+        name,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        text,
+        status: 'Pending'
+      };
+
+      let requests = JSON.parse(localStorage.getItem('prayerRequests')) || [];
+      requests.push(newRequest);
+      localStorage.setItem('prayerRequests', JSON.stringify(requests));
+
+      alert("Your prayer request has been submitted and is pending approval.");
+
+      nameInput.value = "";
+      textInput.value = "";
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+  <script src="assets/js/back-to-top.js"></script>
 </body>
 </html>
