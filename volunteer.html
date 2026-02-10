@@ -1,71 +1,119 @@
 ﻿﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
-</head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white font-sans">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
-<section class="py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="lg:col-span-2 bg-white dark:bg-slate-900 p-10 rounded-[3rem] shadow-sm border border-slate-100 dark:border-slate-800">
-                    <h3 class="text-2xl font-black uppercase mb-8">Volunteer Application</h3>
-                    <form class="space-y-4">
-                        <select class="w-full p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl text-xs font-bold uppercase">
-                            <option>Choose Ministry Role...</option>
-                            <option>Media Team (Live Stream)</option>
-                            <option>Ushering & Hospitality</option>
-                            <option>Theology School Admin</option>
-                        </select>
-                        <textarea placeholder="Why do you want to serve in this department?" class="w-full p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl h-32"></textarea>
-                        <button class="w-full py-4 bg-amber-500 text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition">Submit for Approval</button>
-                    </form>
-                </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer | Sky Grace Jesus Ministry</title>
 
-                <div class="bg-slate-900 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
-                    <h3 class="text-xl font-black uppercase mb-6 text-amber-500">My Schedule</h3>
-                    <div class="space-y-6">
-                        <div class="border-l-2 border-amber-500 pl-4">
-                            <p class="text-[10px] font-black uppercase text-slate-400">Sunday Service | Jan 18</p>
-                            <p class="text-sm font-bold">Role: Media - Camera 2</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+</head>
+
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
+
+  <!-- ✅ SINGLE MENU SOURCE -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
+
+  <main>
+
+    <!-- ✅ HERO (SAME AS INDEX.HTML) -->
+    <section class="relative overflow-hidden min-h-[55vh] flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Sky Grace Jesus Ministry"
+          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+        />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/85"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.25),transparent_55%)]"></div>
+
+      <div class="relative z-10 container mx-auto px-6 py-16">
+        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
+          <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.8)]"></span>
+          Volunteer
+        </p>
+
+        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+          Serve With Us
+        </h1>
+
+        <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
+          Be part of what God is doing at Sky Grace Jesus Ministry by serving in a department that fits your calling.
+        </p>
+      </div>
     </section>
 
-    <div id="site-footer"></div>
-    <script src="./footer.js" defer></script>
-    <script>
-        // Check for saved preference on load
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            const icon = document.getElementById('themeIcon');
-            if(icon) icon.classList.replace('fa-moon', 'fa-sun');
-        }
-        function toggleDarkMode() {
-            const htmlElement = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            htmlElement.classList.toggle('dark');
-            if (htmlElement.classList.contains('dark')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-    </script>
+    <!-- CONTENT -->
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-3 gap-12">
+
+          <!-- FORM -->
+          <div class="lg:col-span-2 bg-white dark:bg-slate-900 p-10 rounded-[3rem] shadow-sm border border-slate-200 dark:border-slate-800">
+            <h3 class="text-2xl font-black uppercase mb-8">Volunteer Application</h3>
+
+            <form class="space-y-4">
+              <select class="w-full p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl text-xs font-bold uppercase">
+                <option>Choose Ministry Role...</option>
+                <option>Media Team (Live Stream)</option>
+                <option>Ushering & Hospitality</option>
+                <option>Theology School Admin</option>
+              </select>
+
+              <textarea
+                placeholder="Why do you want to serve in this department?"
+                class="w-full p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl h-32">
+              </textarea>
+
+              <button
+                class="w-full py-4 bg-amber-500 text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition">
+                Submit for Approval
+              </button>
+            </form>
+          </div>
+
+          <!-- SCHEDULE -->
+          <div class="bg-slate-900 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+            <h3 class="text-xl font-black uppercase mb-6 text-amber-500">My Schedule</h3>
+
+            <div class="space-y-6">
+              <div class="border-l-2 border-amber-500 pl-4">
+                <p class="text-[10px] font-black uppercase text-slate-400">
+                  Sunday Service | Jan 18
+                </p>
+                <p class="text-sm font-bold">
+                  Role: Media – Camera 2
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <!-- Dark mode persistence (UNCHANGED) -->
+  <script>
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
 </body>
 </html>
