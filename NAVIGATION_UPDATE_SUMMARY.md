@@ -13,7 +13,7 @@ All 46 HTML pages in the Sky Grace Jesus Ministry website have been successfully
   - Logo and branding
   - **Sermons Dropdown Menu** with 3 links:
     - Latest Message (sermon-1.html)
-    - 2025 Archives (sermon-archive-2025.html)
+    - 2025 Archives (sermons.html)
     - All Revelations (blog-archive.html)
   - Main navigation links: Home, Theology School, Prayer Wall, Give, Contact
   - "Live Now" button (pulsing red animation)
@@ -71,7 +71,7 @@ register.html
 registration-success.html
 sermon-1.html
 sermon-2.html
-sermon-archive-2025.html
+sermons.html
 sermon-series.html
 sermons.html
 site-settings.html
@@ -120,7 +120,7 @@ Users can now reach these key pages from **any page**:
 - Home (index.html)
 - Sermons Hub (sermons.html)
 - Latest Sermon (sermon-1.html)
-- Sermon Archives (sermon-archive-2025.html)
+- Sermon Archives (sermons.html)
 - Blog/Revelations (blog-archive.html)
 - Testimonies (testimonies.html)
 

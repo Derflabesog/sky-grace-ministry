@@ -17,7 +17,7 @@
 - [ ] "Home" link works
 - [ ] "Sermons" dropdown appears on hover
   - [ ] "Latest Message" link works → sermon-1.html
-  - [ ] "2025 Archives" link works → sermon-archive-2025.html
+  - [ ] "2025 Archives" link works → sermons.html
   - [ ] "All Revelations" link works → blog-archive.html
 - [ ] "Theology School" link works
 - [ ] "Prayer Wall" link works
