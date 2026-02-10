@@ -1,70 +1,286 @@
-﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Sky Grace Jesus Ministry</title>
+
+  <meta name="description" content="Contact Sky Grace Jesus Ministry. Reach out for prayer, ministry support, and School of Theology inquiries." />
+  <meta name="keywords" content="Sky Grace Jesus Ministry, Contact, Prayer, Theology School, Namibia" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    #site-header:empty,
+    #site-footer:empty { display: none; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
-<section class="py-20 container mx-auto px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div>
-                    <h1 class="text-5xl font-black uppercase tracking-tighter mb-6">Get in <span class="text-blue-500">Touch</span></h1>
-                    <p class="text-slate-600 mb-12">Have questions about our services, the School of Theology, or need spiritual guidance?</p>
-                    
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-blue-500 flex-shrink-0">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg uppercase tracking-tight">Okahandja HQ</h3>
-                                <p class="text-slate-500 text-sm">Okahandja Shopping Centre, Shop 32, Namibia</p>
-                            </div>
-                        </div>
+<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
+  <!-- Shared Header -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
-                        <div class="flex gap-6">
-                            <div class="w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-green-500 flex-shrink-0">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg uppercase tracking-tight">Direct WhatsApp</h3>
-                                <p class="text-slate-500 text-sm">+264 81 XXX XXXX</p>
-                            </div>
-                        </div>
+  <main class="min-h-[70vh]">
 
-                        <div class="flex gap-6">
-                            <div class="w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-slate-400 flex-shrink-0">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg uppercase tracking-tight">Email</h3>
-                                <p class="text-slate-500 text-sm">skygrace@rimonnamibia.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- HERO (same vibe as index.html) -->
+    <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Contact Sky Grace Jesus Ministry"
+          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+        />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/90"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(59,130,246,0.22),transparent_55%)]"></div>
 
-                <div class="rounded-[2rem] overflow-hidden shadow-2xl h-[450px] border-4 border-white">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.568425662366!2d16.9118!3d-21.9747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDU4JzI4LjkiUyAxNsKwNTQnNDIuNSJF!5e0!3m2!1sen!2sna!4v1700000000000!5m2!1sen!2sna" 
-                        title="Sky Grace Jesus Ministry location map"
-                        class="w-full h-full border-0" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
+      <div class="relative z-10 container mx-auto px-6 py-16">
+        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-blue-300 mb-4">
+          <span class="w-2 h-2 rounded-full bg-blue-300 shadow-[0_0_16px_rgba(59,130,246,0.8)]"></span>
+          Contact
+        </p>
+
+        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+          Get in Touch<br />
+          <span class="text-blue-400">We’re Here to Help</span>
+        </h1>
+
+        <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
+          Have questions about services, the School of Theology, or need prayer and guidance?
+          Reach out using any option below.
+        </p>
+
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#contact"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
+            <i class="fa-solid fa-paper-plane"></i> Contact Options
+          </a>
+
+          <a href="prayer-wall.html"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 text-white font-black uppercase text-[11px] tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
+            <i class="fa-solid fa-hands-praying"></i> Prayer Wall
+          </a>
         </div>
+      </div>
     </section>
 
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
+    <!-- CONTACT CONTENT -->
+    <section id="contact" class="py-16 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16">
+
+          <!-- LEFT: DETAILS + CTA -->
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Contact Information</p>
+            <h2 class="mt-2 text-3xl md:text-4xl font-black uppercase tracking-tighter">
+              Reach <span class="text-blue-600 dark:text-blue-300">Out</span>
+            </h2>
+            <p class="mt-3 text-slate-600 dark:text-slate-300 max-w-xl">
+              We respond as soon as possible. Use WhatsApp for urgent prayer requests, or email for detailed questions.
+            </p>
+
+            <!-- EDIT THESE VALUES -->
+            <script>
+              // ✅ Change these values
+              const MINISTRY_EMAIL = "skygrace@rimonnamibia.com";
+              const WHATSAPP_NUMBER = "+26481XXXXXXXX"; // e.g. +264816028469 (no spaces is best)
+              const ADDRESS_TEXT = "Okahandja Shopping Centre, Shop 32, Namibia";
+
+              // Optional email subject/body
+              const EMAIL_SUBJECT = "Sky Grace Ministry — Inquiry";
+              const EMAIL_BODY = "Hello Sky Grace Ministry,%0D%0A%0D%0A";
+            </script>
+
+            <div class="mt-10 space-y-5">
+              <!-- Address -->
+              <div class="flex gap-5 p-6 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h3 class="font-black uppercase text-sm tracking-widest">Okahandja HQ</h3>
+                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-300" id="addressText"></p>
+                </div>
+              </div>
+
+              <!-- WhatsApp -->
+              <div class="flex gap-5 p-6 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-black uppercase text-sm tracking-widest">Direct WhatsApp</h3>
+                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                    Chat with us for prayer and quick questions.
+                  </p>
+
+                  <a id="whatsappLink"
+                     class="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black uppercase text-[11px] tracking-widest hover:bg-emerald-400 transition">
+                    <i class="fa-brands fa-whatsapp"></i> Open WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <!-- Email (Provider chooser) -->
+              <div class="p-6 rounded-[2rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex gap-5">
+                  <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center flex-shrink-0 dark:bg-white dark:text-slate-950">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+
+                  <div class="flex-1">
+                    <h3 class="font-black uppercase text-sm tracking-widest">Email Us</h3>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                      Choose an email option below (Gmail / Outlook / Yahoo) or use your default mail app.
+                    </p>
+
+                    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+                      <!-- Main button opens chooser -->
+                      <button id="emailChooserBtn"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
+                        <i class="fa-solid fa-inbox"></i> Email Us
+                      </button>
+
+                      <!-- Direct mailto -->
+                      <a id="mailtoLink"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-slate-900 font-black uppercase text-[11px] tracking-widest border border-slate-200 hover:bg-slate-50 transition dark:bg-white/10 dark:text-white dark:border-white/10">
+                        <i class="fa-solid fa-paper-plane"></i> Default Email App
+                      </a>
+                    </div>
+
+                    <!-- Provider chooser (hidden by default) -->
+                    <div id="emailChooser" class="mt-4 hidden">
+                      <div class="rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 p-4">
+                        <p class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3">Choose provider</p>
+
+                        <div class="grid sm:grid-cols-3 gap-3">
+                          <a id="gmailLink"
+                             target="_blank" rel="noopener"
+                             class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 transition text-xs font-black uppercase tracking-widest dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10">
+                            <i class="fa-brands fa-google"></i> Gmail
+                          </a>
+
+                          <a id="outlookLink"
+                             target="_blank" rel="noopener"
+                             class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 transition text-xs font-black uppercase tracking-widest dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10">
+                            <i class="fa-brands fa-microsoft"></i> Outlook
+                          </a>
+
+                          <a id="yahooLink"
+                             target="_blank" rel="noopener"
+                             class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 transition text-xs font-black uppercase tracking-widest dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10">
+                            <i class="fa-brands fa-yahoo"></i> Yahoo
+                          </a>
+                        </div>
+
+                        <button id="closeChooserBtn"
+                          class="mt-3 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-slate-800 dark:hover:text-white transition">
+                          Close
+                        </button>
+                      </div>
+                    </div>
+
+                    <p class="mt-4 text-xs text-slate-500 dark:text-slate-400">
+                      Email: <span class="font-bold" id="emailText"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT: MAP -->
+          <div class="rounded-[2.25rem] overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Location Map</p>
+              <h3 class="mt-2 text-xl font-black">Find Us</h3>
+              <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                Use the map to get directions. (Update the embed link anytime.)
+              </p>
+            </div>
+
+            <div class="h-[450px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.568425662366!2d16.9118!3d-21.9747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDU4JzI4LjkiUyAxNsKwNTQnNDIuNSJF!5e0!3m2!1sen!2sna!4v1700000000000!5m2!1sen!2sna"
+                title="Sky Grace Jesus Ministry location map"
+                class="w-full h-full border-0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <script>
+    // Helpers
+    const enc = encodeURIComponent;
+
+    function normalizePhone(phone) {
+      return (phone || "").replace(/[^\d+]/g, "");
+    }
+
+    function buildMailto(email) {
+      const subject = EMAIL_SUBJECT || "";
+      const body = EMAIL_BODY || "";
+      return `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+
+    function buildGmail(email) {
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(email)}&su=${enc(EMAIL_SUBJECT || "")}&body=${enc((EMAIL_BODY || "").replace(/%0D%0A/g, "\n"))}`;
+    }
+
+    function buildOutlook(email) {
+      return `https://outlook.office.com/mail/deeplink/compose?to=${enc(email)}&subject=${enc(EMAIL_SUBJECT || "")}&body=${enc((EMAIL_BODY || "").replace(/%0D%0A/g, "\n"))}`;
+    }
+
+    function buildYahoo(email) {
+      return `https://compose.mail.yahoo.com/?to=${enc(email)}&subj=${enc(EMAIL_SUBJECT || "")}&body=${enc((EMAIL_BODY || "").replace(/%0D%0A/g, "\n"))}`;
+    }
+
+    // Wire UI
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fill text
+      document.getElementById("emailText").textContent = MINISTRY_EMAIL;
+      document.getElementById("addressText").textContent = ADDRESS_TEXT;
+
+      // WhatsApp
+      const phone = normalizePhone(WHATSAPP_NUMBER);
+      const waText = "Hello Sky Grace Ministry, I would like to connect.";
+      const waUrl = `https://wa.me/${phone.replace("+", "")}?text=${enc(waText)}`;
+      const waLink = document.getElementById("whatsappLink");
+      waLink.href = waUrl;
+
+      // Email links
+      document.getElementById("mailtoLink").href = buildMailto(MINISTRY_EMAIL);
+      document.getElementById("gmailLink").href = buildGmail(MINISTRY_EMAIL);
+      document.getElementById("outlookLink").href = buildOutlook(MINISTRY_EMAIL);
+      document.getElementById("yahooLink").href = buildYahoo(MINISTRY_EMAIL);
+
+      // Chooser toggle
+      const chooser = document.getElementById("emailChooser");
+      const openBtn = document.getElementById("emailChooserBtn");
+      const closeBtn = document.getElementById("closeChooserBtn");
+
+      openBtn.addEventListener("click", () => {
+        chooser.classList.toggle("hidden");
+        if (!chooser.classList.contains("hidden")) {
+          chooser.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+
+      closeBtn.addEventListener("click", () => chooser.classList.add("hidden"));
+    });
+  </script>
 </body>
 </html>
