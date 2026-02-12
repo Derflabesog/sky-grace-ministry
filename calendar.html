@@ -1,95 +1,249 @@
-﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry Calendar | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ministry Calendar | Sky Grace Jesus Ministry</title>
+  <meta name="description" content="Sky Grace Jesus Ministry Calendar — upcoming ministry events, services, and academic deadlines." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
-<div id="site-header"></div>
-<script src="./header.js" defer></script>
 
-<main class="container mx-auto px-6 py-12">
-        <div class="grid lg:grid-cols-3 gap-8">
-            
-            <div class="space-y-6">
-                <h3 class="text-xl font-black text-slate-900 border-l-4 border-amber-500 pl-4 py-1">JANUARY <span class="text-slate-400 font-light">2026</span></h3>
-                
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 text-white p-3 rounded-xl text-center min-w-[60px]">
-                            <span class="block text-lg font-bold leading-none">18</span>
-                            <span class="text-[9px] uppercase font-bold tracking-tighter">SUN</span>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="font-bold text-slate-900">Spirit of Elijah Conference</h4>
-                            <p class="text-xs text-slate-500"><i class="fas fa-map-marker-alt mr-1"></i> Windhoek Main Hall</p>
-                            <a href="register.html?event=elijah-conference" class="mt-4 inline-block w-full text-center py-2 bg-amber-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-amber-400 transition">
-                                Register for Event
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<body class="bg-white text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-100 text-slate-600 p-3 rounded-xl text-center min-w-[60px]">
-                            <span class="block text-lg font-bold leading-none">28</span>
-                            <span class="text-[9px] uppercase font-bold tracking-tighter">WED</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 italic">Mid-Week Prayer & Fasting</h4>
-                            <p class="text-xs text-slate-500 mt-1"><i class="fas fa-video mr-1"></i> Streaming Live (Sky Grace Hub)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Header -->
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
-            <div class="space-y-6">
-                <h3 class="text-xl font-black text-slate-900 border-l-4 border-slate-300 pl-4 py-1">FEBRUARY <span class="text-slate-400 font-light">2026</span></h3>
-                
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 text-white p-3 rounded-xl text-center min-w-[60px]">
-                            <span class="block text-lg font-bold leading-none">14</span>
-                            <span class="text-[9px] uppercase font-bold tracking-tighter">SAT</span>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="font-bold text-slate-900">Couples In Christ Seminar</h4>
-                            <a href="register.html?event=couples-seminar" class="mt-4 inline-block w-full text-center py-2 bg-amber-500 text-slate-900 text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-amber-400 transition">
-                                Register for Event
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main>
 
-            <div class="bg-[#0f172a] p-8 rounded-[2.5rem] text-white">
-                <h3 class="text-xl font-bold mb-6">Academic Deadlines</h3>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <div class="h-10 w-[2px] bg-amber-500"></div>
-                        <div>
-                            <p class="text-[10px] text-slate-500 font-bold uppercase">Jan 25</p>
-                            <p class="text-sm font-bold">Theology School Registrations Close</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <div class="h-10 w-[2px] bg-slate-700"></div>
-                        <div>
-                            <p class="text-[10px] text-slate-500 font-bold uppercase">Feb 02</p>
-                            <p class="text-sm font-bold">Constitutional Law Exam (Article 10)</p>
-                        </div>
-                    </li>
-                </ul>
-                <a href="theology-school.html" class="mt-8 block text-center border border-slate-700 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-slate-900 transition">View Full Curriculum</a>
-            </div>
+    <!-- ✅ HERO (same style as index.html) -->
+    <section class="relative overflow-hidden min-h-[60vh] flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Sky Grace Jesus Ministry"
+          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+        />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
+
+      <div class="relative z-10 container mx-auto px-6 py-20">
+        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-5">
+          <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.6)]"></span>
+          Ministry Calendar
+        </p>
+
+        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+          Upcoming Events & Deadlines
+        </h1>
+
+        <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
+          Stay aligned with what God is doing at Sky Grace Jesus Ministry — services, conferences, seminars, and theology school dates.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#events"
+             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-amber-500 text-black font-black uppercase text-xs tracking-widest hover:bg-amber-400 transition">
+            <i class="fas fa-calendar-days"></i>
+            View Events
+          </a>
+
+          <a href="#deadlines"
+             class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white/10 text-white font-black uppercase text-xs tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
+            <i class="fas fa-graduation-cap"></i>
+            Academic Deadlines
+          </a>
         </div>
-    </main>
+      </div>
+    </section>
 
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
+    <!-- ✅ CONTENT WRAP (light like index) -->
+    <section id="events" class="py-16 bg-slate-50 dark:bg-slate-950">
+      <div class="container mx-auto px-6">
+
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+
+          <!-- ================= LEFT COLUMN: JAN ================= -->
+          <section class="space-y-6">
+            <div class="flex items-end justify-between">
+              <h2 class="text-xl font-black uppercase text-slate-900 dark:text-white">
+                January <span class="text-slate-400 font-black">2026</span>
+              </h2>
+              <span class="text-[11px] font-black uppercase tracking-widest text-slate-400">Month 01</span>
+            </div>
+
+            <!-- Event Card -->
+            <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-6 shadow-sm hover:shadow-lg transition">
+              <div class="flex items-start gap-4">
+                <div class="bg-slate-900 dark:bg-slate-950 text-white p-3 rounded-2xl text-center min-w-[70px]">
+                  <span class="block text-2xl font-black leading-none">18</span>
+                  <span class="text-[10px] uppercase font-black tracking-widest text-white/80">SUN</span>
+                </div>
+
+                <div class="flex-1">
+                  <h3 class="font-black text-slate-900 dark:text-white">
+                    Spirit of Elijah Conference
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-300">
+                    <i class="fas fa-map-marker-alt mr-1 text-amber-500"></i>
+                    Windhoek Main Hall
+                  </p>
+
+                  <div class="mt-4 flex flex-col gap-2">
+                    <a href="register.html?event=elijah-conference"
+                       class="inline-flex items-center justify-center gap-2 w-full py-3 bg-amber-500 text-black text-[11px] font-black uppercase tracking-widest rounded-xl hover:bg-amber-400 transition">
+                      <i class="fas fa-ticket"></i>
+                      Register for Event
+                    </a>
+
+                    <a href="#deadlines"
+                       class="inline-flex items-center justify-center gap-2 w-full py-3 bg-white text-slate-900 text-[11px] font-black uppercase tracking-widest rounded-xl border border-slate-200 hover:bg-slate-50 transition dark:bg-white/10 dark:text-white dark:border-white/10">
+                      <i class="fas fa-circle-info"></i>
+                      See Deadlines
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Prayer/Fasting -->
+            <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-6 shadow-sm">
+              <div class="flex items-start gap-4">
+                <div class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-2xl text-center min-w-[70px]">
+                  <span class="block text-2xl font-black leading-none">28</span>
+                  <span class="text-[10px] uppercase font-black tracking-widest">WED</span>
+                </div>
+
+                <div class="flex-1">
+                  <h3 class="font-black italic text-slate-900 dark:text-white">
+                    Mid-Week Prayer & Fasting
+                  </h3>
+                  <p class="mt-2 text-xs text-slate-500 dark:text-slate-300">
+                    <i class="fas fa-video mr-1 text-blue-600"></i>
+                    Streaming Live (Sky Grace Hub)
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- ================= MIDDLE COLUMN: FEB ================= -->
+          <section class="space-y-6">
+            <div class="flex items-end justify-between">
+              <h2 class="text-xl font-black uppercase text-slate-900 dark:text-white">
+                February <span class="text-slate-400 font-black">2026</span>
+              </h2>
+              <span class="text-[11px] font-black uppercase tracking-widest text-slate-400">Month 02</span>
+            </div>
+
+            <!-- Event -->
+            <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-6 shadow-sm hover:shadow-lg transition">
+              <div class="flex items-start gap-4">
+                <div class="bg-slate-900 dark:bg-slate-950 text-white p-3 rounded-2xl text-center min-w-[70px]">
+                  <span class="block text-2xl font-black leading-none">14</span>
+                  <span class="text-[10px] uppercase font-black tracking-widest text-white/80">SAT</span>
+                </div>
+
+                <div class="flex-1">
+                  <h3 class="font-black text-slate-900 dark:text-white">
+                    Couples In Christ Seminar
+                  </h3>
+
+                  <p class="mt-2 text-xs text-slate-500 dark:text-slate-300">
+                    <i class="fas fa-heart mr-1 text-rose-500"></i>
+                    Strengthening marriages & relationships in Christ.
+                  </p>
+
+                  <a href="register.html?event=couples-seminar"
+                     class="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 bg-amber-500 text-black text-[11px] font-black uppercase tracking-widest rounded-xl hover:bg-amber-400 transition">
+                    <i class="fas fa-ticket"></i>
+                    Register for Event
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Add a placeholder for future events -->
+            <article class="bg-white dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-[2rem] p-6 text-center">
+              <p class="text-sm font-black uppercase tracking-widest text-slate-400">
+                More events coming soon
+              </p>
+              <p class="mt-2 text-xs text-slate-500 dark:text-slate-300">
+                The ministry calendar is updated regularly.
+              </p>
+            </article>
+          </section>
+
+          <!-- ================= RIGHT COLUMN: DEADLINES ================= -->
+          <aside id="deadlines" class="bg-slate-900 text-white rounded-[2.5rem] p-8 shadow-2xl overflow-hidden relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,158,11,0.22),transparent_55%)]"></div>
+
+            <div class="relative z-10">
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-3">
+                Theology School
+              </p>
+              <h2 class="text-2xl font-black uppercase mb-8">
+                Academic Deadlines
+              </h2>
+
+              <ul class="space-y-6">
+                <li class="flex gap-4">
+                  <div class="h-10 w-[2px] bg-amber-500 rounded-full"></div>
+                  <div>
+                    <p class="text-[10px] text-slate-300 font-black uppercase tracking-widest">Jan 25</p>
+                    <p class="text-sm font-bold">Theology School Registrations Close</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-4">
+                  <div class="h-10 w-[2px] bg-slate-600 rounded-full"></div>
+                  <div>
+                    <p class="text-[10px] text-slate-300 font-black uppercase tracking-widest">Feb 02</p>
+                    <p class="text-sm font-bold">Constitutional Law Exam (Article 10)</p>
+                  </div>
+                </li>
+              </ul>
+
+              <a href="theology-school.html"
+                 class="mt-10 inline-flex items-center justify-center gap-2 w-full border border-white/15 py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition">
+                <i class="fas fa-book-open"></i>
+                View Full Curriculum
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <!-- Dark mode persistence (same logic as your other pages) -->
+  <script>
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
 </body>
 </html>
