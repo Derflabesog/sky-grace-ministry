@@ -1,18 +1,15 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Volunteer | Sky Grace Jesus Ministry</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-  <script>
-    tailwind.config = { darkMode: 'class' };
-  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
   <style>
+    /* Hide placeholders if header/footer injection fails */
     #site-header:empty, #site-footer:empty { display: none; }
   </style>
 </head>
@@ -25,7 +22,7 @@
 
   <main>
 
-    <!-- HERO (same vibe as index) -->
+    <!-- HERO (same style concept as index.html) -->
     <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
       <div class="absolute inset-0">
         <img
@@ -35,7 +32,7 @@
         />
       </div>
 
-      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/55"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75"></div>
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
 
       <div class="relative z-10 container mx-auto px-6 py-16">
@@ -54,7 +51,7 @@
       </div>
     </section>
 
-    <!-- CONTENT -->
+    <!-- CONTENT (LIGHT) -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-3 gap-12">
@@ -100,32 +97,38 @@
             </form>
           </div>
 
-          <!-- SCHEDULE (now LIGHT like index cards) -->
-          <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
-            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">My Schedule</p>
-            <h3 class="mt-2 text-xl font-black text-slate-900">Serving Assignments</h3>
-            <p class="mt-2 text-slate-600 text-sm mb-8">
+          <!-- SCHEDULE (NOW LIGHT - no more bg-slate-900) -->
+          <aside class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
+            <h3 class="text-xl font-black uppercase mb-2 text-slate-900">My Schedule</h3>
+            <p class="text-slate-600 text-sm mb-8">
               Once approved, your serving schedule will appear here.
             </p>
 
             <div class="space-y-6">
-              <div class="border-l-2 border-amber-500 pl-4">
-                <p class="text-[10px] font-black uppercase text-slate-500">Sunday Service</p>
-                <p class="text-sm font-bold text-slate-900">Role: Media – Camera 2</p>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Sunday Service</p>
+                <p class="mt-1 text-sm font-bold text-slate-900">Role: Media – Camera 2</p>
               </div>
 
-              <div class="border-l-2 border-amber-500 pl-4">
-                <p class="text-[10px] font-black uppercase text-slate-500">Midweek Service</p>
-                <p class="text-sm font-bold text-slate-900">Role: Hospitality – Welcome Desk</p>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Midweek Service</p>
+                <p class="mt-1 text-sm font-bold text-slate-900">Role: Hospitality – Welcome Desk</p>
+              </div>
+
+              <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-amber-700">Tip</p>
+                <p class="mt-1 text-sm text-slate-800">
+                  If you’re unsure where to serve, choose “Hospitality” and we’ll guide you.
+                </p>
               </div>
             </div>
-          </div>
+          </aside>
 
         </div>
       </div>
     </section>
 
-    <!-- divider section like index -->
+    <!-- Light divider CTA -->
     <section class="py-10 bg-slate-50 border-t border-slate-200">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
