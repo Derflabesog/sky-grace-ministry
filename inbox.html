@@ -1,38 +1,72 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inbox | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact Inbox | Sky Grace Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <meta name="robots" content="noindex,nofollow" />
 </head>
-<body class="bg-slate-50 min-h-screen">
-<div id="site-header"></div>
-<script src="./header.js" defer></script>
 
-<main class="p-8 max-w-6xl mx-auto">
-        <section class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-            <div class="p-8 border-b border-slate-100 flex justify-between items-center">
-                <h3 class="font-black text-slate-900 uppercase">Communication Inbox</h3>
-                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-[10px] font-black">5 NEW</span>
-            </div>
-            <div class="divide-y divide-slate-50">
-                <div class="p-6 flex items-center justify-between hover:bg-slate-50 transition cursor-pointer">
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">Inquiry about Theology School Registration</p>
-                            <p class="text-xs text-slate-500">From: Martha N. â€¢ 1 hour ago</p>
-                        </div>
-                    </div>
-                    <button class="text-blue-500 text-[10px] font-black uppercase tracking-widest hover:underline">Reply <i class="fas fa-reply ml-1"></i></button>
-                </div>
-            </div>
-        </section>
+<body class="bg-slate-100 min-h-screen text-slate-900">
+  <div class="min-h-screen flex">
+
+    <aside class="hidden md:flex w-72 bg-slate-950 text-white flex-col">
+      <div class="p-6 border-b border-white/10">
+        <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black">SG</div>
+        <h1 class="mt-4 text-xl font-black">Sky Grace Admin</h1>
+        <p class="mt-1 text-xs text-white/50">Contact Inbox</p>
+      </div>
+
+      <nav class="p-4 space-y-2 text-sm font-bold">
+        <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-chart-line"></i> Dashboard
+        </a>
+        <a href="inbox.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-blue-600">
+          <i class="fa-solid fa-inbox"></i> Contact Messages
+        </a>
+        <a href="prayer-wall.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-hands-praying"></i> Prayer Requests
+        </a>
+        <a href="theology-register.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-graduation-cap"></i> Theology Students
+        </a>
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-globe"></i> View Website
+        </a>
+      </nav>
+
+      <div class="mt-auto p-4">
+        <button id="logoutBtn" class="w-full px-4 py-3 rounded-2xl bg-red-600 text-white font-black hover:bg-red-500">
+          <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-10">
+      <header class="bg-white rounded-3xl p-6 shadow border border-slate-200 mb-8">
+        <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
+          Admin Inbox
+        </p>
+        <h1 class="mt-2 text-3xl font-black">Contact Messages</h1>
+        <p class="mt-2 text-slate-500">
+          View messages submitted through the website contact form.
+        </p>
+      </header>
+
+      <p id="inboxStatus" class="text-sm font-bold text-slate-500 mb-4"></p>
+
+      <section id="contactMessagesList" class="space-y-5"></section>
     </main>
+  </div>
 
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
+  <script src="assets/js/inbox.js"></script>
+  <script src="assets/js/logout.js"></script>
 </body>
 </html>

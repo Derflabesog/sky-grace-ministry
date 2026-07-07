@@ -3,505 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Admin Dashboard | Sky Grace Jesus Ministry</title>
 
-  <!-- Tailwind + Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <meta name="robots" content="noindex,nofollow" />
-
-  <style>
-    /* Small polish helpers */
-    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); }
-    .shadow-soft { box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10); }
-  </style>
 </head>
 
-<body class="bg-slate-50 min-h-screen">
-  <!-- Layout wrapper -->
+<body class="bg-slate-100 min-h-screen text-slate-900">
+
   <div class="min-h-screen flex">
 
-    <!-- Sidebar (injected) -->
-    <aside class="hidden md:block w-[280px] shrink-0 border-r border-slate-200 bg-white">
-      <div id="admin-sidebar-mount" class="h-full"></div>
-    </aside>
-
-    <!-- Mobile sidebar drawer -->
-    <div id="mobileSidebarBackdrop" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
-    <aside id="mobileSidebar" class="fixed left-0 top-0 bottom-0 w-[290px] bg-white z-50 -translate-x-full transition-transform md:hidden border-r border-slate-200">
-      <div class="h-16 flex items-center justify-between px-4 border-b border-slate-200">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">SG</div>
-          <div class="font-black text-slate-900">Admin</div>
+    <aside class="hidden md:flex w-72 bg-slate-950 text-white flex-col">
+      <div class="p-6 border-b border-white/10">
+        <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center font-black">
+          SG
         </div>
-        <button id="closeMobileSidebar" class="w-9 h-9 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50" aria-label="Close sidebar">
-          <i class="fa-solid fa-xmark"></i>
+        <h1 class="mt-4 text-xl font-black">Sky Grace Admin</h1>
+        <p class="mt-1 text-xs text-white/50">Ministry Command Center</p>
+      </div>
+
+      <nav class="p-4 space-y-2 text-sm font-bold">
+        <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-blue-600">
+          <i class="fa-solid fa-chart-line"></i> Dashboard
+        </a>
+        <a href="inbox.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-inbox"></i> Contact Messages
+        </a>
+        <a href="prayer-wall.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-hands-praying"></i> Prayer Requests
+        </a>
+        <a href="theology-register.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-graduation-cap"></i> Theology Students
+        </a>
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/10">
+          <i class="fa-solid fa-globe"></i> View Website
+        </a>
+      </nav>
+
+      <div class="mt-auto p-4">
+        <button id="logoutBtn" class="w-full px-4 py-3 rounded-2xl bg-red-600 text-white font-black hover:bg-red-500">
+          <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
         </button>
       </div>
-      <div id="admin-sidebar-mount-mobile" class="p-3"></div>
     </aside>
 
-    <!-- Main -->
-    <div class="flex-1 min-w-0 flex flex-col">
-
-      <!-- Top Bar -->
-      <header class="h-16 sticky top-0 z-30 border-b border-slate-200 glass">
-        <div class="h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <button id="openMobileSidebar" class="md:hidden w-10 h-10 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50" aria-label="Open sidebar">
-              <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div>
-              <div class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Sky Grace Jesus Ministry</div>
-              <div class="text-lg font-black text-slate-900 leading-tight">Ministry Command Center</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <a href="index.html" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 text-xs font-black text-slate-500 hover:text-blue-700 hover:border-blue-200 hover:bg-blue-50 transition">
-              View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
-            <button class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-black text-slate-600 hover:bg-slate-50 transition" type="button">
-              <i class="fa-solid fa-bell"></i>
-              <span class="ml-2 hidden sm:inline">Alerts</span>
-            </button>
-
-            <div class="flex items-center gap-2 pl-2">
-              <div class="w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-xs shadow-soft">AP</div>
-              <div class="hidden sm:block">
-                <div class="text-xs font-black text-slate-900 leading-4">Apostle</div>
-                <div class="text-[11px] text-slate-500 leading-4">Administrator</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <main class="flex-1 p-6 md:p-10">
+      <header class="bg-white rounded-3xl p-6 shadow border border-slate-200 mb-8">
+        <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
+          Admin Dashboard
+        </p>
+        <h2 class="mt-2 text-3xl font-black">
+          Ministry Overview
+        </h2>
+        <p class="mt-2 text-slate-500">
+          Logged in as: <span id="adminEmailDisplay" class="font-bold">Loading...</span>
+        </p>
       </header>
 
-      <!-- Page content -->
-      <main class="px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto">
-
-        <!-- Welcome -->
-        <section class="mb-6">
-          <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-soft">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight">Welcome, Apostle</h1>
-                <p class="text-slate-500 mt-1">Manage staff, content, and operations from one command center.</p>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <a href="manage-students.html" class="px-4 py-2 rounded-2xl bg-slate-900 text-white text-sm font-black hover:bg-slate-800 transition">
-                  Quick: Students
-                </a>
-                <a href="manage-events.html" class="px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50 transition">
-                  Quick: Events
-                </a>
-                <a href="manage-blog.html" class="px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50 transition">
-                  Quick: Blog
-                </a>
-              </div>
-            </div>
+      <section class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-3xl p-6 shadow border border-slate-200">
+          <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+            <i class="fa-solid fa-envelope"></i>
           </div>
-        </section>
-
-        <!-- KPIs -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft">
-            <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Total Members</div>
-            <div class="mt-2 text-3xl font-black text-slate-900">1,248</div>
-            <div class="mt-1 text-xs text-slate-500">Directory + visitors combined</div>
-          </div>
-
-          <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft">
-            <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">New Prayer Requests</div>
-            <div class="mt-2 text-3xl font-black text-blue-600">15</div>
-            <div class="mt-1 text-xs text-slate-500">Pending moderation</div>
-          </div>
-
-          <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft">
-            <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Upcoming Events</div>
-            <div class="mt-2 text-3xl font-black text-amber-600">3</div>
-            <div class="mt-1 text-xs text-slate-500">This week</div>
-          </div>
-
-          <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft">
-            <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Donations (Month)</div>
-            <div class="mt-2 text-3xl font-black text-green-600">N$ 45k</div>
-            <div class="mt-1 text-xs text-slate-500">Estimated</div>
-          </div>
-        </section>
-
-        <!-- Tabs -->
-        <section class="bg-white border border-slate-200 rounded-3xl shadow-soft mb-6">
-          <div class="p-4 sm:p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div>
-              <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Administration</div>
-              <div class="text-lg font-black text-slate-900">All Management Areas</div>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              <button data-tab="tab-staff" class="tabBtn px-4 py-2 rounded-2xl bg-slate-900 text-white text-sm font-black">
-                Staff & Roles
-              </button>
-              <button data-tab="tab-content" class="tabBtn px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50">
-                Content
-              </button>
-              <button data-tab="tab-ops" class="tabBtn px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50">
-                Operations
-              </button>
-              <button data-tab="tab-analytics" class="tabBtn px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50">
-                Analytics
-              </button>
-            </div>
-          </div>
-
-          <!-- STAFF TAB -->
-          <div id="tab-staff" class="tabPanel p-4 sm:p-6">
-            <div class="flex flex-col lg:flex-row gap-4">
-              <!-- Staff table -->
-              <div class="flex-1">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
-                  <div>
-                    <h3 class="text-base font-black text-slate-900">Backend Staff Management</h3>
-                    <p class="text-sm text-slate-500">Add users, assign roles, approve staff access.</p>
-                  </div>
-
-                  <div class="flex flex-wrap gap-2">
-                    <button id="btnAddStaff" class="px-4 py-2 rounded-2xl bg-blue-600 text-white text-sm font-black hover:bg-blue-700 transition">
-                      <i class="fa-solid fa-user-plus mr-2"></i>Add Staff
-                    </button>
-                    <button class="px-4 py-2 rounded-2xl border border-slate-200 text-slate-700 text-sm font-black hover:bg-slate-50">
-                      <i class="fa-solid fa-shield-halved mr-2"></i>Manage Roles
-                    </button>
-                  </div>
-                </div>
-
-                <div class="overflow-x-auto border border-slate-200 rounded-2xl">
-                  <table class="min-w-full text-left">
-                    <thead class="bg-slate-50">
-                      <tr class="text-[11px] uppercase tracking-[0.2em] text-slate-400 font-black">
-                        <th class="px-4 py-3">Name</th>
-                        <th class="px-4 py-3">Email</th>
-                        <th class="px-4 py-3">Role</th>
-                        <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-sm">
-                      <tr class="border-t border-slate-100">
-                        <td class="px-4 py-3 font-bold text-slate-900">Apostle Polly</td>
-                        <td class="px-4 py-3 text-slate-600">admin@skygrace.org</td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-slate-900 text-white text-[11px] font-black">Super Admin</span></td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-green-100 text-green-700 text-[11px] font-black">Active</span></td>
-                        <td class="px-4 py-3">
-                          <button class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-black text-xs">Edit</button>
-                        </td>
-                      </tr>
-
-                      <tr class="border-t border-slate-100">
-                        <td class="px-4 py-3 font-bold text-slate-900">Admin Sarah</td>
-                        <td class="px-4 py-3 text-slate-600">sarah@skygrace.org</td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-[11px] font-black">Content Admin</span></td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-green-100 text-green-700 text-[11px] font-black">Active</span></td>
-                        <td class="px-4 py-3 flex gap-2">
-                          <button class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-black text-xs">Edit</button>
-                          <button class="px-3 py-2 rounded-xl border border-red-200 hover:bg-red-50 text-red-700 font-black text-xs">Disable</button>
-                        </td>
-                      </tr>
-
-                      <tr class="border-t border-slate-100">
-                        <td class="px-4 py-3 font-bold text-slate-900">Media Team</td>
-                        <td class="px-4 py-3 text-slate-600">media@skygrace.org</td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-black">Media</span></td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full bg-yellow-100 text-yellow-800 text-[11px] font-black">Pending</span></td>
-                        <td class="px-4 py-3 flex gap-2">
-                          <button class="px-3 py-2 rounded-xl bg-green-600 text-white hover:bg-green-700 font-black text-xs">Approve</button>
-                          <button class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-black text-xs">View</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p class="text-xs text-slate-500 mt-3">
-                  Backend note: connect this table to your database (Firebase Auth + Firestore roles, or Supabase) to make edits live.
-                </p>
-              </div>
-
-              <!-- Role cards -->
-              <div class="w-full lg:w-[340px]">
-                <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50">
-                  <h4 class="font-black text-slate-900">Role Templates</h4>
-                  <p class="text-sm text-slate-500 mt-1">Use these to control what staff can access.</p>
-
-                  <div class="mt-4 space-y-3">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-4">
-                      <div class="font-black text-slate-900">Super Admin</div>
-                      <div class="text-sm text-slate-500 mt-1">Full access to everything.</div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-4">
-                      <div class="font-black text-slate-900">Content Admin</div>
-                      <div class="text-sm text-slate-500 mt-1">Blog, sermons, events, testimonies.</div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-4">
-                      <div class="font-black text-slate-900">Operations</div>
-                      <div class="text-sm text-slate-500 mt-1">Members, tasks, inbox, branches.</div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-4">
-                      <div class="font-black text-slate-900">Finance</div>
-                      <div class="text-sm text-slate-500 mt-1">Donations, reports, receipts.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CONTENT TAB -->
-          <div id="tab-content" class="tabPanel p-4 sm:p-6 hidden">
-            <h3 class="text-base font-black text-slate-900 mb-3">Content & Publishing</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <a href="manage-blog.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition group">
-                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center">
-                  <i class="fa-solid fa-pen-nib"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Blog Articles</div>
-                <div class="text-sm text-slate-500">Write, edit, publish.</div>
-              </a>
-
-              <a href="sermon-series.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition group">
-                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center">
-                  <i class="fa-solid fa-microphone"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Sermons</div>
-                <div class="text-sm text-slate-500">Upload audio/video.</div>
-              </a>
-
-              <a href="manage-events.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition group">
-                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center">
-                  <i class="fa-solid fa-calendar-check"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Events</div>
-                <div class="text-sm text-slate-500">Services & conferences.</div>
-              </a>
-
-              <a href="manage-testimonies.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition group">
-                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center">
-                  <i class="fa-solid fa-comment-dots"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Testimonies</div>
-                <div class="text-sm text-slate-500">Moderate submissions.</div>
-              </a>
-            </div>
-          </div>
-
-          <!-- OPS TAB -->
-          <div id="tab-ops" class="tabPanel p-4 sm:p-6 hidden">
-            <h3 class="text-base font-black text-slate-900 mb-3">Ministry Operations</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <a href="member-directory.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition">
-                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center">
-                  <i class="fa-solid fa-address-book"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Members</div>
-                <div class="text-sm text-slate-500">Directory & profiles.</div>
-              </a>
-
-              <a href="manage-students.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition">
-                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center">
-                  <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Students</div>
-                <div class="text-sm text-slate-500">Enrollments & classes.</div>
-              </a>
-
-              <a href="manage-tasks.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition">
-                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center">
-                  <i class="fa-solid fa-list-check"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Tasks</div>
-                <div class="text-sm text-slate-500">Assign ministry duties.</div>
-              </a>
-
-              <a href="inbox.html" class="p-5 rounded-3xl border border-slate-200 bg-white hover:shadow-soft transition">
-                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center">
-                  <i class="fa-solid fa-inbox"></i>
-                </div>
-                <div class="mt-3 font-black text-slate-900">Inbox</div>
-                <div class="text-sm text-slate-500">Messages & inquiries.</div>
-              </a>
-            </div>
-          </div>
-
-          <!-- ANALYTICS TAB -->
-          <div id="tab-analytics" class="tabPanel p-4 sm:p-6 hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <section class="lg:col-span-2 bg-slate-900 rounded-3xl p-5 text-white shadow-soft">
-                <div class="flex items-center justify-between mb-4">
-                  <div>
-                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-300">Weekly Visitor Flow</div>
-                    <div class="text-xl font-black">Global Reach Analytics</div>
-                  </div>
-                  <div class="text-xs text-slate-300">Auto-updating demo</div>
-                </div>
-                <div class="h-64">
-                  <canvas id="visitorChart"></canvas>
-                </div>
-              </section>
-
-              <section class="bg-white rounded-3xl border border-slate-200 p-5 shadow-soft">
-                <div class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Top Content</div>
-                <div class="mt-3 space-y-3 text-sm">
-                  <div class="flex items-center justify-between">
-                    <span class="text-slate-700 font-bold">/ministry-blog</span>
-                    <span class="text-blue-600 font-black">4,209</span>
-                  </div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-slate-700 font-bold">/watch-live</span>
-                    <span class="text-blue-600 font-black">2,810</span>
-                  </div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-slate-700 font-bold">/events</span>
-                    <span class="text-blue-600 font-black">1,634</span>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-
-        </section>
-
-        <!-- Activity Feed -->
-        <section class="bg-white rounded-3xl border border-slate-200 shadow-soft p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-black text-slate-900">Recent Activity</h3>
-            <a href="system-logs.html" class="text-xs font-black text-blue-600 hover:text-blue-800 uppercase tracking-[0.2em]">View Logs</a>
-          </div>
-
-          <div class="space-y-3">
-            <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-              <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-pen"></i>
-              </div>
-              <div>
-                <div class="text-sm text-slate-900"><span class="font-black">Admin Sarah</span> edited a blog article.</div>
-                <div class="text-xs text-slate-500 mt-1">2 hours ago</div>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-              <div class="w-10 h-10 rounded-2xl bg-green-100 text-green-700 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-user-check"></i>
-              </div>
-              <div>
-                <div class="text-sm text-slate-900"><span class="font-black">Apostle</span> approved a staff account.</div>
-                <div class="text-xs text-slate-500 mt-1">5 hours ago</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Footer injection (optional for admin) -->
-        <div class="mt-10">
-          <div id="site-footer"></div>
+          <p class="mt-5 text-xs font-black uppercase tracking-widest text-slate-400">Contact Messages</p>
+          <h3 id="totalContacts" class="mt-2 text-4xl font-black">0</h3>
         </div>
 
-      </main>
-    </div>
+        <div class="bg-white rounded-3xl p-6 shadow border border-slate-200">
+          <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center">
+            <i class="fa-solid fa-hands-praying"></i>
+          </div>
+          <p class="mt-5 text-xs font-black uppercase tracking-widest text-slate-400">Prayer Requests</p>
+          <h3 id="totalPrayers" class="mt-2 text-4xl font-black">0</h3>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow border border-slate-200">
+          <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-700 flex items-center justify-center">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <p class="mt-5 text-xs font-black uppercase tracking-widest text-slate-400">Theology Students</p>
+          <h3 id="totalStudents" class="mt-2 text-4xl font-black">0</h3>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow border border-slate-200">
+          <div class="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <p class="mt-5 text-xs font-black uppercase tracking-widest text-slate-400">Admin Users</p>
+          <h3 id="totalAdmins" class="mt-2 text-4xl font-black">0</h3>
+        </div>
+      </section>
+
+      <section class="mt-8 bg-white rounded-3xl p-6 shadow border border-slate-200">
+        <h3 class="text-xl font-black">Next Modules</h3>
+        <div class="mt-4 grid md:grid-cols-3 gap-4">
+          <a href="inbox.html" class="p-5 rounded-2xl border border-slate-200 hover:bg-slate-50 font-black">
+            Contact Inbox →
+          </a>
+          <a href="prayer-wall.html" class="p-5 rounded-2xl border border-slate-200 hover:bg-slate-50 font-black">
+            Prayer Requests →
+          </a>
+          <a href="theology-register.html" class="p-5 rounded-2xl border border-slate-200 hover:bg-slate-50 font-black">
+            Theology Students →
+          </a>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <!-- Scripts -->
-  <script src="admin-sidebar.js" defer></script>
-  <script src="./footer.js" defer></script>
-
-  <script>
-    // Mobile sidebar toggles
-    const openBtn = document.getElementById('openMobileSidebar');
-    const closeBtn = document.getElementById('closeMobileSidebar');
-    const mobileSidebar = document.getElementById('mobileSidebar');
-    const backdrop = document.getElementById('mobileSidebarBackdrop');
-
-    function openSidebar() {
-      mobileSidebar.classList.remove('-translate-x-full');
-      backdrop.classList.remove('hidden');
-    }
-    function closeSidebar() {
-      mobileSidebar.classList.add('-translate-x-full');
-      backdrop.classList.add('hidden');
-    }
-
-    if (openBtn) openBtn.addEventListener('click', openSidebar);
-    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-    if (backdrop) backdrop.addEventListener('click', closeSidebar);
-
-    // Copy sidebar HTML to mobile mount (simple sync)
-    window.addEventListener('DOMContentLoaded', () => {
-      const desktop = document.getElementById('admin-sidebar-mount');
-      const mobile = document.getElementById('admin-sidebar-mount-mobile');
-      if (desktop && mobile) mobile.innerHTML = desktop.innerHTML;
-    });
-
-    // Tabs
-    const tabButtons = document.querySelectorAll('.tabBtn');
-    const panels = document.querySelectorAll('.tabPanel');
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-tab');
-
-        // button styles
-        tabButtons.forEach(b => {
-          b.classList.remove('bg-slate-900', 'text-white');
-          b.classList.add('border', 'border-slate-200', 'text-slate-700');
-        });
-        btn.classList.add('bg-slate-900', 'text-white');
-        btn.classList.remove('border', 'border-slate-200', 'text-slate-700');
-
-        // panels
-        panels.forEach(p => p.classList.add('hidden'));
-        const active = document.getElementById(target);
-        if (active) active.classList.remove('hidden');
-      });
-    });
-
-    // Chart (guarded)
-    window.addEventListener('DOMContentLoaded', () => {
-      const canvas = document.getElementById('visitorChart');
-      if (!canvas || !window.Chart) return;
-
-      const ctx = canvas.getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-          datasets: [{
-            label: 'Visitors',
-            data: [850, 920, 1200, 980, 1100, 1800, 2400],
-            borderWidth: 3,
-            tension: 0.4,
-            fill: true
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } }
-        }
-      });
-
-      setInterval(() => {
-        chart.data.datasets[0].data = chart.data.datasets[0].data.map(() => Math.floor(Math.random()*1700 + 800));
-        chart.update();
-      }, 3000);
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/logout.js"></script>
 </body>
 </html>
