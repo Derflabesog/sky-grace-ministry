@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Register | Sky Grace School of Theology</title>
   <meta name="description" content="Register for Sky Grace School of Theology — 2026 intake." />
 
@@ -13,13 +14,10 @@
 
 <body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
 
-  <!-- Shared Header -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
   <main>
-
-    <!-- HERO (same image as index.html) -->
     <section class="relative overflow-hidden bg-black min-h-[45vh] flex items-center">
       <div class="absolute inset-0">
         <img
@@ -28,33 +26,37 @@
           class="w-full h-full object-cover object-center md:object-[50%_35%]"
         />
       </div>
+
       <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/90"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(59,130,246,0.18),transparent_55%)]"></div>
 
       <div class="relative z-10 container mx-auto px-6 py-14">
         <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-blue-200 mb-4">
-          <span class="w-2 h-2 rounded-full bg-blue-200 shadow-[0_0_16px_rgba(191,219,254,0.9)]"></span>
+          <span class="w-2 h-2 rounded-full bg-blue-200"></span>
           School of Theology
         </p>
-        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">Student Application</h1>
+
+        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+          Student Application
+        </h1>
+
         <p class="mt-3 text-slate-200 max-w-2xl leading-relaxed">
           Fill in the form below to apply. After submission, you’ll receive the next steps to secure your seat.
         </p>
       </div>
     </section>
 
-    <!-- CONTENT -->
     <section class="py-14">
       <div class="container mx-auto px-6">
         <div class="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
 
-          <!-- LEFT INFO -->
           <aside class="lg:col-span-1 space-y-6" data-aos="fade-right">
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-7 shadow-sm">
               <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Enroll</p>
+
               <h2 class="mt-2 text-3xl font-black leading-none">
                 Intake <span class="text-blue-600 dark:text-blue-300">2026</span>
               </h2>
+
               <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Join a community dedicated to deep scriptural study and discipleship training.
               </p>
@@ -64,6 +66,7 @@
                   <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-xl flex items-center justify-center">
                     <i class="fas fa-clock"></i>
                   </div>
+
                   <div>
                     <p class="text-[10px] font-black uppercase text-slate-400">Duration</p>
                     <p class="text-xs font-bold">6-Month Certificate</p>
@@ -74,9 +77,10 @@
                   <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-xl flex items-center justify-center">
                     <i class="fas fa-map-marker-alt"></i>
                   </div>
+
                   <div>
                     <p class="text-[10px] font-black uppercase text-slate-400">Mode</p>
-                    <p class="text-xs font-bold">Hybrid (Online & In-Person)</p>
+                    <p class="text-xs font-bold">Hybrid Online & In-Person</p>
                   </div>
                 </div>
               </div>
@@ -86,91 +90,97 @@
               <p class="text-sm italic text-blue-200 leading-relaxed">
                 “Study to shew thyself approved unto God, a workman that needeth not to be ashamed...”
               </p>
-              <p class="text-[11px] uppercase font-black tracking-widest mt-4 text-white/70">— 2 Timothy 2:15</p>
+
+              <p class="text-[11px] uppercase font-black tracking-widest mt-4 text-white/70">
+                — 2 Timothy 2:15
+              </p>
             </div>
 
             <a href="theology-school.html"
-               class="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-black uppercase text-[11px] tracking-widest hover:bg-slate-50 dark:hover:bg-white/15 transition">
+              class="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 font-black uppercase text-[11px] tracking-widest hover:bg-slate-50 dark:hover:bg-white/15 transition">
               <i class="fa-solid fa-arrow-left"></i> Back to Theology Page
             </a>
           </aside>
 
-          <!-- FORM -->
           <section class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100 dark:border-slate-800 overflow-hidden" data-aos="fade-up">
             <div class="bg-blue-600 p-8 text-white">
               <h2 class="text-xl font-black uppercase tracking-widest">Student Application</h2>
               <p class="text-blue-100 text-xs mt-1">Please fill in all details for registration.</p>
             </div>
 
-            <form class="p-8 md:p-10 space-y-8">
-              <!-- PERSONAL -->
+            <form id="theologyForm" class="p-8 md:p-10 space-y-8">
               <div class="space-y-4">
                 <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 dark:text-blue-300 border-b border-slate-100 dark:border-slate-800 pb-2">
                   Personal Identity
                 </h3>
 
                 <div class="grid md:grid-cols-2 gap-4">
-                  <input type="text" name="name" placeholder="Full Name"
-                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition">
-                  <input type="email" name="email" placeholder="Email Address"
-                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition">
+                  <input
+                    id="studentFullName"
+                    type="text"
+                    required
+                    placeholder="Full Name"
+                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition"
+                  />
+
+                  <input
+                    id="studentEmail"
+                    type="email"
+                    placeholder="Email Address"
+                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition"
+                  />
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-4">
-                  <input type="tel" name="phone" placeholder="Phone (WhatsApp)"
-                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition">
-                  <select name="branch"
+                  <input
+                    id="studentPhone"
+                    type="tel"
+                    placeholder="Phone / WhatsApp"
+                    class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition"
+                  />
+
+                  <select
+                    id="studentCourse"
+                    required
                     class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition text-slate-600 dark:text-slate-200">
-                    <option value="" selected>Select Branch</option>
-                    <option value="okahandja">Okahandja HQ</option>
-                    <option value="windhoek">Windhoek Branch</option>
-                    <option value="online">Online Student</option>
+                    <option value="">Select Course</option>
+                    <option value="Foundations of Grace">Foundations of Grace</option>
+                    <option value="Prophetic Ministry & Elijah’s Mantle">Prophetic Ministry & Elijah’s Mantle</option>
+                    <option value="Theology School Intake 2026">Theology School Intake 2026</option>
                   </select>
                 </div>
               </div>
 
-              <!-- COURSE -->
               <div class="space-y-4 pt-2">
                 <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 dark:text-blue-300 border-b border-slate-100 dark:border-slate-800 pb-2">
-                  Course Selection
+                  Message
                 </h3>
 
-                <div class="grid gap-3">
-                  <label class="flex items-start gap-4 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-950/40 transition">
-                    <input type="radio" name="course" value="foundations" class="mt-1 w-4 h-4">
-                    <div>
-                      <p class="text-sm font-black uppercase">Foundations of Grace</p>
-                      <p class="text-[11px] text-slate-500 dark:text-slate-300">
-                        Introduction to the Apostolic Mandate and key scriptural truths.
-                      </p>
-                    </div>
-                  </label>
-
-                  <label class="flex items-start gap-4 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-950/40 transition">
-                    <input type="radio" name="course" value="prophetic" class="mt-1 w-4 h-4">
-                    <div>
-                      <p class="text-sm font-black uppercase">Prophetic Ministry & Elijah’s Mantle</p>
-                      <p class="text-[11px] text-slate-500 dark:text-slate-300">
-                        Advanced training on prophetic activation and spiritual leadership.
-                      </p>
-                    </div>
-                  </label>
-                </div>
+                <textarea
+                  id="studentMessage"
+                  rows="5"
+                  placeholder="Tell us why you want to join or ask any question..."
+                  class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 ring-blue-500/40 transition"
+                ></textarea>
               </div>
 
-              <!-- TERMS -->
               <div class="flex items-start gap-3 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-100 dark:border-amber-900/40">
-                <input type="checkbox" name="terms" class="mt-1">
+                <input id="studentTerms" type="checkbox" required class="mt-1" />
+
                 <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-relaxed font-medium">
-                  I agree to the <a href="terms-of-service.html" class="underline font-black">Code of Conduct</a> and understand that a registration fee is required to secure my seat.
+                  I agree to the <a href="terms-of-service.html" class="underline font-black">Code of Conduct</a>
+                  and understand that a registration fee may be required to secure my seat.
                 </p>
               </div>
 
-              <!-- SUBMIT -->
-              <button type="submit"
+              <button
+                id="submitStudentBtn"
+                type="submit"
                 class="w-full bg-slate-900 text-white font-black py-4 rounded-2xl text-xs uppercase tracking-widest hover:bg-blue-600 hover:shadow-xl transition transform hover:-translate-y-1">
                 Submit Application
               </button>
+
+              <p id="studentStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
 
               <p class="text-[11px] text-slate-500 dark:text-slate-300">
                 After submission, you will be contacted with the next steps for registration confirmation.
@@ -181,15 +191,80 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Shared Footer -->
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
 
-  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once: true, duration: 700 });</script>
+  <script>
+    AOS.init({ once: true, duration: 700 });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("theologyForm");
+      if (form) form.addEventListener("submit", submitStudentApplication);
+    });
+
+    async function submitStudentApplication(e) {
+      e.preventDefault();
+
+      const full_name = document.getElementById("studentFullName").value.trim();
+      const email = document.getElementById("studentEmail").value.trim();
+      const phone = document.getElementById("studentPhone").value.trim();
+      const course = document.getElementById("studentCourse").value;
+      const message = document.getElementById("studentMessage").value.trim();
+      const status = document.getElementById("studentStatus");
+      const submitBtn = document.getElementById("submitStudentBtn");
+
+      if (!window.supabaseClient) {
+        status.textContent = "Supabase is not connected.";
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      if (!full_name || !course) {
+        status.textContent = "Please enter your full name and select a course.";
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      status.textContent = "Submitting application...";
+      status.className = "text-sm font-bold text-blue-600";
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+      const { error } = await supabaseClient
+        .from("theology_students")
+        .insert([
+          {
+            full_name,
+            phone,
+            email,
+            course,
+            message
+          }
+        ]);
+
+      submitBtn.disabled = false;
+      submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+
+      if (error) {
+        console.error("Theology registration error:", error);
+        status.textContent = error.message;
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      status.textContent = "Application submitted successfully. We will contact you soon.";
+      status.className = "text-sm font-bold text-green-600";
+
+      document.getElementById("theologyForm").reset();
+    }
+  </script>
+
 </body>
 </html>
