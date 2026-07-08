@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Manage Students | Sky Grace Admin</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +16,7 @@
 
   <div class="flex-1 flex flex-col min-w-0">
     <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
-      <h2 class="font-bold text-slate-700 text-lg">Theology School</h2>
+      <h2 class="font-bold text-slate-700 text-lg">Theology Students</h2>
 
       <a href="theology-register.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">
         View Registration Page <i class="fas fa-external-link-alt ml-1"></i>
@@ -28,7 +27,7 @@
       <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
         <div>
           <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Student Applications</h3>
-          <p class="text-slate-500 text-sm">View and manage School of Theology student registrations.</p>
+          <p class="text-slate-500 text-sm">View and manage School of Theology registrations.</p>
         </div>
 
         <div class="relative">
@@ -71,7 +70,6 @@
     </main>
   </div>
 
-  <!-- View Modal -->
   <div id="viewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm">
     <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full mx-4 relative">
       <button onclick="closeViewModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
@@ -133,14 +131,12 @@
 
   <script>
     let allStudents = [];
-    let selectedStudentId = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadStudents();
 
-      const search = document.getElementById("studentSearch");
-      search.addEventListener("input", () => {
-        const term = search.value.toLowerCase();
+      document.getElementById("studentSearch").addEventListener("input", function () {
+        const term = this.value.toLowerCase();
 
         const filtered = allStudents.filter((student) =>
           String(student.full_name || "").toLowerCase().includes(term) ||
@@ -205,15 +201,19 @@
               </div>
 
               <div>
-                <span class="font-bold text-slate-900 block">${escapeHtml(student.full_name || "No Name")}</span>
-                <span class="text-xs text-slate-400">${escapeHtml(shortId(student.id))}</span>
+                <span class="font-bold text-slate-900 block">
+                  ${escapeHtml(student.full_name || "No Name")}
+                </span>
+                <span class="text-xs text-slate-400">
+                  ${shortId(student.id)}
+                </span>
               </div>
             </div>
           </td>
 
           <td class="py-5 px-6 text-slate-500 text-xs">
-            <div>${escapeHtml(student.email || "")}</div>
-            <div>${escapeHtml(student.phone || "")}</div>
+            <div>${escapeHtml(student.email || "No email")}</div>
+            <div>${escapeHtml(student.phone || "No phone")}</div>
           </td>
 
           <td class="py-5 px-6 text-slate-700 font-bold">
@@ -247,8 +247,6 @@
       const student = allStudents.find((s) => s.id === id);
       if (!student) return;
 
-      selectedStudentId = id;
-
       document.getElementById("viewInitials").textContent = getInitials(student.full_name);
       document.getElementById("viewName").textContent = student.full_name || "No Name";
       document.getElementById("viewCourse").textContent = student.course || "No course";
@@ -273,7 +271,6 @@
       const modal = document.getElementById("viewModal");
       modal.classList.add("hidden");
       modal.classList.remove("flex");
-      selectedStudentId = null;
     }
 
     async function deleteStudent(id) {
@@ -315,6 +312,5 @@
         .replaceAll("'", "&#039;");
     }
   </script>
-
 </body>
 </html>
