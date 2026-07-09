@@ -1,103 +1,98 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Testimonies | Sky Grace Jesus Ministry</title>
-  <meta name="description" content="Read powerful testimonies from Sky Grace Jesus Ministry. Share your miracle and inspire faith in others.">
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <script>
-    tailwind.config = { darkMode: 'class' }
+    tailwind.config = { darkMode: "class" };
   </script>
-
 </head>
 
 <body class="bg-white text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
 
-  <!-- HEADER -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
-  <!-- ================= HERO ================= -->
   <section class="relative overflow-hidden min-h-[70vh] flex items-center">
-
-    <!-- Background Image -->
     <div class="absolute inset-0">
-      <img
-        src="assets/images/hero-elohim.jpg"
-        alt="Sky Grace Jesus Ministry"
-        class="w-full h-full object-cover object-center md:object-[50%_35%]"
-      />
+      <img src="assets/images/hero-elohim.jpg" alt="Sky Grace Jesus Ministry" class="w-full h-full object-cover object-center md:object-[50%_35%]" />
     </div>
 
-    <!-- Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.25),transparent_55%)]"></div>
 
-    <!-- Content -->
     <div class="relative z-10 container mx-auto px-6 py-24 text-center">
-
-      <p class="inline-flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-6" data-aos="fade-down">
-        <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.8)]"></span>
+      <p class="inline-flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-6">
+        <span class="w-2 h-2 rounded-full bg-amber-300"></span>
         Hebrews 12:1
       </p>
 
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-6" data-aos="fade-up">
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6">
         Cloud of Witnesses
       </h1>
 
-      <p class="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto italic" data-aos="fade-up" data-aos-delay="100">
+      <p class="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto italic">
         “Since we are surrounded by such a great cloud of witnesses,
         let us run with perseverance the race marked out for us.”
       </p>
-
     </div>
   </section>
 
-  <!-- ================= SUBMISSION FORM ================= -->
   <section class="py-20 bg-slate-50 dark:bg-slate-900">
     <div class="container mx-auto px-6 max-w-3xl">
-
-      <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-10 shadow-lg" data-aos="fade-up">
+      <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-10 shadow-lg">
 
         <div class="text-center mb-10">
           <h2 class="text-2xl font-black uppercase">Share Your Testimony</h2>
+
           <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
             Your miracle can strengthen someone else's faith.
           </p>
         </div>
 
-        <form id="testimony-form" class="space-y-6" onsubmit="event.preventDefault(); submitTestimony();">
+        <form id="testimonyForm" class="space-y-6">
+          <input
+            id="testimonyName"
+            type="text"
+            required
+            placeholder="Your Full Name"
+            class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-5 py-4 focus:outline-none focus:border-amber-400 transition"
+          />
 
-          <input type="text" required placeholder="Your Full Name"
-            class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-5 py-4 focus:outline-none focus:border-amber-400 transition">
+          <input
+            id="testimonyLocation"
+            type="text"
+            placeholder="Your Location"
+            class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-5 py-4 focus:outline-none focus:border-amber-400 transition"
+          />
 
-          <textarea required rows="5"
+          <textarea
+            id="testimonyText"
+            required
+            rows="5"
             placeholder="What has the Lord done for you?"
             class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-5 py-4 focus:outline-none focus:border-amber-400 transition"></textarea>
 
-          <button type="submit"
+          <button
+            id="testimonySubmitBtn"
+            type="submit"
             class="w-full bg-amber-500 text-black font-black py-4 rounded-xl uppercase text-xs tracking-widest hover:bg-amber-400 transition">
             <i class="fas fa-paper-plane mr-2"></i>
             Submit for Review
           </button>
 
+          <p id="testimonyStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ================= TESTIMONIES GRID ================= -->
   <section class="py-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
     <div class="container mx-auto px-6">
 
@@ -105,54 +100,165 @@
         Recent Testimonies
       </h2>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="testimoniesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-8">
+          <p class="text-sm text-slate-500 font-bold">Loading testimonies...</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Card -->
-        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-8 shadow-sm hover:shadow-lg transition" data-aos="fade-up">
+  <div id="site-footer"></div>
+  <script src="assets/js/footer.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({ once: true, duration: 800 });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadApprovedTestimonies();
+
+      const form = document.getElementById("testimonyForm");
+      form.addEventListener("submit", submitTestimony);
+    });
+
+    async function loadApprovedTestimonies() {
+      const grid = document.getElementById("testimoniesGrid");
+
+      if (!window.supabaseClient) {
+        grid.innerHTML = `
+          <div class="bg-slate-50 dark:bg-slate-900 border border-red-200 rounded-[2rem] p-8">
+            <p class="text-red-600 font-bold">Supabase is not connected.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("testimonies")
+        .select("*")
+        .eq("is_approved", true)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        grid.innerHTML = `
+          <div class="bg-slate-50 dark:bg-slate-900 border border-red-200 rounded-[2rem] p-8">
+            <p class="text-red-600 font-bold">${escapeHtml(error.message)}</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        grid.innerHTML = `
+          <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-8">
+            <p class="text-slate-500 font-bold">No approved testimonies yet.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = data.map((item) => `
+        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-8 shadow-sm hover:shadow-lg transition">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-full bg-amber-500 text-black flex items-center justify-center font-black">JD</div>
+            <div class="w-12 h-12 rounded-full bg-amber-500 text-black flex items-center justify-center font-black">
+              ${getInitials(item.name)}
+            </div>
+
             <div>
-              <h4 class="font-black text-sm">John Doe</h4>
-              <p class="text-xs text-slate-500">Healing</p>
+              <h4 class="font-black text-sm">${escapeHtml(item.name || "Anonymous")}</h4>
+              <p class="text-xs text-slate-500">${escapeHtml(item.location || "Testimony")}</p>
             </div>
           </div>
 
           <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-            “After prayer at the altar, my medical reports came back negative.
-            The Lord healed me completely!”
+            “${escapeHtml(item.testimony || "")}”
           </p>
 
           <button onclick="praiseGod(this)"
             class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-amber-50 transition flex items-center justify-center gap-2">
             <i class="fas fa-hands-praying text-amber-500"></i>
             Praise God
-            <span class="count bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded-full text-[10px]">12</span>
+            <span class="count bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded-full text-[10px]">0</span>
           </button>
         </div>
+      `).join("");
+    }
 
-      </div>
-    </div>
-  </section>
+    async function submitTestimony(e) {
+      e.preventDefault();
 
-  <!-- FOOTER -->
-  <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+      const name = document.getElementById("testimonyName").value.trim();
+      const location = document.getElementById("testimonyLocation").value.trim();
+      const testimony = document.getElementById("testimonyText").value.trim();
+      const status = document.getElementById("testimonyStatus");
+      const btn = document.getElementById("testimonySubmitBtn");
 
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ once: true, duration: 800 });
+      if (!name || !testimony) {
+        status.textContent = "Please enter your name and testimony.";
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
 
-    function submitTestimony() {
-      alert("Thank you! Your testimony has been submitted for review.");
-      document.getElementById('testimony-form').reset();
+      status.textContent = "Submitting testimony...";
+      status.className = "text-sm font-bold text-blue-600";
+
+      btn.disabled = true;
+      btn.classList.add("opacity-70");
+
+      const { error } = await supabaseClient
+        .from("testimonies")
+        .insert([
+          {
+            name,
+            location,
+            testimony,
+            is_approved: false
+          }
+        ]);
+
+      btn.disabled = false;
+      btn.classList.remove("opacity-70");
+
+      if (error) {
+        console.error("Testimony submit error:", error);
+        status.textContent = error.message;
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      status.textContent = "Thank you! Your testimony has been submitted for review.";
+      status.className = "text-sm font-bold text-green-600";
+
+      document.getElementById("testimonyForm").reset();
     }
 
     function praiseGod(btn) {
-      const countSpan = btn.querySelector('.count');
-      countSpan.innerText = parseInt(countSpan.innerText) + 1;
+      const countSpan = btn.querySelector(".count");
+      countSpan.innerText = parseInt(countSpan.innerText || "0") + 1;
+    }
+
+    function getInitials(name) {
+      return String(name || "SG")
+        .split(" ")
+        .map(part => part[0])
+        .join("")
+        .substring(0, 2)
+        .toUpperCase();
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
   </script>
-
 </body>
 </html>
