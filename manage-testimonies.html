@@ -1,194 +1,274 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimony Moderation | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Testimony Moderation | Sky Grace Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
-<body class="bg-slate-50 min-h-screen">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+<body class="bg-slate-50 flex min-h-screen">
 
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
 
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+      <h2 class="font-bold text-slate-700 text-lg">Testimony Moderation</h2>
 
+      <a href="testimonies.html"
+        class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">
+        View Public Page <i class="fas fa-external-link-alt ml-1"></i>
+      </a>
+    </header>
 
+    <main class="p-8 max-w-6xl mx-auto w-full">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">
+            Testimony Submissions
+          </h3>
 
-
-
-
-
-
-
-
-
-    <!-- Global Header: Master Template with Sermons Dropdown -->
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="welcome-packet.html" class="hover:text-blue-400 transition">Welcome Packet</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <!-- Support Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-slate-400 font-bold text-xs">Support</span>
-      <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Privacy Policy</a>
-      <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Terms of Service</a>
-      <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Cookie Policy</a>
-      <a href="leadership-portal.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Admin Portal</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a>
-    <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-    <a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a>
-    <a href="give.html" class="hover:text-blue-400 transition">Give</a>
-    <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
-    <a href="live.html" class="mt-4 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">Watch Live</a>
-  </div>
-</div>
-
-<main class="p-8 max-w-5xl mx-auto">
-        <div class="space-y-6">
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden p-8">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="flex gap-4 items-center">
-                        <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-200">M</div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-lg">Maria Nghifikwa</h4>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Submitted: Jan 13, 2026 â€¢ 14:20</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="bg-green-500 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition shadow-lg shadow-green-100">Approve & Publish</button>
-                        <button class="bg-slate-100 text-slate-400 px-6 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-red-50 hover:text-red-500 transition">Discard</button>
-                    </div>
-                </div>
-                
-                <div class="bg-slate-50 rounded-2xl p-6 relative">
-                    <i class="fas fa-quote-left absolute top-4 left-4 text-slate-200 text-2xl"></i>
-                    <p class="text-slate-700 italic leading-relaxed pl-6">
-                        "I want to thank God for the prophetic word delivered by Apostle Poliano last Sunday. He spoke about financial restoration, and on Monday, I received a call for a promotion I hadn't even applied for! Glory to the Lord for His faithfulness in this house."
-                    </p>
-                </div>
-            </div>
-            
-            <div class="bg-white/60 rounded-3xl border border-slate-100 p-6 flex justify-between items-center opacity-60">
-                <p class="text-sm font-bold text-slate-500"><i class="fas fa-check-circle text-green-500 mr-2"></i> Testimony by Petrus H. published to public wall.</p>
-                <button class="text-[10px] font-black text-blue-500 uppercase">View Publicly</button>
-            </div>
+          <p class="text-slate-500 text-sm">
+            Review, approve, publish, or delete testimonies.
+          </p>
         </div>
+
+        <div class="flex gap-3">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input
+              id="testimonySearch"
+              type="text"
+              placeholder="Search testimonies..."
+              class="bg-white border border-slate-200 text-slate-600 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+
+          <select
+            id="testimonyFilter"
+            class="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest outline-none">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="pageStatus" class="mb-4 text-sm font-bold text-slate-500">
+        Loading testimonies...
+      </p>
+
+      <div id="testimonyList" class="space-y-6"></div>
+
+      <p id="testimonyCount" class="mt-6 text-xs font-bold text-slate-400 uppercase tracking-widest">
+        Showing 0 Testimonies
+      </p>
     </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    let allTestimonies = [];
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadTestimonies();
+
+      document.getElementById("testimonySearch").addEventListener("input", applyFilters);
+      document.getElementById("testimonyFilter").addEventListener("change", applyFilters);
+    });
+
+    async function loadTestimonies() {
+      const status = document.getElementById("pageStatus");
+      const list = document.getElementById("testimonyList");
+
+      if (!window.supabaseClient) {
+        status.textContent = "Supabase is not connected.";
+        status.className = "mb-4 text-sm font-bold text-red-600";
+        return;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("testimonies")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        status.textContent = error.message;
+        status.className = "mb-4 text-sm font-bold text-red-600";
+        list.innerHTML = "";
+        return;
+      }
+
+      allTestimonies = data || [];
+      status.textContent = "";
+      renderTestimonies(allTestimonies);
+    }
+
+    function applyFilters() {
+      const search = document.getElementById("testimonySearch").value.toLowerCase();
+      const filter = document.getElementById("testimonyFilter").value;
+
+      let filtered = allTestimonies.filter((item) =>
+        String(item.name || "").toLowerCase().includes(search) ||
+        String(item.location || "").toLowerCase().includes(search) ||
+        String(item.testimony || "").toLowerCase().includes(search)
+      );
+
+      if (filter === "pending") {
+        filtered = filtered.filter((item) => item.is_approved !== true);
+      }
+
+      if (filter === "approved") {
+        filtered = filtered.filter((item) => item.is_approved === true);
+      }
+
+      renderTestimonies(filtered);
+    }
+
+    function renderTestimonies(items) {
+      const list = document.getElementById("testimonyList");
+      const count = document.getElementById("testimonyCount");
+
+      count.textContent = `Showing ${items.length} Testimonies`;
+
+      if (!items.length) {
+        list.innerHTML = `
+          <div class="bg-white rounded-3xl border border-slate-200 p-8 text-center text-slate-400 font-bold">
+            No testimonies found.
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = items.map((item) => {
+        const approved = item.is_approved === true;
+
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden p-8">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-5 mb-6">
+              <div class="flex gap-4 items-center">
+                <div class="w-12 h-12 ${approved ? "bg-green-500" : "bg-blue-500"} rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg">
+                  ${getInitials(item.name)}
+                </div>
+
+                <div>
+                  <h4 class="font-black text-slate-900 text-lg">
+                    ${escapeHtml(item.name || "Anonymous")}
+                  </h4>
+
+                  <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">
+                    ${escapeHtml(item.location || "No location")} • ${formatDate(item.created_at)}
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest ${approved ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}">
+                  ${approved ? "Approved" : "Pending"}
+                </span>
+
+                <button onclick="approveTestimony('${item.id}')"
+                  class="bg-green-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition">
+                  Approve & Publish
+                </button>
+
+                <button onclick="markPending('${item.id}')"
+                  class="bg-amber-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-amber-400 transition">
+                  Mark Pending
+                </button>
+
+                <button onclick="deleteTestimony('${item.id}')"
+                  class="bg-red-600 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase hover:bg-red-500 transition">
+                  Delete
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-6 relative">
+              <i class="fas fa-quote-left absolute top-4 left-4 text-slate-200 text-2xl"></i>
+
+              <p class="text-slate-700 italic leading-relaxed pl-6">
+                "${escapeHtml(item.testimony || "")}"
+              </p>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function approveTestimony(id) {
+      const { error } = await supabaseClient
+        .from("testimonies")
+        .update({ is_approved: true })
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      await loadTestimonies();
+    }
+
+    async function markPending(id) {
+      const { error } = await supabaseClient
+        .from("testimonies")
+        .update({ is_approved: false })
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      await loadTestimonies();
+    }
+
+    async function deleteTestimony(id) {
+      if (!confirm("Delete this testimony?")) return;
+
+      const { error } = await supabaseClient
+        .from("testimonies")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      await loadTestimonies();
+    }
+
+    function getInitials(name) {
+      return String(name || "SG")
+        .split(" ")
+        .map((part) => part[0])
+        .join("")
+        .substring(0, 2)
+        .toUpperCase();
+    }
+
+    function formatDate(dateValue) {
+      if (!dateValue) return "";
+
+      return new Date(dateValue).toLocaleString();
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
 </body>
 </html>
