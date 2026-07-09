@@ -1,229 +1,435 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Manage Events | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Manage Events | Sky Grace Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
+
 <body class="bg-slate-50 flex min-h-screen">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
 
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
+      <h2 class="font-bold text-slate-700 text-lg">Events Manager</h2>
 
+      <a href="create-event.html"
+        class="bg-blue-600 text-white px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition">
+        <i class="fas fa-plus mr-2"></i> Create Event
+      </a>
+    </header>
 
-
-
-
-
-
-
-
-
-
-
-<div id="admin-sidebar-mount"></div><script src="admin-sidebar.js" defer></script>
-
-<div class="flex-1 flex flex-col min-w-0">
-    <!-- Admin Header -->
     <main class="p-8">
-        <!-- Page Header -->
-        <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-            <div>
-                <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Events & Conferences</h3>
-                <p class="text-slate-500 text-sm">Create, edit, and publish upcoming ministry events.</p>
-            </div>
-            <div class="flex gap-3">
-                <div class="relative">
-                    <i class="fas fa-filter absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <select id="eventFilter" aria-label="Filter Events" class="bg-white border border-slate-200 text-slate-600 pl-10 pr-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 transition appearance-none outline-none cursor-pointer">
-                        <option value="all">All Events</option>
-                        <option value="Conference">Conferences</option>
-                        <option value="Seminar">Seminars</option>
-                        <option value="Service">Services</option>
-                        <option value="Outreach">Outreach</option>
-                    </select>
-                </div>
-                <a href="create-event.html" class="bg-blue-600 text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-200 flex items-center">
-                    <i class="fas fa-plus mr-2"></i> Create New Event
-                </a>
-            </div>
+      <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+        <div>
+          <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">
+            Events & Conferences
+          </h3>
+
+          <p class="text-slate-500 text-sm">
+            Create, publish, and manage upcoming ministry events.
+          </p>
         </div>
 
-        <!-- Events Table -->
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-50 border-b border-slate-100">
-                        <tr>
-                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Event Details</th>
-                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Date & Time</th>
-                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Location</th>
-                            <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Status</th>
-                            <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="eventsTableBody" class="text-sm divide-y divide-slate-50">
-                        <!-- Event 1 -->
-                        <tr class="hover:bg-blue-50/30 transition group">
-                            <td class="py-5 px-6">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg">
-                                        <i class="fas fa-fire"></i>
-                                    </div>
-                                    <div>
-                                        <span class="font-bold text-slate-900 block text-base">Spirit of Elijah Conference</span>
-                                        <span class="text-[10px] text-slate-400 font-bold uppercase">Major Conference</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-5 px-6 text-slate-600">
-                                <div class="flex flex-col">
-                                    <span class="font-bold">Jan 18, 2026</span>
-                                    <span class="text-xs text-slate-400">09:00 AM - 05:00 PM</span>
-                                </div>
-                            </td>
-                            <td class="py-5 px-6 text-slate-600 font-medium">Windhoek Main Hall</td>
-                            <td class="py-5 px-6">
-                                <span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-wide">Published</span>
-                            </td>
-                            <td class="py-5 px-6 text-right space-x-2">
-                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
-                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
+        <div class="flex gap-3">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input
+              id="eventSearch"
+              type="text"
+              placeholder="Search events..."
+              class="bg-white border border-slate-200 text-slate-600 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
 
-                        <!-- Event 2 -->
-                        <tr class="hover:bg-blue-50/30 transition group">
-                            <td class="py-5 px-6">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg">
-                                        <i class="fas fa-heart"></i>
-                                    </div>
-                                    <div>
-                                        <span class="font-bold text-slate-900 block text-base">Couples In Christ Seminar</span>
-                                        <span class="text-[10px] text-slate-400 font-bold uppercase">Seminar</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-5 px-6 text-slate-600">
-                                <div class="flex flex-col">
-                                    <span class="font-bold">Feb 14, 2026</span>
-                                    <span class="text-xs text-slate-400">06:00 PM - 09:00 PM</span>
-                                </div>
-                            </td>
-                            <td class="py-5 px-6 text-slate-600 font-medium">Okahandja HQ</td>
-                            <td class="py-5 px-6">
-                                <span class="px-3 py-1 bg-slate-100 text-slate-500 text-[10px] font-black rounded-full uppercase tracking-wide">Draft</span>
-                            </td>
-                            <td class="py-5 px-6 text-right space-x-2">
-                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit" aria-hidden="true"></i></button>
-                                <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- Pagination -->
-            <div class="p-6 border-t border-slate-100 flex justify-between items-center">
-                <span id="paginationInfo" class="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing 0 of 0 Events</span>
-                <div class="flex gap-2">
-                    <button id="prevPageBtn" class="px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
-                    <button id="nextPageBtn" class="px-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50 disabled:opacity-50">Next</button>
-                </div>
-            </div>
+          <select
+            id="eventFilter"
+            class="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest outline-none">
+            <option value="all">All</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
         </div>
+      </div>
+
+      <p id="pageStatus" class="mb-4 text-sm font-bold text-slate-500">
+        Loading events...
+      </p>
+
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead class="bg-slate-50 border-b border-slate-100">
+              <tr>
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Event
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Date & Time
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Venue
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Speaker
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Status
+                </th>
+
+                <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody id="eventsTableBody" class="text-sm divide-y divide-slate-50"></tbody>
+          </table>
+        </div>
+
+        <div class="p-6 border-t border-slate-100">
+          <span id="eventCount" class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            Showing 0 Events
+          </span>
+        </div>
+      </div>
     </main>
-</div>
+  </div>
 
-<script>
-    let currentPage = 1;
-    const itemsPerPage = 5;
+  <!-- View Modal -->
+  <div id="eventModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full mx-4 relative">
+      <button onclick="closeEventModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
+        <i class="fas fa-times text-xl"></i>
+      </button>
 
-    document.addEventListener('DOMContentLoaded', function() {
-        renderEvents();
-        
-        document.getElementById('eventFilter').addEventListener('change', () => { currentPage = 1; renderEvents(); });
-        document.getElementById('prevPageBtn').addEventListener('click', () => { if(currentPage > 1) { currentPage--; renderEvents(); } });
-        document.getElementById('nextPageBtn').addEventListener('click', () => { currentPage++; renderEvents(); });
+      <div class="mb-6">
+        <p id="modalStatus" class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"></p>
+
+        <h3 id="modalTitle" class="mt-4 text-2xl font-black text-slate-900 uppercase tracking-tight">
+          Event Title
+        </h3>
+
+        <p id="modalSpeaker" class="text-slate-500 text-sm font-bold mt-1"></p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 text-sm">
+        <div>
+          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Date</p>
+          <p id="modalDate" class="font-bold text-slate-700 mt-1"></p>
+        </div>
+
+        <div>
+          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Time</p>
+          <p id="modalTime" class="font-bold text-slate-700 mt-1"></p>
+        </div>
+
+        <div>
+          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Venue</p>
+          <p id="modalVenue" class="font-bold text-slate-700 mt-1"></p>
+        </div>
+
+        <div>
+          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Event ID</p>
+          <p id="modalId" class="font-bold text-slate-700 mt-1 break-all"></p>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <p class="text-slate-400 text-xs font-black uppercase tracking-widest mb-2">Description</p>
+        <div id="modalDescription" class="bg-slate-50 rounded-2xl p-5 text-slate-700 leading-relaxed"></div>
+      </div>
+
+      <div id="modalBannerWrap" class="mt-6 hidden">
+        <p class="text-slate-400 text-xs font-black uppercase tracking-widest mb-2">Banner</p>
+        <a id="modalBanner" href="#" target="_blank" rel="noopener"
+          class="text-blue-600 text-sm font-bold hover:underline">
+          Open Banner
+        </a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <button id="modalPublishBtn"
+          class="px-5 py-3 bg-green-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-green-500">
+          Publish
+        </button>
+
+        <button id="modalDraftBtn"
+          class="px-5 py-3 bg-amber-500 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-amber-400">
+          Draft
+        </button>
+
+        <button id="modalDeleteBtn"
+          class="px-5 py-3 bg-red-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-red-500">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    let allEvents = [];
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadEvents();
+
+      document.getElementById("eventSearch").addEventListener("input", applyFilters);
+      document.getElementById("eventFilter").addEventListener("change", applyFilters);
     });
 
-    function renderEvents() {
-        const tbody = document.getElementById('eventsTableBody');
-        const filter = document.getElementById('eventFilter').value;
-        let events = JSON.parse(localStorage.getItem('ministryEvents')) || [];
+    async function loadEvents() {
+      const status = document.getElementById("pageStatus");
 
-        // Filter events
-        if (filter !== 'all') {
-            events = events.filter(event => event.type === filter);
-        }
+      if (!window.supabaseClient) {
+        status.textContent = "Supabase is not connected.";
+        status.className = "mb-4 text-sm font-bold text-red-600";
+        return;
+      }
 
-        // Pagination Logic
-        const totalItems = events.length;
-        const totalPages = Math.ceil(totalItems / itemsPerPage);
-        
-        // Ensure current page is valid
-        if (currentPage > totalPages) currentPage = totalPages || 1;
-        if (currentPage < 1) currentPage = 1;
+      const { data, error } = await supabaseClient
+        .from("ministry_events")
+        .select("*")
+        .order("event_date", { ascending: true });
 
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedEvents = events.slice(start, end);
+      if (error) {
+        status.textContent = error.message;
+        status.className = "mb-4 text-sm font-bold text-red-600";
+        return;
+      }
 
-        // Update UI
-        document.getElementById('paginationInfo').innerText = `Showing ${paginatedEvents.length > 0 ? start + 1 : 0}-${Math.min(end, totalItems)} of ${totalItems} Events`;
-        document.getElementById('prevPageBtn').disabled = currentPage === 1;
-        document.getElementById('nextPageBtn').disabled = currentPage >= totalPages;
-
-        tbody.innerHTML = ''; // Clear existing rows
-
-        paginatedEvents.forEach(event => {
-            const row = document.createElement('tr');
-            row.className = 'hover:bg-blue-50/30 transition group';
-            row.innerHTML = `
-                <td class="py-5 px-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg">
-                            <i class="fas fa-calendar-plus"></i>
-                        </div>
-                        <div>
-                            <span class="font-bold text-slate-900 block text-base">${event.title}</span>
-                            <span class="text-[10px] text-slate-400 font-bold uppercase">${event.type}</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-5 px-6 text-slate-600">
-                    <div class="flex flex-col">
-                        <span class="font-bold">${event.date}</span>
-                        <span class="text-xs text-slate-400">${event.time}</span>
-                    </div>
-                </td>
-                <td class="py-5 px-6 text-slate-600 font-medium">${event.location}</td>
-                <td class="py-5 px-6">
-                    <span class="px-3 py-1 bg-green-100 text-green-600 text-[10px] font-black rounded-full uppercase tracking-wide">${event.status}</span>
-                </td>
-                <td class="py-5 px-6 text-right space-x-2">
-                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-blue-500 hover:text-white transition" aria-label="Edit" title="Edit"><i class="fas fa-edit"></i></button>
-                    <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-red-500 hover:text-white transition" aria-label="Delete" title="Delete" onclick="deleteEvent(${event.id})"><i class="fas fa-trash"></i></button>
-                </td>
-            `;
-            // Insert new events at the top
-            tbody.insertBefore(row, tbody.firstChild);
-        });
+      allEvents = data || [];
+      status.textContent = "";
+      renderEvents(allEvents);
     }
 
-    function deleteEvent(id) {
-        if(confirm('Are you sure you want to delete this event?')) {
-            let events = JSON.parse(localStorage.getItem('ministryEvents')) || [];
-            events = events.filter(e => e.id !== id);
-            localStorage.setItem('ministryEvents', JSON.stringify(events));
-            location.reload();
-        }
+    function applyFilters() {
+      const search = document.getElementById("eventSearch").value.toLowerCase();
+      const filter = document.getElementById("eventFilter").value;
+
+      let filtered = allEvents.filter((event) =>
+        String(event.title || "").toLowerCase().includes(search) ||
+        String(event.venue || "").toLowerCase().includes(search) ||
+        String(event.speaker || "").toLowerCase().includes(search) ||
+        String(event.description || "").toLowerCase().includes(search)
+      );
+
+      if (filter === "published") {
+        filtered = filtered.filter((event) => event.is_published === true);
+      }
+
+      if (filter === "draft") {
+        filtered = filtered.filter((event) => event.is_published === false);
+      }
+
+      renderEvents(filtered);
     }
-</script>
+
+    function renderEvents(events) {
+      const tbody = document.getElementById("eventsTableBody");
+      const count = document.getElementById("eventCount");
+
+      count.textContent = `Showing ${events.length} Events`;
+
+      if (!events.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-8 px-6 text-center text-slate-400 font-bold">
+              No events found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = events.map((event) => {
+        const published = event.is_published === true;
+        const statusClass = published
+          ? "bg-green-100 text-green-700"
+          : "bg-slate-100 text-slate-500";
+
+        return `
+          <tr class="hover:bg-blue-50/30 transition">
+            <td class="py-5 px-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg">
+                  <i class="fas fa-calendar-days"></i>
+                </div>
+
+                <div>
+                  <span class="font-bold text-slate-900 block text-base">
+                    ${escapeHtml(event.title || "Untitled Event")}
+                  </span>
+
+                  <span class="text-[10px] text-slate-400 font-bold uppercase">
+                    ${shortId(event.id)}
+                  </span>
+                </div>
+              </div>
+            </td>
+
+            <td class="py-5 px-6 text-slate-600">
+              <div class="flex flex-col">
+                <span class="font-bold">
+                  ${formatDate(event.event_date)}
+                </span>
+
+                <span class="text-xs text-slate-400">
+                  ${escapeHtml(event.event_time || "")}
+                </span>
+              </div>
+            </td>
+
+            <td class="py-5 px-6 text-slate-600 font-medium">
+              ${escapeHtml(event.venue || "No venue")}
+            </td>
+
+            <td class="py-5 px-6 text-slate-600 font-medium">
+              ${escapeHtml(event.speaker || "")}
+            </td>
+
+            <td class="py-5 px-6">
+              <span class="px-3 py-1 ${statusClass} text-[10px] font-black rounded-full uppercase tracking-wide">
+                ${published ? "Published" : "Draft"}
+              </span>
+            </td>
+
+            <td class="py-5 px-6 text-right space-x-2 whitespace-nowrap">
+              <button onclick="viewEvent('${event.id}')"
+                class="px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-black hover:bg-blue-500 transition">
+                View
+              </button>
+
+              <button onclick="togglePublish('${event.id}', ${published ? "false" : "true"})"
+                class="px-3 py-2 rounded-lg ${published ? "bg-amber-500 hover:bg-amber-400" : "bg-green-600 hover:bg-green-500"} text-white text-xs font-black transition">
+                ${published ? "Draft" : "Publish"}
+              </button>
+
+              <button onclick="deleteEvent('${event.id}')"
+                class="px-3 py-2 rounded-lg bg-red-600 text-white text-xs font-black hover:bg-red-500 transition">
+                Delete
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function viewEvent(id) {
+      const event = allEvents.find((item) => item.id === id);
+      if (!event) return;
+
+      const published = event.is_published === true;
+      const status = document.getElementById("modalStatus");
+
+      status.textContent = published ? "Published" : "Draft";
+      status.className = published
+        ? "inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-100 text-green-700"
+        : "inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-slate-100 text-slate-500";
+
+      document.getElementById("modalTitle").textContent = event.title || "Untitled Event";
+      document.getElementById("modalSpeaker").textContent = event.speaker ? `Speaker: ${event.speaker}` : "";
+      document.getElementById("modalDate").textContent = formatDate(event.event_date);
+      document.getElementById("modalTime").textContent = event.event_time || "No time";
+      document.getElementById("modalVenue").textContent = event.venue || "No venue";
+      document.getElementById("modalId").textContent = event.id || "";
+      document.getElementById("modalDescription").textContent = event.description || "No description";
+
+      const bannerWrap = document.getElementById("modalBannerWrap");
+      const bannerLink = document.getElementById("modalBanner");
+
+      if (event.banner_url) {
+        bannerWrap.classList.remove("hidden");
+        bannerLink.href = event.banner_url;
+      } else {
+        bannerWrap.classList.add("hidden");
+        bannerLink.href = "#";
+      }
+
+      document.getElementById("modalPublishBtn").onclick = () => togglePublish(event.id, true);
+      document.getElementById("modalDraftBtn").onclick = () => togglePublish(event.id, false);
+      document.getElementById("modalDeleteBtn").onclick = () => deleteEvent(event.id);
+
+      const modal = document.getElementById("eventModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeEventModal() {
+      const modal = document.getElementById("eventModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    async function togglePublish(id, value) {
+      const { error } = await supabaseClient
+        .from("ministry_events")
+        .update({ is_published: value })
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      closeEventModal();
+      await loadEvents();
+    }
+
+    async function deleteEvent(id) {
+      if (!confirm("Delete this event?")) return;
+
+      const { error } = await supabaseClient
+        .from("ministry_events")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      closeEventModal();
+      await loadEvents();
+    }
+
+    function formatDate(dateValue) {
+      if (!dateValue) return "";
+
+      const date = new Date(dateValue + "T00:00:00");
+
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function shortId(id) {
+      return id ? `ID: ${String(id).substring(0, 8)}` : "";
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
 
 </body>
 </html>
