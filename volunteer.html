@@ -3,36 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Volunteer | Sky Grace Jesus Ministry</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
   <style>
-    /* Hide placeholders if header/footer injection fails */
-    #site-header:empty, #site-footer:empty { display: none; }
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
   </style>
 </head>
 
 <body class="bg-white text-slate-900 font-sans antialiased">
 
-  <!-- Header -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
   <main>
 
-    <!-- HERO (same style concept as index.html) -->
     <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
       <div class="absolute inset-0">
         <img
           src="assets/images/hero-elohim.jpg"
-          alt="Sky Grace Jesus Ministry"
+          alt="Sky Grace Jesus Ministry volunteers"
           class="w-full h-full object-cover object-center md:object-[50%_35%]"
         />
       </div>
 
       <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75"></div>
+
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
 
       <div class="relative z-10 container mx-auto px-6 py-16">
@@ -51,93 +53,258 @@
       </div>
     </section>
 
-    <!-- CONTENT (LIGHT) -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-3 gap-12">
 
-          <!-- FORM -->
-          <div class="lg:col-span-2 bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
-            <h3 class="text-2xl font-black uppercase mb-3">Volunteer Application</h3>
+          <div class="lg:col-span-2 bg-white p-8 md:p-10 rounded-[3rem] shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-black uppercase mb-3">
+              Volunteer Application
+            </h2>
+
             <p class="text-slate-600 mb-8">
-              Choose a role and tell us why you want to serve. Our team will review and respond.
+              Choose a ministry area and tell us how you would like to serve. Our team will review your application and contact you.
             </p>
 
-            <form class="space-y-4">
+            <form id="volunteerForm" class="space-y-5">
+
               <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label for="volunteerName" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                    Full Name
+                  </label>
+
+                  <input
+                    id="volunteerName"
+                    type="text"
+                    required
+                    placeholder="Your full name"
+                    class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="volunteerPhone" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                    Phone / WhatsApp
+                  </label>
+
+                  <input
+                    id="volunteerPhone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400 transition"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="volunteerEmail" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                  Email Address
+                </label>
+
                 <input
-                  type="text"
-                  placeholder="Full Name"
-                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400"
-                />
-                <input
-                  type="tel"
-                  placeholder="WhatsApp Number"
-                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400"
+                  id="volunteerEmail"
+                  type="email"
+                  placeholder="Your email address"
+                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400 transition"
                 />
               </div>
 
-              <select class="w-full p-4 bg-slate-50 rounded-2xl text-xs font-bold uppercase border border-slate-200 focus:outline-none focus:border-blue-400">
-                <option>Choose Ministry Role...</option>
-                <option>Media Team (Live Stream)</option>
-                <option>Ushering & Hospitality</option>
-                <option>Theology School Admin</option>
-              </select>
+              <div>
+                <label for="volunteerMinistryArea" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                  Ministry Area
+                </label>
 
-              <textarea
-                placeholder="Why do you want to serve in this department?"
-                class="w-full p-4 bg-slate-50 rounded-2xl h-32 border border-slate-200 focus:outline-none focus:border-blue-400"
-              ></textarea>
+                <select
+                  id="volunteerMinistryArea"
+                  required
+                  class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold border border-slate-200 focus:outline-none focus:border-blue-400 transition">
+                  <option value="">Choose Ministry Role...</option>
+                  <option value="Media Team">Media Team</option>
+                  <option value="Live Stream">Live Stream</option>
+                  <option value="Ushering">Ushering</option>
+                  <option value="Hospitality">Hospitality</option>
+                  <option value="Theology School Administration">Theology School Administration</option>
+                  <option value="Prayer Team">Prayer Team</option>
+                  <option value="Worship Team">Worship Team</option>
+                  <option value="Children Ministry">Children Ministry</option>
+                  <option value="Youth Ministry">Youth Ministry</option>
+                  <option value="Outreach and Evangelism">Outreach and Evangelism</option>
+                  <option value="Cleaning and Custodial">Cleaning and Custodial</option>
+                  <option value="Security">Security</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="volunteerAvailability" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                  Availability
+                </label>
+
+                <select
+                  id="volunteerAvailability"
+                  required
+                  class="w-full p-4 bg-slate-50 rounded-2xl text-sm font-bold border border-slate-200 focus:outline-none focus:border-blue-400 transition">
+                  <option value="">Choose Availability...</option>
+                  <option value="Sunday Services">Sunday Services</option>
+                  <option value="Midweek Services">Midweek Services</option>
+                  <option value="Special Events">Special Events</option>
+                  <option value="Weekdays">Weekdays</option>
+                  <option value="Weekends">Weekends</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="volunteerExperience" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                  Previous Experience
+                </label>
+
+                <textarea
+                  id="volunteerExperience"
+                  rows="4"
+                  placeholder="Tell us about any relevant experience..."
+                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400 transition resize-none"></textarea>
+              </div>
+
+              <div>
+                <label for="volunteerMessage" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                  Why Do You Want to Serve?
+                </label>
+
+                <textarea
+                  id="volunteerMessage"
+                  rows="5"
+                  required
+                  placeholder="Tell us why you want to serve in this department..."
+                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400 transition resize-none"></textarea>
+              </div>
+
+              <label class="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-2xl">
+                <input
+                  id="volunteerAgreement"
+                  type="checkbox"
+                  required
+                  class="mt-1"
+                />
+
+                <span class="text-sm text-slate-700">
+                  I confirm that the information provided is correct and understand that applications are reviewed before approval.
+                </span>
+              </label>
 
               <button
-                type="button"
+                id="volunteerSubmitBtn"
+                type="submit"
                 class="w-full py-4 bg-amber-500 text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition">
+                <i class="fas fa-paper-plane mr-2"></i>
                 Submit for Approval
               </button>
+
+              <p id="volunteerStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
             </form>
           </div>
 
-          <!-- SCHEDULE (NOW LIGHT - no more bg-slate-900) -->
-          <aside class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
-            <h3 class="text-xl font-black uppercase mb-2 text-slate-900">My Schedule</h3>
-            <p class="text-slate-600 text-sm mb-8">
-              Once approved, your serving schedule will appear here.
-            </p>
+          <aside class="space-y-6">
 
-            <div class="space-y-6">
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Sunday Service</p>
-                <p class="mt-1 text-sm font-bold text-slate-900">Role: Media – Camera 2</p>
-              </div>
+            <div class="bg-white p-8 rounded-[3rem] shadow-sm border border-slate-200">
+              <h3 class="text-xl font-black uppercase mb-2 text-slate-900">
+                Serving Opportunities
+              </h3>
 
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Midweek Service</p>
-                <p class="mt-1 text-sm font-bold text-slate-900">Role: Hospitality – Welcome Desk</p>
-              </div>
+              <p class="text-slate-600 text-sm mb-8">
+                There is a place for every gift in the body of Christ.
+              </p>
 
-              <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-amber-700">Tip</p>
-                <p class="mt-1 text-sm text-slate-800">
-                  If you’re unsure where to serve, choose “Hospitality” and we’ll guide you.
-                </p>
+              <div class="space-y-4">
+
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                      <i class="fas fa-video"></i>
+                    </div>
+
+                    <div>
+                      <p class="text-sm font-black text-slate-900">Media Team</p>
+                      <p class="text-xs text-slate-500">Camera, graphics, live stream and sound.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
+                      <i class="fas fa-handshake"></i>
+                    </div>
+
+                    <div>
+                      <p class="text-sm font-black text-slate-900">Hospitality</p>
+                      <p class="text-xs text-slate-500">Welcome and assist ministry visitors.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
+                      <i class="fas fa-hands-praying"></i>
+                    </div>
+
+                    <div>
+                      <p class="text-sm font-black text-slate-900">Prayer Team</p>
+                      <p class="text-xs text-slate-500">Stand in prayer with members and visitors.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                      <i class="fas fa-people-group"></i>
+                    </div>
+
+                    <div>
+                      <p class="text-sm font-black text-slate-900">Outreach</p>
+                      <p class="text-xs text-slate-500">Support evangelism and community missions.</p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
+
+            <div class="rounded-[2rem] border border-amber-200 bg-amber-50 p-6">
+              <p class="text-[10px] font-black uppercase tracking-widest text-amber-700">
+                Need Guidance?
+              </p>
+
+              <p class="mt-2 text-sm text-slate-800">
+                Select “Other” when you are unsure where to serve. Our ministry team will help place you.
+              </p>
+            </div>
+
           </aside>
 
         </div>
       </div>
     </section>
 
-    <!-- Light divider CTA -->
     <section class="py-10 bg-slate-50 border-t border-slate-200">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Need Help?</p>
-            <h3 class="mt-1 text-xl font-black text-slate-900">We can guide you to the right department</h3>
+            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">
+              Need Help?
+            </p>
+
+            <h3 class="mt-1 text-xl font-black text-slate-900">
+              We can guide you to the right department
+            </h3>
           </div>
-          <a href="contact.html"
-             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
+
+          <a
+            href="contact.html"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
             <i class="fas fa-envelope"></i>
             Contact Us
           </a>
@@ -147,9 +314,84 @@
 
   </main>
 
-  <!-- Footer -->
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("volunteerForm");
+
+      if (form) {
+        form.addEventListener("submit", submitVolunteerApplication);
+      }
+    });
+
+    async function submitVolunteerApplication(event) {
+      event.preventDefault();
+
+      const full_name = document.getElementById("volunteerName").value.trim();
+      const phone = document.getElementById("volunteerPhone").value.trim();
+      const email = document.getElementById("volunteerEmail").value.trim();
+      const ministry_area = document.getElementById("volunteerMinistryArea").value;
+      const availability = document.getElementById("volunteerAvailability").value;
+      const experience = document.getElementById("volunteerExperience").value.trim();
+      const message = document.getElementById("volunteerMessage").value.trim();
+
+      const status = document.getElementById("volunteerStatus");
+      const submitButton = document.getElementById("volunteerSubmitBtn");
+
+      if (!window.supabaseClient) {
+        status.textContent = "Supabase is not connected.";
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      if (!full_name || !ministry_area || !availability || !message) {
+        status.textContent = "Please complete all required fields.";
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      status.textContent = "Submitting your application...";
+      status.className = "text-sm font-bold text-blue-600";
+
+      submitButton.disabled = true;
+      submitButton.classList.add("opacity-70", "cursor-not-allowed");
+
+      const { error } = await supabaseClient
+        .from("volunteer_applications")
+        .insert([
+          {
+            full_name,
+            email,
+            phone,
+            ministry_area,
+            availability,
+            experience,
+            message,
+            status: "Pending"
+          }
+        ]);
+
+      submitButton.disabled = false;
+      submitButton.classList.remove("opacity-70", "cursor-not-allowed");
+
+      if (error) {
+        console.error("Volunteer application error:", error);
+        status.textContent = error.message;
+        status.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      status.textContent = "Application submitted successfully. Our ministry team will contact you.";
+      status.className = "text-sm font-bold text-green-600";
+
+      document.getElementById("volunteerForm").reset();
+    }
+  </script>
 
 </body>
 </html>
