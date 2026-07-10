@@ -24,11 +24,9 @@
   <div class="flex-1 flex flex-col min-w-0">
 
     <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-6 md:px-8 sticky top-0 z-30">
-      <div>
-        <h1 class="font-bold text-slate-800 text-lg">
-          Volunteer Management
-        </h1>
-      </div>
+      <h1 class="font-bold text-slate-800 text-lg">
+        Volunteer Management
+      </h1>
 
       <a
         href="volunteer.html"
@@ -53,7 +51,7 @@
           </h2>
 
           <p class="text-slate-500 text-sm mt-2">
-            Review, approve, reject, contact, and manage volunteer applications.
+            Review, approve, assign roles, create schedules, contact, and manage volunteers.
           </p>
         </div>
 
@@ -95,9 +93,7 @@
             Total Applications
           </p>
 
-          <p id="totalCount" class="text-3xl font-black text-slate-900 mt-2">
-            0
-          </p>
+          <p id="totalCount" class="text-3xl font-black text-slate-900 mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
@@ -109,9 +105,7 @@
             Pending
           </p>
 
-          <p id="pendingCount" class="text-3xl font-black text-slate-900 mt-2">
-            0
-          </p>
+          <p id="pendingCount" class="text-3xl font-black text-slate-900 mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
@@ -123,9 +117,7 @@
             Approved
           </p>
 
-          <p id="approvedCount" class="text-3xl font-black text-slate-900 mt-2">
-            0
-          </p>
+          <p id="approvedCount" class="text-3xl font-black text-slate-900 mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
@@ -137,9 +129,7 @@
             Rejected
           </p>
 
-          <p id="rejectedCount" class="text-3xl font-black text-slate-900 mt-2">
-            0
-          </p>
+          <p id="rejectedCount" class="text-3xl font-black text-slate-900 mt-2">0</p>
         </div>
 
       </section>
@@ -148,7 +138,6 @@
         Loading volunteer applications...
       </p>
 
-      <!-- Volunteer List -->
       <section id="volunteerList" class="space-y-5"></section>
 
       <p
@@ -160,12 +149,12 @@
     </main>
   </div>
 
-  <!-- View Volunteer Modal -->
+  <!-- Volunteer Details Modal -->
   <div
     id="volunteerModal"
     class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
 
-    <div class="bg-white rounded-[2rem] shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto relative">
 
       <button
         type="button"
@@ -205,40 +194,79 @@
         <div class="grid md:grid-cols-2 gap-6 mt-8 text-sm">
 
           <div>
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Email
-            </p>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Email</p>
             <p id="modalEmail" class="font-bold text-slate-700 mt-1 break-words"></p>
           </div>
 
           <div>
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Phone
-            </p>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone</p>
             <p id="modalPhone" class="font-bold text-slate-700 mt-1"></p>
           </div>
 
           <div>
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Availability
-            </p>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Availability</p>
             <p id="modalAvailability" class="font-bold text-slate-700 mt-1"></p>
           </div>
 
           <div>
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Application Date
-            </p>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Application Date</p>
             <p id="modalDate" class="font-bold text-slate-700 mt-1"></p>
           </div>
 
           <div class="md:col-span-2">
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Application ID
-            </p>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Application ID</p>
             <p id="modalId" class="font-bold text-slate-700 mt-1 break-all"></p>
           </div>
 
+        </div>
+
+        <!-- Assignment Summary -->
+        <div class="mt-8 bg-blue-50 border border-blue-100 rounded-3xl p-6">
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-widest text-blue-500">
+                Current Assignment
+              </p>
+
+              <h4 class="font-black text-slate-900 mt-1">
+                Volunteer Ministry Placement
+              </h4>
+            </div>
+
+            <button
+              id="openAssignmentBtn"
+              type="button"
+              class="px-4 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase hover:bg-blue-500 transition">
+              <i class="fas fa-user-tag mr-2"></i>
+              Assign
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Assigned Role</p>
+              <p id="modalAssignedRole" class="font-bold text-slate-700 mt-1">Not assigned</p>
+            </div>
+
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Team Leader</p>
+              <p id="modalTeamLeader" class="font-bold text-slate-700 mt-1">Not assigned</p>
+            </div>
+
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Approved Date</p>
+              <p id="modalApprovedAt" class="font-bold text-slate-700 mt-1">Not approved</p>
+            </div>
+
+          </div>
+
+          <div class="mt-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Assignment Notes</p>
+            <p id="modalAssignmentNotes" class="text-slate-700 mt-2 leading-relaxed">
+              No assignment notes.
+            </p>
+          </div>
         </div>
 
         <div class="mt-7">
@@ -261,6 +289,37 @@
             id="modalMessage"
             class="bg-slate-50 border border-slate-100 rounded-2xl p-5 text-slate-700 leading-relaxed">
           </div>
+        </div>
+
+        <!-- Schedule Area -->
+        <div class="mt-8 border-t border-slate-100 pt-8">
+
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Serving Schedule
+              </p>
+
+              <h4 class="text-xl font-black text-slate-900 mt-1">
+                Upcoming Assignments
+              </h4>
+            </div>
+
+            <button
+              id="openScheduleBtn"
+              type="button"
+              class="px-4 py-2.5 bg-purple-600 text-white rounded-xl text-xs font-black uppercase hover:bg-purple-500 transition">
+              <i class="fas fa-calendar-plus mr-2"></i>
+              Add Schedule
+            </button>
+          </div>
+
+          <div id="modalScheduleList" class="space-y-4">
+            <p class="text-sm text-slate-400 font-bold">
+              No schedules loaded.
+            </p>
+          </div>
+
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
@@ -321,12 +380,220 @@
     </div>
   </div>
 
+  <!-- Assignment Modal -->
+  <div
+    id="assignmentModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
+
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-xl w-full p-8 relative">
+
+      <button
+        type="button"
+        onclick="closeAssignmentModal()"
+        class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+        Volunteer Assignment
+      </p>
+
+      <h3 class="text-2xl font-black text-slate-900 mt-2">
+        Assign Ministry Role
+      </h3>
+
+      <form id="assignmentForm" class="space-y-5 mt-7">
+
+        <div>
+          <label for="assignmentRole" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Assigned Role
+          </label>
+
+          <input
+            id="assignmentRole"
+            type="text"
+            required
+            placeholder="Example: Camera Operator"
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label for="assignmentLeader" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Team Leader
+          </label>
+
+          <input
+            id="assignmentLeader"
+            type="text"
+            placeholder="Example: Media Director"
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label for="assignmentNotes" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Assignment Notes
+          </label>
+
+          <textarea
+            id="assignmentNotes"
+            rows="4"
+            placeholder="Add training instructions or internal notes..."
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 resize-none"></textarea>
+        </div>
+
+        <button
+          id="saveAssignmentBtn"
+          type="submit"
+          class="w-full py-4 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition">
+          Save Assignment
+        </button>
+
+        <p id="assignmentStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Schedule Modal -->
+  <div
+    id="scheduleModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
+
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-2xl w-full p-8 relative max-h-[92vh] overflow-y-auto">
+
+      <button
+        type="button"
+        onclick="closeScheduleModal()"
+        class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <p class="text-[10px] font-black uppercase tracking-[0.25em] text-purple-600">
+        Volunteer Schedule
+      </p>
+
+      <h3 class="text-2xl font-black text-slate-900 mt-2">
+        Add Serving Assignment
+      </h3>
+
+      <form id="scheduleForm" class="space-y-5 mt-7">
+
+        <div>
+          <label for="scheduleTitle" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Service or Event Title
+          </label>
+
+          <input
+            id="scheduleTitle"
+            type="text"
+            required
+            placeholder="Example: Sunday Morning Service"
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+          />
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+
+          <div>
+            <label for="scheduleDate" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+              Date
+            </label>
+
+            <input
+              id="scheduleDate"
+              type="date"
+              required
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+
+          <div>
+            <label for="scheduleStartTime" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+              Start Time
+            </label>
+
+            <input
+              id="scheduleStartTime"
+              type="time"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+
+          <div>
+            <label for="scheduleEndTime" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+              End Time
+            </label>
+
+            <input
+              id="scheduleEndTime"
+              type="time"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+
+        </div>
+
+        <div>
+          <label for="scheduleVenue" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Venue
+          </label>
+
+          <input
+            id="scheduleVenue"
+            type="text"
+            placeholder="Example: Main Auditorium"
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+          />
+        </div>
+
+        <div>
+          <label for="scheduleTask" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Assigned Task
+          </label>
+
+          <input
+            id="scheduleTask"
+            type="text"
+            required
+            placeholder="Example: Camera 2"
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500"
+          />
+        </div>
+
+        <div>
+          <label for="scheduleNotes" class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+            Notes
+          </label>
+
+          <textarea
+            id="scheduleNotes"
+            rows="4"
+            placeholder="Add reporting time, dress code, or instructions..."
+            class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 resize-none"></textarea>
+        </div>
+
+        <button
+          id="saveScheduleBtn"
+          type="submit"
+          class="w-full py-4 bg-purple-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-purple-500 transition">
+          Save Schedule
+        </button>
+
+        <p id="scheduleStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
+
+      </form>
+    </div>
+  </div>
+
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
 
   <script>
     let allVolunteers = [];
+    let selectedVolunteer = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadVolunteers();
@@ -338,6 +605,17 @@
       document
         .getElementById("volunteerFilter")
         .addEventListener("change", applyVolunteerFilters);
+
+      document
+        .getElementById("assignmentForm")
+        .addEventListener("submit", saveVolunteerAssignment);
+
+      document
+        .getElementById("scheduleForm")
+        .addEventListener("submit", saveVolunteerSchedule);
+
+      document.getElementById("openAssignmentBtn").addEventListener("click", openAssignmentModal);
+      document.getElementById("openScheduleBtn").addEventListener("click", openScheduleModal);
     });
 
     async function loadVolunteers() {
@@ -359,14 +637,12 @@
 
       if (error) {
         console.error("Volunteer loading error:", error);
-
         pageStatus.textContent = error.message;
         pageStatus.className = "mb-5 text-sm font-bold text-red-600";
         return;
       }
 
       allVolunteers = data || [];
-
       pageStatus.textContent = "";
 
       updateStatistics();
@@ -388,16 +664,15 @@
           String(volunteer.email || "").toLowerCase().includes(searchTerm) ||
           String(volunteer.phone || "").toLowerCase().includes(searchTerm) ||
           String(volunteer.ministry_area || "").toLowerCase().includes(searchTerm) ||
-          String(volunteer.availability || "").toLowerCase().includes(searchTerm) ||
-          String(volunteer.experience || "").toLowerCase().includes(searchTerm) ||
+          String(volunteer.assigned_role || "").toLowerCase().includes(searchTerm) ||
+          String(volunteer.team_leader || "").toLowerCase().includes(searchTerm) ||
           String(volunteer.message || "").toLowerCase().includes(searchTerm)
         );
       });
 
       if (statusFilter !== "all") {
         filtered = filtered.filter(
-          (volunteer) =>
-            normalizeStatus(volunteer.status) === statusFilter
+          (volunteer) => normalizeStatus(volunteer.status) === statusFilter
         );
       }
 
@@ -416,10 +691,7 @@
             <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-5">
               <i class="fas fa-users text-xl"></i>
             </div>
-
-            <p class="font-black text-slate-700">
-              No volunteer applications found.
-            </p>
+            <p class="font-black text-slate-700">No volunteer applications found.</p>
           </div>
         `;
         return;
@@ -427,7 +699,6 @@
 
       list.innerHTML = volunteers.map((volunteer) => {
         const status = normalizeStatus(volunteer.status);
-        const badgeClass = getStatusBadgeClass(status);
 
         return `
           <article class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 hover:shadow-lg transition">
@@ -446,7 +717,7 @@
                       ${escapeHtml(volunteer.full_name || "No Name")}
                     </h3>
 
-                    <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${badgeClass}">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${getStatusBadgeClass(status)}">
                       ${escapeHtml(status)}
                     </span>
 
@@ -456,6 +727,13 @@
                     Applied for:
                     <span class="font-bold text-blue-600">
                       ${escapeHtml(volunteer.ministry_area || "No ministry area")}
+                    </span>
+                  </p>
+
+                  <p class="text-sm text-slate-500 mt-1">
+                    Assigned role:
+                    <span class="font-bold text-slate-700">
+                      ${escapeHtml(volunteer.assigned_role || "Not assigned")}
                     </span>
                   </p>
 
@@ -479,6 +757,13 @@
                     onclick="viewVolunteer('${volunteer.id}')"
                     class="px-4 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase hover:bg-blue-500 transition">
                     View
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="openAssignmentForVolunteer('${volunteer.id}')"
+                    class="px-4 py-2.5 bg-purple-600 text-white rounded-xl text-xs font-black uppercase hover:bg-purple-500 transition">
+                    Assign
                   </button>
 
                   <button
@@ -511,43 +796,33 @@
       }).join("");
     }
 
-    function viewVolunteer(id) {
+    async function viewVolunteer(id) {
       const volunteer = allVolunteers.find((item) => item.id === id);
-
       if (!volunteer) return;
+
+      selectedVolunteer = volunteer;
+
+      document.getElementById("modalInitials").textContent = getInitials(volunteer.full_name);
+      document.getElementById("modalName").textContent = volunteer.full_name || "No Name";
+      document.getElementById("modalMinistryArea").textContent = volunteer.ministry_area || "No ministry area";
+      document.getElementById("modalEmail").textContent = volunteer.email || "No email provided";
+      document.getElementById("modalPhone").textContent = volunteer.phone || "No phone provided";
+      document.getElementById("modalAvailability").textContent = volunteer.availability || "Not specified";
+      document.getElementById("modalDate").textContent = formatDate(volunteer.created_at);
+      document.getElementById("modalId").textContent = volunteer.id || "";
+      document.getElementById("modalExperience").textContent = volunteer.experience || "No previous experience provided.";
+      document.getElementById("modalMessage").textContent = volunteer.message || "No application message provided.";
+
+      document.getElementById("modalAssignedRole").textContent = volunteer.assigned_role || "Not assigned";
+      document.getElementById("modalTeamLeader").textContent = volunteer.team_leader || "Not assigned";
+      document.getElementById("modalApprovedAt").textContent = volunteer.approved_at
+        ? formatDate(volunteer.approved_at)
+        : "Not approved";
+      document.getElementById("modalAssignmentNotes").textContent =
+        volunteer.assignment_notes || "No assignment notes.";
 
       const status = normalizeStatus(volunteer.status);
       const statusBadge = document.getElementById("modalStatus");
-
-      document.getElementById("modalInitials").textContent =
-        getInitials(volunteer.full_name);
-
-      document.getElementById("modalName").textContent =
-        volunteer.full_name || "No Name";
-
-      document.getElementById("modalMinistryArea").textContent =
-        volunteer.ministry_area || "No ministry area";
-
-      document.getElementById("modalEmail").textContent =
-        volunteer.email || "No email provided";
-
-      document.getElementById("modalPhone").textContent =
-        volunteer.phone || "No phone provided";
-
-      document.getElementById("modalAvailability").textContent =
-        volunteer.availability || "Not specified";
-
-      document.getElementById("modalDate").textContent =
-        formatDate(volunteer.created_at);
-
-      document.getElementById("modalId").textContent =
-        volunteer.id || "";
-
-      document.getElementById("modalExperience").textContent =
-        volunteer.experience || "No previous experience provided.";
-
-      document.getElementById("modalMessage").textContent =
-        volunteer.message || "No application message provided.";
 
       statusBadge.textContent = status;
       statusBadge.className =
@@ -565,31 +840,9 @@
       document.getElementById("modalDeleteBtn").onclick = () =>
         deleteVolunteer(volunteer.id);
 
-      const emailLink = document.getElementById("modalEmailLink");
+      configureContactLinks(volunteer);
 
-      if (volunteer.email) {
-        emailLink.href =
-          `mailto:${encodeURIComponent(volunteer.email)}?subject=${encodeURIComponent("Sky Grace Ministry Volunteer Application")}`;
-        emailLink.classList.remove("opacity-50", "pointer-events-none");
-      } else {
-        emailLink.href = "#";
-        emailLink.classList.add("opacity-50", "pointer-events-none");
-      }
-
-      const whatsappLink = document.getElementById("modalWhatsAppLink");
-      const cleanPhone = String(volunteer.phone || "").replace(/\D/g, "");
-
-      if (cleanPhone) {
-        whatsappLink.href =
-          `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-            `Hello ${volunteer.full_name || ""}, we are contacting you regarding your Sky Grace Ministry volunteer application.`
-          )}`;
-
-        whatsappLink.classList.remove("opacity-50", "pointer-events-none");
-      } else {
-        whatsappLink.href = "#";
-        whatsappLink.classList.add("opacity-50", "pointer-events-none");
-      }
+      await loadVolunteerSchedules(volunteer.id);
 
       const modal = document.getElementById("volunteerModal");
       modal.classList.remove("hidden");
@@ -598,15 +851,276 @@
 
     function closeVolunteerModal() {
       const modal = document.getElementById("volunteerModal");
-
       modal.classList.add("hidden");
       modal.classList.remove("flex");
     }
 
-    async function updateVolunteerStatus(id, newStatus) {
+    function openAssignmentForVolunteer(id) {
+      const volunteer = allVolunteers.find((item) => item.id === id);
+      if (!volunteer) return;
+
+      selectedVolunteer = volunteer;
+      openAssignmentModal();
+    }
+
+    function openAssignmentModal() {
+      if (!selectedVolunteer) return;
+
+      document.getElementById("assignmentRole").value =
+        selectedVolunteer.assigned_role || "";
+
+      document.getElementById("assignmentLeader").value =
+        selectedVolunteer.team_leader || "";
+
+      document.getElementById("assignmentNotes").value =
+        selectedVolunteer.assignment_notes || "";
+
+      document.getElementById("assignmentStatus").textContent = "";
+
+      const modal = document.getElementById("assignmentModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeAssignmentModal() {
+      const modal = document.getElementById("assignmentModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    async function saveVolunteerAssignment(event) {
+      event.preventDefault();
+
+      if (!selectedVolunteer) return;
+
+      const assigned_role = document.getElementById("assignmentRole").value.trim();
+      const team_leader = document.getElementById("assignmentLeader").value.trim();
+      const assignment_notes = document.getElementById("assignmentNotes").value.trim();
+
+      const statusElement = document.getElementById("assignmentStatus");
+      const button = document.getElementById("saveAssignmentBtn");
+
+      statusElement.textContent = "Saving assignment...";
+      statusElement.className = "text-sm font-bold text-blue-600";
+
+      button.disabled = true;
+      button.classList.add("opacity-70");
+
       const { error } = await supabaseClient
         .from("volunteer_applications")
-        .update({ status: newStatus })
+        .update({
+          assigned_role,
+          team_leader,
+          assignment_notes,
+          status: "Approved",
+          approved_at: selectedVolunteer.approved_at || new Date().toISOString()
+        })
+        .eq("id", selectedVolunteer.id);
+
+      button.disabled = false;
+      button.classList.remove("opacity-70");
+
+      if (error) {
+        console.error("Assignment update error:", error);
+        statusElement.textContent = error.message;
+        statusElement.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      statusElement.textContent = "Assignment saved successfully.";
+      statusElement.className = "text-sm font-bold text-green-600";
+
+      closeAssignmentModal();
+      await loadVolunteers();
+
+      const refreshed = allVolunteers.find((item) => item.id === selectedVolunteer.id);
+
+      if (refreshed) {
+        await viewVolunteer(refreshed.id);
+      }
+    }
+
+    function openScheduleModal() {
+      if (!selectedVolunteer) return;
+
+      document.getElementById("scheduleForm").reset();
+      document.getElementById("scheduleStatus").textContent = "";
+
+      const modal = document.getElementById("scheduleModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeScheduleModal() {
+      const modal = document.getElementById("scheduleModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    async function saveVolunteerSchedule(event) {
+      event.preventDefault();
+
+      if (!selectedVolunteer) return;
+
+      const service_title = document.getElementById("scheduleTitle").value.trim();
+      const service_date = document.getElementById("scheduleDate").value;
+      const start_time = document.getElementById("scheduleStartTime").value || null;
+      const end_time = document.getElementById("scheduleEndTime").value || null;
+      const venue = document.getElementById("scheduleVenue").value.trim();
+      const assigned_task = document.getElementById("scheduleTask").value.trim();
+      const notes = document.getElementById("scheduleNotes").value.trim();
+
+      const statusElement = document.getElementById("scheduleStatus");
+      const button = document.getElementById("saveScheduleBtn");
+
+      statusElement.textContent = "Saving schedule...";
+      statusElement.className = "text-sm font-bold text-blue-600";
+
+      button.disabled = true;
+      button.classList.add("opacity-70");
+
+      const { error } = await supabaseClient
+        .from("volunteer_schedules")
+        .insert([
+          {
+            volunteer_id: selectedVolunteer.id,
+            service_title,
+            service_date,
+            start_time,
+            end_time,
+            venue,
+            assigned_task,
+            notes,
+            status: "Scheduled"
+          }
+        ]);
+
+      button.disabled = false;
+      button.classList.remove("opacity-70");
+
+      if (error) {
+        console.error("Schedule insert error:", error);
+        statusElement.textContent = error.message;
+        statusElement.className = "text-sm font-bold text-red-600";
+        return;
+      }
+
+      statusElement.textContent = "Schedule saved successfully.";
+      statusElement.className = "text-sm font-bold text-green-600";
+
+      closeScheduleModal();
+      await loadVolunteerSchedules(selectedVolunteer.id);
+    }
+
+    async function loadVolunteerSchedules(volunteerId) {
+      const list = document.getElementById("modalScheduleList");
+
+      list.innerHTML = `
+        <p class="text-sm text-slate-400 font-bold">
+          Loading schedules...
+        </p>
+      `;
+
+      const { data, error } = await supabaseClient
+        .from("volunteer_schedules")
+        .select("*")
+        .eq("volunteer_id", volunteerId)
+        .order("service_date", { ascending: true });
+
+      if (error) {
+        list.innerHTML = `
+          <p class="text-sm text-red-600 font-bold">
+            ${escapeHtml(error.message)}
+          </p>
+        `;
+        return;
+      }
+
+      const schedules = data || [];
+
+      if (!schedules.length) {
+        list.innerHTML = `
+          <div class="bg-slate-50 rounded-2xl p-5 text-slate-400 font-bold text-sm">
+            No serving schedules created yet.
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = schedules.map((schedule) => `
+        <div class="border border-slate-200 rounded-2xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+          <div>
+            <h5 class="font-black text-slate-900">
+              ${escapeHtml(schedule.service_title || "Serving Assignment")}
+            </h5>
+
+            <p class="text-sm text-blue-600 font-bold mt-1">
+              ${escapeHtml(schedule.assigned_task || "No task")}
+            </p>
+
+            <p class="text-xs text-slate-500 mt-2">
+              <i class="fas fa-calendar mr-1"></i>
+              ${formatSimpleDate(schedule.service_date)}
+              ${schedule.start_time ? ` • ${escapeHtml(schedule.start_time)}` : ""}
+              ${schedule.end_time ? ` - ${escapeHtml(schedule.end_time)}` : ""}
+            </p>
+
+            <p class="text-xs text-slate-500 mt-1">
+              <i class="fas fa-location-dot mr-1"></i>
+              ${escapeHtml(schedule.venue || "No venue")}
+            </p>
+
+            ${
+              schedule.notes
+                ? `<p class="text-xs text-slate-500 mt-2">${escapeHtml(schedule.notes)}</p>`
+                : ""
+            }
+          </div>
+
+          <button
+            type="button"
+            onclick="deleteSchedule('${schedule.id}')"
+            class="px-4 py-2.5 bg-red-600 text-white rounded-xl text-xs font-black uppercase hover:bg-red-500 transition">
+            Delete
+          </button>
+
+        </div>
+      `).join("");
+    }
+
+    async function deleteSchedule(id) {
+      if (!confirm("Delete this volunteer schedule?")) return;
+
+      const { error } = await supabaseClient
+        .from("volunteer_schedules")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      if (selectedVolunteer) {
+        await loadVolunteerSchedules(selectedVolunteer.id);
+      }
+    }
+
+    async function updateVolunteerStatus(id, newStatus) {
+      const updateData = { status: newStatus };
+
+      if (newStatus === "Approved") {
+        updateData.approved_at = new Date().toISOString();
+      }
+
+      if (newStatus !== "Approved") {
+        updateData.approved_at = null;
+      }
+
+      const { error } = await supabaseClient
+        .from("volunteer_applications")
+        .update(updateData)
         .eq("id", id);
 
       if (error) {
@@ -639,6 +1153,35 @@
       closeVolunteerModal();
       await loadVolunteers();
       applyVolunteerFilters();
+    }
+
+    function configureContactLinks(volunteer) {
+      const emailLink = document.getElementById("modalEmailLink");
+
+      if (volunteer.email) {
+        emailLink.href =
+          `mailto:${encodeURIComponent(volunteer.email)}?subject=${encodeURIComponent("Sky Grace Ministry Volunteer Assignment")}`;
+
+        emailLink.classList.remove("opacity-50", "pointer-events-none");
+      } else {
+        emailLink.href = "#";
+        emailLink.classList.add("opacity-50", "pointer-events-none");
+      }
+
+      const whatsappLink = document.getElementById("modalWhatsAppLink");
+      const cleanPhone = String(volunteer.phone || "").replace(/\D/g, "");
+
+      if (cleanPhone) {
+        whatsappLink.href =
+          `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+            `Hello ${volunteer.full_name || ""}, we are contacting you regarding your Sky Grace Ministry volunteer assignment.`
+          )}`;
+
+        whatsappLink.classList.remove("opacity-50", "pointer-events-none");
+      } else {
+        whatsappLink.href = "#";
+        whatsappLink.classList.add("opacity-50", "pointer-events-none");
+      }
     }
 
     function updateStatistics() {
@@ -709,6 +1252,18 @@
         day: "numeric",
         hour: "2-digit",
         minute: "2-digit"
+      });
+    }
+
+    function formatSimpleDate(value) {
+      if (!value) return "No date";
+
+      const date = new Date(`${value}T00:00:00`);
+
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
       });
     }
 
