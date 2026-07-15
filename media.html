@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sky Grace Media | Sky Grace Jesus Ministry</title>
+  <meta
+    name="description"
+    content="Explore published ministry media from Sky Grace Jesus Ministry including worship moments, sermons, events, prayer, announcements, and ministry highlights."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.08), transparent 32%),
+        #f8fafc;
+    }
+
+    .media-card {
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.14);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .media-card:hover .media-visual {
+      transform: scale(1.035);
+    }
+
+    .media-visual {
+      transition: transform 350ms ease;
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.34), transparent 30%),
+        radial-gradient(circle at 75% 35%, rgba(245, 158, 11, 0.24), transparent 28%);
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="text-slate-900 font-sans antialiased">
+
+  <!-- Shared Public Header -->
+  <div id="site-header"></div>
+  <script src="assets/js/header.js" defer></script>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="relative min-h-[68vh] overflow-hidden bg-slate-950 flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Sky Grace Jesus Ministry media"
+          class="w-full h-full object-cover object-center opacity-45"
+        />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60"></div>
+      <div class="absolute inset-0 hero-glow"></div>
+
+      <div class="relative z-10 container mx-auto px-6 py-24">
+        <div class="max-w-4xl">
+          <p class="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.35em] text-blue-300">
+            <span class="w-8 h-px bg-blue-400"></span>
+            Sky Grace Media
+          </p>
+
+          <h1 class="mt-6 text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">
+            BEHOLD WHAT
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-amber-300">
+              GOD IS DOING
+            </span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-base md:text-lg text-slate-200 leading-relaxed">
+            Explore moments of worship, revelation, prayer, fellowship and the move of God
+            through Sky Grace Jesus Ministry.
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <a
+              href="#media-library"
+              class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition shadow-xl shadow-blue-950/40"
+            >
+              <i class="fas fa-photo-film"></i>
+              Explore Media
+            </a>
+
+            <a
+              href="sermons.html"
+              class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-white/10 border border-white/20 text-white font-black uppercase text-[11px] tracking-widest hover:bg-white hover:text-slate-950 transition backdrop-blur-sm"
+            >
+              <i class="fas fa-microphone-lines"></i>
+              Watch Sermons
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-50 to-transparent"></div>
+    </section>
+
+    <!-- MEDIA LIBRARY -->
+    <section id="media-library" class="relative py-20 md:py-24">
+      <div class="container mx-auto px-6">
+
+        <div class="max-w-7xl mx-auto">
+
+          <div class="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-8 mb-12">
+            <div class="max-w-3xl">
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+                Ministry Moments
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight text-slate-950">
+                The Sky Grace Media Library
+              </h2>
+
+              <p class="mt-5 text-slate-600 leading-relaxed">
+                Published media from services, conferences, prayer gatherings, ministry events,
+                sermons, testimonies, and special announcements.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+
+                <input
+                  id="mediaSearch"
+                  type="text"
+                  placeholder="Search media..."
+                  class="w-full sm:w-72 bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-4 rounded-2xl text-sm font-bold focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm"
+                />
+              </div>
+
+              <select
+                id="mediaFilter"
+                aria-label="Filter media"
+                class="bg-white border border-slate-200 text-slate-700 px-5 py-4 rounded-2xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500 shadow-sm"
+              >
+                <option value="all">All Media</option>
+                <option value="image">Images</option>
+                <option value="video">Videos</option>
+                <option value="audio">Audio</option>
+                <option value="pdf">PDF</option>
+                <option value="sermon">Sermons</option>
+                <option value="announcement">Announcements</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-4 mb-10">
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                <i class="fas fa-photo-film"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Published Media
+              </p>
+
+              <p id="mediaTotalStat" class="mt-2 text-3xl font-black text-slate-950">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                <i class="fas fa-layer-group"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Categories
+              </p>
+
+              <p id="categoryTotalStat" class="mt-2 text-3xl font-black text-slate-950">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center">
+                <i class="fas fa-earth-africa"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Public Library
+              </p>
+
+              <p class="mt-2 text-lg font-black text-slate-950">
+                Updated by Ministry Admin
+              </p>
+            </div>
+          </div>
+
+          <div id="mediaStatus" class="mb-6 text-sm font-bold text-slate-500">
+            Loading Sky Grace media...
+          </div>
+
+          <div
+            id="mediaGrid"
+            class="grid sm:grid-cols-2 xl:grid-cols-3 gap-7"
+          >
+            <div class="sm:col-span-2 xl:col-span-3 py-20 text-center text-slate-400">
+              <i class="fas fa-circle-notch fa-spin text-3xl"></i>
+              <p class="mt-4 font-bold">Loading media...</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pb-20 md:pb-24">
+      <div class="container mx-auto px-6">
+        <div class="max-w-7xl mx-auto relative overflow-hidden rounded-[2.5rem] bg-slate-950 text-white p-8 md:p-14">
+          <div class="absolute inset-0 hero-glow opacity-70"></div>
+
+          <div class="relative z-10 grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+                Stay Connected
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+                Keep Following the Move of God
+              </h2>
+
+              <p class="mt-5 max-w-2xl text-slate-300 leading-relaxed">
+                Watch ministry messages, see upcoming gatherings, submit prayer requests,
+                and stay connected with Sky Grace Jesus Ministry.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+              <a
+                href="sermons.html"
+                class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition"
+              >
+                <i class="fas fa-play"></i>
+                Sermons
+              </a>
+
+              <a
+                href="prayer-wall.html"
+                class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/10 border border-white/15 text-white font-black uppercase text-[11px] tracking-widest hover:bg-white hover:text-slate-950 transition"
+              >
+                <i class="fas fa-hands-praying"></i>
+                Prayer Wall
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PREVIEW MODAL -->
+  <div
+    id="previewModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/85 backdrop-blur-md p-4"
+  >
+    <div class="bg-white rounded-[2rem] max-w-5xl w-full max-h-[92vh] overflow-hidden shadow-2xl">
+      <div class="p-5 md:p-6 border-b border-slate-200 flex items-center justify-between gap-5">
+        <div class="min-w-0">
+          <p class="text-[9px] font-black uppercase tracking-[0.3em] text-blue-600">
+            Sky Grace Media
+          </p>
+
+          <h3
+            id="previewTitle"
+            class="mt-1 font-black text-lg md:text-xl truncate"
+          >
+            Media Preview
+          </h3>
+        </div>
+
+        <button
+          id="closePreviewBtn"
+          type="button"
+          class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition flex-shrink-0"
+          aria-label="Close media preview"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div
+        id="previewContent"
+        class="p-5 md:p-8 max-h-[78vh] overflow-y-auto"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Shared Public Footer -->
+  <div id="site-footer"></div>
+  <script src="assets/js/footer.js" defer></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    let allPublishedMedia = [];
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      document.getElementById("mediaSearch").addEventListener("input", applyMediaFilters);
+      document.getElementById("mediaFilter").addEventListener("change", applyMediaFilters);
+
+      document.getElementById("closePreviewBtn").addEventListener("click", closeMediaPreview);
+
+      document.getElementById("previewModal").addEventListener("click", (event) => {
+        if (event.target.id === "previewModal") {
+          closeMediaPreview();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMediaPreview();
+        }
+      });
+
+      await loadPublishedMedia();
+    });
+
+    async function loadPublishedMedia() {
+      const mediaGrid = document.getElementById("mediaGrid");
+      const mediaStatus = document.getElementById("mediaStatus");
+
+      if (!window.supabaseClient) {
+        mediaStatus.textContent = "Media is temporarily unavailable.";
+        mediaStatus.className = "mb-6 text-sm font-bold text-red-600";
+
+        mediaGrid.innerHTML = `
+          <div class="sm:col-span-2 xl:col-span-3 bg-white border border-red-100 rounded-3xl p-10 text-center">
+            <i class="fas fa-triangle-exclamation text-3xl text-red-500"></i>
+            <p class="mt-4 font-black text-slate-900">Unable to connect to the media library.</p>
+          </div>
+        `;
+
+        return;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("media_items")
+        .select("*")
+        .eq("is_published", true)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Public media load error:", error);
+
+        mediaStatus.textContent = "Unable to load published media.";
+        mediaStatus.className = "mb-6 text-sm font-bold text-red-600";
+
+        mediaGrid.innerHTML = `
+          <div class="sm:col-span-2 xl:col-span-3 bg-white border border-red-100 rounded-3xl p-10 text-center">
+            <i class="fas fa-triangle-exclamation text-3xl text-red-500"></i>
+            <p class="mt-4 font-black text-slate-900">${escapeHtml(error.message)}</p>
+          </div>
+        `;
+
+        return;
+      }
+
+      allPublishedMedia = data || [];
+
+      updatePublicMediaStats();
+
+      mediaStatus.textContent = `${allPublishedMedia.length} published media item(s)`;
+      mediaStatus.className = "mb-6 text-sm font-bold text-slate-500";
+
+      applyMediaFilters();
+    }
+
+    function updatePublicMediaStats() {
+      const categories = new Set(
+        allPublishedMedia
+          .map((item) => String(item.category || "general").trim().toLowerCase())
+          .filter(Boolean)
+      );
+
+      document.getElementById("mediaTotalStat").textContent =
+        allPublishedMedia.length;
+
+      document.getElementById("categoryTotalStat").textContent =
+        categories.size;
+    }
+
+    function applyMediaFilters() {
+      const searchTerm = document
+        .getElementById("mediaSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+      const mediaType = document.getElementById("mediaFilter").value;
+
+      const filteredMedia = allPublishedMedia.filter((item) => {
+        const searchableText = [
+          item.title,
+          item.description,
+          item.media_type,
+          item.category,
+          item.file_name
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !searchTerm || searchableText.includes(searchTerm);
+
+        const matchesType =
+          mediaType === "all" || item.media_type === mediaType;
+
+        return matchesSearch && matchesType;
+      });
+
+      renderPublicMedia(filteredMedia);
+    }
+
+    function renderPublicMedia(items) {
+      const mediaGrid = document.getElementById("mediaGrid");
+      const mediaStatus = document.getElementById("mediaStatus");
+
+      mediaStatus.textContent = `${items.length} media item(s) shown`;
+
+      if (!items.length) {
+        mediaGrid.innerHTML = `
+          <div class="sm:col-span-2 xl:col-span-3 bg-white border border-slate-200 rounded-[2rem] p-14 text-center shadow-sm">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-100 text-slate-400 flex items-center justify-center text-3xl">
+              <i class="fas fa-photo-film"></i>
+            </div>
+
+            <h3 class="mt-5 text-xl font-black text-slate-900">
+              No media found
+            </h3>
+
+            <p class="mt-2 text-slate-500">
+              Try another search or media category.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      mediaGrid.innerHTML = items
+        .map((item) => createPublicMediaCard(item))
+        .join("");
+    }
+
+    function createPublicMediaCard(item) {
+      const type = String(item.media_type || "media").toLowerCase();
+      const category = String(item.category || "general");
+      const title = item.title || "Untitled Media";
+      const description = item.description || "Published ministry media from Sky Grace Jesus Ministry.";
+      const url = item.media_url || "";
+
+      return `
+        <article class="media-card bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm flex flex-col">
+          <button
+            type="button"
+            onclick="openMediaPreview('${item.id}')"
+            class="relative aspect-[4/3] bg-slate-950 overflow-hidden text-left"
+            aria-label="Preview ${escapeAttribute(title)}"
+          >
+            ${buildPublicMediaVisual(item)}
+
+            <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/85 to-transparent"></div>
+
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest border border-white/10">
+                <i class="${getMediaIcon(type)}"></i>
+                ${escapeHtml(type)}
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-4 right-4">
+              <p class="text-[9px] font-black uppercase tracking-[0.22em] text-blue-300">
+                ${escapeHtml(category)}
+              </p>
+            </div>
+          </button>
+
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-black text-slate-950 leading-tight">
+              ${escapeHtml(title)}
+            </h3>
+
+            <p class="mt-3 text-sm text-slate-600 leading-relaxed line-clamp-3">
+              ${escapeHtml(description)}
+            </p>
+
+            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-4">
+              <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                ${formatPublicDate(item.created_at)}
+              </span>
+
+              <button
+                type="button"
+                onclick="openMediaPreview('${item.id}')"
+                class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 text-[10px] font-black uppercase tracking-widest transition"
+              >
+                View Media
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildPublicMediaVisual(item) {
+      const type = String(item.media_type || "").toLowerCase();
+      const url = escapeAttribute(item.media_url || "");
+      const title = escapeAttribute(item.title || "");
+
+      if (type === "image" || type === "announcement") {
+        return `
+          <img
+            src="${url}"
+            alt="${title}"
+            class="media-visual w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+          />
+
+          <div class="hidden w-full h-full flex items-center justify-center text-white text-5xl">
+            <i class="${getMediaIcon(type)}"></i>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="media-visual w-full h-full flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white">
+          <div class="w-20 h-20 rounded-3xl bg-white/10 border border-white/10 backdrop-blur-sm flex items-center justify-center text-4xl">
+            <i class="${getMediaIcon(type)}"></i>
+          </div>
+
+          <p class="mt-5 text-[10px] font-black uppercase tracking-[0.3em] text-blue-300">
+            ${escapeHtml(type)}
+          </p>
+        </div>
+      `;
+    }
+
+    function openMediaPreview(id) {
+      const item = allPublishedMedia.find((media) => media.id === id);
+
+      if (!item) {
+        return;
+      }
+
+      document.getElementById("previewTitle").textContent =
+        item.title || "Media Preview";
+
+      document.getElementById("previewContent").innerHTML =
+        buildPublicPreviewContent(item);
+
+      const modal = document.getElementById("previewModal");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function buildPublicPreviewContent(item) {
+      const type = String(item.media_type || "").toLowerCase();
+      const url = escapeAttribute(item.media_url || "");
+      const title = escapeAttribute(item.title || "");
+      const description = escapeHtml(item.description || "");
+
+      let content = "";
+
+      if (type === "image" || type === "announcement") {
+        content = `
+          <img
+            src="${url}"
+            alt="${title}"
+            class="max-w-full max-h-[65vh] mx-auto rounded-2xl object-contain bg-slate-100"
+          />
+        `;
+      } else if (type === "video" && isDirectVideoUrl(item.media_url)) {
+        content = `
+          <video
+            src="${url}"
+            controls
+            playsinline
+            class="w-full max-h-[65vh] rounded-2xl bg-black"
+          ></video>
+        `;
+      } else if (type === "audio") {
+        content = `
+          <div class="rounded-[2rem] bg-slate-950 p-8 md:p-12 text-white text-center">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-blue-600 flex items-center justify-center text-3xl">
+              <i class="fas fa-music"></i>
+            </div>
+
+            <audio
+              src="${url}"
+              controls
+              class="w-full mt-8"
+            ></audio>
+          </div>
+        `;
+      } else if (type === "pdf") {
+        content = `
+          <iframe
+            src="${url}"
+            title="${title}"
+            class="w-full h-[65vh] rounded-2xl border border-slate-200"
+          ></iframe>
+        `;
+      } else {
+        content = buildExternalMediaPreview(item);
+      }
+
+      return `
+        ${content}
+
+        <div class="mt-7 border-t border-slate-200 pt-6">
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-2 rounded-full bg-blue-100 text-blue-700 text-[9px] font-black uppercase tracking-widest">
+              ${escapeHtml(type || "media")}
+            </span>
+
+            <span class="px-3 py-2 rounded-full bg-slate-100 text-slate-600 text-[9px] font-black uppercase tracking-widest">
+              ${escapeHtml(item.category || "general")}
+            </span>
+          </div>
+
+          ${
+            description
+              ? `
+                <p class="mt-5 text-slate-600 leading-relaxed">
+                  ${description}
+                </p>
+              `
+              : ""
+          }
+
+          <div class="mt-6">
+            <a
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition"
+            >
+              Open Original Media
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function buildExternalMediaPreview(item) {
+      const url = String(item.media_url || "");
+      const youtubeId = extractYouTubeId(url);
+
+      if (youtubeId) {
+        return `
+          <div class="aspect-video rounded-2xl overflow-hidden bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/${escapeAttribute(youtubeId)}"
+              title="${escapeAttribute(item.title || "Sky Grace media")}"
+              class="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="rounded-[2rem] bg-slate-950 p-10 md:p-16 text-white text-center">
+          <div class="w-24 h-24 mx-auto rounded-[2rem] bg-blue-600 flex items-center justify-center text-4xl">
+            <i class="${getMediaIcon(item.media_type)}"></i>
+          </div>
+
+          <h4 class="mt-6 text-2xl font-black">
+            ${escapeHtml(item.title || "Sky Grace Media")}
+          </h4>
+
+          <p class="mt-3 text-slate-300">
+            Open this media from its original source.
+          </p>
+        </div>
+      `;
+    }
+
+    function closeMediaPreview() {
+      const modal = document.getElementById("previewModal");
+
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+
+      document.getElementById("previewContent").innerHTML = "";
+
+      document.body.style.overflow = "";
+    }
+
+    function extractYouTubeId(url) {
+      const value = String(url || "").trim();
+
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=)([A-Za-z0-9_-]{11})/,
+        /(?:youtu\.be\/)([A-Za-z0-9_-]{11})/,
+        /(?:youtube\.com\/embed\/)([A-Za-z0-9_-]{11})/,
+        /(?:youtube\.com\/shorts\/)([A-Za-z0-9_-]{11})/
+      ];
+
+      for (const pattern of patterns) {
+        const match = value.match(pattern);
+
+        if (match) {
+          return match[1];
+        }
+      }
+
+      return null;
+    }
+
+    function isDirectVideoUrl(url) {
+      return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(String(url || ""));
+    }
+
+    function getMediaIcon(type) {
+      const icons = {
+        image: "fas fa-image",
+        video: "fas fa-video",
+        audio: "fas fa-music",
+        pdf: "fas fa-file-pdf",
+        sermon: "fas fa-church",
+        announcement: "fas fa-bullhorn"
+      };
+
+      return icons[String(type || "").toLowerCase()] || "fas fa-photo-film";
+    }
+
+    function formatPublicDate(value) {
+      if (!value) {
+        return "Sky Grace Media";
+      }
+
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return "Sky Grace Media";
+      }
+
+      return date.toLocaleDateString("en-NA", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
+
+</body>
+</html>
