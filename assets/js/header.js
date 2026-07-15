@@ -29,6 +29,7 @@
         <a href="index.html" class="hover:text-amber-500 transition">Home</a>
         <a href="welcome-packet.html" class="hover:text-amber-500 transition">Welcome Packet</a>
         <a href="sermons.html" class="hover:text-amber-500 transition">Sermons</a>
+        <a href="media.html" class="hover:text-amber-500 transition">Media</a>
         <a href="theology-school.html" class="hover:text-amber-500 transition">Theology School</a>
         <a href="contact.html" class="hover:text-amber-500 transition">Contact</a>
       </nav>
@@ -51,6 +52,7 @@
         <a href="index.html">Home</a>
         <a href="welcome-packet.html">Welcome Packet</a>
         <a href="sermons.html">Sermons</a>
+        <a href="media.html">Media</a>
         <a href="theology-school.html">Theology School</a>
         <a href="contact.html">Contact</a>
         <a href="live.html" class="text-red-600">Live Now</a>
