@@ -1,189 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enroll Student | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Enroll Student | Sky Grace Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
-<body class="bg-slate-50 flex min-h-screen">
 
-    <!-- Admin Sidebar Mount Point -->
-    <div id="admin-sidebar-mount"></div>
-    <script src="admin-sidebar.js" defer></script>
+<body class="bg-slate-50 min-h-screen text-slate-900 flex">
 
-    <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col min-w-0">
-        
-        <!-- Top Bar -->
-        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
-            <div class="flex items-center gap-4">
-                <button class="md:hidden text-slate-500 text-xl" aria-label="Open sidebar"><i class="fas fa-bars"></i></button>
-                <h2 class="font-bold text-slate-700 text-lg">Theology School</h2>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">View Live Site <i class="fas fa-external-link-alt ml-1"></i></a>
-                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-200">AP</div>
-            </div>
-        </header>
+  <!-- Shared Admin Sidebar -->
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
 
-        <main class="p-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="mb-8">
-                    <a href="manage-students.html" onclick="sessionStorage.removeItem('editStudentId')" class="text-slate-400 hover:text-blue-600 text-xs font-bold uppercase tracking-widest mb-4 inline-block"><i class="fas fa-arrow-left mr-2"></i> Back to Directory</a>
-                    <h1 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Enroll New Student</h1>
-                    <p class="text-slate-500 text-sm">Manually register a student into the theology program.</p>
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-5 md:px-8 sticky top-0 z-30">
+      <div>
+        <h1 id="topTitle" class="font-bold text-slate-800 text-lg">
+          Enroll Student
+        </h1>
+
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+          Sky Grace School of Theology
+        </p>
+      </div>
+
+      <a
+        href="manage-students.html"
+        class="text-xs font-black text-slate-400 hover:text-blue-600 transition uppercase tracking-widest"
+      >
+        <i class="fas fa-arrow-left mr-2"></i>
+        Student Directory
+      </a>
+    </header>
+
+    <main class="p-5 md:p-8 max-w-6xl w-full mx-auto">
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden rounded-[2rem] bg-slate-950 text-white p-7 md:p-10 shadow-2xl mb-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_30%)]"></div>
+
+        <div class="relative z-10">
+          <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+            Theology Administration
+          </p>
+
+          <h2 id="pageTitle" class="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+            Enroll New Student
+          </h2>
+
+          <p id="pageDescription" class="mt-4 max-w-2xl text-sm md:text-base text-slate-300 leading-relaxed">
+            Create a real student record in the Sky Grace Supabase theology database.
+          </p>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <div
+        id="statusBox"
+        class="hidden mb-6 rounded-2xl border px-5 py-4 text-sm font-bold"
+        role="alert"
+      ></div>
+
+      <div class="grid xl:grid-cols-[1fr_320px] gap-8">
+
+        <!-- Form -->
+        <section class="bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden">
+          <div class="p-6 md:p-8 border-b border-slate-200">
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+              Student Record
+            </p>
+
+            <h3 class="mt-2 text-2xl font-black text-slate-950">
+              Student Information
+            </h3>
+
+            <p class="mt-2 text-sm text-slate-500">
+              Fields marked with an asterisk are required.
+            </p>
+          </div>
+
+          <form id="studentForm" class="p-6 md:p-8 space-y-8">
+
+            <!-- Personal -->
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <i class="fas fa-user"></i>
                 </div>
 
-                <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-                    <form id="addStudentForm" class="p-8 space-y-8">
-                        <!-- Personal Information -->
-                        <div>
-                            <h3 class="text-xs font-black text-blue-500 uppercase tracking-widest border-b border-slate-100 pb-2 mb-6">Student Identity</h3>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="studentName" class="block text-xs font-bold text-slate-500 uppercase mb-2">Full Name</label>
-                                    <input type="text" id="studentName" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="e.g. John Doe">
-                                </div>
-                                <div>
-                                    <label for="studentEmail" class="block text-xs font-bold text-slate-500 uppercase mb-2">Email Address</label>
-                                    <input type="email" id="studentEmail" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="john@example.com">
-                                </div>
-                                <div>
-                                    <label for="studentPhone" class="block text-xs font-bold text-slate-500 uppercase mb-2">Phone Number</label>
-                                    <input type="tel" id="studentPhone" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition" placeholder="+264...">
-                                </div>
-                                <div>
-                                    <label for="studentDob" class="block text-xs font-bold text-slate-500 uppercase mb-2">Date of Birth</label>
-                                    <input type="date" id="studentDob" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Academic Information -->
-                        <div>
-                            <h3 class="text-xs font-black text-blue-500 uppercase tracking-widest border-b border-slate-100 pb-2 mb-6">Academic Details</h3>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="studentCourse" class="block text-xs font-bold text-slate-500 uppercase mb-2">Course Selection</label>
-                                    <select id="studentCourse" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
-                                        <option value="">Select Course...</option>
-                                        <option value="foundations">Foundations of Grace</option>
-                                        <option value="prophetic">Prophetic Ministry</option>
-                                        <option value="leadership">Apostolic Leadership</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="studentBranch" class="block text-xs font-bold text-slate-500 uppercase mb-2">Branch / Campus</label>
-                                    <select id="studentBranch" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
-                                        <option value="okahandja">Okahandja HQ</option>
-                                        <option value="windhoek">Windhoek Branch</option>
-                                        <option value="online">Online Campus</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="studentEnrollDate" class="block text-xs font-bold text-slate-500 uppercase mb-2">Enrollment Date</label>
-                                    <input type="date" id="studentEnrollDate" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
-                                </div>
-                                <div>
-                                    <label for="studentStatus" class="block text-xs font-bold text-slate-500 uppercase mb-2">Initial Status</label>
-                                    <select id="studentStatus" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-blue-500 transition">
-                                        <option value="active">Active</option>
-                                        <option value="pending">Pending Payment</option>
-                                        <option value="waitlist">Waitlist</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="pt-6 border-t border-slate-100 flex justify-end gap-4">
-                            <a href="manage-students.html" onclick="sessionStorage.removeItem('editStudentId')" class="px-6 py-3 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-50 transition uppercase tracking-widest">Cancel</a>
-                            <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-200">
-                                <i class="fas fa-check mr-2"></i> Enroll Student
-                            </button>
-                        </div>
-                    </form>
+                <div>
+                  <h4 class="font-black text-slate-950">Personal Details</h4>
+                  <p class="text-xs text-slate-500">Student contact and identity information.</p>
                 </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-5">
+                <div class="md:col-span-2">
+                  <label for="fullName" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Full Name *
+                  </label>
+
+                  <input
+                    id="fullName"
+                    type="text"
+                    required
+                    autocomplete="name"
+                    placeholder="Student full name"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Email Address *
+                  </label>
+
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="student@example.com"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="phone" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Phone Number
+                  </label>
+
+                  <input
+                    id="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    placeholder="+264..."
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="dateOfBirth" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Date of Birth
+                  </label>
+
+                  <input
+                    id="dateOfBirth"
+                    type="date"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="branch" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Branch / Campus
+                  </label>
+
+                  <input
+                    id="branch"
+                    type="text"
+                    value="Okahandja HQ"
+                    placeholder="Okahandja HQ"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+              </div>
             </div>
-        </main>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const editId = sessionStorage.getItem('editStudentId');
-            if (editId) {
-                // Edit Mode Setup
-                document.title = 'Edit Student | Sky Grace Admin';
-                document.querySelector('h1').innerText = 'Edit Student Details';
-                document.querySelector('p.text-slate-500').innerText = 'Update student information and academic records.';
-                document.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save mr-2"></i> Update Student';
-                
-                const students = JSON.parse(localStorage.getItem('theologyStudents')) || [];
-                const student = students.find(s => s.id === editId);
-                
-                if (student) {
-                    document.getElementById('studentName').value = student.name;
-                    document.getElementById('studentEmail').value = student.email;
-                    document.getElementById('studentPhone').value = student.phone;
-                    document.getElementById('studentDob').value = student.dob;
-                    
-                    const courseSelect = document.getElementById('studentCourse');
-                    for (let i = 0; i < courseSelect.options.length; i++) {
-                        if (courseSelect.options[i].text === student.course) {
-                            courseSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
+            <!-- Academic -->
+            <div class="border-t border-slate-200 pt-8">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
 
-                    document.getElementById('studentBranch').value = student.branch;
-                    document.getElementById('studentEnrollDate').value = student.enrollDate;
-                    document.getElementById('studentStatus').value = student.status;
-                }
-            }
-        });
+                <div>
+                  <h4 class="font-black text-slate-950">Academic Details</h4>
+                  <p class="text-xs text-slate-500">Course, enrollment and progress.</p>
+                </div>
+              </div>
 
-        document.getElementById('addStudentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Gather form data
-            const editId = sessionStorage.getItem('editStudentId');
-            let students = JSON.parse(localStorage.getItem('theologyStudents')) || [];
-            const courseSelect = document.getElementById('studentCourse');
-            
-            const studentData = {
-                id: editId || 'TS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000),
-                name: document.getElementById('studentName').value,
-                email: document.getElementById('studentEmail').value,
-                phone: document.getElementById('studentPhone').value,
-                dob: document.getElementById('studentDob').value,
-                course: courseSelect.options[courseSelect.selectedIndex].text, // Get text instead of value
-                branch: document.getElementById('studentBranch').value,
-                enrollDate: document.getElementById('studentEnrollDate').value,
-                status: document.getElementById('studentStatus').value,
-                progress: editId ? (students.find(s => s.id === editId)?.progress || 0) : 0
-            };
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label for="course" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Course *
+                  </label>
 
-            // Save to LocalStorage
-            if (editId) {
-                const index = students.findIndex(s => s.id === editId);
-                if (index !== -1) {
-                    students[index] = studentData;
-                }
-                sessionStorage.removeItem('editStudentId');
-                sessionStorage.setItem('studentUpdated', 'true');
-            } else {
-                students.push(studentData);
-                sessionStorage.setItem('studentAdded', 'true');
-            }
-            
-            localStorage.setItem('theologyStudents', JSON.stringify(students));
+                  <input
+                    id="course"
+                    type="text"
+                    required
+                    list="courseOptions"
+                    placeholder="Select or enter course"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
 
-            window.location.href = 'manage-students.html';
-        });
-    </script>
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
+                  <datalist id="courseOptions">
+                    <option value="Foundations of Grace"></option>
+                    <option value="Prophetic Ministry"></option>
+                    <option value="Apostolic Ministry"></option>
+                    <option value="Biblical Studies"></option>
+                    <option value="Leadership and Ministry"></option>
+                  </datalist>
+                </div>
+
+                <div>
+                  <label for="enrollmentDate" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Enrollment Date
+                  </label>
+
+                  <input
+                    id="enrollmentDate"
+                    type="date"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="status" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Student Status *
+                  </label>
+
+                  <select
+                    id="status"
+                    required
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  >
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Enrolled" selected>Enrolled</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Suspended">Suspended</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="progress" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Academic Progress
+                  </label>
+
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+                    <div class="flex items-center justify-between gap-4 mb-3">
+                      <span class="text-xs font-bold text-slate-500">Course completion</span>
+                      <span id="progressValue" class="text-sm font-black text-blue-600">0%</span>
+                    </div>
+
+                    <input
+                      id="progress"
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="1"
+                      value="0"
+                      class="w-full"
+                    />
+                  </div>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="message" class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    Notes / Application Message
+                  </label>
+
+                  <textarea
+                    id="message"
+                    rows="5"
+                    placeholder="Add student notes or preserve the application message..."
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-medium outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition resize-y"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="border-t border-slate-200 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <a
+                href="manage-students.html"
+                class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border border-slate-200 text-slate-600 font-black uppercase text-[10px] tracking-widest hover:bg-slate-50 transition"
+              >
+                <i class="fas fa-times"></i>
+                Cancel
+              </a>
+
+              <button
+                id="saveButton"
+                type="submit"
+                class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition shadow-lg shadow-blue-200"
+              >
+                <i id="saveIcon" class="fas fa-user-plus"></i>
+                <span id="saveButtonText">Enroll Student</span>
+              </button>
+            </div>
+
+          </form>
+        </section>
+
+        <!-- Side Information -->
+        <aside class="space-y-6">
+          <div class="bg-slate-950 rounded-[2rem] p-7 text-white shadow-xl">
+            <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center">
+              <i class="fas fa-database"></i>
+            </div>
+
+            <h3 class="mt-5 text-xl font-black">
+              Supabase Connected
+            </h3>
+
+            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+              This form saves directly to the real
+              <strong class="text-white">theology_students</strong>
+              database table.
+            </p>
+
+            <div class="mt-6 rounded-2xl bg-white/10 border border-white/10 p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-blue-300">
+                Student Number
+              </p>
+
+              <p class="mt-2 text-sm text-slate-300">
+                Supabase automatically generates the official Sky Grace student number.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-[2rem] border border-slate-200 p-7 shadow-sm">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+
+            <h3 class="mt-5 text-xl font-black text-slate-950">
+              Admin Only
+            </h3>
+
+            <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+              The existing Sky Grace authentication guard protects this page. Supabase RLS also checks the authenticated admin account.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
+
+  <script>
+    const studentForm = document.getElementById("studentForm");
+    const statusBox = document.getElementById("statusBox");
+    const saveButton = document.getElementById("saveButton");
+    const saveButtonText = document.getElementById("saveButtonText");
+    const saveIcon = document.getElementById("saveIcon");
+    const progressInput = document.getElementById("progress");
+    const progressValue = document.getElementById("progressValue");
+
+    const editStudentId = sessionStorage.getItem("editStudentId");
+    const isEditMode = Boolean(editStudentId);
+
+    progressInput.addEventListener("input", () => {
+      progressValue.textContent = `${progressInput.value}%`;
+    });
+
+    function showStatus(message, type = "error") {
+      statusBox.textContent = message;
+      statusBox.className = "mb-6 rounded-2xl border px-5 py-4 text-sm font-bold";
+
+      if (type === "success") {
+        statusBox.classList.add(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
+      } else {
+        statusBox.classList.add(
+          "bg-red-50",
+          "border-red-200",
+          "text-red-700"
+        );
+      }
+
+      statusBox.classList.remove("hidden");
+      statusBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function setSaving(saving) {
+      saveButton.disabled = saving;
+
+      if (saving) {
+        saveIcon.className = "fas fa-spinner fa-spin";
+        saveButtonText.textContent = isEditMode
+          ? "Updating Student..."
+          : "Saving Student...";
+      } else {
+        saveIcon.className = isEditMode
+          ? "fas fa-floppy-disk"
+          : "fas fa-user-plus";
+
+        saveButtonText.textContent = isEditMode
+          ? "Update Student"
+          : "Enroll Student";
+      }
+    }
+
+    function cleanText(value) {
+      const cleaned = String(value || "").trim();
+      return cleaned || null;
+    }
+
+    function getFormData() {
+      return {
+        full_name: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim().toLowerCase(),
+        phone: cleanText(document.getElementById("phone").value),
+        date_of_birth: document.getElementById("dateOfBirth").value || null,
+        course: document.getElementById("course").value.trim(),
+        branch: cleanText(document.getElementById("branch").value) || "Okahandja HQ",
+        enrollment_date: document.getElementById("enrollmentDate").value || null,
+        status: document.getElementById("status").value,
+        progress: Number(document.getElementById("progress").value),
+        message: cleanText(document.getElementById("message").value),
+        application_source: isEditMode ? undefined : "Admin Portal"
+      };
+    }
+
+    function fillForm(student) {
+      document.getElementById("fullName").value = student.full_name || "";
+      document.getElementById("email").value = student.email || "";
+      document.getElementById("phone").value = student.phone || "";
+      document.getElementById("dateOfBirth").value = student.date_of_birth || "";
+      document.getElementById("course").value = student.course || "";
+      document.getElementById("branch").value = student.branch || "Okahandja HQ";
+      document.getElementById("enrollmentDate").value = student.enrollment_date || "";
+      document.getElementById("status").value = student.status || "Pending";
+      document.getElementById("progress").value = student.progress ?? 0;
+      document.getElementById("message").value = student.message || "";
+
+      progressValue.textContent = `${student.progress ?? 0}%`;
+    }
+
+    async function loadStudentForEditing() {
+      if (!isEditMode) {
+        document.getElementById("enrollmentDate").value =
+          new Date().toISOString().split("T")[0];
+
+        return;
+      }
+
+      document.getElementById("topTitle").textContent = "Edit Student";
+      document.getElementById("pageTitle").textContent = "Edit Student Record";
+      document.getElementById("pageDescription").textContent =
+        "Update the student's real Supabase theology record.";
+
+      setSaving(true);
+
+      try {
+        const { data, error } = await supabaseClient
+          .from("theology_students")
+          .select("*")
+          .eq("id", editStudentId)
+          .single();
+
+        if (error) throw error;
+
+        fillForm(data);
+      } catch (error) {
+        console.error("Student load error:", error);
+        showStatus(
+          `Unable to load this student. ${error.message || "Please try again."}`
+        );
+      } finally {
+        setSaving(false);
+      }
+    }
+
+    studentForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      statusBox.classList.add("hidden");
+
+      const student = getFormData();
+
+      if (!student.full_name || !student.email || !student.course) {
+        showStatus("Full name, email address and course are required.");
+        return;
+      }
+
+      if (
+        !Number.isInteger(student.progress) ||
+        student.progress < 0 ||
+        student.progress > 100
+      ) {
+        showStatus("Academic progress must be between 0 and 100.");
+        return;
+      }
+
+      setSaving(true);
+
+      try {
+        if (isEditMode) {
+          delete student.application_source;
+
+          const { error } = await supabaseClient
+            .from("theology_students")
+            .update(student)
+            .eq("id", editStudentId);
+
+          if (error) throw error;
+
+          sessionStorage.removeItem("editStudentId");
+          sessionStorage.setItem("studentUpdated", "true");
+
+          showStatus("Student details updated successfully.", "success");
+
+          setTimeout(() => {
+            window.location.href = "manage-students.html";
+          }, 900);
+
+          return;
+        }
+
+        const { data, error } = await supabaseClient
+          .from("theology_students")
+          .insert(student)
+          .select("id, student_number, full_name")
+          .single();
+
+        if (error) throw error;
+
+        sessionStorage.setItem("studentCreated", "true");
+
+        showStatus(
+          `${data.full_name} has been enrolled successfully. Student number: ${data.student_number || "generated"}.`,
+          "success"
+        );
+
+        studentForm.reset();
+        document.getElementById("branch").value = "Okahandja HQ";
+        document.getElementById("status").value = "Enrolled";
+        document.getElementById("progress").value = "0";
+        progressValue.textContent = "0%";
+        document.getElementById("enrollmentDate").value =
+          new Date().toISOString().split("T")[0];
+
+        setTimeout(() => {
+          window.location.href = "manage-students.html";
+        }, 1200);
+      } catch (error) {
+        console.error("Student save error:", error);
+
+        showStatus(
+          `Unable to save student. ${error.message || "Please check Supabase and try again."}`
+        );
+      } finally {
+        setSaving(false);
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", loadStudentForEditing);
+  </script>
+
 </body>
 </html>
