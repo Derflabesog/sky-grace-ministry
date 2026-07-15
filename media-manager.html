@@ -1,335 +1,847 @@
-﻿﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+﻿﻿    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Media Manager | Sky Grace Admin</title>
 
-  <title>Media Manager | Sky Grace Admin</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    </head>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-</head>
+    <body class="bg-slate-50 min-h-screen flex text-slate-900">
 
-<body class="bg-slate-50 min-h-screen text-slate-900">
+      <div id="admin-sidebar-mount"></div>
+      <script src="admin-sidebar.js" defer></script>
 
-  <div id="admin-sidebar-mount"></div>
-  <script src="admin-sidebar.js" defer></script>
-
-  <main class="md:ml-72 p-8">
-    <header class="mb-8">
-      <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
-        Admin Media
-      </p>
-
-      <h1 class="text-3xl font-black mt-2">
-        Media Manager
-      </h1>
-
-      <p class="text-slate-500 text-sm mt-2">
-        Add and manage sermons, videos, audio, PDFs, images, and announcement links.
-      </p>
-    </header>
-
-    <section class="grid lg:grid-cols-3 gap-8">
-      <div class="lg:col-span-1 bg-white rounded-3xl border border-slate-200 shadow-xl p-7">
-        <h2 class="text-xl font-black mb-4">Add Media</h2>
-
-        <form id="mediaForm" class="space-y-4">
+      <div class="flex-1 flex flex-col min-w-0">
+        <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-5 md:px-8 sticky top-0 z-30">
           <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-              Title
-            </label>
-            <input
-              id="mediaTitle"
-              required
-              type="text"
-              placeholder="Example: Sunday Sermon"
-              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500"
-            />
+            <h1 class="font-bold text-slate-800 text-lg">Media Manager</h1>
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Sky Grace Digital Library</p>
           </div>
 
-          <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-              Media Type
-            </label>
-            <select
-              id="mediaType"
-              required
-              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500">
-              <option value="">Select Type</option>
-              <option value="sermon">Sermon</option>
-              <option value="video">Video</option>
-              <option value="audio">Audio</option>
-              <option value="image">Image</option>
-              <option value="pdf">PDF</option>
-              <option value="announcement">Announcement</option>
-            </select>
-          </div>
+          <a href="index.html"
+             class="text-xs font-black text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">
+            View Live Site <i class="fas fa-external-link-alt ml-1"></i>
+          </a>
+        </header>
 
-          <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-              Media URL
-            </label>
-            <input
-              id="mediaUrl"
-              required
-              type="url"
-              placeholder="https://..."
-              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500"
-            />
-          </div>
+        <main class="p-5 md:p-8 max-w-7xl w-full mx-auto">
 
-          <div>
-            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-              Description
-            </label>
-            <textarea
-              id="mediaDescription"
-              rows="4"
-              placeholder="Short description..."
-              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500"></textarea>
-          </div>
+          <section class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">Ministry Content</p>
+              <h2 class="text-3xl font-black mt-2">Media Library</h2>
+              <p class="text-slate-500 text-sm mt-2">
+                Upload, publish, preview and manage Sky Grace ministry media.
+              </p>
+            </div>
 
-          <button
-            id="mediaSubmitBtn"
-            type="submit"
-            class="w-full bg-blue-600 text-white py-4 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition">
-            <i class="fas fa-plus mr-2"></i>
-            Add Media
-          </button>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input id="mediaSearch" type="text" placeholder="Search media..."
+                  class="w-full sm:w-64 bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500" />
+              </div>
 
-          <p id="mediaStatus" class="text-sm font-bold min-h-[1.25rem]"></p>
-        </form>
-      </div>
+              <select id="mediaFilter"
+                class="bg-white border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500">
+                <option value="all">All Media</option>
+                <option value="image">Images</option>
+                <option value="video">Videos</option>
+                <option value="audio">Audio</option>
+                <option value="pdf">PDF</option>
+                <option value="sermon">Sermons</option>
+                <option value="announcement">Announcements</option>
+                <option value="published">Published</option>
+                <option value="hidden">Hidden</option>
+              </select>
+            </div>
+          </section>
 
-      <div class="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-        <div class="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h2 class="text-xl font-black">Media Library</h2>
-            <p id="mediaCount" class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">
-              Loading media...
-            </p>
-          </div>
+          <section class="grid xl:grid-cols-[390px_1fr] gap-8">
 
-          <div class="relative">
-            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input
-              id="mediaSearch"
-              type="text"
-              placeholder="Search media..."
-              class="border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs font-bold focus:outline-none focus:border-blue-500"
-            />
-          </div>
-        </div>
+            <div class="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden h-fit">
+              <div class="bg-slate-900 p-6 text-white">
+                <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-300">Upload</p>
+                <h3 id="formHeading" class="text-xl font-black mt-2">Add New Media</h3>
+                <p class="text-slate-300 text-xs mt-2">Upload a file or save an external media link.</p>
+              </div>
 
-        <div id="mediaList" class="divide-y divide-slate-100">
-          <div class="p-6 text-sm text-slate-500 font-bold">
-            Loading media...
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+              <form id="mediaForm" class="p-6 space-y-5">
+                <input type="hidden" id="editingMediaId" />
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/supabase.js"></script>
+                <div>
+                  <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Title</label>
+                  <input id="mediaTitle" type="text" required placeholder="Media title"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold outline-none focus:border-blue-500" />
+                </div>
 
-  <script>
-    let allMedia = [];
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Type</label>
+                    <select id="mediaType" required
+                      class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold outline-none focus:border-blue-500">
+                      <option value="image">Image</option>
+                      <option value="video">Video</option>
+                      <option value="audio">Audio</option>
+                      <option value="pdf">PDF</option>
+                      <option value="sermon">Sermon</option>
+                      <option value="announcement">Announcement</option>
+                    </select>
+                  </div>
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      const form = document.getElementById("mediaForm");
-      form.addEventListener("submit", addMedia);
+                  <div>
+                    <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Category</label>
+                    <select id="mediaCategory"
+                      class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold outline-none focus:border-blue-500">
+                      <option value="general">General</option>
+                      <option value="posters">Posters</option>
+                      <option value="services">Services</option>
+                      <option value="sermons">Sermons</option>
+                      <option value="events">Events</option>
+                      <option value="testimonies">Testimonies</option>
+                      <option value="prayer">Prayer</option>
+                      <option value="theology">Theology School</option>
+                      <option value="announcements">Announcements</option>
+                    </select>
+                  </div>
+                </div>
 
-      document.getElementById("mediaSearch").addEventListener("input", function () {
-        const term = this.value.toLowerCase();
+                <div>
+                  <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    Upload File
+                  </label>
 
-        const filtered = allMedia.filter((item) =>
-          String(item.title || "").toLowerCase().includes(term) ||
-          String(item.media_type || "").toLowerCase().includes(term) ||
-          String(item.media_url || "").toLowerCase().includes(term) ||
-          String(item.description || "").toLowerCase().includes(term)
-        );
+                  <label for="mediaFile"
+                    class="flex flex-col items-center justify-center min-h-36 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition p-5 text-center">
+                    <i class="fas fa-cloud-arrow-up text-3xl text-blue-600 mb-3"></i>
+                    <span class="font-black text-sm">Choose a file</span>
+                    <span id="selectedFileName" class="text-xs text-slate-400 mt-1">Image, video, audio or PDF</span>
+                  </label>
 
-        renderMedia(filtered);
-      });
+                  <input id="mediaFile" type="file" class="hidden"
+                    accept="image/*,video/*,audio/*,.pdf,application/pdf" />
+                </div>
 
-      await loadMedia();
-    });
+                <div class="flex items-center gap-3">
+                  <div class="h-px bg-slate-200 flex-1"></div>
+                  <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">or external link</span>
+                  <div class="h-px bg-slate-200 flex-1"></div>
+                </div>
 
-    async function loadMedia() {
-      const list = document.getElementById("mediaList");
-      const count = document.getElementById("mediaCount");
+                <div>
+                  <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Media URL</label>
+                  <input id="mediaUrl" type="url" placeholder="YouTube, Facebook or external URL"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold outline-none focus:border-blue-500" />
+                </div>
 
-      if (!window.supabaseClient) {
-        list.innerHTML = `<div class="p-6 text-red-600 font-bold">Supabase is not connected.</div>`;
-        return;
-      }
+                <div>
+                  <label class="block mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Description</label>
+                  <textarea id="mediaDescription" rows="4" placeholder="Write a short description..."
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-500"></textarea>
+                </div>
 
-      const { data, error } = await supabaseClient
-        .from("media_items")
-        .select("*")
-        .order("created_at", { ascending: false });
+                <label class="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 cursor-pointer">
+                  <div>
+                    <span class="block text-sm font-black">Publish Media</span>
+                    <span class="block text-xs text-slate-400 mt-1">Visible on the public website</span>
+                  </div>
+                  <input id="mediaPublished" type="checkbox" checked class="w-5 h-5 accent-blue-600" />
+                </label>
 
-      if (error) {
-        list.innerHTML = `<div class="p-6 text-red-600 font-bold">${escapeHtml(error.message)}</div>`;
-        return;
-      }
+                <div id="uploadProgressWrap" class="hidden">
+                  <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">
+                    <span>Uploading</span>
+                    <span id="uploadProgressText">Please wait...</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div id="uploadProgressBar" class="h-full bg-blue-600 w-1/3 animate-pulse"></div>
+                  </div>
+                </div>
 
-      allMedia = data || [];
-      count.textContent = `${allMedia.length} media item(s)`;
-      renderMedia(allMedia);
-    }
+                <p id="mediaStatus" class="min-h-[1.25rem] text-sm font-bold"></p>
 
-    function renderMedia(items) {
-      const list = document.getElementById("mediaList");
-      const count = document.getElementById("mediaCount");
+                <div class="flex gap-3">
+                  <button id="mediaSubmitBtn" type="submit"
+                    class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-4 text-white font-black uppercase text-xs tracking-widest hover:bg-blue-500 transition disabled:opacity-60">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    <span id="submitButtonText">Upload Media</span>
+                  </button>
 
-      count.textContent = `${items.length} media item(s)`;
-
-      if (!items.length) {
-        list.innerHTML = `
-          <div class="p-8 text-center text-slate-400 font-bold">
-            No media items found.
-          </div>
-        `;
-        return;
-      }
-
-      list.innerHTML = items.map((item) => `
-        <div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-5 hover:bg-slate-50 transition">
-          <div class="flex gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
-              <i class="${getIcon(item.media_type)}"></i>
+                  <button id="cancelEditBtn" type="button"
+                    class="hidden rounded-xl bg-slate-200 px-5 py-4 text-slate-700 font-black uppercase text-xs tracking-widest hover:bg-slate-300 transition">
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
 
             <div>
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-black text-slate-900">
-                  ${escapeHtml(item.title || "Untitled")}
-                </h3>
-
-                <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-widest">
-                  ${escapeHtml(item.media_type || "media")}
-                </span>
+              <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Total Media</p>
+                  <p id="totalMediaStat" class="text-3xl font-black mt-2">0</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Published</p>
+                  <p id="publishedMediaStat" class="text-3xl font-black text-green-600 mt-2">0</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Hidden</p>
+                  <p id="hiddenMediaStat" class="text-3xl font-black text-amber-600 mt-2">0</p>
+                </div>
               </div>
 
-              <p class="text-sm text-slate-500 mt-1">
-                ${escapeHtml(item.description || "")}
-              </p>
+              <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                <div class="p-5 md:p-6 border-b border-slate-200 flex items-center justify-between gap-4">
+                  <div>
+                    <h3 class="font-black text-lg">Media Library</h3>
+                    <p id="mediaCount" class="text-xs text-slate-400 font-bold mt-1">Loading media...</p>
+                  </div>
+                  <button id="refreshMediaBtn" type="button"
+                    class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition"
+                    title="Refresh media">
+                    <i class="fas fa-rotate"></i>
+                  </button>
+                </div>
 
-              <a href="${escapeAttribute(item.media_url || "#")}" target="_blank" rel="noopener"
-                class="inline-block mt-2 text-xs font-bold text-blue-600 hover:underline">
-                Open Media Link
-              </a>
-
-              <p class="text-[10px] text-slate-400 mt-2">
-                ${item.created_at ? new Date(item.created_at).toLocaleString() : ""}
-              </p>
+                <div id="mediaList" class="divide-y divide-slate-100">
+                  <div class="p-10 text-center text-slate-400 font-bold">
+                    <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+                    <p>Loading media...</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+          </section>
+        </main>
+      </div>
+
+      <div id="previewModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm p-4 items-center justify-center">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-auto shadow-2xl">
+          <div class="p-5 border-b border-slate-200 flex items-center justify-between">
+            <h3 id="previewTitle" class="font-black text-lg">Media Preview</h3>
+            <button id="closePreviewBtn" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
-
-          <button onclick="deleteMedia('${item.id}')"
-            class="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-black uppercase tracking-widest hover:bg-red-500 transition">
-            Delete
-          </button>
+          <div id="previewContent" class="p-6"></div>
         </div>
-      `).join("");
-    }
+      </div>
 
-    async function addMedia(e) {
-      e.preventDefault();
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <script src="assets/js/supabase.js"></script>
+      <script src="assets/js/guard.js"></script>
 
-      const title = document.getElementById("mediaTitle").value.trim();
-      const media_type = document.getElementById("mediaType").value;
-      const media_url = document.getElementById("mediaUrl").value.trim();
-      const description = document.getElementById("mediaDescription").value.trim();
-      const status = document.getElementById("mediaStatus");
-      const submitBtn = document.getElementById("mediaSubmitBtn");
+      <script>
+        const MEDIA_BUCKET = "skygrace-media";
+        const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
-      if (!title || !media_type || !media_url) {
-        status.textContent = "Please complete title, type, and URL.";
-        status.className = "text-sm font-bold text-red-600";
-        return;
-      }
+        let allMedia = [];
 
-      status.textContent = "Adding media...";
-      status.className = "text-sm font-bold text-blue-600";
+        const mediaForm = document.getElementById("mediaForm");
+        const mediaFile = document.getElementById("mediaFile");
+        const mediaSearch = document.getElementById("mediaSearch");
+        const mediaFilter = document.getElementById("mediaFilter");
+        const mediaStatus = document.getElementById("mediaStatus");
+        const mediaSubmitBtn = document.getElementById("mediaSubmitBtn");
 
-      submitBtn.disabled = true;
-      submitBtn.classList.add("opacity-70");
+        document.addEventListener("DOMContentLoaded", async () => {
+          mediaForm.addEventListener("submit", saveMedia);
+          mediaFile.addEventListener("change", handleFileSelection);
+          mediaSearch.addEventListener("input", applyFilters);
+          mediaFilter.addEventListener("change", applyFilters);
+          document.getElementById("refreshMediaBtn").addEventListener("click", loadMedia);
+          document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
+          document.getElementById("closePreviewBtn").addEventListener("click", closePreview);
 
-      const { error } = await supabaseClient
-        .from("media_items")
-        .insert([
-          {
-            title,
-            media_type,
-            media_url,
-            description
+          document.getElementById("previewModal").addEventListener("click", (event) => {
+            if (event.target.id === "previewModal") closePreview();
+          });
+
+          await loadMedia();
+        });
+
+        async function loadMedia() {
+          const list = document.getElementById("mediaList");
+
+          if (!window.supabaseClient) {
+            list.innerHTML = `<div class="p-8 text-red-600 font-bold">Supabase is not connected. Check assets/js/supabase.js.</div>`;
+            return;
           }
-        ]);
 
-      submitBtn.disabled = false;
-      submitBtn.classList.remove("opacity-70");
+          list.innerHTML = `
+            <div class="p-10 text-center text-slate-400 font-bold">
+              <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+              <p>Loading media...</p>
+            </div>
+          `;
 
-      if (error) {
-        console.error("Media insert error:", error);
-        status.textContent = error.message;
-        status.className = "text-sm font-bold text-red-600";
-        return;
-      }
+          const { data, error } = await supabaseClient
+            .from("media_items")
+            .select("*")
+            .order("created_at", { ascending: false });
 
-      status.textContent = "Media added successfully.";
-      status.className = "text-sm font-bold text-green-600";
+          if (error) {
+            console.error("Media load error:", error);
+            list.innerHTML = `<div class="p-8 text-red-600 font-bold">${escapeHtml(error.message)}</div>`;
+            return;
+          }
 
-      document.getElementById("mediaForm").reset();
-      await loadMedia();
-    }
+          allMedia = data || [];
+          updateStats();
+          applyFilters();
+        }
 
-    async function deleteMedia(id) {
-      if (!confirm("Delete this media item?")) return;
+        function updateStats() {
+          const published = allMedia.filter(item => item.is_published === true).length;
+          const hidden = allMedia.length - published;
 
-      const { error } = await supabaseClient
-        .from("media_items")
-        .delete()
-        .eq("id", id);
+          document.getElementById("totalMediaStat").textContent = allMedia.length;
+          document.getElementById("publishedMediaStat").textContent = published;
+          document.getElementById("hiddenMediaStat").textContent = hidden;
+        }
 
-      if (error) {
-        alert(error.message);
-        return;
-      }
+        function applyFilters() {
+          const term = mediaSearch.value.trim().toLowerCase();
+          const filter = mediaFilter.value;
 
-      await loadMedia();
-    }
+          const filtered = allMedia.filter((item) => {
+            const searchable = [
+              item.title,
+              item.description,
+              item.media_type,
+              item.category,
+              item.file_name,
+              item.media_url
+            ].join(" ").toLowerCase();
 
-    function getIcon(type) {
-      const icons = {
-        sermon: "fas fa-church",
-        video: "fas fa-video",
-        audio: "fas fa-music",
-        image: "fas fa-image",
-        pdf: "fas fa-file-pdf",
-        announcement: "fas fa-bullhorn"
-      };
+            const matchesSearch = !term || searchable.includes(term);
 
-      return icons[type] || "fas fa-file";
-    }
+            let matchesFilter = true;
 
-    function escapeHtml(str) {
-      return String(str || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
+            if (filter === "published") matchesFilter = item.is_published === true;
+            else if (filter === "hidden") matchesFilter = item.is_published !== true;
+            else if (filter !== "all") matchesFilter = item.media_type === filter;
 
-    function escapeAttribute(str) {
-      return String(str || "")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-  </script>
-</body>
-</html>
+            return matchesSearch && matchesFilter;
+          });
+
+          renderMedia(filtered);
+        }
+
+        function renderMedia(items) {
+          const list = document.getElementById("mediaList");
+          document.getElementById("mediaCount").textContent = `${items.length} media item(s)`;
+
+          if (!items.length) {
+            list.innerHTML = `
+              <div class="p-12 text-center">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl">
+                  <i class="fas fa-photo-film"></i>
+                </div>
+                <h3 class="font-black mt-4">No media found</h3>
+                <p class="text-sm text-slate-400 mt-2">Upload your first Sky Grace media item.</p>
+              </div>
+            `;
+            return;
+          }
+
+          list.innerHTML = items.map((item) => {
+            const preview = buildThumbnail(item);
+            const published = item.is_published === true;
+
+            return `
+              <article class="p-5 md:p-6 hover:bg-slate-50 transition">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+                  <div class="flex gap-4 min-w-0">
+                    <div class="w-20 h-20 rounded-2xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+                      ${preview}
+                    </div>
+
+                    <div class="min-w-0">
+                      <div class="flex flex-wrap items-center gap-2">
+                        <h3 class="font-black text-slate-900 truncate">${escapeHtml(item.title || "Untitled")}</h3>
+
+                        <span class="px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                          published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+                        }">
+                          ${published ? "Published" : "Hidden"}
+                        </span>
+                      </div>
+
+                      <p class="text-[10px] font-black uppercase tracking-widest text-blue-600 mt-2">
+                        ${escapeHtml(item.media_type || "media")} · ${escapeHtml(item.category || "general")}
+                      </p>
+
+                      <p class="text-sm text-slate-500 mt-2 line-clamp-2">
+                        ${escapeHtml(item.description || "No description")}
+                      </p>
+
+                      <p class="text-[11px] text-slate-400 mt-2 truncate">
+                        ${escapeHtml(item.file_name || item.media_url || "")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap items-center gap-2 lg:justify-end">
+                    <button onclick="previewMedia('${item.id}')"
+                      class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                      title="Preview">
+                      <i class="fas fa-eye"></i>
+                    </button>
+
+                    <button onclick="copyMediaUrl('${item.id}')"
+                      class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition"
+                      title="Copy URL">
+                      <i class="fas fa-link"></i>
+                    </button>
+
+                    <button onclick="editMedia('${item.id}')"
+                      class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 hover:bg-violet-600 hover:text-white transition"
+                      title="Edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+
+                    <button onclick="togglePublished('${item.id}', ${published})"
+                      class="w-10 h-10 rounded-xl ${
+                        published
+                          ? "bg-amber-50 text-amber-600 hover:bg-amber-500 hover:text-white"
+                          : "bg-green-50 text-green-600 hover:bg-green-600 hover:text-white"
+                      } transition"
+                      title="${published ? "Hide media" : "Publish media"}">
+                      <i class="fas ${published ? "fa-eye-slash" : "fa-globe"}"></i>
+                    </button>
+
+                    <button onclick="deleteMedia('${item.id}')"
+                      class="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition"
+                      title="Delete">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `;
+          }).join("");
+        }
+
+        function buildThumbnail(item) {
+          const url = escapeAttribute(item.media_url || "");
+
+          if (item.media_type === "image" || item.media_type === "announcement") {
+            return `<img src="${url}" alt="" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=&quot;w-full h-full flex items-center justify-center text-slate-400&quot;><i class=&quot;fas fa-image text-2xl&quot;></i></div>'">`;
+          }
+
+          return `
+            <div class="w-full h-full flex items-center justify-center text-blue-600 text-2xl">
+              <i class="${getIcon(item.media_type)}"></i>
+            </div>
+          `;
+        }
+
+        function handleFileSelection() {
+          const file = mediaFile.files[0];
+          const label = document.getElementById("selectedFileName");
+
+          if (!file) {
+            label.textContent = "Image, video, audio or PDF";
+            return;
+          }
+
+          if (file.size > MAX_FILE_SIZE) {
+            mediaFile.value = "";
+            label.textContent = "File is larger than 50 MB";
+            showStatus("The selected file is larger than 50 MB.", "error");
+            return;
+          }
+
+          label.textContent = `${file.name} · ${formatBytes(file.size)}`;
+
+          const detectedType = detectMediaType(file);
+          if (detectedType) document.getElementById("mediaType").value = detectedType;
+
+          if (!document.getElementById("mediaTitle").value.trim()) {
+            document.getElementById("mediaTitle").value = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]+/g, " ");
+          }
+        }
+
+        async function saveMedia(event) {
+          event.preventDefault();
+
+          const editingId = document.getElementById("editingMediaId").value;
+          const title = document.getElementById("mediaTitle").value.trim();
+          const media_type = document.getElementById("mediaType").value;
+          const category = document.getElementById("mediaCategory").value;
+          const description = document.getElementById("mediaDescription").value.trim();
+          const is_published = document.getElementById("mediaPublished").checked;
+          const externalUrl = document.getElementById("mediaUrl").value.trim();
+          const file = mediaFile.files[0];
+
+          if (!title) {
+            showStatus("Please enter a media title.", "error");
+            return;
+          }
+
+          if (!editingId && !file && !externalUrl) {
+            showStatus("Please choose a file or enter an external media URL.", "error");
+            return;
+          }
+
+          setSavingState(true);
+
+          let uploadedStoragePath = null;
+
+          try {
+            const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
+
+            if (sessionError || !sessionData.session) {
+              throw new Error("Your admin session has expired. Please sign in again.");
+            }
+
+            let media_url = externalUrl;
+            let storage_path = null;
+            let file_name = null;
+            let mime_type = null;
+            let file_size = null;
+
+            const existingItem = editingId ? allMedia.find(item => item.id === editingId) : null;
+
+            if (existingItem) {
+              media_url = externalUrl || existingItem.media_url;
+              storage_path = existingItem.storage_path;
+              file_name = existingItem.file_name;
+              mime_type = existingItem.mime_type;
+              file_size = existingItem.file_size;
+            }
+
+            if (file) {
+              showUploadProgress(true);
+
+              const safeName = sanitizeFileName(file.name);
+              const folder = category || "general";
+              const storageFilePath = `${folder}/${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+
+              const { error: uploadError } = await supabaseClient.storage
+                .from(MEDIA_BUCKET)
+                .upload(storageFilePath, file, {
+                  cacheControl: "3600",
+                  upsert: false,
+                  contentType: file.type || undefined
+                });
+
+              if (uploadError) throw uploadError;
+
+              uploadedStoragePath = storageFilePath;
+
+              const { data: publicUrlData } = supabaseClient.storage
+                .from(MEDIA_BUCKET)
+                .getPublicUrl(storageFilePath);
+
+              media_url = publicUrlData.publicUrl;
+              storage_path = storageFilePath;
+              file_name = file.name;
+              mime_type = file.type || null;
+              file_size = file.size;
+            }
+
+            const payload = {
+              title,
+              description: description || null,
+              media_type,
+              media_url,
+              storage_path,
+              file_name,
+              mime_type,
+              file_size,
+              category,
+              is_published,
+              updated_at: new Date().toISOString()
+            };
+
+            if (editingId) {
+              const { error } = await supabaseClient
+                .from("media_items")
+                .update(payload)
+                .eq("id", editingId);
+
+              if (error) throw error;
+
+              if (file && existingItem?.storage_path && existingItem.storage_path !== storage_path) {
+                const { error: oldFileDeleteError } = await supabaseClient.storage
+                  .from(MEDIA_BUCKET)
+                  .remove([existingItem.storage_path]);
+
+                if (oldFileDeleteError) {
+                  console.warn("Old media file could not be removed:", oldFileDeleteError);
+                }
+              }
+
+              showStatus("Media updated successfully.", "success");
+            } else {
+              payload.created_by = sessionData.session.user.id;
+
+              const { error } = await supabaseClient
+                .from("media_items")
+                .insert([payload]);
+
+              if (error) throw error;
+
+              showStatus("Media uploaded successfully.", "success");
+            }
+
+            uploadedStoragePath = null;
+            resetForm(false);
+            await loadMedia();
+
+          } catch (error) {
+            console.error("Media save error:", error);
+
+            if (uploadedStoragePath) {
+              const { error: cleanupError } = await supabaseClient.storage
+                .from(MEDIA_BUCKET)
+                .remove([uploadedStoragePath]);
+
+              if (cleanupError) {
+                console.warn("Failed to clean up uploaded file:", cleanupError);
+              }
+            }
+
+            showStatus(error.message || "Unable to save media.", "error");
+          } finally {
+            showUploadProgress(false);
+            setSavingState(false);
+          }
+        }
+
+        function editMedia(id) {
+          const item = allMedia.find(media => media.id === id);
+          if (!item) return;
+
+          document.getElementById("editingMediaId").value = item.id;
+          document.getElementById("mediaTitle").value = item.title || "";
+          document.getElementById("mediaType").value = item.media_type || "image";
+          document.getElementById("mediaCategory").value = item.category || "general";
+          document.getElementById("mediaUrl").value = item.storage_path ? "" : (item.media_url || "");
+          document.getElementById("mediaDescription").value = item.description || "";
+          document.getElementById("mediaPublished").checked = item.is_published === true;
+
+          document.getElementById("formHeading").textContent = "Edit Media";
+          document.getElementById("submitButtonText").textContent = "Save Changes";
+          document.getElementById("cancelEditBtn").classList.remove("hidden");
+          document.getElementById("selectedFileName").textContent = item.file_name
+            ? `Current file: ${item.file_name}`
+            : "Choose a replacement file if needed";
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        async function togglePublished(id, currentValue) {
+          const { error } = await supabaseClient
+            .from("media_items")
+            .update({
+              is_published: !currentValue,
+              updated_at: new Date().toISOString()
+            })
+            .eq("id", id);
+
+          if (error) {
+            alert(error.message);
+            return;
+          }
+
+          await loadMedia();
+        }
+
+        async function deleteMedia(id) {
+          const item = allMedia.find(media => media.id === id);
+          if (!item) return;
+
+          if (!confirm(`Delete "${item.title}" permanently?`)) return;
+
+          const { error: databaseError } = await supabaseClient
+            .from("media_items")
+            .delete()
+            .eq("id", id);
+
+          if (databaseError) {
+            alert(databaseError.message);
+            return;
+          }
+
+          if (item.storage_path) {
+            const { error: storageError } = await supabaseClient.storage
+              .from(MEDIA_BUCKET)
+              .remove([item.storage_path]);
+
+            if (storageError) {
+              console.warn("Database record deleted, but storage cleanup failed:", storageError);
+              alert("The media record was deleted, but the stored file could not be removed. Check Storage policies.");
+            }
+          }
+
+          if (document.getElementById("editingMediaId").value === id) resetForm();
+          await loadMedia();
+        }
+
+        function previewMedia(id) {
+          const item = allMedia.find(media => media.id === id);
+          if (!item) return;
+
+          document.getElementById("previewTitle").textContent = item.title || "Media Preview";
+          document.getElementById("previewContent").innerHTML = buildPreviewContent(item);
+
+          const modal = document.getElementById("previewModal");
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        }
+
+        function buildPreviewContent(item) {
+          const url = escapeAttribute(item.media_url || "");
+
+          if (item.media_type === "image" || item.media_type === "announcement") {
+            return `<img src="${url}" alt="${escapeAttribute(item.title || "")}" class="max-w-full max-h-[70vh] mx-auto rounded-2xl object-contain">`;
+          }
+
+          if (item.media_type === "video" && isDirectMediaFile(item.media_url)) {
+            return `<video src="${url}" controls class="w-full max-h-[70vh] rounded-2xl bg-black"></video>`;
+          }
+
+          if (item.media_type === "audio") {
+            return `<div class="py-16"><audio src="${url}" controls class="w-full"></audio></div>`;
+          }
+
+          if (item.media_type === "pdf") {
+            return `<iframe src="${url}" class="w-full h-[70vh] rounded-2xl border border-slate-200"></iframe>`;
+          }
+
+          return `
+            <div class="text-center py-16">
+              <div class="w-20 h-20 mx-auto rounded-3xl bg-blue-100 text-blue-600 flex items-center justify-center text-3xl">
+                <i class="${getIcon(item.media_type)}"></i>
+              </div>
+              <p class="text-slate-500 mt-5">Open this media in a new browser tab.</p>
+              <a href="${url}" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 mt-5 bg-blue-600 text-white px-6 py-3 rounded-xl font-black uppercase text-xs tracking-widest">
+                Open Media <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          `;
+        }
+
+        function closePreview() {
+          const modal = document.getElementById("previewModal");
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          document.getElementById("previewContent").innerHTML = "";
+        }
+
+        async function copyMediaUrl(id) {
+          const item = allMedia.find(media => media.id === id);
+          if (!item?.media_url) return;
+
+          try {
+            await navigator.clipboard.writeText(item.media_url);
+            alert("Media URL copied.");
+          } catch {
+            prompt("Copy this media URL:", item.media_url);
+          }
+        }
+
+        function resetForm(clearStatus = true) {
+          mediaForm.reset();
+          mediaFile.value = "";
+          document.getElementById("editingMediaId").value = "";
+          document.getElementById("mediaPublished").checked = true;
+          document.getElementById("formHeading").textContent = "Add New Media";
+          document.getElementById("submitButtonText").textContent = "Upload Media";
+          document.getElementById("cancelEditBtn").classList.add("hidden");
+          document.getElementById("selectedFileName").textContent = "Image, video, audio or PDF";
+
+          if (clearStatus) {
+            mediaStatus.textContent = "";
+            mediaStatus.className = "min-h-[1.25rem] text-sm font-bold";
+          }
+        }
+
+        function setSavingState(isSaving) {
+          mediaSubmitBtn.disabled = isSaving;
+          document.getElementById("submitButtonText").textContent = isSaving
+            ? "Saving..."
+            : (document.getElementById("editingMediaId").value ? "Save Changes" : "Upload Media");
+        }
+
+        function showUploadProgress(show) {
+          document.getElementById("uploadProgressWrap").classList.toggle("hidden", !show);
+        }
+
+        function showStatus(message, type) {
+          mediaStatus.textContent = message;
+
+          const classes = {
+            success: "min-h-[1.25rem] text-sm font-bold text-green-600",
+            error: "min-h-[1.25rem] text-sm font-bold text-red-600",
+            info: "min-h-[1.25rem] text-sm font-bold text-blue-600"
+          };
+
+          mediaStatus.className = classes[type] || classes.info;
+        }
+
+        function detectMediaType(file) {
+          if (file.type.startsWith("image/")) return "image";
+          if (file.type.startsWith("video/")) return "video";
+          if (file.type.startsWith("audio/")) return "audio";
+          if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) return "pdf";
+          return null;
+        }
+
+        function sanitizeFileName(name) {
+          return String(name || "media")
+            .normalize("NFKD")
+            .replace(/[^\w.\-]+/g, "-")
+            .replace(/-+/g, "-")
+            .replace(/^-|-$/g, "")
+            .toLowerCase();
+        }
+
+        function formatBytes(bytes) {
+          if (!bytes) return "0 B";
+          const units = ["B", "KB", "MB", "GB"];
+          const index = Math.floor(Math.log(bytes) / Math.log(1024));
+          return `${(bytes / Math.pow(1024, index)).toFixed(index ? 1 : 0)} ${units[index]}`;
+        }
+
+        function isDirectMediaFile(url) {
+          return /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(String(url || ""));
+        }
+
+        function getIcon(type) {
+          const icons = {
+            sermon: "fas fa-church",
+            video: "fas fa-video",
+            audio: "fas fa-music",
+            image: "fas fa-image",
+            pdf: "fas fa-file-pdf",
+            announcement: "fas fa-bullhorn"
+          };
+
+          return icons[type] || "fas fa-file";
+        }
+
+        function escapeHtml(value) {
+          return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        }
+
+        function escapeAttribute(value) {
+          return escapeHtml(value);
+        }
+      </script>
+    </body>
+    </html>
