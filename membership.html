@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Become a Member | Sky Grace Jesus Ministry</title>
+
+  <meta
+    name="description"
+    content="Submit your membership application to become part of Sky Grace Jesus Ministry."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.08), transparent 32%),
+        #f8fafc;
+    }
+  </style>
+</head>
+
+<body class="text-slate-900 font-sans antialiased">
+
+  <!-- Shared Public Header -->
+  <div id="site-header"></div>
+  <script src="assets/js/header.js" defer></script>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden min-h-[62vh] bg-slate-950 flex items-center">
+      <div class="absolute inset-0">
+        <img
+          src="assets/images/hero-elohim.jpg"
+          alt="Sky Grace membership"
+          class="w-full h-full object-cover opacity-35"
+        />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/92 to-slate-950/60"></div>
+
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_82%_30%,rgba(245,158,11,0.18),transparent_28%)]"></div>
+
+      <div class="relative z-10 container mx-auto px-6 py-24">
+        <div class="max-w-4xl">
+          <p class="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.35em] text-blue-300">
+            <span class="w-8 h-px bg-blue-400"></span>
+            Sky Grace Membership
+          </p>
+
+          <h1 class="mt-6 text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">
+            FIND YOUR PLACE
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-amber-300">
+              IN THE FAMILY
+            </span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-base md:text-lg text-slate-200 leading-relaxed">
+            Become part of the Sky Grace Jesus Ministry family and grow in faith,
+            fellowship, service and purpose.
+          </p>
+
+          <a
+            href="#membership-form"
+            class="mt-9 inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition shadow-xl shadow-blue-950/40"
+          >
+            <i class="fas fa-user-plus"></i>
+            Apply for Membership
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-50 to-transparent"></div>
+    </section>
+
+    <!-- Membership Form -->
+    <section id="membership-form" class="py-20 md:py-24">
+      <div class="container mx-auto px-6">
+
+        <div class="max-w-7xl mx-auto grid xl:grid-cols-[1fr_360px] gap-8">
+
+          <section class="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl overflow-hidden">
+            <div class="p-7 md:p-10 border-b border-slate-200">
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+                Membership Application
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+                Join the Sky Grace Family
+              </h2>
+
+              <p class="mt-4 text-slate-600 leading-relaxed">
+                Complete the form below. A ministry administrator will review your application
+                and contact you.
+              </p>
+            </div>
+
+            <div
+              id="membershipStatus"
+              class="hidden mx-7 md:mx-10 mt-7 rounded-2xl border px-5 py-4 text-sm font-bold"
+              role="alert"
+            ></div>
+
+            <form id="membershipForm" class="p-7 md:p-10 space-y-10">
+
+              <!-- Personal Information -->
+              <div>
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-11 h-11 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                    <i class="fas fa-user"></i>
+                  </div>
+
+                  <div>
+                    <h3 class="font-black text-xl text-slate-950">
+                      Personal Information
+                    </h3>
+
+                    <p class="text-sm text-slate-500">
+                      Tell us about yourself.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5">
+                  <div class="md:col-span-2">
+                    <label
+                      for="fullName"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Full Name *
+                    </label>
+
+                    <input
+                      id="fullName"
+                      type="text"
+                      required
+                      autocomplete="name"
+                      placeholder="Your full name"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="gender"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Gender
+                    </label>
+
+                    <select
+                      id="gender"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    >
+                      <option value="">Select gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Prefer Not To Say">Prefer Not To Say</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      for="dateOfBirth"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Date of Birth
+                    </label>
+
+                    <input
+                      id="dateOfBirth"
+                      type="date"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="phone"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Phone Number *
+                    </label>
+
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      autocomplete="tel"
+                      placeholder="+264..."
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Email Address
+                    </label>
+
+                    <input
+                      id="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="you@example.com"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div class="md:col-span-2">
+                    <label
+                      for="residentialAddress"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Residential Address
+                    </label>
+
+                    <textarea
+                      id="residentialAddress"
+                      rows="3"
+                      placeholder="Your residential address"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-medium outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition resize-y"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <label
+                      for="occupation"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Occupation
+                    </label>
+
+                    <input
+                      id="occupation"
+                      type="text"
+                      placeholder="Your occupation"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="maritalStatus"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Marital Status
+                    </label>
+
+                    <select
+                      id="maritalStatus"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    >
+                      <option value="">Select status</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Divorced">Divorced</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Separated">Separated</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Church Information -->
+              <div class="border-t border-slate-200 pt-10">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                    <i class="fas fa-church"></i>
+                  </div>
+
+                  <div>
+                    <h3 class="font-black text-xl text-slate-950">
+                      Church Information
+                    </h3>
+
+                    <p class="text-sm text-slate-500">
+                      Tell us about your spiritual journey.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      for="branch"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Branch *
+                    </label>
+
+                    <select
+                      id="branch"
+                      required
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    >
+                      <option value="Okahandja HQ">Okahandja HQ</option>
+                      <option value="Windhoek">Windhoek</option>
+                      <option value="Walvis Bay">Walvis Bay</option>
+                      <option value="Swakopmund">Swakopmund</option>
+                      <option value="Oshakati">Oshakati</option>
+                      <option value="Rundu">Rundu</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      for="membershipType"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Membership Type
+                    </label>
+
+                    <select
+                      id="membershipType"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    >
+                      <option value="Member">Member</option>
+                      <option value="Visitor">Visitor</option>
+                      <option value="New Convert">New Convert</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      for="salvationDate"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Salvation Date
+                    </label>
+
+                    <input
+                      id="salvationDate"
+                      type="date"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="baptismDate"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Baptism Date
+                    </label>
+
+                    <input
+                      id="baptismDate"
+                      type="date"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <label class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between gap-4 cursor-pointer">
+                    <div>
+                      <p class="font-black text-slate-900">
+                        Water Baptized
+                      </p>
+
+                      <p class="mt-1 text-xs text-slate-500">
+                        Have you been baptized in water?
+                      </p>
+                    </div>
+
+                    <input
+                      id="waterBaptized"
+                      type="checkbox"
+                      class="w-5 h-5 accent-blue-600"
+                    />
+                  </label>
+
+                  <label class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between gap-4 cursor-pointer">
+                    <div>
+                      <p class="font-black text-slate-900">
+                        Filled With the Holy Spirit
+                      </p>
+
+                      <p class="mt-1 text-xs text-slate-500">
+                        Have you received the infilling of the Holy Spirit?
+                      </p>
+                    </div>
+
+                    <input
+                      id="filledWithHolySpirit"
+                      type="checkbox"
+                      class="w-5 h-5 accent-blue-600"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Emergency Contact -->
+              <div class="border-t border-slate-200 pt-10">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-11 h-11 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center">
+                    <i class="fas fa-phone-volume"></i>
+                  </div>
+
+                  <div>
+                    <h3 class="font-black text-xl text-slate-950">
+                      Emergency Contact
+                    </h3>
+
+                    <p class="text-sm text-slate-500">
+                      A trusted person we can contact if necessary.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5">
+                  <div>
+                    <label
+                      for="emergencyContactName"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Contact Name
+                    </label>
+
+                    <input
+                      id="emergencyContactName"
+                      type="text"
+                      placeholder="Full name"
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="emergencyContactPhone"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Contact Phone
+                    </label>
+
+                    <input
+                      id="emergencyContactPhone"
+                      type="tel"
+                      placeholder="+264..."
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="emergencyContactRelationship"
+                      class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                    >
+                      Relationship
+                    </label>
+
+                    <input
+                      id="emergencyContactRelationship"
+                      type="text"
+                      placeholder="Spouse, parent, sibling..."
+                      class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Consent -->
+              <div class="border-t border-slate-200 pt-8">
+                <label class="rounded-2xl border border-blue-200 bg-blue-50 p-5 flex items-start gap-4 cursor-pointer">
+                  <input
+                    id="consent"
+                    type="checkbox"
+                    required
+                    class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0"
+                  />
+
+                  <span class="text-sm text-slate-700 leading-relaxed">
+                    I confirm that the information provided is correct and I consent to
+                    Sky Grace Jesus Ministry using it for membership administration,
+                    ministry communication and pastoral care.
+                  </span>
+                </label>
+              </div>
+
+              <!-- Submit -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <p class="text-xs text-slate-400">
+                  Your application will be reviewed by the ministry administration team.
+                </p>
+
+                <button
+                  id="submitMembershipBtn"
+                  type="submit"
+                  class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition shadow-lg shadow-blue-200"
+                >
+                  <i id="submitMembershipIcon" class="fas fa-paper-plane"></i>
+                  <span id="submitMembershipText">Submit Application</span>
+                </button>
+              </div>
+
+            </form>
+          </section>
+
+          <!-- Information -->
+          <aside class="space-y-6">
+
+            <div class="bg-slate-950 rounded-[2.5rem] p-7 md:p-8 text-white shadow-xl relative overflow-hidden">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.34),transparent_38%)]"></div>
+
+              <div class="relative z-10">
+                <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-xl">
+                  <i class="fas fa-people-roof"></i>
+                </div>
+
+                <h3 class="mt-6 text-2xl font-black">
+                  Why Become a Member?
+                </h3>
+
+                <div class="mt-7 space-y-5">
+                  <div class="flex items-start gap-4">
+                    <i class="fas fa-check-circle text-blue-300 mt-1"></i>
+
+                    <div>
+                      <p class="font-black">Spiritual Growth</p>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Grow through worship, teaching, prayer and fellowship.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <i class="fas fa-check-circle text-blue-300 mt-1"></i>
+
+                    <div>
+                      <p class="font-black">A Ministry Family</p>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Build meaningful relationships in the body of Christ.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <i class="fas fa-check-circle text-blue-300 mt-1"></i>
+
+                    <div>
+                      <p class="font-black">Purpose and Service</p>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Discover your gifts and serve with excellence.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <i class="fas fa-check-circle text-blue-300 mt-1"></i>
+
+                    <div>
+                      <p class="font-black">Pastoral Care</p>
+                      <p class="mt-1 text-xs text-slate-400">
+                        Receive prayer, guidance and ministry support.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] border border-slate-200 p-7 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                <i class="fas fa-location-dot"></i>
+              </div>
+
+              <h3 class="mt-5 text-xl font-black text-slate-950">
+                Visit Sky Grace
+              </h3>
+
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                Okahandja Shopping Centre, Shop 32, Namibia
+              </p>
+
+              <p class="mt-3 text-sm font-black text-slate-800">
+                Sunday Service: 09H00
+              </p>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] border border-slate-200 p-7 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center">
+                <i class="fas fa-phone"></i>
+              </div>
+
+              <h3 class="mt-5 text-xl font-black text-slate-950">
+                Need Assistance?
+              </h3>
+
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                Contact the Sky Grace church office for membership assistance.
+              </p>
+
+              <a
+                href="tel:+264812320825"
+                class="mt-5 inline-flex items-center gap-2 font-black text-blue-600 hover:text-blue-500"
+              >
+                +264 81 232 0825
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Public Footer -->
+  <div id="site-footer"></div>
+  <script src="assets/js/footer.js" defer></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    const membershipForm = document.getElementById("membershipForm");
+    const submitButton = document.getElementById("submitMembershipBtn");
+    const statusBox = document.getElementById("membershipStatus");
+
+    membershipForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      statusBox.classList.add("hidden");
+
+      if (!window.supabaseClient) {
+        showStatus(
+          "The membership form is temporarily unavailable. Please try again later.",
+          "error"
+        );
+
+        return;
+      }
+
+      const payload = {
+        full_name: document.getElementById("fullName").value.trim(),
+        gender: cleanText(document.getElementById("gender").value),
+        date_of_birth: document.getElementById("dateOfBirth").value || null,
+        phone: document.getElementById("phone").value.trim(),
+        email: cleanText(document.getElementById("email").value)?.toLowerCase() || null,
+        residential_address: cleanText(document.getElementById("residentialAddress").value),
+        occupation: cleanText(document.getElementById("occupation").value),
+        marital_status: cleanText(document.getElementById("maritalStatus").value),
+        branch: document.getElementById("branch").value,
+        membership_type: document.getElementById("membershipType").value,
+        water_baptized: document.getElementById("waterBaptized").checked,
+        filled_with_holy_spirit: document.getElementById("filledWithHolySpirit").checked,
+        salvation_date: document.getElementById("salvationDate").value || null,
+        baptism_date: document.getElementById("baptismDate").value || null,
+        emergency_contact_name: cleanText(document.getElementById("emergencyContactName").value),
+        emergency_contact_phone: cleanText(document.getElementById("emergencyContactPhone").value),
+        emergency_contact_relationship: cleanText(document.getElementById("emergencyContactRelationship").value),
+        membership_status: "Pending",
+        application_source: "Public Website"
+      };
+
+      if (!payload.full_name || !payload.phone || !payload.branch) {
+        showStatus(
+          "Full name, phone number and branch are required.",
+          "error"
+        );
+
+        return;
+      }
+
+      setSubmitting(true);
+
+      try {
+        const { error } = await supabaseClient
+          .from("members")
+          .insert(payload);
+
+        if (error) {
+          throw error;
+        }
+
+        membershipForm.reset();
+        document.getElementById("branch").value = "Okahandja HQ";
+        document.getElementById("membershipType").value = "Member";
+
+        showStatus(
+          "Your membership application has been submitted successfully. The Sky Grace administration team will contact you.",
+          "success"
+        );
+
+        window.scrollTo({
+          top: document.getElementById("membership-form").offsetTop,
+          behavior: "smooth"
+        });
+      } catch (error) {
+        console.error("Membership application error:", error);
+
+        showStatus(
+          error.message ||
+          "Unable to submit your application. Please check your information and try again.",
+          "error"
+        );
+      } finally {
+        setSubmitting(false);
+      }
+    });
+
+    function setSubmitting(submitting) {
+      submitButton.disabled = submitting;
+
+      document.getElementById("submitMembershipIcon").className =
+        submitting
+          ? "fas fa-circle-notch fa-spin"
+          : "fas fa-paper-plane";
+
+      document.getElementById("submitMembershipText").textContent =
+        submitting
+          ? "Submitting..."
+          : "Submit Application";
+    }
+
+    function showStatus(message, type) {
+      statusBox.textContent = message;
+      statusBox.className =
+        "mx-7 md:mx-10 mt-7 rounded-2xl border px-5 py-4 text-sm font-bold";
+
+      if (type === "success") {
+        statusBox.classList.add(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
+      } else {
+        statusBox.classList.add(
+          "bg-red-50",
+          "border-red-200",
+          "text-red-700"
+        );
+      }
+
+      statusBox.classList.remove("hidden");
+    }
+
+    function cleanText(value) {
+      const cleaned = String(value || "").trim();
+      return cleaned || null;
+    }
+  </script>
+
+</body>
+</html>
