@@ -3,153 +3,1065 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Volunteer | Sky Grace Jesus Ministry</title>
+
+  <title>Volunteer Portal | Sky Grace Jesus Ministry</title>
+
+  <meta
+    name="description"
+    content="Secure volunteer portal for approved Sky Grace Jesus Ministry volunteers to view ministry assignments and serving schedules."
+  />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
 
   <style>
-    /* Hide placeholders if header/footer injection fails */
-    #site-header:empty, #site-footer:empty { display: none; }
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 33%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.08), transparent 30%),
+        #f8fafc;
+    }
+
+    .portal-card {
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
   </style>
 </head>
 
-<body class="bg-white text-slate-900 font-sans antialiased">
+<body class="text-slate-900 font-sans antialiased">
 
-  <!-- Header -->
+  <!-- Shared Public Header -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
   <main>
 
-    <!-- HERO (same style concept as index.html) -->
-    <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
+    <!-- Hero -->
+    <section class="relative overflow-hidden min-h-[58vh] bg-slate-950 flex items-center">
       <div class="absolute inset-0">
         <img
           src="assets/images/hero-elohim.jpg"
-          alt="Sky Grace Jesus Ministry"
-          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+          alt="Sky Grace volunteer portal"
+          class="w-full h-full object-cover opacity-30"
         />
       </div>
 
-      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/92 to-slate-950/60"></div>
 
-      <div class="relative z-10 container mx-auto px-6 py-16">
-        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
-          <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.6)]"></span>
-          Volunteer
-        </p>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_82%_30%,rgba(245,158,11,0.18),transparent_28%)]"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
-          Serve With Us
-        </h1>
+      <div class="relative z-10 container mx-auto px-6 py-24">
+        <div class="max-w-4xl">
+          <p class="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.35em] text-blue-300">
+            <span class="w-8 h-px bg-blue-400"></span>
+            Sky Grace Volunteers
+          </p>
 
-        <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
-          Be part of what God is doing at Sky Grace Jesus Ministry by serving in a department that fits your calling.
-        </p>
+          <h1 class="mt-6 text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">
+            SERVE WITH
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-amber-300">
+              PURPOSE & EXCELLENCE
+            </span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-base md:text-lg text-slate-200 leading-relaxed">
+            Approved Sky Grace volunteers can securely view their ministry role,
+            team leader, upcoming schedules and assignment details.
+          </p>
+
+          <a
+            href="#portal-access"
+            class="mt-9 inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition shadow-xl shadow-blue-950/40"
+          >
+            <i class="fas fa-right-to-bracket"></i>
+            Open Volunteer Portal
+          </a>
+        </div>
       </div>
+
+      <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-50 to-transparent"></div>
     </section>
 
-    <!-- CONTENT (LIGHT) -->
-    <section class="py-16 bg-white">
+    <!-- Login -->
+    <section id="portal-access" class="py-20 md:py-24">
       <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-3 gap-12">
 
-          <!-- FORM -->
-          <div class="lg:col-span-2 bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
-            <h3 class="text-2xl font-black uppercase mb-3">Volunteer Application</h3>
-            <p class="text-slate-600 mb-8">
-              Choose a role and tell us why you want to serve. Our team will review and respond.
+        <div id="loginSection" class="max-w-5xl mx-auto grid lg:grid-cols-[1fr_0.85fr] gap-8 items-stretch">
+
+          <div class="bg-white rounded-[2.5rem] border border-slate-200 p-7 md:p-10 shadow-xl">
+            <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+              Secure Access
             </p>
 
-            <form class="space-y-4">
-              <div class="grid md:grid-cols-2 gap-4">
+            <h2 class="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+              Volunteer Login
+            </h2>
+
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Enter the email address used on your volunteer application and the portal
+              access code supplied by the Sky Grace administration team.
+            </p>
+
+            <form id="portalLoginForm" class="mt-8 space-y-5">
+              <div>
+                <label
+                  for="volunteerEmail"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  Email Address
+                </label>
+
                 <input
-                  type="text"
-                  placeholder="Full Name"
-                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400"
-                />
-                <input
-                  type="tel"
-                  placeholder="WhatsApp Number"
-                  class="w-full p-4 bg-slate-50 rounded-2xl border border-slate-200 focus:outline-none focus:border-blue-400"
+                  id="volunteerEmail"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="volunteer@example.com"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
                 />
               </div>
 
-              <select class="w-full p-4 bg-slate-50 rounded-2xl text-xs font-bold uppercase border border-slate-200 focus:outline-none focus:border-blue-400">
-                <option>Choose Ministry Role...</option>
-                <option>Media Team (Live Stream)</option>
-                <option>Ushering & Hospitality</option>
-                <option>Theology School Admin</option>
-              </select>
+              <div>
+                <label
+                  for="volunteerAccessCode"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  Portal Access Code
+                </label>
 
-              <textarea
-                placeholder="Why do you want to serve in this department?"
-                class="w-full p-4 bg-slate-50 rounded-2xl h-32 border border-slate-200 focus:outline-none focus:border-blue-400"
-              ></textarea>
+                <div class="relative">
+                  <input
+                    id="volunteerAccessCode"
+                    type="password"
+                    required
+                    autocomplete="one-time-code"
+                    placeholder="Enter access code"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 pr-14 text-sm font-black uppercase tracking-widest outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                  />
+
+                  <button
+                    id="toggleAccessCodeBtn"
+                    type="button"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition"
+                    aria-label="Show access code"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <p id="loginStatus" class="min-h-[1.25rem] text-sm font-bold"></p>
 
               <button
-                type="button"
-                class="w-full py-4 bg-amber-500 text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition">
-                Submit for Approval
+                id="portalLoginBtn"
+                type="submit"
+                class="w-full inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition shadow-lg shadow-blue-200"
+              >
+                <i id="portalLoginIcon" class="fas fa-shield-halved"></i>
+                <span id="portalLoginText">Access My Portal</span>
               </button>
             </form>
           </div>
 
-          <!-- SCHEDULE (NOW LIGHT - no more bg-slate-900) -->
-          <aside class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-200">
-            <h3 class="text-xl font-black uppercase mb-2 text-slate-900">My Schedule</h3>
-            <p class="text-slate-600 text-sm mb-8">
-              Once approved, your serving schedule will appear here.
-            </p>
+          <aside class="rounded-[2.5rem] bg-slate-950 text-white p-7 md:p-10 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.34),transparent_38%)]"></div>
 
-            <div class="space-y-6">
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Sunday Service</p>
-                <p class="mt-1 text-sm font-bold text-slate-900">Role: Media – Camera 2</p>
+            <div class="relative z-10">
+              <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-xl">
+                <i class="fas fa-hands-helping"></i>
               </div>
 
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Midweek Service</p>
-                <p class="mt-1 text-sm font-bold text-slate-900">Role: Hospitality – Welcome Desk</p>
-              </div>
+              <h3 class="mt-6 text-2xl font-black">
+                Approved Volunteers Only
+              </h3>
 
-              <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5">
-                <p class="text-[10px] font-black uppercase tracking-widest text-amber-700">Tip</p>
-                <p class="mt-1 text-sm text-slate-800">
-                  If you’re unsure where to serve, choose “Hospitality” and we’ll guide you.
-                </p>
+              <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+                Your access code is generated after your volunteer application is approved.
+                Contact the ministry administration team if you have not received your code.
+              </p>
+
+              <div class="mt-8 space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-user-check text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="font-black">View Your Ministry Role</p>
+                    <p class="mt-1 text-xs text-slate-400">
+                      See your department, assigned role and team leader.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-calendar-days text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="font-black">View Serving Schedules</p>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Review upcoming services, times, venues and duties.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-circle-check text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="font-black">Confirm Assignments</p>
+                    <p class="mt-1 text-xs text-slate-400">
+                      Confirm or decline each serving schedule securely.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </aside>
 
         </div>
-      </div>
-    </section>
 
-    <!-- Light divider CTA -->
-    <section class="py-10 bg-slate-50 border-t border-slate-200">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Need Help?</p>
-            <h3 class="mt-1 text-xl font-black text-slate-900">We can guide you to the right department</h3>
+        <!-- Volunteer Dashboard -->
+        <div id="portalDashboard" class="hidden max-w-7xl mx-auto">
+
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+                Volunteer Dashboard
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight text-slate-950">
+                Welcome,
+                <span id="dashboardVolunteerName">Volunteer</span>
+              </h2>
+
+              <p class="mt-4 text-slate-600">
+                Volunteer number:
+                <span id="dashboardVolunteerNumber" class="font-black text-slate-900"></span>
+              </p>
+            </div>
+
+            <button
+              id="portalLogoutBtn"
+              type="button"
+              class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-slate-950 text-white font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 transition"
+            >
+              <i class="fas fa-right-from-bracket"></i>
+              Close Portal
+            </button>
           </div>
-          <a href="contact.html"
-             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
-            <i class="fas fa-envelope"></i>
-            Contact Us
-          </a>
+
+          <!-- Profile Summary -->
+          <section class="grid lg:grid-cols-[360px_1fr] gap-8 mb-8">
+
+            <div class="bg-slate-950 rounded-[2.5rem] p-7 text-white shadow-xl relative overflow-hidden">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.35),transparent_38%)]"></div>
+
+              <div class="relative z-10">
+                <div
+                  id="profilePhotoWrap"
+                  class="w-24 h-24 rounded-[2rem] bg-blue-600 border-4 border-white/10 flex items-center justify-center overflow-hidden text-3xl font-black"
+                >
+                  <span id="profileInitials">SG</span>
+                </div>
+
+                <h3 id="profileName" class="mt-6 text-2xl font-black">
+                  Volunteer Name
+                </h3>
+
+                <p id="profileEmail" class="mt-2 text-sm text-slate-300 break-all"></p>
+
+                <div class="mt-7 space-y-4">
+                  <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                    <p class="text-[9px] font-black uppercase tracking-widest text-blue-300">
+                      Status
+                    </p>
+
+                    <p id="profileStatus" class="mt-2 font-black">
+                      Approved
+                    </p>
+                  </div>
+
+                  <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                    <p class="text-[9px] font-black uppercase tracking-widest text-blue-300">
+                      Branch
+                    </p>
+
+                    <p id="profileBranch" class="mt-2 font-black">
+                      Okahandja HQ
+                    </p>
+                  </div>
+
+                  <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                    <p class="text-[9px] font-black uppercase tracking-widest text-blue-300">
+                      Availability
+                    </p>
+
+                    <p id="profileAvailability" class="mt-2 font-black">
+                      Not specified
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+              <div class="portal-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <i class="fas fa-building-user"></i>
+                </div>
+
+                <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  Department
+                </p>
+
+                <p id="summaryDepartment" class="mt-2 text-lg font-black text-slate-950">
+                  Not Assigned
+                </p>
+              </div>
+
+              <div class="portal-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center">
+                  <i class="fas fa-user-tag"></i>
+                </div>
+
+                <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  Ministry Role
+                </p>
+
+                <p id="summaryRole" class="mt-2 text-lg font-black text-slate-950">
+                  Not Assigned
+                </p>
+              </div>
+
+              <div class="portal-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                  <i class="fas fa-user-tie"></i>
+                </div>
+
+                <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  Team Leader
+                </p>
+
+                <p id="summaryLeader" class="mt-2 text-lg font-black text-slate-950">
+                  Not Assigned
+                </p>
+              </div>
+
+              <div class="portal-card bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+                <div class="w-12 h-12 rounded-2xl bg-violet-100 text-violet-600 flex items-center justify-center">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+
+                <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  Upcoming Schedules
+                </p>
+
+                <p id="summaryScheduleCount" class="mt-2 text-3xl font-black text-slate-950">
+                  0
+                </p>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- Assignment Notes -->
+          <section class="bg-white rounded-[2rem] border border-slate-200 p-7 md:p-8 shadow-sm mb-8">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-clipboard-list"></i>
+              </div>
+
+              <div>
+                <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+                  Ministry Assignment
+                </p>
+
+                <h3 class="mt-2 text-2xl font-black text-slate-950">
+                  Assignment Notes
+                </h3>
+
+                <p
+                  id="assignmentNotes"
+                  class="mt-4 text-slate-600 leading-relaxed whitespace-pre-wrap"
+                >
+                  No assignment notes have been added.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Schedules -->
+          <section>
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-6">
+              <div>
+                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+                  Serving Calendar
+                </p>
+
+                <h3 class="mt-2 text-3xl font-black text-slate-950">
+                  My Assignments
+                </h3>
+              </div>
+
+              <p id="scheduleStatusText" class="text-sm font-bold text-slate-500">
+                Loading schedules...
+              </p>
+            </div>
+
+            <div
+              id="scheduleGrid"
+              class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+            ></div>
+          </section>
+
         </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- Shared Public Footer -->
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    const SESSION_KEY = "skygraceVolunteerPortalSession";
+
+    let portalEmail = "";
+    let portalAccessCode = "";
+    let currentPortalData = null;
+
+    const loginForm = document.getElementById("portalLoginForm");
+    const loginStatus = document.getElementById("loginStatus");
+    const loginButton = document.getElementById("portalLoginBtn");
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      loginForm.addEventListener("submit", handlePortalLogin);
+
+      document
+        .getElementById("toggleAccessCodeBtn")
+        .addEventListener("click", toggleAccessCodeVisibility);
+
+      document
+        .getElementById("portalLogoutBtn")
+        .addEventListener("click", closeVolunteerPortal);
+
+      const savedSession = readSavedPortalSession();
+
+      if (savedSession) {
+        portalEmail = savedSession.email;
+        portalAccessCode = savedSession.accessCode;
+
+        document.getElementById("volunteerEmail").value = portalEmail;
+        document.getElementById("volunteerAccessCode").value = portalAccessCode;
+
+        await loadVolunteerPortal(false);
+      }
+    });
+
+    async function handlePortalLogin(event) {
+      event.preventDefault();
+
+      portalEmail = document
+        .getElementById("volunteerEmail")
+        .value
+        .trim()
+        .toLowerCase();
+
+      portalAccessCode = document
+        .getElementById("volunteerAccessCode")
+        .value
+        .trim()
+        .toUpperCase();
+
+      if (!portalEmail || !portalAccessCode) {
+        showLoginStatus(
+          "Please enter your email address and portal access code.",
+          "error"
+        );
+
+        return;
+      }
+
+      await loadVolunteerPortal(true);
+    }
+
+    async function loadVolunteerPortal(saveSessionAfterSuccess) {
+      if (!window.supabaseClient) {
+        showLoginStatus(
+          "The volunteer portal is temporarily unavailable.",
+          "error"
+        );
+
+        return;
+      }
+
+      setLoginLoading(true);
+      showLoginStatus("Verifying volunteer access...", "info");
+
+      try {
+        const { data, error } = await supabaseClient.rpc(
+          "get_volunteer_portal",
+          {
+            supplied_email: portalEmail,
+            supplied_access_code: portalAccessCode
+          }
+        );
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data?.success) {
+          throw new Error(
+            data?.message ||
+            "Volunteer record not found or access has not been approved."
+          );
+        }
+
+        currentPortalData = data;
+
+        if (saveSessionAfterSuccess) {
+          savePortalSession(portalEmail, portalAccessCode);
+        }
+
+        renderVolunteerDashboard(data);
+        showLoginStatus("", "info");
+      } catch (error) {
+        console.error("Volunteer portal error:", error);
+
+        clearSavedPortalSession();
+
+        showLoginStatus(
+          error.message ||
+          "Unable to open the volunteer portal. Please check your details.",
+          "error"
+        );
+
+        showLoginSection();
+      } finally {
+        setLoginLoading(false);
+      }
+    }
+
+    function renderVolunteerDashboard(data) {
+      const volunteer = data.volunteer || {};
+      const schedules = Array.isArray(data.schedules)
+        ? data.schedules
+        : [];
+
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("portalDashboard").classList.remove("hidden");
+
+      document.getElementById("dashboardVolunteerName").textContent =
+        volunteer.full_name || "Volunteer";
+
+      document.getElementById("dashboardVolunteerNumber").textContent =
+        volunteer.volunteer_number || "Pending";
+
+      document.getElementById("profileName").textContent =
+        volunteer.full_name || "Volunteer";
+
+      document.getElementById("profileEmail").textContent =
+        volunteer.email || "";
+
+      document.getElementById("profileStatus").textContent =
+        volunteer.status || "Approved";
+
+      document.getElementById("profileBranch").textContent =
+        volunteer.branch || "Okahandja HQ";
+
+      document.getElementById("profileAvailability").textContent =
+        volunteer.availability || "Not specified";
+
+      document.getElementById("summaryDepartment").textContent =
+        volunteer.department ||
+        volunteer.ministry_area ||
+        "Not Assigned";
+
+      document.getElementById("summaryRole").textContent =
+        volunteer.assigned_role || "Not Assigned";
+
+      document.getElementById("summaryLeader").textContent =
+        volunteer.team_leader || "Not Assigned";
+
+      const upcomingSchedules = schedules.filter((schedule) =>
+        isUpcomingDate(schedule.service_date)
+      );
+
+      document.getElementById("summaryScheduleCount").textContent =
+        upcomingSchedules.length;
+
+      document.getElementById("assignmentNotes").textContent =
+        volunteer.assignment_notes ||
+        "No assignment notes have been added.";
+
+      renderVolunteerPhoto(volunteer);
+      renderSchedules(schedules);
+
+      window.scrollTo({
+        top: document.getElementById("portal-access").offsetTop,
+        behavior: "smooth"
+      });
+    }
+
+    function renderVolunteerPhoto(volunteer) {
+      const wrap = document.getElementById("profilePhotoWrap");
+      const photoUrl = String(volunteer.profile_photo_url || "").trim();
+
+      if (photoUrl) {
+        wrap.innerHTML = `
+          <img
+            src="${escapeAttribute(photoUrl)}"
+            alt="${escapeAttribute(volunteer.full_name || "Volunteer")}"
+            class="w-full h-full object-cover"
+            onerror="this.parentElement.innerHTML='<span>${escapeHtml(getInitials(volunteer.full_name))}</span>'"
+          />
+        `;
+      } else {
+        wrap.innerHTML = `
+          <span>${escapeHtml(getInitials(volunteer.full_name))}</span>
+        `;
+      }
+    }
+
+    function renderSchedules(schedules) {
+      const grid = document.getElementById("scheduleGrid");
+      const statusText = document.getElementById("scheduleStatusText");
+
+      const sortedSchedules = [...schedules].sort((a, b) =>
+        String(a.service_date || "").localeCompare(
+          String(b.service_date || "")
+        )
+      );
+
+      statusText.textContent =
+        `${sortedSchedules.length} assignment(s)`;
+
+      if (!sortedSchedules.length) {
+        grid.innerHTML = `
+          <div class="md:col-span-2 xl:col-span-3 bg-white rounded-[2rem] border border-slate-200 p-12 text-center shadow-sm">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-100 text-slate-400 flex items-center justify-center text-3xl">
+              <i class="fas fa-calendar-xmark"></i>
+            </div>
+
+            <h4 class="mt-5 text-xl font-black text-slate-950">
+              No schedules assigned
+            </h4>
+
+            <p class="mt-2 text-slate-500">
+              Your future ministry assignments will appear here.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      grid.innerHTML = sortedSchedules
+        .map((schedule) => buildScheduleCard(schedule))
+        .join("");
+    }
+
+    function buildScheduleCard(schedule) {
+      const confirmationStatus =
+        schedule.confirmation_status || "Pending";
+
+      const isPast = !isUpcomingDate(schedule.service_date);
+
+      return `
+        <article class="portal-card bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm">
+          <div class="bg-slate-950 text-white p-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.35),transparent_40%)]"></div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-[9px] font-black uppercase tracking-[0.25em] text-blue-300">
+                    ${escapeHtml(formatScheduleDate(schedule.service_date))}
+                  </p>
+
+                  <h4 class="mt-2 text-xl font-black">
+                    ${escapeHtml(schedule.service_title || "Ministry Assignment")}
+                  </h4>
+                </div>
+
+                <span class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${getConfirmationBadgeClass(confirmationStatus)}">
+                  ${escapeHtml(confirmationStatus)}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6">
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-clock text-blue-600 mt-1"></i>
+
+                <p class="text-sm text-slate-600">
+                  ${escapeHtml(formatScheduleTime(schedule.start_time, schedule.end_time))}
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i class="fas fa-location-dot text-blue-600 mt-1"></i>
+
+                <p class="text-sm text-slate-600">
+                  ${escapeHtml(schedule.venue || "Venue to be announced")}
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i class="fas fa-list-check text-blue-600 mt-1"></i>
+
+                <p class="text-sm text-slate-600">
+                  ${escapeHtml(schedule.assigned_task || "Task to be assigned")}
+                </p>
+              </div>
+
+              ${
+                schedule.team_leader
+                  ? `
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-user-tie text-blue-600 mt-1"></i>
+
+                      <p class="text-sm text-slate-600">
+                        ${escapeHtml(schedule.team_leader)}
+                      </p>
+                    </div>
+                  `
+                  : ""
+              }
+            </div>
+
+            ${
+              schedule.notes
+                ? `
+                  <div class="mt-5 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                    <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                      Notes
+                    </p>
+
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                      ${escapeHtml(schedule.notes)}
+                    </p>
+                  </div>
+                `
+                : ""
+            }
+
+            <div class="mt-5 flex items-center justify-between gap-4">
+              <div>
+                <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                  Attendance
+                </p>
+
+                <p class="mt-1 text-xs font-black text-slate-700">
+                  ${escapeHtml(schedule.attendance_status || "Not Recorded")}
+                </p>
+              </div>
+
+              ${
+                isPast
+                  ? `
+                    <span class="px-3 py-2 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase tracking-widest">
+                      Past Assignment
+                    </span>
+                  `
+                  : `
+                    <div class="flex gap-2">
+                      <button
+                        onclick="respondToSchedule('${schedule.id}', 'Confirmed')"
+                        class="px-4 py-3 rounded-xl bg-green-100 text-green-700 hover:bg-green-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition"
+                      >
+                        Confirm
+                      </button>
+
+                      <button
+                        onclick="respondToSchedule('${schedule.id}', 'Declined')"
+                        class="px-4 py-3 rounded-xl bg-red-100 text-red-700 hover:bg-red-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition"
+                      >
+                        Decline
+                      </button>
+                    </div>
+                  `
+              }
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    async function respondToSchedule(scheduleId, response) {
+      const confirmed = confirm(
+        `${response} this volunteer assignment?`
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient.rpc(
+          "respond_to_volunteer_schedule",
+          {
+            supplied_email: portalEmail,
+            supplied_access_code: portalAccessCode,
+            supplied_schedule_id: scheduleId,
+            supplied_response: response
+          }
+        );
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data?.success) {
+          throw new Error(
+            data?.message ||
+            "Unable to update this volunteer assignment."
+          );
+        }
+
+        alert(data.message || "Schedule response saved.");
+
+        await loadVolunteerPortal(false);
+      } catch (error) {
+        console.error("Schedule response error:", error);
+
+        alert(
+          error.message ||
+          "Unable to save your response. Please try again."
+        );
+      }
+    }
+
+    function closeVolunteerPortal() {
+      portalEmail = "";
+      portalAccessCode = "";
+      currentPortalData = null;
+
+      clearSavedPortalSession();
+
+      document.getElementById("portalDashboard").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+
+      document.getElementById("volunteerAccessCode").value = "";
+      showLoginStatus("", "info");
+
+      window.scrollTo({
+        top: document.getElementById("portal-access").offsetTop,
+        behavior: "smooth"
+      });
+    }
+
+    function showLoginSection() {
+      document.getElementById("portalDashboard").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+    }
+
+    function toggleAccessCodeVisibility() {
+      const input = document.getElementById("volunteerAccessCode");
+      const button = document.getElementById("toggleAccessCodeBtn");
+      const icon = button.querySelector("i");
+
+      const showCode = input.type === "password";
+
+      input.type = showCode ? "text" : "password";
+      icon.className = showCode
+        ? "fas fa-eye-slash"
+        : "fas fa-eye";
+
+      button.setAttribute(
+        "aria-label",
+        showCode ? "Hide access code" : "Show access code"
+      );
+    }
+
+    function setLoginLoading(loading) {
+      loginButton.disabled = loading;
+
+      document.getElementById("portalLoginIcon").className =
+        loading
+          ? "fas fa-circle-notch fa-spin"
+          : "fas fa-shield-halved";
+
+      document.getElementById("portalLoginText").textContent =
+        loading
+          ? "Verifying Access..."
+          : "Access My Portal";
+    }
+
+    function showLoginStatus(message, type) {
+      loginStatus.textContent = message;
+
+      const classes = {
+        error: "min-h-[1.25rem] text-sm font-bold text-red-600",
+        success: "min-h-[1.25rem] text-sm font-bold text-green-600",
+        info: "min-h-[1.25rem] text-sm font-bold text-blue-600"
+      };
+
+      loginStatus.className =
+        classes[type] || classes.info;
+    }
+
+    function savePortalSession(email, accessCode) {
+      sessionStorage.setItem(
+        SESSION_KEY,
+        JSON.stringify({
+          email,
+          accessCode
+        })
+      );
+    }
+
+    function readSavedPortalSession() {
+      try {
+        const value = sessionStorage.getItem(SESSION_KEY);
+
+        if (!value) {
+          return null;
+        }
+
+        const parsed = JSON.parse(value);
+
+        if (!parsed?.email || !parsed?.accessCode) {
+          return null;
+        }
+
+        return parsed;
+      } catch {
+        return null;
+      }
+    }
+
+    function clearSavedPortalSession() {
+      sessionStorage.removeItem(SESSION_KEY);
+    }
+
+    function isUpcomingDate(value) {
+      if (!value) {
+        return true;
+      }
+
+      return String(value) >= getTodayDateString();
+    }
+
+    function getTodayDateString() {
+      const now = new Date();
+      const local = new Date(
+        now.getTime() - now.getTimezoneOffset() * 60000
+      );
+
+      return local.toISOString().split("T")[0];
+    }
+
+    function formatScheduleDate(value) {
+      if (!value) {
+        return "Date to be announced";
+      }
+
+      const date = new Date(`${value}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return date.toLocaleDateString("en-NA", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function formatScheduleTime(startTime, endTime) {
+      const start = formatSingleTime(startTime);
+      const end = formatSingleTime(endTime);
+
+      if (start && end) {
+        return `${start} – ${end}`;
+      }
+
+      return start || end || "Time to be announced";
+    }
+
+    function formatSingleTime(value) {
+      if (!value) {
+        return "";
+      }
+
+      const parts = String(value).split(":");
+
+      if (parts.length < 2) {
+        return value;
+      }
+
+      return `${parts[0].padStart(2, "0")}H${parts[1].padStart(2, "0")}`;
+    }
+
+    function getConfirmationBadgeClass(status) {
+      const classes = {
+        Pending: "bg-amber-100 text-amber-700",
+        Confirmed: "bg-green-100 text-green-700",
+        Declined: "bg-red-100 text-red-700"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-700";
+    }
+
+    function getInitials(name) {
+      const value = String(name || "SG").trim();
+
+      return value
+        .split(/\s+/)
+        .map((part) => part[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase() || "SG";
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
 
 </body>
 </html>
