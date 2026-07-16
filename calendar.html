@@ -3,237 +3,892 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Ministry Calendar | Sky Grace Jesus Ministry</title>
 
+  <meta
+    name="description"
+    content="View upcoming services, conferences, prayer gatherings and ministry events from Sky Grace Jesus Ministry."
+  />
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
 
   <style>
-    /* Hide placeholders if header/footer injection fails */
-    #site-header:empty, #site-footer:empty { display: none; }
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
 
-    /* Soft shadow like index */
-    .soft-shadow { box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08); }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.08), transparent 30%),
+        #f8fafc;
+    }
+
+    .event-card {
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.14);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .event-card:hover .event-image {
+      transform: scale(1.045);
+    }
+
+    .event-image {
+      transition: transform 350ms ease;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
 </head>
 
-<body class="bg-white text-slate-900 font-sans antialiased">
+<body class="text-slate-900 font-sans antialiased">
 
-  <!-- Header -->
+  <!-- Shared Public Header -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
   <main>
 
-    <!-- HERO (same style direction as index.html) -->
-    <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
+    <!-- Hero -->
+    <section class="relative overflow-hidden min-h-[62vh] bg-slate-950 flex items-center">
       <div class="absolute inset-0">
         <img
           src="assets/images/hero-elohim.jpg"
-          alt="Sky Grace Jesus Ministry"
-          class="w-full h-full object-cover object-center md:object-[50%_35%]"
+          alt="Sky Grace ministry calendar"
+          class="w-full h-full object-cover opacity-35"
         />
       </div>
 
-      <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/55"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/55"></div>
 
-      <div class="relative z-10 container mx-auto px-6 py-16">
-        <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
-          <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.6)]"></span>
-          Calendar
-        </p>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(37,99,235,0.35),transparent_30%),radial-gradient(circle_at_80%_35%,rgba(245,158,11,0.20),transparent_28%)]"></div>
 
-        <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
-          Ministry Calendar
-        </h1>
+      <div class="relative z-10 container mx-auto px-6 py-24">
+        <div class="max-w-4xl">
+          <p class="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.35em] text-blue-300">
+            <span class="w-8 h-px bg-blue-400"></span>
+            Sky Grace Calendar
+          </p>
 
-        <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
-          Stay updated with ministry events, gatherings, and key theology school deadlines.
-        </p>
+          <h1 class="mt-6 text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">
+            GATHER WITH US
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-amber-300">
+              IN HIS PRESENCE
+            </span>
+          </h1>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#events"
-             class="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-amber-500 text-slate-900 font-black uppercase text-[11px] tracking-widest hover:bg-amber-400 transition">
-            <i class="fas fa-calendar-days"></i> View Events
-          </a>
-          <a href="#deadlines"
-             class="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-white/10 text-white font-black uppercase text-[11px] tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
-            <i class="fas fa-graduation-cap"></i> Academic Deadlines
-          </a>
-        </div>
-      </div>
-    </section>
+          <p class="mt-7 max-w-2xl text-base md:text-lg text-slate-200 leading-relaxed">
+            Discover upcoming services, prayer gatherings, conferences, teaching sessions
+            and special ministry events from Sky Grace Jesus Ministry.
+          </p>
 
-    <!-- EVENTS -->
-    <section id="events" class="py-16 bg-slate-50 border-t border-slate-200">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-          <div>
-            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Upcoming</p>
-            <h2 class="text-2xl md:text-3xl font-black uppercase text-slate-900">Events & Gatherings</h2>
-            <p class="mt-2 text-slate-600 max-w-2xl">
-              Register for events and keep track of weekly ministry moments.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid lg:grid-cols-3 gap-8">
-
-          <!-- JAN -->
-          <div class="space-y-6">
-            <h3 class="text-xl font-black text-slate-900 border-l-4 border-amber-500 pl-4 py-1">
-              JANUARY <span class="text-slate-400 font-light">2026</span>
-            </h3>
-
-            <!-- Event card -->
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 soft-shadow hover:shadow-xl transition">
-              <div class="flex items-start gap-4">
-                <div class="bg-slate-900 text-white p-3 rounded-2xl text-center min-w-[64px]">
-                  <span class="block text-xl font-black leading-none">18</span>
-                  <span class="text-[9px] uppercase font-black tracking-widest">SUN</span>
-                </div>
-
-                <div class="flex-grow">
-                  <h4 class="font-black text-slate-900">Spirit of Elijah Conference</h4>
-                  <p class="text-xs text-slate-500 mt-1">
-                    <i class="fas fa-map-marker-alt mr-1"></i> Windhoek Main Hall
-                  </p>
-
-                  <a href="register.html?event=elijah-conference"
-                     class="mt-4 inline-flex items-center justify-center w-full gap-2 py-3 bg-amber-500 text-slate-900 text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-amber-400 transition">
-                    <i class="fas fa-ticket"></i> Register for Event
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Info card -->
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 soft-shadow">
-              <div class="flex items-start gap-4">
-                <div class="bg-slate-100 text-slate-700 p-3 rounded-2xl text-center min-w-[64px]">
-                  <span class="block text-xl font-black leading-none">28</span>
-                  <span class="text-[9px] uppercase font-black tracking-widest">WED</span>
-                </div>
-                <div>
-                  <h4 class="font-black text-slate-900 italic">Mid-Week Prayer & Fasting</h4>
-                  <p class="text-xs text-slate-500 mt-1">
-                    <i class="fas fa-video mr-1"></i> Streaming Live (Sky Grace Hub)
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- FEB -->
-          <div class="space-y-6">
-            <h3 class="text-xl font-black text-slate-900 border-l-4 border-slate-300 pl-4 py-1">
-              FEBRUARY <span class="text-slate-400 font-light">2026</span>
-            </h3>
-
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 soft-shadow hover:shadow-xl transition">
-              <div class="flex items-start gap-4">
-                <div class="bg-slate-900 text-white p-3 rounded-2xl text-center min-w-[64px]">
-                  <span class="block text-xl font-black leading-none">14</span>
-                  <span class="text-[9px] uppercase font-black tracking-widest">SAT</span>
-                </div>
-                <div class="flex-grow">
-                  <h4 class="font-black text-slate-900">Couples In Christ Seminar</h4>
-
-                  <a href="register.html?event=couples-seminar"
-                     class="mt-4 inline-flex items-center justify-center w-full gap-2 py-3 bg-amber-500 text-slate-900 text-[11px] font-black uppercase tracking-widest rounded-2xl hover:bg-amber-400 transition">
-                    <i class="fas fa-ticket"></i> Register for Event
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 soft-shadow">
-              <div class="flex items-start gap-4">
-                <div class="bg-slate-100 text-slate-700 p-3 rounded-2xl text-center min-w-[64px]">
-                  <span class="block text-xl font-black leading-none">—</span>
-                  <span class="text-[9px] uppercase font-black tracking-widest">WEEKLY</span>
-                </div>
-                <div>
-                  <h4 class="font-black text-slate-900">Sunday Service</h4>
-                  <p class="text-xs text-slate-500 mt-1">
-                    <i class="fas fa-church mr-1"></i> Main Service • Worship • Word
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- DEADLINES -->
-          <div id="deadlines" class="bg-white p-8 rounded-[2.5rem] border border-slate-200 soft-shadow">
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <div>
-                <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Theology School</p>
-                <h3 class="text-2xl font-black text-slate-900">Academic Deadlines</h3>
-              </div>
-              <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-900 flex items-center justify-center">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-            </div>
-
-            <ul class="space-y-6">
-              <li class="flex gap-4">
-                <div class="h-10 w-[2px] bg-amber-500"></div>
-                <div>
-                  <p class="text-[10px] text-slate-500 font-black uppercase tracking-widest">Jan 25</p>
-                  <p class="text-sm font-black text-slate-900">Theology School Registrations Close</p>
-                </div>
-              </li>
-
-              <li class="flex gap-4">
-                <div class="h-10 w-[2px] bg-slate-300"></div>
-                <div>
-                  <p class="text-[10px] text-slate-500 font-black uppercase tracking-widest">Feb 02</p>
-                  <p class="text-sm font-black text-slate-900">Constitutional Law Exam (Article 10)</p>
-                </div>
-              </li>
-            </ul>
-
-            <a href="theology-school.html"
-               class="mt-8 inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition">
-              <i class="fas fa-book-open"></i> View Full Curriculum
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <a
+              href="#upcoming-events"
+              class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition shadow-xl shadow-blue-950/40"
+            >
+              <i class="fas fa-calendar-days"></i>
+              View Events
             </a>
 
-            <p class="mt-4 text-xs text-slate-500 leading-relaxed">
-              Note: Dates may be updated by administration. Please check regularly.
-            </p>
+            <a
+              href="contact.html"
+              class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-white/10 border border-white/20 text-white font-black uppercase text-[11px] tracking-widest hover:bg-white hover:text-slate-950 transition backdrop-blur-sm"
+            >
+              <i class="fas fa-location-dot"></i>
+              Contact Ministry
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-50 to-transparent"></div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section id="upcoming-events" class="py-20 md:py-24">
+      <div class="container mx-auto px-6">
+        <div class="max-w-7xl mx-auto">
+
+          <div class="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-8 mb-12">
+            <div class="max-w-3xl">
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+                Ministry Gatherings
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight text-slate-950">
+                Upcoming Events
+              </h2>
+
+              <p class="mt-5 text-slate-600 leading-relaxed">
+                These events are published directly by the Sky Grace administration team.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+
+                <input
+                  id="eventSearch"
+                  type="text"
+                  placeholder="Search events..."
+                  class="w-full sm:w-72 bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-4 rounded-2xl text-sm font-bold focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition shadow-sm"
+                />
+              </div>
+
+              <select
+                id="eventFilter"
+                aria-label="Filter events"
+                class="bg-white border border-slate-200 text-slate-700 px-5 py-4 rounded-2xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500 shadow-sm"
+              >
+                <option value="upcoming">Upcoming</option>
+                <option value="all">All Published</option>
+                <option value="past">Past Events</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Statistics -->
+          <div class="grid sm:grid-cols-3 gap-4 mb-10">
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Upcoming Events
+              </p>
+
+              <p id="upcomingEventStat" class="mt-2 text-3xl font-black text-slate-950">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                <i class="fas fa-location-dot"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Event Venues
+              </p>
+
+              <p id="venueStat" class="mt-2 text-3xl font-black text-slate-950">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+              <div class="w-12 h-12 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center">
+                <i class="fas fa-earth-africa"></i>
+              </div>
+
+              <p class="mt-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Published Calendar
+              </p>
+
+              <p class="mt-2 text-lg font-black text-slate-950">
+                Updated by Ministry Admin
+              </p>
+            </div>
+          </div>
+
+          <p id="eventStatus" class="mb-6 text-sm font-bold text-slate-500">
+            Loading published events...
+          </p>
+
+          <div
+            id="eventsGrid"
+            class="grid md:grid-cols-2 xl:grid-cols-3 gap-7"
+          >
+            <div class="md:col-span-2 xl:col-span-3 py-20 text-center text-slate-400">
+              <i class="fas fa-circle-notch fa-spin text-3xl"></i>
+              <p class="mt-4 font-bold">Loading events...</p>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- QUICK CTA -->
-    <section class="py-12 bg-white border-t border-slate-200">
+    <!-- Weekly Ministry Rhythm -->
+    <section class="pb-20 md:pb-24">
       <div class="container mx-auto px-6">
-        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 md:p-10 soft-shadow flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Need Help?</p>
-            <h3 class="mt-2 text-xl md:text-2xl font-black text-slate-900">
-              Want to host an event or add an announcement?
-            </h3>
-            <p class="mt-2 text-slate-600">
-              Contact the media/admin team and we’ll update the calendar.
-            </p>
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.15fr] gap-8">
+
+          <div class="rounded-[2.5rem] bg-slate-950 text-white p-8 md:p-10 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.32),transparent_35%)]"></div>
+
+            <div class="relative z-10">
+              <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+                Our Home
+              </p>
+
+              <h2 class="mt-3 text-3xl md:text-4xl font-black tracking-tight">
+                Worship With Sky Grace
+              </h2>
+
+              <div class="mt-8 space-y-5">
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-location-dot text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      Venue
+                    </p>
+
+                    <p class="mt-1 font-bold">
+                      Okahandja Shopping Centre, Shop 32, Namibia
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-clock text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      Sunday Service
+                    </p>
+
+                    <p class="mt-1 font-bold">
+                      09H00
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-phone text-blue-300"></i>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      Contact
+                    </p>
+
+                    <p class="mt-1 font-bold">
+                      +264 81 370 2477
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <a href="contact.html"
-             class="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
-            <i class="fas fa-envelope"></i> Contact Us
-          </a>
+
+          <div class="bg-white rounded-[2.5rem] border border-slate-200 p-8 md:p-10 shadow-sm">
+            <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600">
+              Stay Connected
+            </p>
+
+            <h2 class="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+              Never Miss a Ministry Gathering
+            </h2>
+
+            <p class="mt-5 text-slate-600 leading-relaxed">
+              Follow the Sky Grace media library, watch messages and contact the ministry
+              for event registration or further information.
+            </p>
+
+            <div class="mt-8 grid sm:grid-cols-2 gap-3">
+              <a
+                href="media.html"
+                class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition"
+              >
+                <i class="fas fa-photo-film"></i>
+                Media Gallery
+              </a>
+
+              <a
+                href="contact.html"
+                class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-slate-950 text-white font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 transition"
+              >
+                <i class="fas fa-envelope"></i>
+                Contact Us
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- Event Modal -->
+  <div
+    id="eventModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/85 backdrop-blur-md p-4"
+  >
+    <div class="bg-white rounded-[2rem] max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl">
+      <div class="p-5 md:p-6 border-b border-slate-200 flex items-center justify-between gap-5">
+        <div class="min-w-0">
+          <p class="text-[9px] font-black uppercase tracking-[0.3em] text-blue-600">
+            Sky Grace Event
+          </p>
+
+          <h3
+            id="modalTitle"
+            class="mt-1 font-black text-lg md:text-xl truncate"
+          >
+            Event Details
+          </h3>
+        </div>
+
+        <button
+          id="closeEventModalBtn"
+          type="button"
+          class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition flex-shrink-0"
+          aria-label="Close event details"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div id="modalContent" class="p-5 md:p-8"></div>
+    </div>
+  </div>
+
+  <!-- Shared Public Footer -->
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    let allPublishedEvents = [];
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      document.getElementById("eventSearch").addEventListener("input", applyEventFilters);
+      document.getElementById("eventFilter").addEventListener("change", applyEventFilters);
+      document.getElementById("closeEventModalBtn").addEventListener("click", closeEventModal);
+
+      document.getElementById("eventModal").addEventListener("click", (event) => {
+        if (event.target.id === "eventModal") {
+          closeEventModal();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeEventModal();
+        }
+      });
+
+      await loadPublishedEvents();
+    });
+
+    async function loadPublishedEvents() {
+      const eventsGrid = document.getElementById("eventsGrid");
+      const eventStatus = document.getElementById("eventStatus");
+
+      if (!window.supabaseClient) {
+        eventStatus.textContent = "Events are temporarily unavailable.";
+        eventStatus.className = "mb-6 text-sm font-bold text-red-600";
+
+        eventsGrid.innerHTML = buildErrorState(
+          "Unable to connect to the ministry calendar."
+        );
+
+        return;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("ministry_events")
+        .select("*")
+        .eq("is_published", true)
+        .order("event_date", { ascending: true });
+
+      if (error) {
+        console.error("Public event load error:", error);
+
+        eventStatus.textContent = "Unable to load published events.";
+        eventStatus.className = "mb-6 text-sm font-bold text-red-600";
+
+        eventsGrid.innerHTML = buildErrorState(error.message);
+
+        return;
+      }
+
+      allPublishedEvents = data || [];
+
+      updateEventStats();
+      applyEventFilters();
+    }
+
+    function updateEventStats() {
+      const today = getTodayDateString();
+
+      const upcoming = allPublishedEvents.filter((event) =>
+        String(event.event_date || "") >= today
+      );
+
+      const venues = new Set(
+        allPublishedEvents
+          .map((event) => String(event.venue || "").trim().toLowerCase())
+          .filter(Boolean)
+      );
+
+      document.getElementById("upcomingEventStat").textContent =
+        upcoming.length;
+
+      document.getElementById("venueStat").textContent =
+        venues.size;
+    }
+
+    function applyEventFilters() {
+      const term = document
+        .getElementById("eventSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+      const filter = document.getElementById("eventFilter").value;
+      const today = getTodayDateString();
+
+      const filteredEvents = allPublishedEvents.filter((event) => {
+        const searchableText = [
+          event.title,
+          event.venue,
+          event.speaker,
+          event.description
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !term || searchableText.includes(term);
+
+        let matchesDate = true;
+
+        if (filter === "upcoming") {
+          matchesDate = String(event.event_date || "") >= today;
+        }
+
+        if (filter === "past") {
+          matchesDate = String(event.event_date || "") < today;
+        }
+
+        return matchesSearch && matchesDate;
+      });
+
+      renderEvents(filteredEvents);
+    }
+
+    function renderEvents(events) {
+      const eventsGrid = document.getElementById("eventsGrid");
+      const eventStatus = document.getElementById("eventStatus");
+
+      eventStatus.textContent = `${events.length} event(s) shown`;
+      eventStatus.className = "mb-6 text-sm font-bold text-slate-500";
+
+      if (!events.length) {
+        eventsGrid.innerHTML = `
+          <div class="md:col-span-2 xl:col-span-3 bg-white border border-slate-200 rounded-[2rem] p-14 text-center shadow-sm">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-100 text-slate-400 flex items-center justify-center text-3xl">
+              <i class="fas fa-calendar-xmark"></i>
+            </div>
+
+            <h3 class="mt-5 text-xl font-black text-slate-900">
+              No events found
+            </h3>
+
+            <p class="mt-2 text-slate-500">
+              Please check again soon for new Sky Grace ministry gatherings.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      eventsGrid.innerHTML = events
+        .map((event) => buildEventCard(event))
+        .join("");
+    }
+
+    function buildEventCard(event) {
+      const title = event.title || "Sky Grace Event";
+      const description =
+        event.description ||
+        "Join Sky Grace Jesus Ministry for this special gathering.";
+
+      return `
+        <article class="event-card bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm flex flex-col">
+          <button
+            type="button"
+            onclick="openEventModal('${event.id}')"
+            class="relative aspect-[16/10] bg-slate-950 overflow-hidden text-left"
+            aria-label="View ${escapeAttribute(title)}"
+          >
+            ${buildEventVisual(event)}
+
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
+
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest border border-white/10">
+                <i class="fas fa-calendar-day"></i>
+                ${escapeHtml(formatEventMonth(event.event_date))}
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <p class="text-[10px] font-black uppercase tracking-[0.22em] text-blue-300">
+                ${escapeHtml(formatEventDate(event.event_date))}
+              </p>
+
+              <h3 class="mt-2 text-xl font-black leading-tight">
+                ${escapeHtml(title)}
+              </h3>
+            </div>
+          </button>
+
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-clock text-blue-600 mt-1"></i>
+
+                <p class="text-sm text-slate-600">
+                  ${escapeHtml(formatEventTime(event.event_time))}
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i class="fas fa-location-dot text-blue-600 mt-1"></i>
+
+                <p class="text-sm text-slate-600">
+                  ${escapeHtml(event.venue || "Venue to be announced")}
+                </p>
+              </div>
+
+              ${
+                event.speaker
+                  ? `
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-microphone-lines text-blue-600 mt-1"></i>
+
+                      <p class="text-sm text-slate-600">
+                        ${escapeHtml(event.speaker)}
+                      </p>
+                    </div>
+                  `
+                  : ""
+              }
+            </div>
+
+            <p class="mt-5 text-sm text-slate-600 leading-relaxed line-clamp-3">
+              ${escapeHtml(description)}
+            </p>
+
+            <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-4">
+              <a
+                href="${buildRegistrationUrl(event)}"
+                class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 text-[10px] font-black uppercase tracking-widest transition"
+              >
+                Register
+                <i class="fas fa-ticket"></i>
+              </a>
+
+              <button
+                type="button"
+                onclick="openEventModal('${event.id}')"
+                class="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 text-[10px] font-black uppercase tracking-widest transition"
+              >
+                Details
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildEventVisual(event) {
+      const bannerUrl = String(event.banner_url || "").trim();
+
+      if (bannerUrl) {
+        return `
+          <img
+            src="${escapeAttribute(bannerUrl)}"
+            alt="${escapeAttribute(event.title || "Sky Grace event")}"
+            class="event-image w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+          />
+
+          <div class="hidden event-image w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white">
+            <i class="fas fa-calendar-days text-5xl"></i>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="event-image w-full h-full flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white">
+          <div class="w-20 h-20 rounded-3xl bg-white/10 border border-white/10 flex items-center justify-center text-4xl">
+            <i class="fas fa-calendar-days"></i>
+          </div>
+
+          <p class="mt-5 text-[10px] font-black uppercase tracking-[0.3em] text-blue-300">
+            Sky Grace Event
+          </p>
+        </div>
+      `;
+    }
+
+    function openEventModal(id) {
+      const event = allPublishedEvents.find((item) => item.id === id);
+
+      if (!event) {
+        return;
+      }
+
+      document.getElementById("modalTitle").textContent =
+        event.title || "Event Details";
+
+      document.getElementById("modalContent").innerHTML =
+        buildModalContent(event);
+
+      const modal = document.getElementById("eventModal");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function buildModalContent(event) {
+      const bannerUrl = String(event.banner_url || "").trim();
+
+      return `
+        ${
+          bannerUrl
+            ? `
+              <img
+                src="${escapeAttribute(bannerUrl)}"
+                alt="${escapeAttribute(event.title || "Sky Grace event")}"
+                class="w-full max-h-[430px] object-cover rounded-2xl bg-slate-100"
+              />
+            `
+            : `
+              <div class="rounded-[2rem] bg-slate-950 p-12 text-white text-center">
+                <div class="w-24 h-24 mx-auto rounded-[2rem] bg-blue-600 flex items-center justify-center text-4xl">
+                  <i class="fas fa-calendar-days"></i>
+                </div>
+
+                <p class="mt-5 text-[10px] font-black uppercase tracking-[0.3em] text-blue-300">
+                  Sky Grace Event
+                </p>
+              </div>
+            `
+        }
+
+        <div class="mt-7 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Date
+            </p>
+
+            <p class="mt-2 font-black text-slate-900">
+              ${escapeHtml(formatEventDate(event.event_date))}
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Time
+            </p>
+
+            <p class="mt-2 font-black text-slate-900">
+              ${escapeHtml(formatEventTime(event.event_time))}
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Venue
+            </p>
+
+            <p class="mt-2 font-black text-slate-900">
+              ${escapeHtml(event.venue || "Venue to be announced")}
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Speaker
+            </p>
+
+            <p class="mt-2 font-black text-slate-900">
+              ${escapeHtml(event.speaker || "To be announced")}
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-slate-200 p-5">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            About This Event
+          </p>
+
+          <p class="mt-3 text-slate-600 leading-relaxed whitespace-pre-wrap">
+            ${escapeHtml(event.description || "Join Sky Grace Jesus Ministry for this special gathering.")}
+          </p>
+        </div>
+
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a
+            href="${buildRegistrationUrl(event)}"
+            class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition"
+          >
+            <i class="fas fa-ticket"></i>
+            Register for Event
+          </a>
+
+          <a
+            href="contact.html"
+            class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-slate-950 text-white font-black uppercase text-[10px] tracking-widest hover:bg-slate-800 transition"
+          >
+            <i class="fas fa-envelope"></i>
+            Contact Ministry
+          </a>
+        </div>
+      `;
+    }
+
+    function closeEventModal() {
+      const modal = document.getElementById("eventModal");
+
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+
+      document.getElementById("modalContent").innerHTML = "";
+      document.body.style.overflow = "";
+    }
+
+    function buildRegistrationUrl(event) {
+      const params = new URLSearchParams();
+
+      if (event.id) {
+        params.set("event_id", event.id);
+      }
+
+      if (event.title) {
+        params.set("event", event.title);
+      }
+
+      return `register.html?${params.toString()}`;
+    }
+
+    function buildErrorState(message) {
+      return `
+        <div class="md:col-span-2 xl:col-span-3 bg-white border border-red-100 rounded-3xl p-10 text-center">
+          <i class="fas fa-triangle-exclamation text-3xl text-red-500"></i>
+
+          <p class="mt-4 font-black text-slate-900">
+            ${escapeHtml(message)}
+          </p>
+        </div>
+      `;
+    }
+
+    function getTodayDateString() {
+      const now = new Date();
+      const local = new Date(
+        now.getTime() - now.getTimezoneOffset() * 60000
+      );
+
+      return local.toISOString().split("T")[0];
+    }
+
+    function formatEventDate(value) {
+      if (!value) {
+        return "Date to be announced";
+      }
+
+      const date = new Date(`${value}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return date.toLocaleDateString("en-NA", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    function formatEventMonth(value) {
+      if (!value) {
+        return "Event";
+      }
+
+      const date = new Date(`${value}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) {
+        return "Event";
+      }
+
+      return date.toLocaleDateString("en-NA", {
+        day: "2-digit",
+        month: "short"
+      });
+    }
+
+    function formatEventTime(value) {
+      if (!value) {
+        return "Time to be announced";
+      }
+
+      const parts = String(value).split(":");
+
+      if (parts.length < 2) {
+        return value;
+      }
+
+      return `${parts[0].padStart(2, "0")}H${parts[1].padStart(2, "0")}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
 
 </body>
 </html>
