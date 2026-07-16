@@ -3,161 +3,554 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manage Students | Sky Grace Admin</title>
+
+  <title>Manage Theology Students | Sky Grace Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
 
-<body class="bg-slate-50 flex min-h-screen">
+<body class="bg-slate-50 min-h-screen text-slate-900 flex">
 
+  <!-- Shared Admin Sidebar -->
   <div id="admin-sidebar-mount"></div>
   <script src="admin-sidebar.js" defer></script>
 
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8 sticky top-0 z-30">
-      <h2 class="font-bold text-slate-700 text-lg">Theology Students</h2>
+  <div class="flex-1 min-w-0 flex flex-col">
 
-      <a href="theology-register.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 transition uppercase tracking-widest">
-        View Registration Page <i class="fas fa-external-link-alt ml-1"></i>
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-5 md:px-8 sticky top-0 z-30">
+      <div>
+        <h1 class="font-bold text-slate-800 text-lg">
+          Theology Students
+        </h1>
+
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+          School of Theology Administration
+        </p>
+      </div>
+
+      <a
+        href="theology-register.html"
+        class="text-xs font-black text-slate-400 hover:text-blue-600 transition uppercase tracking-widest"
+      >
+        View Registration Page
+        <i class="fas fa-external-link-alt ml-1"></i>
       </a>
     </header>
 
-    <main class="p-8">
-      <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+    <main class="p-5 md:p-8 max-w-7xl w-full mx-auto">
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden rounded-[2rem] bg-slate-950 text-white p-7 md:p-10 shadow-2xl mb-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_30%)]"></div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+              Theology Administration
+            </p>
+
+            <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+              Student Directory
+            </h2>
+
+            <p class="mt-4 max-w-2xl text-sm md:text-base text-slate-300 leading-relaxed">
+              Review applications, approve students, enroll learners, update academic progress,
+              edit records and manage the Sky Grace School of Theology database.
+            </p>
+          </div>
+
+          <a
+            href="add-student.html"
+            onclick="sessionStorage.removeItem('editStudentId')"
+            class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition shadow-xl shadow-blue-950/40"
+          >
+            <i class="fas fa-user-plus"></i>
+            Enroll Student
+          </a>
+        </div>
+      </section>
+
+      <!-- Notice -->
+      <div
+        id="pageNotice"
+        class="hidden mb-6 rounded-2xl border px-5 py-4 text-sm font-bold"
+      ></div>
+
+      <!-- Statistics -->
+      <section class="grid sm:grid-cols-2 xl:grid-cols-5 gap-4 mb-8">
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Total Students
+          </p>
+          <p id="totalStat" class="mt-2 text-3xl font-black text-slate-950">0</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Pending
+          </p>
+          <p id="pendingStat" class="mt-2 text-3xl font-black text-amber-600">0</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Approved
+          </p>
+          <p id="approvedStat" class="mt-2 text-3xl font-black text-blue-600">0</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Enrolled
+          </p>
+          <p id="enrolledStat" class="mt-2 text-3xl font-black text-green-600">0</p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Completed
+          </p>
+          <p id="completedStat" class="mt-2 text-3xl font-black text-violet-600">0</p>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-6">
         <div>
-          <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Student Applications</h3>
-          <p class="text-slate-500 text-sm">View and manage School of Theology registrations.</p>
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
+            Student Records
+          </p>
+
+          <h3 class="mt-2 text-2xl font-black text-slate-950">
+            Theology Student Management
+          </h3>
         </div>
 
-        <div class="relative">
-          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-          <input
-            type="text"
-            id="studentSearch"
-            placeholder="Search students..."
-            class="bg-white border border-slate-200 text-slate-600 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500 transition"
-          />
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+
+            <input
+              id="studentSearch"
+              type="text"
+              placeholder="Search students..."
+              class="w-full sm:w-72 bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+
+          <select
+            id="statusFilter"
+            aria-label="Filter student status"
+            class="bg-white border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500"
+          >
+            <option value="all">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Enrolled">Enrolled</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Suspended">Suspended</option>
+            <option value="Completed">Completed</option>
+          </select>
+
+          <button
+            id="refreshStudentsBtn"
+            type="button"
+            class="w-12 h-12 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white transition"
+            title="Refresh students"
+          >
+            <i class="fas fa-rotate"></i>
+          </button>
         </div>
-      </div>
+      </section>
 
-      <p id="pageStatus" class="mb-4 text-sm font-bold text-slate-500">Loading students...</p>
-
-      <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+      <!-- Student Table -->
+      <section class="bg-white rounded-[2rem] border border-slate-200 shadow-xl overflow-hidden">
         <div class="overflow-x-auto">
-          <table class="w-full text-left">
-            <thead class="bg-slate-50 border-b border-slate-100">
+          <table class="w-full text-left min-w-[1050px]">
+            <thead class="bg-slate-50 border-b border-slate-200">
               <tr>
-                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Name</th>
-                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Contact</th>
-                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Course</th>
-                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Message</th>
-                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Date</th>
-                <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">Actions</th>
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Student
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Contact
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Course
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Status
+                </th>
+
+                <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Progress
+                </th>
+
+                <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Actions
+                </th>
               </tr>
             </thead>
 
-            <tbody id="studentsTableBody" class="text-sm divide-y divide-slate-50"></tbody>
+            <tbody
+              id="studentsTableBody"
+              class="text-sm divide-y divide-slate-100"
+            >
+              <tr>
+                <td colspan="6" class="py-16 text-center text-slate-400 font-bold">
+                  <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+                  <p>Loading students...</p>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
 
-        <div class="p-6 border-t border-slate-100">
-          <span id="studentCount" class="text-xs font-bold text-slate-400 uppercase tracking-widest">
-            Showing 0 Students
+        <div class="p-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <span
+            id="studentCount"
+            class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+          >
+            Showing 0 students
           </span>
+
+          <p class="text-xs text-slate-400">
+            Records are loaded from Supabase.
+          </p>
         </div>
-      </div>
+      </section>
+
     </main>
   </div>
 
-  <div id="viewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm">
-    <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full mx-4 relative">
-      <button onclick="closeViewModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
-        <i class="fas fa-times text-xl"></i>
-      </button>
+  <!-- Student Details Modal -->
+  <div
+    id="studentModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4"
+  >
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-3xl w-full max-h-[92vh] overflow-y-auto">
 
-      <div class="flex items-center gap-5 mb-8 border-b border-slate-100 pb-6">
-        <div id="viewInitials" class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-black">
-          SG
+      <div class="p-6 md:p-8 border-b border-slate-200 flex items-start justify-between gap-5">
+        <div class="flex items-center gap-4 min-w-0">
+          <div
+            id="modalInitials"
+            class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-xl flex-shrink-0"
+          >
+            SG
+          </div>
+
+          <div class="min-w-0">
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+              Student Record
+            </p>
+
+            <h3
+              id="modalName"
+              class="mt-1 text-2xl font-black text-slate-950 truncate"
+            >
+              Student Name
+            </h3>
+
+            <p
+              id="modalStudentNumber"
+              class="mt-1 text-xs font-bold text-slate-400"
+            >
+              Student Number
+            </p>
+          </div>
         </div>
 
-        <div>
-          <h3 id="viewName" class="text-2xl font-black text-slate-900 uppercase tracking-tight">Student Name</h3>
-          <p id="viewCourse" class="text-slate-500 text-sm font-bold">Course</p>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6 text-sm">
-        <div>
-          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Email</p>
-          <p id="viewEmail" class="font-bold text-slate-700 mt-1"></p>
-        </div>
-
-        <div>
-          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Phone</p>
-          <p id="viewPhone" class="font-bold text-slate-700 mt-1"></p>
-        </div>
-
-        <div>
-          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Registration Date</p>
-          <p id="viewDate" class="font-bold text-slate-700 mt-1"></p>
-        </div>
-
-        <div>
-          <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Student ID</p>
-          <p id="viewId" class="font-bold text-slate-700 mt-1"></p>
-        </div>
-      </div>
-
-      <div class="mt-6">
-        <p class="text-slate-400 text-xs font-black uppercase tracking-widest mb-2">Message</p>
-        <div id="viewMessage" class="bg-slate-50 rounded-2xl p-5 text-slate-700 leading-relaxed"></div>
-      </div>
-
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a id="viewReply" href="#" class="px-5 py-3 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500">
-          Reply by Email
-        </a>
-
-        <button id="viewDeleteBtn" class="px-5 py-3 bg-red-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-red-500">
-          Delete Student
+        <button
+          id="closeStudentModalBtn"
+          type="button"
+          class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition flex-shrink-0"
+          aria-label="Close student details"
+        >
+          <i class="fas fa-times"></i>
         </button>
+      </div>
+
+      <div class="p-6 md:p-8">
+        <div class="flex flex-wrap gap-2 mb-7">
+          <span
+            id="modalStatus"
+            class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest bg-slate-100 text-slate-600"
+          >
+            Pending
+          </span>
+
+          <span
+            id="modalSource"
+            class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest bg-blue-100 text-blue-700"
+          >
+            Public Website
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Email
+            </p>
+            <p id="modalEmail" class="mt-2 font-bold text-slate-800 break-all"></p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Phone
+            </p>
+            <p id="modalPhone" class="mt-2 font-bold text-slate-800"></p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Date of Birth
+            </p>
+            <p id="modalDob" class="mt-2 font-bold text-slate-800"></p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Branch / Campus
+            </p>
+            <p id="modalBranch" class="mt-2 font-bold text-slate-800"></p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Course
+            </p>
+            <p id="modalCourse" class="mt-2 font-bold text-slate-800"></p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-5">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Enrollment Date
+            </p>
+            <p id="modalEnrollmentDate" class="mt-2 font-bold text-slate-800"></p>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-slate-200 p-5">
+          <div class="flex items-center justify-between gap-4 mb-3">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Academic Progress
+            </p>
+
+            <p id="modalProgressText" class="font-black text-blue-600">
+              0%
+            </p>
+          </div>
+
+          <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
+            <div
+              id="modalProgressBar"
+              class="h-full bg-blue-600 transition-all duration-500"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-slate-200 p-5">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Application Message / Notes
+          </p>
+
+          <p
+            id="modalMessage"
+            class="mt-3 text-sm text-slate-600 leading-relaxed whitespace-pre-wrap"
+          ></p>
+        </div>
+
+        <div class="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <button
+            id="modalApproveBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-100 text-blue-700 font-black uppercase text-[9px] tracking-widest hover:bg-blue-600 hover:text-white transition"
+          >
+            <i class="fas fa-check"></i>
+            Approve
+          </button>
+
+          <button
+            id="modalEnrollBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-green-100 text-green-700 font-black uppercase text-[9px] tracking-widest hover:bg-green-600 hover:text-white transition"
+          >
+            <i class="fas fa-graduation-cap"></i>
+            Enroll
+          </button>
+
+          <button
+            id="modalEditBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-violet-100 text-violet-700 font-black uppercase text-[9px] tracking-widest hover:bg-violet-600 hover:text-white transition"
+          >
+            <i class="fas fa-pen"></i>
+            Edit
+          </button>
+
+          <button
+            id="modalRejectBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-100 text-red-700 font-black uppercase text-[9px] tracking-widest hover:bg-red-600 hover:text-white transition"
+          >
+            <i class="fas fa-ban"></i>
+            Reject
+          </button>
+        </div>
+
+        <div class="mt-3 grid sm:grid-cols-2 gap-3">
+          <a
+            id="modalEmailBtn"
+            href="#"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-950 text-white font-black uppercase text-[9px] tracking-widest hover:bg-slate-800 transition"
+          >
+            <i class="fas fa-envelope"></i>
+            Email Student
+          </a>
+
+          <button
+            id="modalDeleteBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-red-200 text-red-600 font-black uppercase text-[9px] tracking-widest hover:bg-red-600 hover:text-white transition"
+          >
+            <i class="fas fa-trash"></i>
+            Delete Record
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
 
   <script>
     let allStudents = [];
+    let selectedStudentId = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
-      await loadStudents();
+      document.getElementById("studentSearch").addEventListener("input", applyStudentFilters);
+      document.getElementById("statusFilter").addEventListener("change", applyStudentFilters);
+      document.getElementById("refreshStudentsBtn").addEventListener("click", loadStudents);
 
-      document.getElementById("studentSearch").addEventListener("input", function () {
-        const term = this.value.toLowerCase();
+      document.getElementById("closeStudentModalBtn").addEventListener("click", closeStudentModal);
 
-        const filtered = allStudents.filter((student) =>
-          String(student.full_name || "").toLowerCase().includes(term) ||
-          String(student.email || "").toLowerCase().includes(term) ||
-          String(student.phone || "").toLowerCase().includes(term) ||
-          String(student.course || "").toLowerCase().includes(term) ||
-          String(student.message || "").toLowerCase().includes(term)
-        );
-
-        renderStudents(filtered);
+      document.getElementById("studentModal").addEventListener("click", (event) => {
+        if (event.target.id === "studentModal") {
+          closeStudentModal();
+        }
       });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeStudentModal();
+        }
+      });
+
+      document.getElementById("modalApproveBtn").addEventListener("click", () => {
+        updateSelectedStudentStatus("Approved");
+      });
+
+      document.getElementById("modalEnrollBtn").addEventListener("click", () => {
+        updateSelectedStudentStatus("Enrolled");
+      });
+
+      document.getElementById("modalRejectBtn").addEventListener("click", () => {
+        updateSelectedStudentStatus("Rejected");
+      });
+
+      document.getElementById("modalEditBtn").addEventListener("click", () => {
+        if (selectedStudentId) {
+          editStudent(selectedStudentId);
+        }
+      });
+
+      document.getElementById("modalDeleteBtn").addEventListener("click", () => {
+        if (selectedStudentId) {
+          deleteStudent(selectedStudentId);
+        }
+      });
+
+      showSessionNotice();
+      await loadStudents();
     });
 
+    function showSessionNotice() {
+      if (sessionStorage.getItem("studentCreated")) {
+        sessionStorage.removeItem("studentCreated");
+        showNotice("Student enrolled successfully.", "success");
+      }
+
+      if (sessionStorage.getItem("studentUpdated")) {
+        sessionStorage.removeItem("studentUpdated");
+        showNotice("Student record updated successfully.", "success");
+      }
+    }
+
+    function showNotice(message, type = "success") {
+      const notice = document.getElementById("pageNotice");
+
+      notice.textContent = message;
+      notice.className = "mb-6 rounded-2xl border px-5 py-4 text-sm font-bold";
+
+      if (type === "error") {
+        notice.classList.add(
+          "bg-red-50",
+          "border-red-200",
+          "text-red-700"
+        );
+      } else {
+        notice.classList.add(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
+      }
+
+      notice.classList.remove("hidden");
+
+      window.setTimeout(() => {
+        notice.classList.add("hidden");
+      }, 5000);
+    }
+
     async function loadStudents() {
-      const status = document.getElementById("pageStatus");
+      const tbody = document.getElementById("studentsTableBody");
 
       if (!window.supabaseClient) {
-        status.textContent = "Supabase is not connected.";
-        status.className = "mb-4 text-sm font-bold text-red-600";
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-16 px-6 text-center text-red-600 font-bold">
+              Supabase is not connected.
+            </td>
+          </tr>
+        `;
         return;
       }
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="py-16 text-center text-slate-400 font-bold">
+            <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+            <p>Loading students...</p>
+          </td>
+        </tr>
+      `;
 
       const { data, error } = await supabaseClient
         .from("theology_students")
@@ -165,116 +558,369 @@
         .order("created_at", { ascending: false });
 
       if (error) {
-        status.textContent = error.message;
-        status.className = "mb-4 text-sm font-bold text-red-600";
+        console.error("Student load error:", error);
+
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-16 px-6 text-center text-red-600 font-bold">
+              ${escapeHtml(error.message)}
+            </td>
+          </tr>
+        `;
+
         return;
       }
 
       allStudents = data || [];
-      status.textContent = "";
-      renderStudents(allStudents);
+
+      updateStudentStats();
+      applyStudentFilters();
+    }
+
+    function updateStudentStats() {
+      document.getElementById("totalStat").textContent = allStudents.length;
+
+      document.getElementById("pendingStat").textContent =
+        allStudents.filter((student) => student.status === "Pending").length;
+
+      document.getElementById("approvedStat").textContent =
+        allStudents.filter((student) => student.status === "Approved").length;
+
+      document.getElementById("enrolledStat").textContent =
+        allStudents.filter((student) => student.status === "Enrolled").length;
+
+      document.getElementById("completedStat").textContent =
+        allStudents.filter((student) => student.status === "Completed").length;
+    }
+
+    function applyStudentFilters() {
+      const term = document
+        .getElementById("studentSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+      const statusFilter = document.getElementById("statusFilter").value;
+
+      const filteredStudents = allStudents.filter((student) => {
+        const searchableText = [
+          student.full_name,
+          student.email,
+          student.phone,
+          student.course,
+          student.student_number,
+          student.branch,
+          student.message,
+          student.application_source
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !term || searchableText.includes(term);
+
+        const matchesStatus =
+          statusFilter === "all" || student.status === statusFilter;
+
+        return matchesSearch && matchesStatus;
+      });
+
+      renderStudents(filteredStudents);
     }
 
     function renderStudents(students) {
       const tbody = document.getElementById("studentsTableBody");
-      const count = document.getElementById("studentCount");
 
-      count.textContent = `Showing ${students.length} Students`;
+      document.getElementById("studentCount").textContent =
+        `Showing ${students.length} of ${allStudents.length} students`;
 
       if (!students.length) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="py-8 px-6 text-center text-slate-400 font-bold">
-              No student applications found.
+            <td colspan="6" class="py-16 px-6 text-center">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+
+              <h3 class="mt-4 font-black text-slate-900">
+                No students found
+              </h3>
+
+              <p class="mt-2 text-sm text-slate-400">
+                Try another search or status filter.
+              </p>
             </td>
           </tr>
         `;
+
         return;
       }
 
-      tbody.innerHTML = students.map((student) => `
-        <tr class="hover:bg-blue-50/30 transition">
-          <td class="py-5 px-6">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-black text-xs">
-                ${getInitials(student.full_name)}
-              </div>
+      tbody.innerHTML = students
+        .map((student) => {
+          const status = student.status || "Pending";
+          const progress = Number(student.progress || 0);
 
-              <div>
-                <span class="font-bold text-slate-900 block">
-                  ${escapeHtml(student.full_name || "No Name")}
-                </span>
-                <span class="text-xs text-slate-400">
-                  ${shortId(student.id)}
-                </span>
-              </div>
-            </div>
-          </td>
+          return `
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-5 px-6">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-black flex-shrink-0">
+                    ${escapeHtml(getInitials(student.full_name))}
+                  </div>
 
-          <td class="py-5 px-6 text-slate-500 text-xs">
-            <div>${escapeHtml(student.email || "No email")}</div>
-            <div>${escapeHtml(student.phone || "No phone")}</div>
-          </td>
+                  <div class="min-w-0">
+                    <p class="font-black text-slate-950">
+                      ${escapeHtml(student.full_name || "No Name")}
+                    </p>
 
-          <td class="py-5 px-6 text-slate-700 font-bold">
-            ${escapeHtml(student.course || "No course")}
-          </td>
+                    <p class="mt-1 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      ${escapeHtml(student.student_number || shortId(student.id))}
+                    </p>
 
-          <td class="py-5 px-6 text-slate-500 max-w-xs truncate">
-            ${escapeHtml(student.message || "")}
-          </td>
+                    <p class="mt-1 text-[10px] text-slate-400">
+                      ${escapeHtml(student.application_source || "Unknown Source")}
+                    </p>
+                  </div>
+                </div>
+              </td>
 
-          <td class="py-5 px-6 text-slate-500 whitespace-nowrap">
-            ${student.created_at ? new Date(student.created_at).toLocaleDateString() : ""}
-          </td>
+              <td class="py-5 px-6 text-slate-600">
+                <p class="font-medium">
+                  ${escapeHtml(student.email || "No email")}
+                </p>
 
-          <td class="py-5 px-6 text-right space-x-2 whitespace-nowrap">
-            <button onclick="viewStudent('${student.id}')"
-              class="px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-black hover:bg-blue-500 transition">
-              View
-            </button>
+                <p class="mt-1 text-xs text-slate-400">
+                  ${escapeHtml(student.phone || "No phone")}
+                </p>
+              </td>
 
-            <button onclick="deleteStudent('${student.id}')"
-              class="px-3 py-2 rounded-lg bg-red-600 text-white text-xs font-black hover:bg-red-500 transition">
-              Delete
-            </button>
-          </td>
-        </tr>
-      `).join("");
+              <td class="py-5 px-6">
+                <p class="font-bold text-slate-700">
+                  ${escapeHtml(student.course || "No course")}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  ${escapeHtml(student.branch || "No branch")}
+                </p>
+              </td>
+
+              <td class="py-5 px-6">
+                <select
+                  onchange="changeStudentStatus('${student.id}', this.value)"
+                  class="rounded-xl border border-slate-200 px-3 py-2 text-[10px] font-black uppercase tracking-widest outline-none ${getStatusSelectClass(status)}"
+                  aria-label="Change student status"
+                >
+                  ${buildStatusOptions(status)}
+                </select>
+              </td>
+
+              <td class="py-5 px-6">
+                <div class="w-28">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-[10px] font-black text-slate-400">
+                      Progress
+                    </span>
+
+                    <span class="text-[10px] font-black text-blue-600">
+                      ${progress}%
+                    </span>
+                  </div>
+
+                  <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div
+                      class="h-full bg-blue-600"
+                      style="width: ${progress}%"
+                    ></div>
+                  </div>
+                </div>
+              </td>
+
+              <td class="py-5 px-6">
+                <div class="flex items-center justify-end gap-2">
+                  <button
+                    onclick="viewStudent('${student.id}')"
+                    class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                    title="View student"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+
+                  <button
+                    onclick="editStudent('${student.id}')"
+                    class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 hover:bg-violet-600 hover:text-white transition"
+                    title="Edit student"
+                  >
+                    <i class="fas fa-pen"></i>
+                  </button>
+
+                  <button
+                    onclick="deleteStudent('${student.id}')"
+                    class="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition"
+                    title="Delete student"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        })
+        .join("");
     }
 
     function viewStudent(id) {
-      const student = allStudents.find((s) => s.id === id);
-      if (!student) return;
+      const student = allStudents.find((item) => item.id === id);
 
-      document.getElementById("viewInitials").textContent = getInitials(student.full_name);
-      document.getElementById("viewName").textContent = student.full_name || "No Name";
-      document.getElementById("viewCourse").textContent = student.course || "No course";
-      document.getElementById("viewEmail").textContent = student.email || "No email";
-      document.getElementById("viewPhone").textContent = student.phone || "No phone";
-      document.getElementById("viewDate").textContent = student.created_at ? new Date(student.created_at).toLocaleString() : "";
-      document.getElementById("viewId").textContent = student.id || "";
-      document.getElementById("viewMessage").textContent = student.message || "No message";
+      if (!student) {
+        return;
+      }
 
-      document.getElementById("viewReply").href = student.email
-        ? `mailto:${student.email}?subject=Sky Grace School of Theology Application`
+      selectedStudentId = id;
+
+      document.getElementById("modalInitials").textContent =
+        getInitials(student.full_name);
+
+      document.getElementById("modalName").textContent =
+        student.full_name || "No Name";
+
+      document.getElementById("modalStudentNumber").textContent =
+        student.student_number || shortId(student.id);
+
+      const modalStatus = document.getElementById("modalStatus");
+
+      modalStatus.textContent = student.status || "Pending";
+      modalStatus.className =
+        `px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${getStatusBadgeClass(student.status || "Pending")}`;
+
+      document.getElementById("modalSource").textContent =
+        student.application_source || "Unknown Source";
+
+      document.getElementById("modalEmail").textContent =
+        student.email || "No email";
+
+      document.getElementById("modalPhone").textContent =
+        student.phone || "No phone";
+
+      document.getElementById("modalDob").textContent =
+        formatDate(student.date_of_birth);
+
+      document.getElementById("modalBranch").textContent =
+        student.branch || "No branch";
+
+      document.getElementById("modalCourse").textContent =
+        student.course || "No course";
+
+      document.getElementById("modalEnrollmentDate").textContent =
+        formatDate(student.enrollment_date);
+
+      const progress = Number(student.progress || 0);
+
+      document.getElementById("modalProgressText").textContent =
+        `${progress}%`;
+
+      document.getElementById("modalProgressBar").style.width =
+        `${progress}%`;
+
+      document.getElementById("modalMessage").textContent =
+        student.message || "No message or notes recorded.";
+
+      const modalEmailBtn = document.getElementById("modalEmailBtn");
+
+      modalEmailBtn.href = student.email
+        ? `mailto:${encodeURIComponent(student.email)}?subject=${encodeURIComponent("Sky Grace School of Theology")}`
         : "#";
 
-      document.getElementById("viewDeleteBtn").onclick = () => deleteStudent(student.id);
+      const modal = document.getElementById("studentModal");
 
-      const modal = document.getElementById("viewModal");
       modal.classList.remove("hidden");
       modal.classList.add("flex");
+
+      document.body.style.overflow = "hidden";
     }
 
-    function closeViewModal() {
-      const modal = document.getElementById("viewModal");
+    function closeStudentModal() {
+      const modal = document.getElementById("studentModal");
+
       modal.classList.add("hidden");
       modal.classList.remove("flex");
+
+      document.body.style.overflow = "";
+      selectedStudentId = null;
+    }
+
+    function editStudent(id) {
+      sessionStorage.setItem("editStudentId", id);
+      window.location.href = "add-student.html";
+    }
+
+    async function changeStudentStatus(id, status) {
+      const student = allStudents.find((item) => item.id === id);
+
+      if (!student) {
+        return;
+      }
+
+      const payload = {
+        status
+      };
+
+      if (
+        status === "Enrolled" &&
+        !student.enrollment_date
+      ) {
+        payload.enrollment_date =
+          new Date().toISOString().split("T")[0];
+      }
+
+      const { error } = await supabaseClient
+        .from("theology_students")
+        .update(payload)
+        .eq("id", id);
+
+      if (error) {
+        console.error("Student status error:", error);
+        showNotice(error.message, "error");
+        await loadStudents();
+        return;
+      }
+
+      showNotice(`Student status changed to ${status}.`);
+      await loadStudents();
+
+      if (selectedStudentId === id) {
+        viewStudent(id);
+      }
+    }
+
+    async function updateSelectedStudentStatus(status) {
+      if (!selectedStudentId) {
+        return;
+      }
+
+      const currentId = selectedStudentId;
+
+      await changeStudentStatus(currentId, status);
+
+      if (allStudents.some((student) => student.id === currentId)) {
+        viewStudent(currentId);
+      }
     }
 
     async function deleteStudent(id) {
-      if (!confirm("Delete this student application?")) return;
+      const student = allStudents.find((item) => item.id === id);
+
+      if (!student) {
+        return;
+      }
+
+      const confirmed = confirm(
+        `Delete the theology record for "${student.full_name}" permanently?`
+      );
+
+      if (!confirmed) {
+        return;
+      }
 
       const { error } = await supabaseClient
         .from("theology_students")
@@ -282,29 +928,110 @@
         .eq("id", id);
 
       if (error) {
-        alert(error.message);
+        console.error("Student delete error:", error);
+        showNotice(error.message, "error");
         return;
       }
 
-      closeViewModal();
+      if (selectedStudentId === id) {
+        closeStudentModal();
+      }
+
+      showNotice("Student record deleted successfully.");
       await loadStudents();
     }
 
+    function buildStatusOptions(currentStatus) {
+      const statuses = [
+        "Pending",
+        "Approved",
+        "Enrolled",
+        "Rejected",
+        "Suspended",
+        "Completed"
+      ];
+
+      return statuses
+        .map((status) => `
+          <option
+            value="${status}"
+            ${status === currentStatus ? "selected" : ""}
+          >
+            ${status}
+          </option>
+        `)
+        .join("");
+    }
+
+    function getStatusBadgeClass(status) {
+      const classes = {
+        Pending: "bg-amber-100 text-amber-700",
+        Approved: "bg-blue-100 text-blue-700",
+        Enrolled: "bg-green-100 text-green-700",
+        Rejected: "bg-red-100 text-red-700",
+        Suspended: "bg-slate-200 text-slate-700",
+        Completed: "bg-violet-100 text-violet-700"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-600";
+    }
+
+    function getStatusSelectClass(status) {
+      const classes = {
+        Pending: "bg-amber-50 text-amber-700",
+        Approved: "bg-blue-50 text-blue-700",
+        Enrolled: "bg-green-50 text-green-700",
+        Rejected: "bg-red-50 text-red-700",
+        Suspended: "bg-slate-100 text-slate-700",
+        Completed: "bg-violet-50 text-violet-700"
+      };
+
+      return classes[status] || "bg-slate-50 text-slate-700";
+    }
+
     function getInitials(name) {
-      return String(name || "SG")
-        .split(" ")
+      const value = String(name || "SG").trim();
+
+      if (!value) {
+        return "SG";
+      }
+
+      return value
+        .split(/\s+/)
         .map((part) => part[0])
         .join("")
-        .substring(0, 2)
+        .slice(0, 2)
         .toUpperCase();
     }
 
     function shortId(id) {
-      return id ? `ID: ${String(id).substring(0, 8)}` : "";
+      const value = String(id || "");
+
+      return value
+        ? `ID: ${value.slice(0, 8).toUpperCase()}`
+        : "No ID";
     }
 
-    function escapeHtml(str) {
-      return String(str || "")
+    function formatDate(value) {
+      if (!value) {
+        return "Not set";
+      }
+
+      const date = new Date(`${value}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return date.toLocaleDateString("en-NA", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
@@ -312,5 +1039,6 @@
         .replaceAll("'", "&#039;");
     }
   </script>
+
 </body>
 </html>
