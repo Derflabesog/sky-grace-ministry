@@ -1,182 +1,1223 @@
 ﻿<!DOCTYPE html>
-﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member Directory | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Member Directory | Sky Grace Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
-<body class="bg-slate-50 min-h-screen">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+<body class="bg-slate-50 min-h-screen text-slate-900 flex">
 
+  <!-- Shared Admin Sidebar -->
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
 
+  <div class="flex-1 min-w-0 flex flex-col">
 
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-5 md:px-8 sticky top-0 z-30">
+      <div>
+        <h1 class="font-bold text-slate-800 text-lg">
+          Member Directory
+        </h1>
 
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+          Sky Grace Membership Administration
+        </p>
+      </div>
 
+      <div class="flex items-center gap-3">
+        <a
+          href="membership.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs font-black text-slate-400 hover:text-blue-600 transition uppercase tracking-widest"
+        >
+          Registration Page
+          <i class="fas fa-external-link-alt ml-1"></i>
+        </a>
 
+        <button
+          id="addMemberBtn"
+          type="button"
+          class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 transition"
+        >
+          <i class="fas fa-user-plus"></i>
+          Add Member
+        </button>
+      </div>
+    </header>
 
+    <main class="p-5 md:p-8 max-w-7xl w-full mx-auto">
 
+      <!-- Hero -->
+      <section class="relative overflow-hidden rounded-[2rem] bg-slate-950 text-white p-7 md:p-10 shadow-2xl mb-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_30%)]"></div>
 
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+              Membership Administration
+            </p>
 
+            <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+              Sky Grace Members
+            </h2>
 
+            <p class="mt-4 max-w-2xl text-sm md:text-base text-slate-300 leading-relaxed">
+              Review membership applications, activate members, update spiritual
+              information and maintain the central church membership database.
+            </p>
+          </div>
 
+          <a
+            href="membership.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/10 border border-white/15 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-slate-950 transition"
+          >
+            <i class="fas fa-people-roof"></i>
+            Become a Member Page
+          </a>
+        </div>
+      </section>
 
-    <!-- Global Header: Master Template with Sermons Dropdown -->
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
+      <!-- Notice -->
+      <div
+        id="pageNotice"
+        class="hidden mb-6 rounded-2xl border px-5 py-4 text-sm font-bold"
+      ></div>
 
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="welcome-packet.html" class="hover:text-blue-400 transition">Welcome Packet</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
+      <!-- Statistics -->
+      <section class="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4 mb-8">
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Total</p>
+          <p id="totalStat" class="mt-2 text-3xl font-black text-slate-950">0</p>
+        </div>
 
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Pending</p>
+          <p id="pendingStat" class="mt-2 text-3xl font-black text-amber-600">0</p>
+        </div>
 
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Approved</p>
+          <p id="approvedStat" class="mt-2 text-3xl font-black text-blue-600">0</p>
+        </div>
 
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Active</p>
+          <p id="activeStat" class="mt-2 text-3xl font-black text-green-600">0</p>
+        </div>
 
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Inactive</p>
+          <p id="inactiveStat" class="mt-2 text-3xl font-black text-slate-600">0</p>
+        </div>
 
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">This Month</p>
+          <p id="newMonthStat" class="mt-2 text-3xl font-black text-violet-600">0</p>
+        </div>
 
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">New Converts</p>
+          <p id="newConvertStat" class="mt-2 text-3xl font-black text-red-600">0</p>
+        </div>
+      </section>
 
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
+      <!-- Controls -->
+      <section class="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-6 mb-6">
+        <div>
+          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
+            Membership Records
+          </p>
 
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
+          <h3 class="mt-2 text-2xl font-black text-slate-950">
+            Church Member Directory
+          </h3>
+        </div>
 
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="relative sm:col-span-2">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
 
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
+            <input
+              id="memberSearch"
+              type="text"
+              placeholder="Search name, number, phone..."
+              class="w-full bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500"
+            />
+          </div>
 
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
+          <select
+            id="statusFilter"
+            class="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500"
+          >
+            <option value="all">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Transferred">Transferred</option>
+            <option value="Suspended">Suspended</option>
+          </select>
 
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
+          <select
+            id="branchFilter"
+            class="bg-white border border-slate-200 text-slate-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500"
+          >
+            <option value="all">All Branches</option>
+          </select>
+        </div>
+      </section>
 
-    <!-- Support Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-slate-400 font-bold text-xs">Support</span>
-      <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Privacy Policy</a>
-      <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Terms of Service</a>
-      <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Cookie Policy</a>
+      <!-- Member Cards -->
+      <section
+        id="membersGrid"
+        class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+      >
+        <div class="md:col-span-2 xl:col-span-3 py-20 text-center text-slate-400">
+          <i class="fas fa-circle-notch fa-spin text-3xl"></i>
+          <p class="mt-4 font-bold">Loading members...</p>
+        </div>
+      </section>
 
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
+      <div class="mt-6 flex items-center justify-between gap-4">
+        <p
+          id="memberCount"
+          class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+        >
+          Showing 0 members
+        </p>
 
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
+        <button
+          id="refreshMembersBtn"
+          type="button"
+          class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition"
+        >
+          <i class="fas fa-rotate"></i>
+          Refresh
+        </button>
+      </div>
 
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a>
-    <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-    <a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a>
-    <a href="give.html" class="hover:text-blue-400 transition">Give</a>
-    <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
-    <a href="live.html" class="mt-4 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">Watch Live</a>
-  </div>
-</div>
-
-<main class="p-8 max-w-6xl mx-auto">
-        <section class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-            <div class="p-8 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-                <h3 class="font-black text-slate-900 uppercase">New Member Directory</h3>
-                <span class="text-xs font-bold text-slate-400">Showing 452 Contacts</span>
-            </div>
-            <div class="p-0">
-                <div class="grid grid-cols-1 divide-y divide-slate-100">
-                    <div class="p-6 flex items-center justify-between hover:bg-blue-50/20 transition">
-                        <div class="flex gap-4 items-center">
-                            <div class="text-sm font-black text-slate-900">David Amutenya</div>
-                            <div class="text-xs text-slate-400">david.a@email.com</div>
-                            <div class="px-3 py-1 bg-blue-50 text-blue-500 text-[9px] font-black rounded-full uppercase">Windhoek Branch</div>
-                        </div>
-                        <button class="text-blue-500 text-xs font-bold hover:underline">View Full Profile</button>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
+  </div>
+
+  <!-- Member Modal -->
+  <div
+    id="memberModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4"
+  >
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-5xl w-full max-h-[94vh] overflow-y-auto">
+
+      <div class="p-6 md:p-8 border-b border-slate-200 flex items-start justify-between gap-5 sticky top-0 bg-white z-10">
+        <div class="flex items-center gap-4 min-w-0">
+          <div
+            id="modalAvatar"
+            class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-xl overflow-hidden flex-shrink-0"
+          >
+            SG
+          </div>
+
+          <div class="min-w-0">
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+              Member Profile
+            </p>
+
+            <h3
+              id="modalName"
+              class="mt-1 text-2xl font-black text-slate-950 truncate"
+            >
+              Member Name
+            </h3>
+
+            <p
+              id="modalNumber"
+              class="mt-1 text-xs font-bold text-slate-400"
+            >
+              Member Number
+            </p>
+          </div>
+        </div>
+
+        <button
+          id="closeMemberModalBtn"
+          type="button"
+          class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition flex-shrink-0"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="p-6 md:p-8">
+        <div class="flex flex-wrap gap-2 mb-7">
+          <span
+            id="modalStatus"
+            class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest"
+          ></span>
+
+          <span
+            id="modalType"
+            class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest bg-violet-100 text-violet-700"
+          ></span>
+
+          <span
+            id="modalBranch"
+            class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest bg-blue-100 text-blue-700"
+          ></span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-5">
+          <section class="lg:col-span-2 space-y-5">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone</p>
+                <p id="modalPhone" class="mt-2 font-bold text-slate-800"></p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Email</p>
+                <p id="modalEmail" class="mt-2 font-bold text-slate-800 break-all"></p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Gender</p>
+                <p id="modalGender" class="mt-2 font-bold text-slate-800"></p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Date of Birth</p>
+                <p id="modalDob" class="mt-2 font-bold text-slate-800"></p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Occupation</p>
+                <p id="modalOccupation" class="mt-2 font-bold text-slate-800"></p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 p-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Marital Status</p>
+                <p id="modalMarital" class="mt-2 font-bold text-slate-800"></p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Residential Address
+              </p>
+              <p id="modalAddress" class="mt-3 text-slate-600 leading-relaxed"></p>
+            </div>
+
+            <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-amber-700">
+                Spiritual Information
+              </p>
+
+              <div class="mt-4 grid sm:grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-500">Water Baptized</p>
+                  <p id="modalBaptized" class="mt-1 font-black text-slate-800"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-500">Holy Spirit Filled</p>
+                  <p id="modalSpiritFilled" class="mt-1 font-black text-slate-800"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-500">Salvation Date</p>
+                  <p id="modalSalvationDate" class="mt-1 font-black text-slate-800"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-500">Baptism Date</p>
+                  <p id="modalBaptismDate" class="mt-1 font-black text-slate-800"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-red-200 bg-red-50 p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-red-700">
+                Emergency Contact
+              </p>
+
+              <div class="mt-4 grid sm:grid-cols-3 gap-4">
+                <div>
+                  <p class="text-xs text-slate-500">Name</p>
+                  <p id="modalEmergencyName" class="mt-1 font-black text-slate-800"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-500">Phone</p>
+                  <p id="modalEmergencyPhone" class="mt-1 font-black text-slate-800"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-500">Relationship</p>
+                  <p id="modalEmergencyRelationship" class="mt-1 font-black text-slate-800"></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="space-y-5">
+            <div class="rounded-2xl bg-slate-950 text-white p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-blue-300">
+                Membership
+              </p>
+
+              <div class="mt-4 space-y-4">
+                <div>
+                  <p class="text-xs text-slate-400">Department</p>
+                  <p id="modalDepartment" class="mt-1 font-black"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Joined Date</p>
+                  <p id="modalJoinedDate" class="mt-1 font-black"></p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Application Source</p>
+                  <p id="modalSource" class="mt-1 font-black"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 p-5">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Pastoral Notes
+              </p>
+
+              <textarea
+                id="modalPastoralNotes"
+                rows="7"
+                placeholder="Add confidential pastoral notes..."
+                class="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-500 resize-y"
+              ></textarea>
+
+              <button
+                id="savePastoralNotesBtn"
+                type="button"
+                class="mt-3 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-950 text-white text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition"
+              >
+                <i class="fas fa-floppy-disk"></i>
+                Save Notes
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <a
+                id="modalCallBtn"
+                href="#"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-green-100 text-green-700 text-[9px] font-black uppercase tracking-widest hover:bg-green-600 hover:text-white transition"
+              >
+                <i class="fas fa-phone"></i>
+                Call
+              </a>
+
+              <a
+                id="modalEmailBtn"
+                href="#"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-100 text-blue-700 text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition"
+              >
+                <i class="fas fa-envelope"></i>
+                Email
+              </a>
+
+              <button
+                id="modalEditBtn"
+                type="button"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-violet-100 text-violet-700 text-[9px] font-black uppercase tracking-widest hover:bg-violet-600 hover:text-white transition"
+              >
+                <i class="fas fa-pen"></i>
+                Edit
+              </button>
+
+              <button
+                id="modalDeleteBtn"
+                type="button"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-100 text-red-700 text-[9px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition"
+              >
+                <i class="fas fa-trash"></i>
+                Delete
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        <div class="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <button
+            id="modalApproveBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-100 text-blue-700 font-black uppercase text-[9px] tracking-widest hover:bg-blue-600 hover:text-white transition"
+          >
+            <i class="fas fa-check"></i>
+            Approve
+          </button>
+
+          <button
+            id="modalActivateBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-green-100 text-green-700 font-black uppercase text-[9px] tracking-widest hover:bg-green-600 hover:text-white transition"
+          >
+            <i class="fas fa-user-check"></i>
+            Activate
+          </button>
+
+          <button
+            id="modalInactiveBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-100 text-slate-700 font-black uppercase text-[9px] tracking-widest hover:bg-slate-700 hover:text-white transition"
+          >
+            <i class="fas fa-user-clock"></i>
+            Inactive
+          </button>
+
+          <button
+            id="modalSuspendBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-100 text-amber-700 font-black uppercase text-[9px] tracking-widest hover:bg-amber-600 hover:text-white transition"
+          >
+            <i class="fas fa-user-lock"></i>
+            Suspend
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit / Add Modal -->
+  <div
+    id="editModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+  >
+    <div class="bg-white rounded-[2rem] shadow-2xl max-w-4xl w-full max-h-[94vh] overflow-y-auto">
+      <div class="p-6 border-b border-slate-200 flex items-center justify-between sticky top-0 bg-white z-10">
+        <div>
+          <p class="text-[10px] font-black uppercase tracking-widest text-blue-600">
+            Member Record
+          </p>
+          <h3 id="editModalTitle" class="mt-1 text-2xl font-black text-slate-950">
+            Add Member
+          </h3>
+        </div>
+
+        <button
+          id="closeEditModalBtn"
+          type="button"
+          class="w-11 h-11 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-900 hover:text-white transition"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="memberEditForm" class="p-6 md:p-8 space-y-7">
+        <input id="editMemberId" type="hidden" />
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="md:col-span-2">
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Full Name *</label>
+            <input id="editFullName" required class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Phone *</label>
+            <input id="editPhone" required class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Email</label>
+            <input id="editEmail" type="email" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Branch</label>
+            <input id="editBranch" value="Okahandja HQ" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Department</label>
+            <input id="editDepartment" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Membership Type</label>
+            <select id="editType" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500">
+              <option value="Member">Member</option>
+              <option value="Visitor">Visitor</option>
+              <option value="New Convert">New Convert</option>
+              <option value="Child">Child</option>
+              <option value="Leader">Leader</option>
+              <option value="Pastor">Pastor</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Status</label>
+            <select id="editStatus" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500">
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Transferred">Transferred</option>
+              <option value="Suspended">Suspended</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Gender</label>
+            <select id="editGender" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500">
+              <option value="">Not specified</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Prefer Not To Say">Prefer Not To Say</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Date of Birth</label>
+            <input id="editDob" type="date" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Occupation</label>
+            <input id="editOccupation" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Marital Status</label>
+            <select id="editMarital" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-bold outline-none focus:border-blue-500">
+              <option value="">Not specified</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+              <option value="Widowed">Widowed</option>
+              <option value="Separated">Separated</option>
+            </select>
+          </div>
+
+          <div class="md:col-span-2">
+            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Residential Address</label>
+            <textarea id="editAddress" rows="3" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm outline-none focus:border-blue-500 resize-y"></textarea>
+          </div>
+
+          <label class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-black text-slate-900">Water Baptized</span>
+            <input id="editBaptized" type="checkbox" class="w-5 h-5 accent-blue-600" />
+          </label>
+
+          <label class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between gap-4 cursor-pointer">
+            <span class="font-black text-slate-900">Holy Spirit Filled</span>
+            <input id="editSpiritFilled" type="checkbox" class="w-5 h-5 accent-blue-600" />
+          </label>
+        </div>
+
+        <p id="editFormStatus" class="min-h-[1.25rem] text-sm font-bold"></p>
+
+        <div class="flex justify-end">
+          <button
+            id="saveMemberBtn"
+            type="submit"
+            class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-700 disabled:opacity-60 transition"
+          >
+            <i id="saveMemberIcon" class="fas fa-floppy-disk"></i>
+            <span id="saveMemberText">Save Member</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
+
+  <script>
+    let allMembers = [];
+    let selectedMemberId = null;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      document.getElementById("memberSearch").addEventListener("input", applyFilters);
+      document.getElementById("statusFilter").addEventListener("change", applyFilters);
+      document.getElementById("branchFilter").addEventListener("change", applyFilters);
+      document.getElementById("refreshMembersBtn").addEventListener("click", loadMembers);
+      document.getElementById("addMemberBtn").addEventListener("click", () => openEditModal());
+
+      document.getElementById("closeMemberModalBtn").addEventListener("click", closeMemberModal);
+      document.getElementById("closeEditModalBtn").addEventListener("click", closeEditModal);
+      document.getElementById("memberEditForm").addEventListener("submit", saveMember);
+
+      document.getElementById("modalApproveBtn").addEventListener("click", () => updateSelectedStatus("Approved"));
+      document.getElementById("modalActivateBtn").addEventListener("click", () => updateSelectedStatus("Active"));
+      document.getElementById("modalInactiveBtn").addEventListener("click", () => updateSelectedStatus("Inactive"));
+      document.getElementById("modalSuspendBtn").addEventListener("click", () => updateSelectedStatus("Suspended"));
+      document.getElementById("modalEditBtn").addEventListener("click", editSelectedMember);
+      document.getElementById("modalDeleteBtn").addEventListener("click", deleteSelectedMember);
+      document.getElementById("savePastoralNotesBtn").addEventListener("click", savePastoralNotes);
+
+      document.getElementById("memberModal").addEventListener("click", (event) => {
+        if (event.target.id === "memberModal") closeMemberModal();
+      });
+
+      document.getElementById("editModal").addEventListener("click", (event) => {
+        if (event.target.id === "editModal") closeEditModal();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMemberModal();
+          closeEditModal();
+        }
+      });
+
+      await loadMembers();
+    });
+
+    async function loadMembers() {
+      const grid = document.getElementById("membersGrid");
+
+      grid.innerHTML = `
+        <div class="md:col-span-2 xl:col-span-3 py-20 text-center text-slate-400">
+          <i class="fas fa-circle-notch fa-spin text-3xl"></i>
+          <p class="mt-4 font-bold">Loading members...</p>
+        </div>
+      `;
+
+      const { data, error } = await supabaseClient
+        .from("members")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        grid.innerHTML = buildError(error.message);
+        return;
+      }
+
+      allMembers = data || [];
+
+      populateBranchFilter();
+      updateStats();
+      applyFilters();
+    }
+
+    function updateStats() {
+      const startOfMonth = new Date();
+      startOfMonth.setDate(1);
+      startOfMonth.setHours(0, 0, 0, 0);
+
+      document.getElementById("totalStat").textContent = allMembers.length;
+      document.getElementById("pendingStat").textContent = countStatus("Pending");
+      document.getElementById("approvedStat").textContent = countStatus("Approved");
+      document.getElementById("activeStat").textContent = countStatus("Active");
+      document.getElementById("inactiveStat").textContent = countStatus("Inactive");
+
+      document.getElementById("newMonthStat").textContent =
+        allMembers.filter((member) => {
+          const created = new Date(member.created_at);
+          return !Number.isNaN(created.getTime()) && created >= startOfMonth;
+        }).length;
+
+      document.getElementById("newConvertStat").textContent =
+        allMembers.filter((member) => member.membership_type === "New Convert").length;
+    }
+
+    function countStatus(status) {
+      return allMembers.filter((member) => member.membership_status === status).length;
+    }
+
+    function populateBranchFilter() {
+      const select = document.getElementById("branchFilter");
+      const current = select.value;
+
+      const branches = [...new Set(
+        allMembers
+          .map((member) => String(member.branch || "").trim())
+          .filter(Boolean)
+      )].sort();
+
+      select.innerHTML = `
+        <option value="all">All Branches</option>
+        ${branches.map((branch) => `
+          <option value="${escapeAttribute(branch)}">${escapeHtml(branch)}</option>
+        `).join("")}
+      `;
+
+      if (branches.includes(current)) select.value = current;
+    }
+
+    function applyFilters() {
+      const term = document.getElementById("memberSearch").value.trim().toLowerCase();
+      const status = document.getElementById("statusFilter").value;
+      const branch = document.getElementById("branchFilter").value;
+
+      const filtered = allMembers.filter((member) => {
+        const searchable = [
+          member.full_name,
+          member.member_number,
+          member.phone,
+          member.email,
+          member.branch,
+          member.department,
+          member.membership_type
+        ].join(" ").toLowerCase();
+
+        return (
+          (!term || searchable.includes(term)) &&
+          (status === "all" || member.membership_status === status) &&
+          (branch === "all" || member.branch === branch)
+        );
+      });
+
+      renderMembers(filtered);
+    }
+
+    function renderMembers(members) {
+      const grid = document.getElementById("membersGrid");
+      document.getElementById("memberCount").textContent =
+        `Showing ${members.length} of ${allMembers.length} members`;
+
+      if (!members.length) {
+        grid.innerHTML = `
+          <div class="md:col-span-2 xl:col-span-3 bg-white rounded-[2rem] border border-slate-200 p-14 text-center">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-100 text-slate-400 flex items-center justify-center text-3xl">
+              <i class="fas fa-users-slash"></i>
+            </div>
+            <h4 class="mt-5 text-xl font-black text-slate-950">No members found</h4>
+            <p class="mt-2 text-slate-500">Try another search or filter.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = members.map((member) => `
+        <article class="bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden hover:shadow-xl transition">
+          <div class="p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg overflow-hidden flex-shrink-0">
+                ${buildAvatar(member)}
+              </div>
+
+              <div class="min-w-0 flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <h4 class="font-black text-slate-950 text-lg truncate">
+                      ${escapeHtml(member.full_name || "Unnamed Member")}
+                    </h4>
+
+                    <p class="mt-1 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      ${escapeHtml(member.member_number || shortId(member.id))}
+                    </p>
+                  </div>
+
+                  <span class="px-3 py-2 rounded-full text-[8px] font-black uppercase tracking-widest ${statusClass(member.membership_status)}">
+                    ${escapeHtml(member.membership_status || "Pending")}
+                  </span>
+                </div>
+
+                <p class="mt-3 text-sm text-slate-600">
+                  ${escapeHtml(member.phone || "No phone")}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-400 truncate">
+                  ${escapeHtml(member.email || "No email")}
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">Branch</p>
+                <p class="mt-1 text-sm font-black text-slate-800 truncate">
+                  ${escapeHtml(member.branch || "Not set")}
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">Type</p>
+                <p class="mt-1 text-sm font-black text-slate-800 truncate">
+                  ${escapeHtml(member.membership_type || "Member")}
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <button
+                onclick="viewMember('${member.id}')"
+                class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 transition"
+              >
+                <i class="fas fa-eye"></i>
+                View Profile
+              </button>
+
+              <div class="flex gap-2">
+                <button
+                  onclick="openEditModal('${member.id}')"
+                  class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 hover:bg-violet-600 hover:text-white transition"
+                  title="Edit member"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+
+                <button
+                  onclick="quickStatus('${member.id}', 'Active')"
+                  class="w-10 h-10 rounded-xl bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition"
+                  title="Activate member"
+                >
+                  <i class="fas fa-user-check"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function viewMember(id) {
+      const member = allMembers.find((item) => item.id === id);
+      if (!member) return;
+
+      selectedMemberId = id;
+
+      document.getElementById("modalAvatar").innerHTML = buildAvatar(member);
+      document.getElementById("modalName").textContent = member.full_name || "Unnamed Member";
+      document.getElementById("modalNumber").textContent = member.member_number || shortId(member.id);
+
+      const status = document.getElementById("modalStatus");
+      status.textContent = member.membership_status || "Pending";
+      status.className = `px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${statusClass(member.membership_status)}`;
+
+      document.getElementById("modalType").textContent = member.membership_type || "Member";
+      document.getElementById("modalBranch").textContent = member.branch || "Not set";
+      document.getElementById("modalPhone").textContent = member.phone || "Not provided";
+      document.getElementById("modalEmail").textContent = member.email || "Not provided";
+      document.getElementById("modalGender").textContent = member.gender || "Not specified";
+      document.getElementById("modalDob").textContent = formatDate(member.date_of_birth);
+      document.getElementById("modalOccupation").textContent = member.occupation || "Not specified";
+      document.getElementById("modalMarital").textContent = member.marital_status || "Not specified";
+      document.getElementById("modalAddress").textContent = member.residential_address || "Not provided";
+      document.getElementById("modalBaptized").textContent = member.water_baptized ? "Yes" : "No";
+      document.getElementById("modalSpiritFilled").textContent = member.filled_with_holy_spirit ? "Yes" : "No";
+      document.getElementById("modalSalvationDate").textContent = formatDate(member.salvation_date);
+      document.getElementById("modalBaptismDate").textContent = formatDate(member.baptism_date);
+      document.getElementById("modalEmergencyName").textContent = member.emergency_contact_name || "Not provided";
+      document.getElementById("modalEmergencyPhone").textContent = member.emergency_contact_phone || "Not provided";
+      document.getElementById("modalEmergencyRelationship").textContent = member.emergency_contact_relationship || "Not provided";
+      document.getElementById("modalDepartment").textContent = member.department || "Not assigned";
+      document.getElementById("modalJoinedDate").textContent = formatDate(member.joined_date);
+      document.getElementById("modalSource").textContent = member.application_source || "Unknown";
+      document.getElementById("modalPastoralNotes").value = member.pastoral_notes || "";
+
+      document.getElementById("modalCallBtn").href = member.phone ? `tel:${member.phone}` : "#";
+      document.getElementById("modalEmailBtn").href = member.email
+        ? `mailto:${encodeURIComponent(member.email)}?subject=${encodeURIComponent("Sky Grace Jesus Ministry")}`
+        : "#";
+
+      const modal = document.getElementById("memberModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMemberModal() {
+      const modal = document.getElementById("memberModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+      selectedMemberId = null;
+    }
+
+    function openEditModal(id = null) {
+      const member = id ? allMembers.find((item) => item.id === id) : null;
+
+      document.getElementById("memberEditForm").reset();
+      document.getElementById("editMemberId").value = member?.id || "";
+      document.getElementById("editModalTitle").textContent = member ? "Edit Member" : "Add Member";
+      document.getElementById("editFullName").value = member?.full_name || "";
+      document.getElementById("editPhone").value = member?.phone || "";
+      document.getElementById("editEmail").value = member?.email || "";
+      document.getElementById("editBranch").value = member?.branch || "Okahandja HQ";
+      document.getElementById("editDepartment").value = member?.department || "";
+      document.getElementById("editType").value = member?.membership_type || "Member";
+      document.getElementById("editStatus").value = member?.membership_status || "Active";
+      document.getElementById("editGender").value = member?.gender || "";
+      document.getElementById("editDob").value = member?.date_of_birth || "";
+      document.getElementById("editOccupation").value = member?.occupation || "";
+      document.getElementById("editMarital").value = member?.marital_status || "";
+      document.getElementById("editAddress").value = member?.residential_address || "";
+      document.getElementById("editBaptized").checked = Boolean(member?.water_baptized);
+      document.getElementById("editSpiritFilled").checked = Boolean(member?.filled_with_holy_spirit);
+      document.getElementById("editFormStatus").textContent = "";
+
+      const modal = document.getElementById("editModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeEditModal() {
+      const modal = document.getElementById("editModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+
+    async function saveMember(event) {
+      event.preventDefault();
+
+      const id = document.getElementById("editMemberId").value;
+      const payload = {
+        full_name: document.getElementById("editFullName").value.trim(),
+        phone: document.getElementById("editPhone").value.trim(),
+        email: cleanText(document.getElementById("editEmail").value)?.toLowerCase() || null,
+        branch: cleanText(document.getElementById("editBranch").value) || "Okahandja HQ",
+        department: cleanText(document.getElementById("editDepartment").value),
+        membership_type: document.getElementById("editType").value,
+        membership_status: document.getElementById("editStatus").value,
+        gender: cleanText(document.getElementById("editGender").value),
+        date_of_birth: document.getElementById("editDob").value || null,
+        occupation: cleanText(document.getElementById("editOccupation").value),
+        marital_status: cleanText(document.getElementById("editMarital").value),
+        residential_address: cleanText(document.getElementById("editAddress").value),
+        water_baptized: document.getElementById("editBaptized").checked,
+        filled_with_holy_spirit: document.getElementById("editSpiritFilled").checked,
+        application_source: id ? undefined : "Admin Portal"
+      };
+
+      if (!payload.full_name || !payload.phone) {
+        showEditStatus("Full name and phone number are required.", "error");
+        return;
+      }
+
+      setSaving(true);
+
+      try {
+        if (id) {
+          delete payload.application_source;
+
+          const { error } = await supabaseClient
+            .from("members")
+            .update(payload)
+            .eq("id", id);
+
+          if (error) throw error;
+          showNotice("Member record updated successfully.");
+        } else {
+          const { error } = await supabaseClient
+            .from("members")
+            .insert(payload);
+
+          if (error) throw error;
+          showNotice("New member added successfully.");
+        }
+
+        closeEditModal();
+        await loadMembers();
+      } catch (error) {
+        showEditStatus(error.message || "Unable to save member.", "error");
+      } finally {
+        setSaving(false);
+      }
+    }
+
+    async function quickStatus(id, status) {
+      const { error } = await supabaseClient
+        .from("members")
+        .update({ membership_status: status })
+        .eq("id", id);
+
+      if (error) {
+        showNotice(error.message, "error");
+        return;
+      }
+
+      showNotice(`Member status changed to ${status}.`);
+      await loadMembers();
+    }
+
+    async function updateSelectedStatus(status) {
+      if (!selectedMemberId) return;
+      const id = selectedMemberId;
+
+      await quickStatus(id, status);
+      selectedMemberId = id;
+
+      const refreshed = allMembers.find((item) => item.id === id);
+      if (refreshed) viewMember(id);
+    }
+
+    function editSelectedMember() {
+      if (!selectedMemberId) return;
+      const id = selectedMemberId;
+      closeMemberModal();
+      openEditModal(id);
+    }
+
+    async function savePastoralNotes() {
+      if (!selectedMemberId) return;
+
+      const notes = cleanText(document.getElementById("modalPastoralNotes").value);
+
+      const { error } = await supabaseClient
+        .from("members")
+        .update({ pastoral_notes: notes })
+        .eq("id", selectedMemberId);
+
+      if (error) {
+        showNotice(error.message, "error");
+        return;
+      }
+
+      showNotice("Pastoral notes saved.");
+      await loadMembers();
+    }
+
+    async function deleteSelectedMember() {
+      if (!selectedMemberId) return;
+
+      const member = allMembers.find((item) => item.id === selectedMemberId);
+      if (!member) return;
+
+      if (!confirm(`Delete the member record for "${member.full_name}" permanently?`)) {
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from("members")
+        .delete()
+        .eq("id", selectedMemberId);
+
+      if (error) {
+        showNotice(error.message, "error");
+        return;
+      }
+
+      closeMemberModal();
+      showNotice("Member record deleted successfully.");
+      await loadMembers();
+    }
+
+    function setSaving(saving) {
+      document.getElementById("saveMemberBtn").disabled = saving;
+      document.getElementById("saveMemberIcon").className =
+        saving ? "fas fa-circle-notch fa-spin" : "fas fa-floppy-disk";
+      document.getElementById("saveMemberText").textContent =
+        saving ? "Saving..." : "Save Member";
+    }
+
+    function showEditStatus(message, type) {
+      const status = document.getElementById("editFormStatus");
+      status.textContent = message;
+      status.className = type === "error"
+        ? "min-h-[1.25rem] text-sm font-bold text-red-600"
+        : "min-h-[1.25rem] text-sm font-bold text-green-600";
+    }
+
+    function showNotice(message, type = "success") {
+      const notice = document.getElementById("pageNotice");
+      notice.textContent = message;
+      notice.className = "mb-6 rounded-2xl border px-5 py-4 text-sm font-bold";
+
+      if (type === "error") {
+        notice.classList.add("bg-red-50", "border-red-200", "text-red-700");
+      } else {
+        notice.classList.add("bg-green-50", "border-green-200", "text-green-700");
+      }
+
+      notice.classList.remove("hidden");
+      window.setTimeout(() => notice.classList.add("hidden"), 5000);
+    }
+
+    function buildAvatar(member) {
+      const photo = String(member.profile_photo_url || "").trim();
+
+      if (photo) {
+        return `<img src="${escapeAttribute(photo)}" alt="${escapeAttribute(member.full_name || "Member")}" class="w-full h-full object-cover" />`;
+      }
+
+      return escapeHtml(getInitials(member.full_name));
+    }
+
+    function getInitials(name) {
+      return String(name || "SG")
+        .trim()
+        .split(/\s+/)
+        .map((part) => part[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase() || "SG";
+    }
+
+    function statusClass(status) {
+      const classes = {
+        Pending: "bg-amber-100 text-amber-700",
+        Approved: "bg-blue-100 text-blue-700",
+        Active: "bg-green-100 text-green-700",
+        Inactive: "bg-slate-200 text-slate-700",
+        Transferred: "bg-violet-100 text-violet-700",
+        Suspended: "bg-red-100 text-red-700",
+        Deceased: "bg-slate-900 text-white"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-700";
+    }
+
+    function formatDate(value) {
+      if (!value) return "Not set";
+
+      const date = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(date.getTime())) return value;
+
+      return date.toLocaleDateString("en-NA", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function shortId(id) {
+      return id ? `ID: ${String(id).slice(0, 8).toUpperCase()}` : "No ID";
+    }
+
+    function cleanText(value) {
+      const cleaned = String(value || "").trim();
+      return cleaned || null;
+    }
+
+    function buildError(message) {
+      return `
+        <div class="md:col-span-2 xl:col-span-3 bg-white rounded-[2rem] border border-red-200 p-12 text-center text-red-600">
+          <i class="fas fa-triangle-exclamation text-3xl"></i>
+          <p class="mt-4 font-black">${escapeHtml(message)}</p>
+        </div>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
+
 </body>
 </html>
