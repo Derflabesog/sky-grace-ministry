@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Volunteer Scheduler | Sky Grace Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body class="bg-slate-50 min-h-screen text-slate-900 flex">
+
+  <!-- Shared Admin Sidebar -->
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
+
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-slate-200 min-h-16 flex items-center justify-between gap-4 px-5 md:px-8 sticky top-0 z-30">
+      <div>
+        <h1 class="font-bold text-slate-800 text-lg">
+          Volunteer Scheduler
+        </h1>
+
+        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+          Ministry Duty Roster
+        </p>
+      </div>
+
+      <a
+        href="manage-volunteers.html"
+        class="text-xs font-black text-slate-400 hover:text-blue-600 transition uppercase tracking-widest"
+      >
+        <i class="fas fa-arrow-left mr-2"></i>
+        Volunteer Manager
+      </a>
+    </header>
+
+    <main class="p-5 md:p-8 max-w-7xl w-full mx-auto">
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden rounded-[2rem] bg-slate-950 text-white p-7 md:p-10 shadow-2xl mb-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.38),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_30%)]"></div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-300">
+              Ministry Operations
+            </p>
+
+            <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tight">
+              Volunteer Duty Roster
+            </h2>
+
+            <p class="mt-4 max-w-2xl text-sm md:text-base text-slate-300 leading-relaxed">
+              Schedule approved volunteers for services and ministry assignments.
+              Every saved assignment appears automatically inside the volunteer portal.
+            </p>
+          </div>
+
+          <a
+            href="volunteer-portal.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/10 border border-white/15 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-slate-950 transition"
+          >
+            <i class="fas fa-external-link-alt"></i>
+            Open Volunteer Portal
+          </a>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <div
+        id="pageNotice"
+        class="hidden mb-6 rounded-2xl border px-5 py-4 text-sm font-bold"
+      ></div>
+
+      <section class="grid xl:grid-cols-[410px_1fr] gap-8">
+
+        <!-- Schedule Form -->
+        <aside class="bg-white rounded-[2rem] border border-slate-200 shadow-xl overflow-hidden h-fit">
+          <div class="bg-slate-950 p-7 text-white">
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-300">
+              Assignment
+            </p>
+
+            <h3 id="formTitle" class="mt-2 text-2xl font-black">
+              Create Schedule
+            </h3>
+
+            <p class="mt-2 text-xs text-slate-300">
+              Assign an approved volunteer to a ministry service.
+            </p>
+          </div>
+
+          <form id="scheduleForm" class="p-6 space-y-5">
+            <input id="editingScheduleId" type="hidden" />
+
+            <div>
+              <label
+                for="volunteerId"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Approved Volunteer *
+              </label>
+
+              <select
+                id="volunteerId"
+                required
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+              >
+                <option value="">Loading approved volunteers...</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="serviceTitle"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Service / Event Title *
+              </label>
+
+              <input
+                id="serviceTitle"
+                type="text"
+                required
+                list="serviceOptions"
+                placeholder="Sunday Service"
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+              />
+
+              <datalist id="serviceOptions">
+                <option value="Sunday Service"></option>
+                <option value="Friday Prayer"></option>
+                <option value="Midweek Service"></option>
+                <option value="Conference"></option>
+                <option value="Outreach"></option>
+                <option value="Theology School"></option>
+                <option value="Special Event"></option>
+              </datalist>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="serviceDate"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  Date *
+                </label>
+
+                <input
+                  id="serviceDate"
+                  type="date"
+                  required
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="venue"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  Venue
+                </label>
+
+                <input
+                  id="venue"
+                  type="text"
+                  value="Okahandja Shopping Centre, Shop 32"
+                  placeholder="Venue"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="startTime"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  Start Time *
+                </label>
+
+                <input
+                  id="startTime"
+                  type="time"
+                  required
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="endTime"
+                  class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+                >
+                  End Time
+                </label>
+
+                <input
+                  id="endTime"
+                  type="time"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="department"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Department
+              </label>
+
+              <select
+                id="department"
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+              >
+                <option value="">Select Department</option>
+                <option value="Media">Media</option>
+                <option value="Live Stream">Live Stream</option>
+                <option value="Praise and Worship">Praise and Worship</option>
+                <option value="Intercession">Intercession</option>
+                <option value="Ushers">Ushers</option>
+                <option value="Protocol">Protocol</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Children's Ministry">Children's Ministry</option>
+                <option value="Youth Ministry">Youth Ministry</option>
+                <option value="Security">Security</option>
+                <option value="Evangelism">Evangelism</option>
+                <option value="Administration">Administration</option>
+                <option value="Theology School">Theology School</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="assignedTask"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Assigned Task / Role *
+              </label>
+
+              <input
+                id="assignedTask"
+                type="text"
+                required
+                list="roleOptions"
+                placeholder="Camera Operator"
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+              />
+
+              <datalist id="roleOptions">
+                <option value="Camera Operator"></option>
+                <option value="Audio Mixer"></option>
+                <option value="Livestream Operator"></option>
+                <option value="Usher"></option>
+                <option value="Protocol Officer"></option>
+                <option value="Intercessor"></option>
+                <option value="Worship Team"></option>
+                <option value="Photographer"></option>
+                <option value="Security"></option>
+                <option value="Hospitality"></option>
+                <option value="Children's Teacher"></option>
+              </datalist>
+            </div>
+
+            <div>
+              <label
+                for="teamLeader"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Team Leader
+              </label>
+
+              <input
+                id="teamLeader"
+                type="text"
+                placeholder="Media Director"
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-bold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"
+              />
+            </div>
+
+            <div>
+              <label
+                for="notes"
+                class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2"
+              >
+                Schedule Notes
+              </label>
+
+              <textarea
+                id="notes"
+                rows="4"
+                placeholder="Arrival time, equipment or special instructions..."
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-medium outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition resize-y"
+              ></textarea>
+            </div>
+
+            <p id="formStatus" class="min-h-[1.25rem] text-sm font-bold"></p>
+
+            <div class="flex gap-3">
+              <button
+                id="saveScheduleBtn"
+                type="submit"
+                class="flex-1 inline-flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-700 disabled:opacity-60 transition"
+              >
+                <i id="saveScheduleIcon" class="fas fa-calendar-plus"></i>
+                <span id="saveScheduleText">Save Assignment</span>
+              </button>
+
+              <button
+                id="cancelEditBtn"
+                type="button"
+                class="hidden px-5 py-4 rounded-2xl bg-slate-200 text-slate-700 font-black uppercase text-[10px] tracking-widest hover:bg-slate-300 transition"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </aside>
+
+        <!-- Schedule List -->
+        <div>
+          <!-- Stats -->
+          <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Total Assignments
+              </p>
+
+              <p id="totalScheduleStat" class="mt-2 text-3xl font-black text-slate-950">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Pending
+              </p>
+
+              <p id="pendingScheduleStat" class="mt-2 text-3xl font-black text-amber-600">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Confirmed
+              </p>
+
+              <p id="confirmedScheduleStat" class="mt-2 text-3xl font-black text-green-600">
+                0
+              </p>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Present
+              </p>
+
+              <p id="presentScheduleStat" class="mt-2 text-3xl font-black text-blue-600">
+                0
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
+            <div>
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
+                Duty Roster
+              </p>
+
+              <h3 class="mt-2 text-2xl font-black text-slate-950">
+                Volunteer Assignments
+              </h3>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+
+                <input
+                  id="scheduleSearch"
+                  type="text"
+                  placeholder="Search assignments..."
+                  class="w-full sm:w-64 bg-white border border-slate-200 text-slate-700 pl-10 pr-4 py-3 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <select
+                id="confirmationFilter"
+                class="bg-white border border-slate-200 text-slate-600 px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-blue-500"
+              >
+                <option value="all">All Responses</option>
+                <option value="Pending">Pending</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Declined">Declined</option>
+              </select>
+
+              <button
+                id="refreshScheduleBtn"
+                type="button"
+                class="w-12 h-12 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-blue-600 hover:text-white transition"
+                title="Refresh schedules"
+              >
+                <i class="fas fa-rotate"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <section class="bg-white rounded-[2rem] border border-slate-200 shadow-xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left min-w-[1100px]">
+                <thead class="bg-slate-50 border-b border-slate-200">
+                  <tr>
+                    <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Volunteer
+                    </th>
+
+                    <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Service
+                    </th>
+
+                    <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Assignment
+                    </th>
+
+                    <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Response
+                    </th>
+
+                    <th class="py-4 px-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Attendance
+                    </th>
+
+                    <th class="py-4 px-6 text-right text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody
+                  id="scheduleTableBody"
+                  class="text-sm divide-y divide-slate-100"
+                >
+                  <tr>
+                    <td colspan="6" class="py-16 text-center text-slate-400 font-bold">
+                      <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+                      <p>Loading schedules...</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-6 border-t border-slate-100">
+              <p
+                id="scheduleCount"
+                class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+              >
+                Showing 0 assignments
+              </p>
+            </div>
+          </section>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/guard.js"></script>
+
+  <script>
+    let approvedVolunteers = [];
+    let allSchedules = [];
+
+    const scheduleForm = document.getElementById("scheduleForm");
+    const saveButton = document.getElementById("saveScheduleBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      scheduleForm.addEventListener("submit", saveSchedule);
+      document.getElementById("cancelEditBtn").addEventListener("click", resetScheduleForm);
+      document.getElementById("scheduleSearch").addEventListener("input", applyScheduleFilters);
+      document.getElementById("confirmationFilter").addEventListener("change", applyScheduleFilters);
+      document.getElementById("refreshScheduleBtn").addEventListener("click", loadSchedulerData);
+      document.getElementById("volunteerId").addEventListener("change", applyVolunteerDefaults);
+
+      setDefaultScheduleValues();
+      await loadSchedulerData();
+    });
+
+    async function loadSchedulerData() {
+      await Promise.all([
+        loadApprovedVolunteers(),
+        loadSchedules()
+      ]);
+    }
+
+    async function loadApprovedVolunteers() {
+      const volunteerSelect = document.getElementById("volunteerId");
+
+      const { data, error } = await supabaseClient
+        .from("volunteer_applications")
+        .select(`
+          id,
+          full_name,
+          email,
+          volunteer_number,
+          department,
+          ministry_area,
+          assigned_role,
+          team_leader,
+          branch,
+          status
+        `)
+        .eq("status", "Approved")
+        .order("full_name", { ascending: true });
+
+      if (error) {
+        console.error("Approved volunteer load error:", error);
+
+        volunteerSelect.innerHTML = `
+          <option value="">Unable to load approved volunteers</option>
+        `;
+
+        showNotice(error.message, "error");
+        return;
+      }
+
+      approvedVolunteers = data || [];
+
+      volunteerSelect.innerHTML = `
+        <option value="">Select approved volunteer</option>
+        ${approvedVolunteers
+          .map((volunteer) => `
+            <option value="${volunteer.id}">
+              ${escapeHtml(volunteer.full_name || "Volunteer")}
+              ${volunteer.volunteer_number ? ` · ${escapeHtml(volunteer.volunteer_number)}` : ""}
+            </option>
+          `)
+          .join("")}
+      `;
+    }
+
+    async function loadSchedules() {
+      const tbody = document.getElementById("scheduleTableBody");
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="py-16 text-center text-slate-400 font-bold">
+            <i class="fas fa-circle-notch fa-spin text-2xl mb-3"></i>
+            <p>Loading schedules...</p>
+          </td>
+        </tr>
+      `;
+
+      const { data, error } = await supabaseClient
+        .from("volunteer_schedules")
+        .select(`
+          *,
+          volunteer:volunteer_applications (
+            id,
+            full_name,
+            email,
+            volunteer_number,
+            department,
+            assigned_role,
+            team_leader
+          )
+        `)
+        .order("service_date", { ascending: true })
+        .order("start_time", { ascending: true });
+
+      if (error) {
+        console.error("Volunteer schedule load error:", error);
+
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-16 px-6 text-center text-red-600 font-bold">
+              ${escapeHtml(error.message)}
+            </td>
+          </tr>
+        `;
+
+        return;
+      }
+
+      allSchedules = data || [];
+
+      updateScheduleStats();
+      applyScheduleFilters();
+    }
+
+    function applyVolunteerDefaults() {
+      const selectedId = document.getElementById("volunteerId").value;
+
+      const volunteer = approvedVolunteers.find(
+        (item) => item.id === selectedId
+      );
+
+      if (!volunteer) {
+        return;
+      }
+
+      if (!document.getElementById("department").value) {
+        document.getElementById("department").value =
+          volunteer.department ||
+          volunteer.ministry_area ||
+          "";
+      }
+
+      if (!document.getElementById("assignedTask").value) {
+        document.getElementById("assignedTask").value =
+          volunteer.assigned_role || "";
+      }
+
+      if (!document.getElementById("teamLeader").value) {
+        document.getElementById("teamLeader").value =
+          volunteer.team_leader || "";
+      }
+    }
+
+    async function saveSchedule(event) {
+      event.preventDefault();
+
+      formStatus.textContent = "";
+
+      const editingId = document.getElementById("editingScheduleId").value;
+
+      const payload = {
+        volunteer_id: document.getElementById("volunteerId").value,
+        service_title: document.getElementById("serviceTitle").value.trim(),
+        service_date: document.getElementById("serviceDate").value,
+        start_time: document.getElementById("startTime").value,
+        end_time: document.getElementById("endTime").value || null,
+        venue: cleanText(document.getElementById("venue").value),
+        department: cleanText(document.getElementById("department").value),
+        assigned_task: document.getElementById("assignedTask").value.trim(),
+        team_leader: cleanText(document.getElementById("teamLeader").value),
+        notes: cleanText(document.getElementById("notes").value),
+        status: "Scheduled"
+      };
+
+      if (
+        !payload.volunteer_id ||
+        !payload.service_title ||
+        !payload.service_date ||
+        !payload.start_time ||
+        !payload.assigned_task
+      ) {
+        showFormStatus(
+          "Volunteer, service title, date, start time and assigned task are required.",
+          "error"
+        );
+
+        return;
+      }
+
+      setSaving(true);
+
+      try {
+        if (editingId) {
+          const { error } = await supabaseClient
+            .from("volunteer_schedules")
+            .update(payload)
+            .eq("id", editingId);
+
+          if (error) throw error;
+
+          showNotice("Volunteer assignment updated successfully.");
+        } else {
+          payload.confirmation_status = "Pending";
+          payload.attendance_status = "Not Recorded";
+
+          const { error } = await supabaseClient
+            .from("volunteer_schedules")
+            .insert(payload);
+
+          if (error) throw error;
+
+          showNotice("Volunteer assignment created successfully.");
+        }
+
+        resetScheduleForm();
+        await loadSchedules();
+      } catch (error) {
+        console.error("Schedule save error:", error);
+
+        showFormStatus(
+          error.message || "Unable to save volunteer assignment.",
+          "error"
+        );
+      } finally {
+        setSaving(false);
+      }
+    }
+
+    function editSchedule(id) {
+      const schedule = allSchedules.find((item) => item.id === id);
+
+      if (!schedule) {
+        return;
+      }
+
+      document.getElementById("editingScheduleId").value = schedule.id;
+      document.getElementById("volunteerId").value = schedule.volunteer_id || "";
+      document.getElementById("serviceTitle").value = schedule.service_title || "";
+      document.getElementById("serviceDate").value = schedule.service_date || "";
+      document.getElementById("startTime").value = schedule.start_time || "";
+      document.getElementById("endTime").value = schedule.end_time || "";
+      document.getElementById("venue").value = schedule.venue || "";
+      document.getElementById("department").value = schedule.department || "";
+      document.getElementById("assignedTask").value = schedule.assigned_task || "";
+      document.getElementById("teamLeader").value = schedule.team_leader || "";
+      document.getElementById("notes").value = schedule.notes || "";
+
+      document.getElementById("formTitle").textContent = "Edit Assignment";
+      document.getElementById("saveScheduleText").textContent = "Update Assignment";
+      document.getElementById("saveScheduleIcon").className = "fas fa-floppy-disk";
+      document.getElementById("cancelEditBtn").classList.remove("hidden");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function deleteSchedule(id) {
+      const schedule = allSchedules.find((item) => item.id === id);
+
+      if (!schedule) {
+        return;
+      }
+
+      const volunteerName =
+        schedule.volunteer?.full_name || "this volunteer";
+
+      if (
+        !confirm(
+          `Delete the assignment "${schedule.service_title}" for ${volunteerName}?`
+        )
+      ) {
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from("volunteer_schedules")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        showNotice(error.message, "error");
+        return;
+      }
+
+      showNotice("Volunteer assignment deleted.");
+      await loadSchedules();
+    }
+
+    async function changeAttendance(id, value) {
+      const { error } = await supabaseClient
+        .from("volunteer_schedules")
+        .update({
+          attendance_status: value
+        })
+        .eq("id", id);
+
+      if (error) {
+        showNotice(error.message, "error");
+        await loadSchedules();
+        return;
+      }
+
+      showNotice(`Attendance changed to ${value}.`);
+      await loadSchedules();
+    }
+
+    function applyScheduleFilters() {
+      const term = document
+        .getElementById("scheduleSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+      const confirmationFilter =
+        document.getElementById("confirmationFilter").value;
+
+      const filtered = allSchedules.filter((schedule) => {
+        const searchable = [
+          schedule.service_title,
+          schedule.service_date,
+          schedule.venue,
+          schedule.department,
+          schedule.assigned_task,
+          schedule.team_leader,
+          schedule.notes,
+          schedule.volunteer?.full_name,
+          schedule.volunteer?.email,
+          schedule.volunteer?.volunteer_number
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !term || searchable.includes(term);
+
+        const matchesConfirmation =
+          confirmationFilter === "all" ||
+          schedule.confirmation_status === confirmationFilter;
+
+        return matchesSearch && matchesConfirmation;
+      });
+
+      renderSchedules(filtered);
+    }
+
+    function renderSchedules(schedules) {
+      const tbody = document.getElementById("scheduleTableBody");
+
+      document.getElementById("scheduleCount").textContent =
+        `Showing ${schedules.length} of ${allSchedules.length} assignments`;
+
+      if (!schedules.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-16 px-6 text-center">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl">
+                <i class="fas fa-calendar-xmark"></i>
+              </div>
+
+              <h4 class="mt-4 font-black text-slate-950">
+                No assignments found
+              </h4>
+
+              <p class="mt-2 text-sm text-slate-400">
+                Create the first volunteer schedule using the form.
+              </p>
+            </td>
+          </tr>
+        `;
+
+        return;
+      }
+
+      tbody.innerHTML = schedules
+        .map((schedule) => {
+          const volunteer = schedule.volunteer || {};
+
+          return `
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-5 px-6">
+                <div class="flex items-center gap-4">
+                  <div class="w-11 h-11 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-black flex-shrink-0">
+                    ${escapeHtml(getInitials(volunteer.full_name))}
+                  </div>
+
+                  <div>
+                    <p class="font-black text-slate-950">
+                      ${escapeHtml(volunteer.full_name || "Unknown Volunteer")}
+                    </p>
+
+                    <p class="mt-1 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      ${escapeHtml(volunteer.volunteer_number || "No number")}
+                    </p>
+                  </div>
+                </div>
+              </td>
+
+              <td class="py-5 px-6">
+                <p class="font-black text-slate-800">
+                  ${escapeHtml(schedule.service_title || "Assignment")}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-500">
+                  ${escapeHtml(formatDate(schedule.service_date))}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  ${escapeHtml(formatTimeRange(schedule.start_time, schedule.end_time))}
+                </p>
+              </td>
+
+              <td class="py-5 px-6">
+                <p class="font-bold text-slate-700">
+                  ${escapeHtml(schedule.assigned_task || "No task")}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  ${escapeHtml(schedule.department || "No department")}
+                </p>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  Leader: ${escapeHtml(schedule.team_leader || "Not assigned")}
+                </p>
+              </td>
+
+              <td class="py-5 px-6">
+                <span class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${getConfirmationClass(schedule.confirmation_status)}">
+                  ${escapeHtml(schedule.confirmation_status || "Pending")}
+                </span>
+              </td>
+
+              <td class="py-5 px-6">
+                <select
+                  onchange="changeAttendance('${schedule.id}', this.value)"
+                  class="rounded-xl border border-slate-200 px-3 py-2 text-[10px] font-black uppercase tracking-widest outline-none ${getAttendanceClass(schedule.attendance_status)}"
+                >
+                  ${buildAttendanceOptions(schedule.attendance_status)}
+                </select>
+              </td>
+
+              <td class="py-5 px-6">
+                <div class="flex items-center justify-end gap-2">
+                  <button
+                    onclick="editSchedule('${schedule.id}')"
+                    class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 hover:bg-violet-600 hover:text-white transition"
+                    title="Edit assignment"
+                  >
+                    <i class="fas fa-pen"></i>
+                  </button>
+
+                  <button
+                    onclick="deleteSchedule('${schedule.id}')"
+                    class="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition"
+                    title="Delete assignment"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        })
+        .join("");
+    }
+
+    function updateScheduleStats() {
+      document.getElementById("totalScheduleStat").textContent =
+        allSchedules.length;
+
+      document.getElementById("pendingScheduleStat").textContent =
+        allSchedules.filter(
+          (item) => item.confirmation_status === "Pending"
+        ).length;
+
+      document.getElementById("confirmedScheduleStat").textContent =
+        allSchedules.filter(
+          (item) => item.confirmation_status === "Confirmed"
+        ).length;
+
+      document.getElementById("presentScheduleStat").textContent =
+        allSchedules.filter(
+          (item) => item.attendance_status === "Present"
+        ).length;
+    }
+
+    function resetScheduleForm() {
+      scheduleForm.reset();
+
+      document.getElementById("editingScheduleId").value = "";
+      document.getElementById("formTitle").textContent = "Create Schedule";
+      document.getElementById("saveScheduleText").textContent = "Save Assignment";
+      document.getElementById("saveScheduleIcon").className = "fas fa-calendar-plus";
+      document.getElementById("cancelEditBtn").classList.add("hidden");
+
+      formStatus.textContent = "";
+      setDefaultScheduleValues();
+    }
+
+    function setDefaultScheduleValues() {
+      const today = new Date();
+      const local = new Date(
+        today.getTime() - today.getTimezoneOffset() * 60000
+      );
+
+      document.getElementById("serviceDate").value =
+        local.toISOString().split("T")[0];
+
+      document.getElementById("startTime").value = "09:00";
+      document.getElementById("endTime").value = "12:00";
+      document.getElementById("venue").value =
+        "Okahandja Shopping Centre, Shop 32";
+    }
+
+    function setSaving(saving) {
+      saveButton.disabled = saving;
+
+      document.getElementById("saveScheduleIcon").className =
+        saving
+          ? "fas fa-circle-notch fa-spin"
+          : (
+              document.getElementById("editingScheduleId").value
+                ? "fas fa-floppy-disk"
+                : "fas fa-calendar-plus"
+            );
+
+      document.getElementById("saveScheduleText").textContent =
+        saving
+          ? "Saving..."
+          : (
+              document.getElementById("editingScheduleId").value
+                ? "Update Assignment"
+                : "Save Assignment"
+            );
+    }
+
+    function showFormStatus(message, type) {
+      formStatus.textContent = message;
+
+      formStatus.className =
+        type === "error"
+          ? "min-h-[1.25rem] text-sm font-bold text-red-600"
+          : "min-h-[1.25rem] text-sm font-bold text-green-600";
+    }
+
+    function showNotice(message, type = "success") {
+      const notice = document.getElementById("pageNotice");
+
+      notice.textContent = message;
+      notice.className =
+        "mb-6 rounded-2xl border px-5 py-4 text-sm font-bold";
+
+      if (type === "error") {
+        notice.classList.add(
+          "bg-red-50",
+          "border-red-200",
+          "text-red-700"
+        );
+      } else {
+        notice.classList.add(
+          "bg-green-50",
+          "border-green-200",
+          "text-green-700"
+        );
+      }
+
+      notice.classList.remove("hidden");
+
+      window.setTimeout(() => {
+        notice.classList.add("hidden");
+      }, 5000);
+    }
+
+    function buildAttendanceOptions(current) {
+      const statuses = [
+        "Not Recorded",
+        "Present",
+        "Late",
+        "Excused",
+        "Absent"
+      ];
+
+      return statuses
+        .map((status) => `
+          <option
+            value="${status}"
+            ${status === current ? "selected" : ""}
+          >
+            ${status}
+          </option>
+        `)
+        .join("");
+    }
+
+    function getConfirmationClass(status) {
+      const classes = {
+        Pending: "bg-amber-100 text-amber-700",
+        Confirmed: "bg-green-100 text-green-700",
+        Declined: "bg-red-100 text-red-700"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-600";
+    }
+
+    function getAttendanceClass(status) {
+      const classes = {
+        "Not Recorded": "bg-slate-50 text-slate-700",
+        Present: "bg-green-50 text-green-700",
+        Late: "bg-amber-50 text-amber-700",
+        Excused: "bg-blue-50 text-blue-700",
+        Absent: "bg-red-50 text-red-700"
+      };
+
+      return classes[status] || classes["Not Recorded"];
+    }
+
+    function getInitials(name) {
+      return String(name || "SG")
+        .trim()
+        .split(/\s+/)
+        .map((part) => part[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase() || "SG";
+    }
+
+    function formatDate(value) {
+      if (!value) return "No date";
+
+      const date = new Date(`${value}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) return value;
+
+      return date.toLocaleDateString("en-NA", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function formatTimeRange(start, end) {
+      const startText = formatSingleTime(start);
+      const endText = formatSingleTime(end);
+
+      if (startText && endText) {
+        return `${startText} – ${endText}`;
+      }
+
+      return startText || endText || "No time";
+    }
+
+    function formatSingleTime(value) {
+      if (!value) return "";
+
+      const parts = String(value).split(":");
+
+      if (parts.length < 2) return value;
+
+      return `${parts[0].padStart(2, "0")}H${parts[1].padStart(2, "0")}`;
+    }
+
+    function cleanText(value) {
+      const cleaned = String(value || "").trim();
+      return cleaned || null;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+
+</body>
+</html>
