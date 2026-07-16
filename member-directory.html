@@ -435,6 +435,17 @@
                 Email
               </a>
 
+              <a
+                id="modalCardBtn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-100 text-amber-700 text-[9px] font-black uppercase tracking-widest hover:bg-amber-600 hover:text-white transition"
+              >
+                <i class="fas fa-id-card"></i>
+                Member Card
+              </a>
+
               <button
                 id="modalEditBtn"
                 type="button"
@@ -925,6 +936,9 @@
         ? `mailto:${encodeURIComponent(member.email)}?subject=${encodeURIComponent("Sky Grace Jesus Ministry")}`
         : "#";
 
+      document.getElementById("modalCardBtn").href =
+        `member-card.html?id=${encodeURIComponent(member.id)}`;
+
       const modal = document.getElementById("memberModal");
       modal.classList.remove("hidden");
       modal.classList.add("flex");
@@ -1221,4 +1235,3 @@
 
 </body>
 </html>
-
