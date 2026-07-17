@@ -368,6 +368,90 @@
                 </div>
               </div>
             </div>
+
+            <!-- Attendance History -->
+            <div class="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div>
+                  <p class="text-[10px] font-black uppercase tracking-widest text-blue-700">
+                    Attendance History
+                  </p>
+
+                  <h4 class="mt-2 text-xl font-black text-slate-950">
+                    Member Service Attendance
+                  </h4>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    Attendance records loaded from the Sky Grace service registers.
+                  </p>
+                </div>
+
+                <a
+                  href="attendance-manager.html"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 transition"
+                >
+                  <i class="fas fa-clipboard-check"></i>
+                  Attendance Manager
+                </a>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 md:grid-cols-5 gap-3">
+                <div class="rounded-2xl bg-white border border-blue-100 p-4">
+                  <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    Services
+                  </p>
+                  <p id="modalAttendanceTotal" class="mt-2 text-2xl font-black text-slate-950">
+                    0
+                  </p>
+                </div>
+
+                <div class="rounded-2xl bg-white border border-blue-100 p-4">
+                  <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    Present
+                  </p>
+                  <p id="modalAttendancePresent" class="mt-2 text-2xl font-black text-green-600">
+                    0
+                  </p>
+                </div>
+
+                <div class="rounded-2xl bg-white border border-blue-100 p-4">
+                  <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    Late
+                  </p>
+                  <p id="modalAttendanceLate" class="mt-2 text-2xl font-black text-amber-600">
+                    0
+                  </p>
+                </div>
+
+                <div class="rounded-2xl bg-white border border-blue-100 p-4">
+                  <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    Absent
+                  </p>
+                  <p id="modalAttendanceAbsent" class="mt-2 text-2xl font-black text-red-600">
+                    0
+                  </p>
+                </div>
+
+                <div class="rounded-2xl bg-white border border-blue-100 p-4">
+                  <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    Attendance
+                  </p>
+                  <p id="modalAttendanceRate" class="mt-2 text-2xl font-black text-blue-600">
+                    0%
+                  </p>
+                </div>
+              </div>
+
+              <div
+                id="modalAttendanceHistory"
+                class="mt-5 space-y-3"
+              >
+                <div class="rounded-2xl bg-white border border-blue-100 p-5 text-center text-slate-400">
+                  <i class="fas fa-circle-notch fa-spin"></i>
+                  <p class="mt-2 text-sm font-bold">Loading attendance history...</p>
+                </div>
+              </div>
+            </div>
           </section>
 
           <aside class="space-y-5">
@@ -939,6 +1023,9 @@
       document.getElementById("modalCardBtn").href =
         `member-card.html?id=${encodeURIComponent(member.id)}`;
 
+      resetMemberAttendanceHistory();
+      loadMemberAttendanceHistory(member.id);
+
       const modal = document.getElementById("memberModal");
       modal.classList.remove("hidden");
       modal.classList.add("flex");
@@ -1121,6 +1208,178 @@
       closeMemberModal();
       showNotice("Member record deleted successfully.");
       await loadMembers();
+    }
+
+    function resetMemberAttendanceHistory() {
+      document.getElementById("modalAttendanceTotal").textContent = "0";
+      document.getElementById("modalAttendancePresent").textContent = "0";
+      document.getElementById("modalAttendanceLate").textContent = "0";
+      document.getElementById("modalAttendanceAbsent").textContent = "0";
+      document.getElementById("modalAttendanceRate").textContent = "0%";
+
+      document.getElementById("modalAttendanceHistory").innerHTML = `
+        <div class="rounded-2xl bg-white border border-blue-100 p-5 text-center text-slate-400">
+          <i class="fas fa-circle-notch fa-spin"></i>
+          <p class="mt-2 text-sm font-bold">Loading attendance history...</p>
+        </div>
+      `;
+    }
+
+    async function loadMemberAttendanceHistory(memberId) {
+      const container = document.getElementById("modalAttendanceHistory");
+
+      const { data, error } = await supabaseClient.rpc(
+        "get_member_attendance_history",
+        {
+          supplied_member_id: memberId
+        }
+      );
+
+      if (error) {
+        container.innerHTML = `
+          <div class="rounded-2xl bg-red-50 border border-red-200 p-5 text-center text-red-700">
+            <i class="fas fa-triangle-exclamation"></i>
+            <p class="mt-2 text-sm font-bold">
+              ${escapeHtml(error.message)}
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      const history = data || [];
+      const total = history.length;
+      const present = history.filter((item) =>
+        item.attendance_status === "Present"
+      ).length;
+      const late = history.filter((item) =>
+        item.attendance_status === "Late"
+      ).length;
+      const excused = history.filter((item) =>
+        item.attendance_status === "Excused"
+      ).length;
+      const absent = history.filter((item) =>
+        item.attendance_status === "Absent"
+      ).length;
+
+      const countedAttendance = present + late;
+      const rate = total
+        ? Math.round((countedAttendance / total) * 100)
+        : 0;
+
+      document.getElementById("modalAttendanceTotal").textContent =
+        total;
+
+      document.getElementById("modalAttendancePresent").textContent =
+        present;
+
+      document.getElementById("modalAttendanceLate").textContent =
+        late;
+
+      document.getElementById("modalAttendanceAbsent").textContent =
+        absent;
+
+      document.getElementById("modalAttendanceRate").textContent =
+        `${rate}%`;
+
+      if (!history.length) {
+        container.innerHTML = `
+          <div class="rounded-2xl bg-white border border-blue-100 p-7 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-xl">
+              <i class="fas fa-calendar-xmark"></i>
+            </div>
+
+            <h5 class="mt-4 font-black text-slate-950">
+              No attendance history
+            </h5>
+
+            <p class="mt-2 text-sm text-slate-500">
+              This member has not yet been recorded in a service register.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = history.map((record) => `
+        <article class="rounded-2xl bg-white border border-blue-100 p-4">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl ${attendanceHistoryIconClass(record.attendance_status)} flex items-center justify-center flex-shrink-0">
+                <i class="fas ${attendanceHistoryIcon(record.attendance_status)}"></i>
+              </div>
+
+              <div>
+                <h5 class="font-black text-slate-950">
+                  ${escapeHtml(record.service_title || "Ministry Service")}
+                </h5>
+
+                <p class="mt-1 text-xs text-slate-500">
+                  ${escapeHtml(formatDate(record.service_date))}
+                  · ${escapeHtml(record.service_type || "Service")}
+                  · ${escapeHtml(record.branch || "No branch")}
+                </p>
+
+                <p class="mt-2 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                  ${escapeHtml(record.check_in_method || "Manual")}
+                  ${record.check_in_time
+                    ? ` · ${escapeHtml(formatAttendanceTime(record.check_in_time))}`
+                    : ""}
+                </p>
+              </div>
+            </div>
+
+            <span class="px-3 py-2 rounded-full text-[9px] font-black uppercase tracking-widest ${attendanceHistoryStatusClass(record.attendance_status)}">
+              ${escapeHtml(record.attendance_status || "Present")}
+            </span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function attendanceHistoryStatusClass(status) {
+      const classes = {
+        Present: "bg-green-100 text-green-700",
+        Late: "bg-amber-100 text-amber-700",
+        Excused: "bg-blue-100 text-blue-700",
+        Absent: "bg-red-100 text-red-700"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-700";
+    }
+
+    function attendanceHistoryIconClass(status) {
+      const classes = {
+        Present: "bg-green-100 text-green-600",
+        Late: "bg-amber-100 text-amber-600",
+        Excused: "bg-blue-100 text-blue-600",
+        Absent: "bg-red-100 text-red-600"
+      };
+
+      return classes[status] || "bg-slate-100 text-slate-600";
+    }
+
+    function attendanceHistoryIcon(status) {
+      const icons = {
+        Present: "fa-circle-check",
+        Late: "fa-clock",
+        Excused: "fa-circle-info",
+        Absent: "fa-circle-xmark"
+      };
+
+      return icons[status] || "fa-clipboard-check";
+    }
+
+    function formatAttendanceTime(value) {
+      if (!value) return "";
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+
+      return date.toLocaleTimeString("en-NA", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
     }
 
     function setSaving(saving) {
