@@ -1,52 +1,32 @@
--- Sky Grace Jesus Ministry — Finance Management Foundation
--- Run in Supabase SQL Editor while signed in as the project owner.
-
-create sequence if not exists public.finance_receipt_sequence start 1001;
-
-create table if not exists public.finance_transactions (
-  id uuid primary key default gen_random_uuid(),
-  receipt_number text not null unique default ('SG-' || to_char(current_date,'YYYY') || '-' || lpad(nextval('public.finance_receipt_sequence')::text,6,'0')),
-  transaction_type text not null check (transaction_type in ('Income','Expense')),
-  transaction_date date not null default current_date,
-  category text not null,
-  amount numeric(12,2) not null check (amount > 0),
-  payment_method text not null check (payment_method in ('Cash','Bank Transfer','Card','Mobile Payment','Other')),
-  member_id uuid references public.members(id) on delete set null,
-  person_name text,
-  reference text,
-  description text,
-  status text not null default 'Pending' check (status in ('Pending','Approved','Voided')),
-  recorded_by text not null default coalesce(auth.jwt()->>'email','System'),
-  approved_by text,
-  approved_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
-alter table public.finance_transactions enable row level security;
-
-drop policy if exists "Admins can read finance transactions" on public.finance_transactions;
-create policy "Admins can read finance transactions" on public.finance_transactions for select to authenticated
-using (exists(select 1 from public.admin_users where lower(admin_users.email)=lower(auth.jwt()->>'email')));
-drop policy if exists "Admins can create finance transactions" on public.finance_transactions;
-create policy "Admins can create finance transactions" on public.finance_transactions for insert to authenticated
-with check (exists(select 1 from public.admin_users where lower(admin_users.email)=lower(auth.jwt()->>'email')));
-drop policy if exists "Admins can update finance transactions" on public.finance_transactions;
-create policy "Admins can update finance transactions" on public.finance_transactions for update to authenticated
-using (exists(select 1 from public.admin_users where lower(admin_users.email)=lower(auth.jwt()->>'email')))
-with check (exists(select 1 from public.admin_users where lower(admin_users.email)=lower(auth.jwt()->>'email')));
-drop policy if exists "Admins can delete finance transactions" on public.finance_transactions;
-create policy "Admins can delete finance transactions" on public.finance_transactions for delete to authenticated
-using (exists(select 1 from public.admin_users where lower(admin_users.email)=lower(auth.jwt()->>'email')));
-
-create index if not exists finance_transactions_date_idx on public.finance_transactions(transaction_date desc);
-create index if not exists finance_transactions_type_idx on public.finance_transactions(transaction_type);
-create index if not exists finance_transactions_status_idx on public.finance_transactions(status);
-create index if not exists finance_transactions_member_idx on public.finance_transactions(member_id);
-
-create or replace function public.set_finance_updated_at() returns trigger language plpgsql as $$
-begin new.updated_at=now(); return new; end; $$;
-drop trigger if exists finance_set_updated_at on public.finance_transactions;
-create trigger finance_set_updated_at before update on public.finance_transactions
-for each row execute function public.set_finance_updated_at();
-
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finance Manager | Sky Grace Admin</title><script src="https://cdn.tailwindcss.com"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></head>
+<body class="bg-slate-50 flex min-h-screen"><div id="admin-sidebar-mount"></div><script src="admin-sidebar.js" defer></script>
+<div class="flex-1 min-w-0"><header class="h-16 bg-white border-b px-8 flex items-center justify-between sticky top-0 z-30"><h1 class="font-black text-slate-800">Finance Management</h1><button onclick="exportCsv()" class="btn bg-green-600 text-white"><i class="fas fa-file-csv mr-2"></i>Export CSV</button></header>
+<main class="p-6 lg:p-8 max-w-[1600px] mx-auto">
+<section class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-7"><div class="stat"><small>Approved Income</small><strong id="incomeTotal" class="text-green-600">N$ 0.00</strong></div><div class="stat"><small>Approved Expenses</small><strong id="expenseTotal" class="text-red-600">N$ 0.00</strong></div><div class="stat"><small>Current Balance</small><strong id="balanceTotal" class="text-blue-600">N$ 0.00</strong></div><div class="stat"><small>Pending Approval</small><strong id="pendingTotal" class="text-amber-500">0</strong></div></section>
+<section class="grid xl:grid-cols-[420px_1fr] gap-7 items-start"><form id="transactionForm" class="bg-white border rounded-3xl shadow-sm p-7 space-y-5 xl:sticky xl:top-24"><div><h2 class="text-xl font-black">Record Transaction</h2><p class="text-sm text-slate-500">Capture income, giving, or an expense.</p></div>
+<div class="grid grid-cols-2 gap-4"><div><label class="label">Type *</label><select id="transactionType" class="field"><option>Income</option><option>Expense</option></select></div><div><label class="label">Date *</label><input id="transactionDate" type="date" required class="field"></div></div>
+<div><label class="label">Category *</label><select id="category" required class="field"></select></div>
+<div><label class="label">Amount (N$) *</label><input id="amount" type="number" min="0.01" step="0.01" required class="field" placeholder="0.00"></div>
+<div><label class="label">Member (Optional)</label><select id="memberId" class="field"><option value="">Anonymous / Non-member</option></select></div>
+<div><label class="label">Giver / Payee Name</label><input id="personName" class="field" placeholder="Name for the receipt or expense"></div>
+<div class="grid grid-cols-2 gap-4"><div><label class="label">Payment Method *</label><select id="paymentMethod" class="field"><option>Cash</option><option>Bank Transfer</option><option>Card</option><option>Mobile Payment</option><option>Other</option></select></div><div><label class="label">Reference</label><input id="reference" class="field" placeholder="Bank/reference no."></div></div>
+<div><label class="label">Description</label><textarea id="description" rows="3" class="field" placeholder="Purpose or notes"></textarea></div><p id="formStatus" class="hidden rounded-xl p-3 text-sm font-bold"></p><button id="saveBtn" class="btn bg-blue-600 text-white w-full py-4"><i class="fas fa-floppy-disk mr-2"></i>Save as Pending</button></form>
+<div><div class="flex flex-col lg:flex-row gap-3 mb-4"><input id="search" class="field flex-1" placeholder="Search receipt, person, category or reference..."><select id="typeFilter" class="field lg:w-40"><option value="all">All types</option><option>Income</option><option>Expense</option></select><select id="statusFilter" class="field lg:w-44"><option value="all">All statuses</option><option>Pending</option><option>Approved</option><option>Voided</option></select></div><p id="pageStatus" class="mb-4 text-sm font-bold text-slate-500">Loading transactions...</p>
+<div class="bg-white border rounded-3xl shadow-sm overflow-x-auto"><table class="w-full text-left"><thead class="bg-slate-50 text-[10px] text-slate-400 uppercase tracking-widest"><tr><th class="p-5">Receipt / Date</th><th class="p-5">Details</th><th class="p-5">Amount</th><th class="p-5">Status</th><th class="p-5 text-right">Actions</th></tr></thead><tbody id="rows" class="divide-y"></tbody></table><p id="rowCount" class="p-5 border-t text-xs font-bold uppercase text-slate-400">Showing 0</p></div></div></section></main></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase.js"></script><script src="assets/js/guard.js"></script>
+<style>.stat{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;padding:1.25rem}.stat small,.label{display:block;font-size:.625rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:#94a3b8}.stat strong{display:block;font-size:1.7rem;margin-top:.45rem}.field{width:100%;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem;padding:.8rem 1rem;font-size:.8rem;font-weight:700;outline:none}.field:focus{border-color:#3b82f6}.label{margin-bottom:.45rem}.btn{border-radius:.75rem;padding:.75rem 1.1rem;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.btn:disabled{opacity:.55}</style>
+<script>
+const incomeCategories=["Tithe","Sunday Offering","Thanksgiving Offering","Building Fund","Mission Fund","Love Offering","Donation","Other Income"],expenseCategories=["Utilities","Rent","Maintenance","Transport","Ministry Program","Salaries","Equipment","Outreach","Other Expense"];let all=[],members=[];
+document.addEventListener("DOMContentLoaded",async()=>{transactionDate.value=new Date().toISOString().slice(0,10);setCategories();transactionType.onchange=setCategories;transactionForm.onsubmit=saveTransaction;search.oninput=filter;typeFilter.onchange=filter;statusFilter.onchange=filter;await Promise.all([loadMembers(),loadTransactions()])});
+function setCategories(){const items=transactionType.value==="Income"?incomeCategories:expenseCategories;category.innerHTML=items.map(x=>`<option>${esc(x)}</option>`).join("")}
+async function loadMembers(){const {data,error}=await supabaseClient.from("members").select("id,member_number,full_name").order("full_name");if(error)return;members=data||[];memberId.innerHTML='<option value="">Anonymous / Non-member</option>'+members.map(m=>`<option value="${m.id}">${esc(m.full_name)} · ${esc(m.member_number||"")}</option>`).join("");memberId.onchange=()=>{const m=members.find(x=>x.id===memberId.value);if(m)personName.value=m.full_name||""}}
+async function saveTransaction(e){e.preventDefault();saveBtn.disabled=true;const payload={transaction_type:transactionType.value,transaction_date:transactionDate.value,category:category.value,amount:Number(amount.value),payment_method:paymentMethod.value,member_id:memberId.value||null,person_name:clean(personName.value),reference:clean(reference.value),description:clean(description.value),status:"Pending"};const {error}=await supabaseClient.from("finance_transactions").insert(payload);saveBtn.disabled=false;if(error)return showForm(error.message,false);transactionForm.reset();transactionDate.value=new Date().toISOString().slice(0,10);setCategories();showForm("Transaction saved and waiting for approval.",true);await loadTransactions()}
+async function loadTransactions(){const {data,error}=await supabaseClient.from("finance_transactions").select("*,member:members(full_name,member_number)").order("transaction_date",{ascending:false}).order("created_at",{ascending:false});if(error){pageStatus.textContent=error.message;pageStatus.className="mb-4 text-sm font-bold text-red-600";return}all=data||[];pageStatus.textContent="";stats();filter()}
+function filter(){const q=search.value.trim().toLowerCase(),ty=typeFilter.value,st=statusFilter.value;render(all.filter(x=>(ty==="all"||x.transaction_type===ty)&&(st==="all"||x.status===st)&&[x.receipt_number,x.person_name,x.member?.full_name,x.category,x.reference,x.description].join(" ").toLowerCase().includes(q)))}
+function render(items){rowCount.textContent=`Showing ${items.length} transaction(s)`;rows.innerHTML=items.length?items.map(x=>`<tr><td class="p-5"><b>${esc(x.receipt_number)}</b><p class="text-xs text-slate-400">${esc(x.transaction_date)}</p></td><td class="p-5"><b>${esc(x.category)}</b><p class="text-xs text-slate-500">${esc(x.person_name||x.member?.full_name||"Anonymous")} · ${esc(x.payment_method)}</p>${x.reference?`<p class="text-[10px] text-slate-400">Ref: ${esc(x.reference)}</p>`:""}</td><td class="p-5 font-black ${x.transaction_type==="Income"?"text-green-600":"text-red-600"}">${x.transaction_type==="Expense"?"−":"+"} ${money(x.amount)}</td><td class="p-5"><span class="px-3 py-2 rounded-full text-[9px] font-black uppercase ${statusClass(x.status)}">${esc(x.status)}</span></td><td class="p-5 text-right whitespace-nowrap">${x.status==="Pending"?`<button onclick="setStatus('${x.id}','Approved')" class="btn bg-green-50 text-green-700">Approve</button>`:""}${x.status!=="Voided"?` <button onclick="setStatus('${x.id}','Voided')" class="btn bg-amber-50 text-amber-700">Void</button>`:""} <button onclick="printReceipt('${x.id}')" class="btn bg-blue-50 text-blue-700"><i class="fas fa-print"></i></button></td></tr>`).join(""):'<tr><td colspan="5" class="p-14 text-center text-slate-400 font-bold">No finance records found.</td></tr>'}
+function stats(){const approved=all.filter(x=>x.status==="Approved"),income=approved.filter(x=>x.transaction_type==="Income").reduce((n,x)=>n+Number(x.amount),0),expense=approved.filter(x=>x.transaction_type==="Expense").reduce((n,x)=>n+Number(x.amount),0);incomeTotal.textContent=money(income);expenseTotal.textContent=money(expense);balanceTotal.textContent=money(income-expense);pendingTotal.textContent=all.filter(x=>x.status==="Pending").length}
+async function setStatus(id,status){if(!confirm(`${status} this transaction?`))return;const session=await supabaseClient.auth.getSession();const patch={status,approved_by:status==="Approved"?session.data.session?.user?.email:null,approved_at:status==="Approved"?new Date().toISOString():null};const {error}=await supabaseClient.from("finance_transactions").update(patch).eq("id",id);if(error)return alert(error.message);await loadTransactions()}
+function printReceipt(id){const x=all.find(i=>i.id===id);if(!x)return;const w=open("","_blank","width=760,height=800");w.document.write(`<title>${esc(x.receipt_number)}</title><style>body{font:16px Arial;padding:50px;color:#0f172a}h1{color:#1d4ed8}.row{display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:12px 0}.amount{font-size:30px;font-weight:bold}</style><h1>Sky Grace Jesus Ministry</h1><h2>${x.transaction_type} Receipt</h2><div class="row"><b>Receipt</b><span>${esc(x.receipt_number)}</span></div><div class="row"><b>Date</b><span>${esc(x.transaction_date)}</span></div><div class="row"><b>Name</b><span>${esc(x.person_name||x.member?.full_name||"Anonymous")}</span></div><div class="row"><b>Category</b><span>${esc(x.category)}</span></div><div class="row"><b>Payment</b><span>${esc(x.payment_method)}</span></div><p class="amount">${money(x.amount)}</p><p>Status: ${esc(x.status)}</p>`);w.document.close();w.print()}
+function exportCsv(){const data=[["Receipt","Date","Type","Category","Name","Amount","Payment Method","Reference","Status"],...all.map(x=>[x.receipt_number,x.transaction_date,x.transaction_type,x.category,x.person_name||x.member?.full_name,x.amount,x.payment_method,x.reference,x.status])];const csv=data.map(r=>r.map(v=>'"'+String(v??"").replaceAll('"','""')+'"').join(",")).join("\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="sky-grace-finance.csv";a.click();URL.revokeObjectURL(a.href)}
+function showForm(m,ok){formStatus.textContent=m;formStatus.className=`rounded-xl p-3 text-sm font-bold ${ok?"bg-green-50 text-green-700":"bg-red-50 text-red-700"}`}function statusClass(s){return s==="Approved"?"bg-green-100 text-green-700":s==="Voided"?"bg-slate-200 text-slate-600":"bg-amber-100 text-amber-700"}function money(v){return new Intl.NumberFormat("en-NA",{style:"currency",currency:"NAD"}).format(Number(v||0))}function clean(v){v=String(v||"").trim();return v||null}function esc(v){return String(v||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
+</script></body></html>
