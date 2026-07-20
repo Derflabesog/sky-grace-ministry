@@ -3,137 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sermon Archive | Sky Grace Jesus Ministry</title>
-  <meta name="description" content="Watch sermons and download learning aids from Sky Grace Jesus Ministry." />
-
-  <!-- Tailwind + Icons -->
+  <title>Sermons & Social Media | Sky Grace Jesus Ministry</title>
+  <meta name="description" content="Watch the latest Sky Grace Jesus Ministry sermons on YouTube and connect with us on Facebook." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-  <script>
-    tailwind.config = { darkMode: 'class' };
-  </script>
-
-  <style>
-    /* small helper: clamp without plugin */
-    .clamp-3{
-      display:-webkit-box;
-      -webkit-line-clamp:3;
-      -webkit-box-orient:vertical;
-      overflow:hidden;
-    }
-  </style>
+  <style>.video-frame{aspect-ratio:16/9}.clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}</style>
 </head>
-
-<body class="bg-[#f1f5f9] text-slate-900 font-sans antialiased dark:bg-slate-950 dark:text-white">
-
-  <!-- Shared Header -->
+<body class="bg-slate-950 text-white font-sans antialiased">
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="header.js" defer></script>
 
-  <!-- HERO (same image as index.html) -->
-  <section class="relative overflow-hidden bg-black min-h-[55vh] flex items-center">
-    <div class="absolute inset-0">
-      <img
-        src="assets/images/hero-elohim.jpg"
-        alt="Sky Grace Jesus Ministry"
-        class="w-full h-full object-cover object-center md:object-[50%_35%]"
-      />
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/90"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.22),transparent_55%)]"></div>
-
-    <div class="relative z-10 container mx-auto px-6 py-16">
-      <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-4">
-        <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.8)]"></span>
-        Media Library
-      </p>
-
-      <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">Sermon Archive</h1>
-      <p class="mt-4 text-slate-200 max-w-2xl leading-relaxed">
-        Watch the message, then download the PDF learning aid (summary, key scriptures, and learning points).
-      </p>
-
-      <div class="mt-7 flex flex-col sm:flex-row gap-3">
-        <!-- Update this channel link if needed -->
-        <a href="https://www.youtube.com/" target="_blank"
-           class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-red-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-red-500 transition">
-          <i class="fa-brands fa-youtube"></i> Visit YouTube Channel
-        </a>
-
-        <a href="index.html"
-           class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 text-white font-black uppercase text-[11px] tracking-widest border border-white/15 hover:bg-white/15 transition backdrop-blur">
-          <i class="fa-solid fa-house"></i> Back Home
-        </a>
+  <main>
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="absolute inset-0">
+        <img src="assets/images/hero-elohim.jpg" alt="Sky Grace Jesus Ministry" class="h-full w-full object-cover opacity-25" />
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/90 to-slate-950"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,.25),transparent_45%)]"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- FILTER + SEARCH -->
-  <section class="py-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-    <div class="container mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-6 items-center">
-
-        <div class="flex flex-wrap gap-2" id="filterBar">
-          <button data-filter="all"
-            class="filter-btn px-5 py-2.5 rounded-full bg-slate-900 text-white font-black text-[11px] uppercase tracking-widest hover:bg-slate-800 transition">
-            All
-          </button>
-          <button data-filter="sunday"
-            class="filter-btn px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-black text-[11px] uppercase tracking-widest hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-950/40 dark:text-slate-200 dark:border dark:border-slate-800">
-            Sunday
-          </button>
-          <button data-filter="prophetic"
-            class="filter-btn px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-black text-[11px] uppercase tracking-widest hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-950/40 dark:text-slate-200 dark:border dark:border-slate-800">
-            Prophetic
-          </button>
-          <button data-filter="teaching"
-            class="filter-btn px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-black text-[11px] uppercase tracking-widest hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-950/40 dark:text-slate-200 dark:border dark:border-slate-800">
-            Teaching
-          </button>
-        </div>
-
-        <div class="relative">
-          <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <input id="sermonSearch" type="text"
-            placeholder="Search sermons (title, speaker, scripture...)"
-            class="w-full bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 py-4 pl-14 pr-6 rounded-2xl outline-none focus:ring-2 ring-amber-500 transition shadow-sm" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GRID -->
-  <section class="py-14">
-    <div class="container mx-auto px-6">
-      <div class="flex items-end justify-between gap-4 mb-8">
-        <div>
-          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Browse</p>
-          <h2 class="text-2xl md:text-3xl font-black uppercase">All Messages</h2>
-        </div>
-      </div>
-
-      <div id="sermonGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-      <div id="emptyState" class="hidden mt-10">
-        <div class="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] p-10 shadow-sm text-center">
-          <div class="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 mx-auto flex items-center justify-center text-slate-600 dark:text-slate-300 mb-4">
-            <i class="fa-solid fa-magnifying-glass"></i>
+      <div class="relative container mx-auto px-6 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-10 items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.25em] text-red-300"><i class="fab fa-youtube"></i> Sky Grace Ministry TV</span>
+            <h1 class="mt-6 text-4xl md:text-6xl font-black leading-[1.05]">Watch the Word.<br><span class="text-red-500">Grow in Christ.</span></h1>
+            <p class="mt-5 max-w-xl text-slate-300 leading-relaxed">Watch our latest sermons, prophetic teachings and ministry moments. Subscribe on YouTube and follow Sky Grace on Facebook so you never miss a message.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="https://www.youtube.com/@skygraceministryTV?sub_confirmation=1" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 rounded-2xl bg-red-600 px-7 py-4 text-xs font-black uppercase tracking-widest hover:bg-red-500 transition shadow-[0_18px_45px_rgba(220,38,38,.3)]"><i class="fab fa-youtube text-xl"></i> Subscribe on YouTube</a>
+              <a href="https://www.facebook.com/SkyGraceGlobal" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 rounded-2xl bg-blue-600 px-7 py-4 text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition"><i class="fab fa-facebook-f text-lg"></i> Follow on Facebook</a>
+            </div>
           </div>
-          <h3 class="text-xl font-black">No sermons found</h3>
-          <p class="text-slate-600 dark:text-slate-300 mt-2">Try another search term or change the filter.</p>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur">
+            <div id="featuredPlayer" class="video-frame overflow-hidden rounded-[1.4rem] bg-black flex items-center justify-center"><p class="text-slate-400 text-sm">Loading latest sermon...</p></div>
+            <div class="px-3 pb-2 pt-5 flex items-start justify-between gap-4">
+              <div><p class="text-[10px] font-black uppercase tracking-[.22em] text-red-400">Featured Message</p><h2 id="featuredTitle" class="mt-1 text-xl font-black">Latest Sky Grace Sermon</h2><p id="featuredMeta" class="mt-1 text-xs text-slate-400"></p></div>
+              <a id="featuredYouTube" href="https://www.youtube.com/@skygraceministryTV" target="_blank" rel="noopener" class="shrink-0 rounded-xl bg-red-600 px-4 py-3 text-[10px] font-black uppercase tracking-wider hover:bg-red-500">YouTube <i class="fas fa-arrow-up-right-from-square ml-1"></i></a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Shared Footer -->
+    <section class="bg-white text-slate-900 py-16 lg:py-20">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-9">
+          <div><p class="text-[10px] font-black uppercase tracking-[.25em] text-red-600">From Our YouTube Channel</p><h2 class="mt-2 text-3xl md:text-4xl font-black">Latest Video Messages</h2><p class="mt-2 text-slate-500">Click any message to watch it directly on YouTube.</p></div>
+          <a href="https://www.youtube.com/@skygraceministryTV/videos" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-950 px-6 py-4 text-xs font-black uppercase tracking-widest text-white hover:bg-red-600 transition"><i class="fab fa-youtube text-red-500"></i> View All Videos</a>
+        </div>
+        <div id="latestVideos" class="grid md:grid-cols-2 xl:grid-cols-3 gap-7"></div>
+        <div id="noVideos" class="hidden rounded-3xl border border-slate-200 bg-slate-50 p-10 text-center"><i class="fab fa-youtube text-4xl text-red-600"></i><h3 class="mt-4 text-xl font-black">Visit our YouTube channel</h3><p class="mt-2 text-slate-500">Our latest messages are available on Sky Grace Ministry TV.</p></div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-blue-700 to-blue-500 py-14">
+      <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-7 text-center lg:text-left">
+        <div class="flex flex-col lg:flex-row items-center gap-5"><div class="h-16 w-16 rounded-2xl bg-white/15 flex items-center justify-center"><i class="fab fa-facebook-f text-3xl"></i></div><div><p class="text-[10px] font-black uppercase tracking-[.25em] text-blue-100">Stay Connected</p><h2 class="mt-1 text-2xl md:text-3xl font-black">Follow Sky Grace Global on Facebook</h2><p class="mt-2 text-blue-100">Receive service updates, ministry announcements, encouragement and event information.</p></div></div>
+        <a href="https://www.facebook.com/SkyGraceGlobal" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 text-xs font-black uppercase tracking-widest text-blue-700 hover:bg-blue-50 transition"><i class="fab fa-facebook-f"></i> Visit Facebook Page</a>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-16">
+      <div class="container mx-auto px-6 text-center"><p class="text-[10px] font-black uppercase tracking-[.25em] text-amber-400">Share the Gospel</p><h2 class="mt-3 text-3xl md:text-4xl font-black">Help Someone Hear the Word</h2><p class="mx-auto mt-4 max-w-2xl text-slate-400">Subscribe, follow, like and share the messages with your family and friends.</p><div class="mt-7 flex flex-col sm:flex-row justify-center gap-3"><a href="https://www.youtube.com/@skygraceministryTV?sub_confirmation=1" target="_blank" rel="noopener" class="rounded-2xl bg-red-600 px-7 py-4 text-xs font-black uppercase tracking-widest hover:bg-red-500"><i class="fab fa-youtube mr-2"></i>Subscribe</a><a href="https://www.facebook.com/SkyGraceGlobal" target="_blank" rel="noopener" class="rounded-2xl bg-blue-600 px-7 py-4 text-xs font-black uppercase tracking-widest hover:bg-blue-500"><i class="fab fa-facebook-f mr-2"></i>Follow</a></div></div>
+    </section>
+  </main>
+
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
-
-  <!-- Data + Renderer (your existing files) -->
+  <script src="footer.js" defer></script>
   <script src="assets/js/sermons-data.js"></script>
-  <script src="assets/js/sermons-archive.js"></script>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = [...(window.SERMONS || [])].filter(v => v.youtubeId).sort((a,b) => String(b.dateISO || "").localeCompare(String(a.dateISO || "")));
+      const fmt = value => { if (!value) return ""; const d = new Date(value + "T00:00:00"); return d.toLocaleDateString("en-NA", {year:"numeric",month:"long",day:"numeric"}); };
+      const esc = value => String(value || "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+      const featured = videos[0];
+      if (featured) {
+        document.getElementById("featuredPlayer").innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(featured.youtubeId)}?rel=0" title="${esc(featured.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        document.getElementById("featuredTitle").textContent = featured.title;
+        document.getElementById("featuredMeta").textContent = `${featured.speaker || "Sky Grace Ministry"} · ${fmt(featured.dateISO)}`;
+        document.getElementById("featuredYouTube").href = `https://www.youtube.com/watch?v=${encodeURIComponent(featured.youtubeId)}`;
+      }
+      const grid = document.getElementById("latestVideos");
+      grid.innerHTML = videos.slice(0,6).map(video => `<article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition"><a href="https://www.youtube.com/watch?v=${encodeURIComponent(video.youtubeId)}" target="_blank" rel="noopener" class="group block"><div class="video-frame relative overflow-hidden bg-slate-950"><img src="https://i.ytimg.com/vi/${encodeURIComponent(video.youtubeId)}/hqdefault.jpg" alt="${esc(video.title)}" class="h-full w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent"></div><span class="absolute inset-0 flex items-center justify-center"><span class="h-16 w-16 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition"><i class="fas fa-play ml-1 text-xl"></i></span></span></div><div class="p-6"><p class="text-[10px] font-black uppercase tracking-[.2em] text-red-600">${esc(video.category || "Sermon")} · ${fmt(video.dateISO)}</p><h3 class="mt-3 text-xl font-black leading-snug">${esc(video.title)}</h3><p class="mt-2 text-sm text-slate-500">${esc(video.speaker || "Sky Grace Ministry")}</p><p class="clamp-3 mt-4 text-sm leading-relaxed text-slate-600">${esc(video.summary || "Watch this message on the Sky Grace Ministry TV YouTube channel.")}</p><span class="mt-5 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-red-600"><i class="fab fa-youtube"></i> Watch on YouTube</span></div></a></article>`).join("");
+      document.getElementById("noVideos").classList.toggle("hidden", videos.length > 0);
+    });
+  </script>
 </body>
 </html>
