@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -40,21 +40,27 @@
 
   <!-- ✅ Dynamic Header Injection -->
   <div id="site-header"></div>
-  <script src="./header.js" defer></script>
+  <script src="assets/js/header.js" defer></script>
 
-  <main class="container mx-auto px-6 py-16 md:py-20">
-    <!-- Page Title -->
-    <div class="max-w-3xl">
-      <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
-        Give / Tithes
-      </p>
-      <h1 class="mt-3 text-3xl md:text-5xl font-black leading-tight">
-        Support the Ministry
-      </h1>
-      <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
-        Thank you for partnering with Sky Grace Jesus Ministry. Your giving supports preaching, discipleship, outreaches, and media work.
-      </p>
-    </div>
+  <main>
+    <!-- Giving Hero -->
+    <section class="relative min-h-[520px] md:min-h-[620px] flex items-center overflow-hidden bg-slate-950">
+      <img src="assets/images/hero-elohim.jpg" alt="Sky Grace Jesus Ministry" class="absolute inset-0 w-full h-full object-cover object-center md:object-[50%_35%]" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/10"></div>
+      <div class="relative container mx-auto px-6 py-20">
+        <div class="max-w-2xl text-white">
+          <p class="text-[11px] font-black uppercase tracking-[0.3em] text-amber-400">Give / Tithes / Offerings</p>
+          <h1 class="mt-5 text-4xl md:text-6xl font-black leading-[1.05]">Your Giving Helps Advance the Work of God</h1>
+          <p class="mt-6 max-w-xl text-base md:text-lg text-slate-200 leading-relaxed">Thank you for partnering with Sky Grace Jesus Ministry. Your faithful giving supports preaching, discipleship, prayer, outreach, and ministry growth.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#eft" class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-widest hover:bg-amber-400 transition"><i class="fas fa-building-columns"></i>Bank Details</a>
+            <a href="#mobile-money" class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl border border-white/30 bg-white/10 backdrop-blur text-white text-xs font-black uppercase tracking-widest hover:bg-white/20 transition"><i class="fas fa-mobile-screen-button"></i>eWallet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mx-auto px-6 py-16 md:py-20">
 
     <!-- Top Options -->
     <section class="mt-10 grid lg:grid-cols-3 gap-6">
@@ -82,9 +88,9 @@
           </div>
           <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
         </div>
-        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">Mobile Money</h2>
+        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">FNB eWallet</h2>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          Pay via MTC / eWallet / PayToday (add your preferred method).
+          Send your contribution securely by eWallet to 081 442 5143.
         </p>
       </a>
 
@@ -135,7 +141,7 @@
               <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Account Name</p>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p id="acc-name" class="font-mono text-sm text-slate-900 dark:text-white break-all">
-                  REPLACE_ACCOUNT_NAME
+                  SKY FOUNDATION
                 </p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="acc-name"
@@ -150,7 +156,7 @@
               <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Bank</p>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p id="bank-name" class="font-mono text-sm text-slate-900 dark:text-white break-all">
-                  REPLACE_BANK_NAME
+                  First National Bank Namibia (FNB)
                 </p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="bank-name"
@@ -165,7 +171,7 @@
               <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Account Number</p>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p id="acc-number" class="font-mono text-sm text-slate-900 dark:text-white break-all">
-                  REPLACE_ACCOUNT_NUMBER
+                  64281979088
                 </p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="acc-number"
@@ -180,7 +186,7 @@
               <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Branch Code</p>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p id="branch-code" class="font-mono text-sm text-slate-900 dark:text-white break-all">
-                  REPLACE_BRANCH_CODE
+                  280172
                 </p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="branch-code"
@@ -190,12 +196,36 @@
               </div>
             </div>
 
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Account Type</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="account-type" class="font-mono text-sm text-slate-900 dark:text-white break-all">Gold Business Account</p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white" data-copy-target="account-type" aria-label="Copy account type"><i class="far fa-copy"></i></button>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Branch Name</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="branch-name" class="font-mono text-sm text-slate-900 dark:text-white break-all">Windhoek</p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white" data-copy-target="branch-name" aria-label="Copy branch name"><i class="far fa-copy"></i></button>
+              </div>
+            </div>
+
+            <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">SWIFT Code</p>
+              <div class="mt-2 flex items-center justify-between gap-3">
+                <p id="swift-code" class="font-mono text-sm text-slate-900 dark:text-white break-all">FIRNNANX</p>
+                <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white" data-copy-target="swift-code" aria-label="Copy SWIFT code"><i class="far fa-copy"></i></button>
+              </div>
+            </div>
+
             <!-- Reference -->
             <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-black text-white p-4">
               <p class="text-[10px] font-black uppercase tracking-widest text-white/70">Payment Reference</p>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p id="reference" class="font-mono text-sm text-white break-all">
-                  REPLACE_REFERENCE_FORMAT
+                  Your Name + Tithe / Offering / Donation
                 </p>
                 <button class="copy-btn text-white/70 hover:text-white"
                         data-copy-target="reference"
@@ -212,7 +242,7 @@
           <!-- Proof Buttons -->
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
             <a id="whatsapp-proof"
-               href="https://wa.me/REPLACE_WHATSAPP_NUMBER?text=Hello%20Sky%20Grace%20Jesus%20Ministry%2C%20I%20have%20made%20a%20donation.%20Amount%3A%20%5BAmount%5D%20Reference%3A%20%5BReference%5D%20Please%20find%20my%20proof%20of%20payment%20attached."
+               href="https://wa.me/264812320825?text=Hello%20Sky%20Grace%20Jesus%20Ministry%2C%20I%20have%20made%20a%20donation.%20Amount%3A%20%5BAmount%5D%20Reference%3A%20%5BReference%5D%20Please%20find%20my%20proof%20of%20payment%20attached."
                target="_blank"
                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-emerald-500 transition">
               <i class="fab fa-whatsapp"></i>
@@ -231,18 +261,18 @@
         <!-- Mobile Money -->
         <div id="mobile-money" class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm">
           <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-600 dark:text-amber-400">
-            Mobile Money
+            FNB eWallet Giving
           </p>
           <h2 class="mt-2 text-2xl font-black">Fast Giving on Mobile</h2>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Add your preferred giving method here. Replace the placeholders with your real numbers.
+            Send an FNB eWallet to the number below. Please use your name as the payment reference where available.
           </p>
 
           <div class="mt-6 grid md:grid-cols-2 gap-4">
             <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
-              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">MTC Mobile Home (Placeholder)</p>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">eWallet Provider</p>
               <div class="mt-2 flex items-center justify-between gap-3">
-                <p id="mtc-number" class="font-mono text-sm break-all">REPLACE_MTC_NUMBER</p>
+                <p id="mtc-number" class="font-mono text-sm break-all">FNB eWallet</p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="mtc-number" aria-label="Copy MTC number">
                   <i class="far fa-copy"></i>
@@ -251,9 +281,9 @@
             </div>
 
             <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
-              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">eWallet / PayToday (Placeholder)</p>
+              <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">eWallet Number</p>
               <div class="mt-2 flex items-center justify-between gap-3">
-                <p id="ewallet-number" class="font-mono text-sm break-all">REPLACE_EWALLET_OR_PAYTODAY</p>
+                <p id="ewallet-number" class="font-mono text-sm break-all">081 442 5143</p>
                 <button class="copy-btn text-slate-500 hover:text-slate-900 dark:hover:text-white"
                         data-copy-target="ewallet-number" aria-label="Copy eWallet/PayToday">
                   <i class="far fa-copy"></i>
@@ -264,7 +294,7 @@
             <div class="md:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-black text-white p-4">
               <p class="text-[10px] font-black uppercase tracking-widest text-white/70">Reference</p>
               <div class="mt-2 flex items-center justify-between gap-3">
-                <p id="mm-ref" class="font-mono text-sm text-white break-all">REPLACE_REFERENCE_FORMAT</p>
+                <p id="mm-ref" class="font-mono text-sm text-white break-all">Your Name + Tithe / Offering / Donation</p>
                 <button class="copy-btn text-white/70 hover:text-white" data-copy-target="mm-ref" aria-label="Copy reference">
                   <i class="far fa-copy"></i>
                 </button>
@@ -366,6 +396,7 @@
       </aside>
 
     </section>
+    </div>
   </main>
 
   <!-- Toast -->
@@ -377,7 +408,7 @@
 
   <!-- ✅ Dynamic Footer Injection -->
   <div id="site-footer"></div>
-  <script src="./footer.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
 
   <script>
     // Safe GA helper
