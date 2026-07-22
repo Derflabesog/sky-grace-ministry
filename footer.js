@@ -1,3 +1,6 @@
+footer-js-blog-and-kids-navigation.txt
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const footer = document.getElementById("site-footer");
   if (!footer) return;
@@ -83,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li><a href="index.html" class="text-slate-200 hover:text-amber-400 transition">Home</a></li>
               <li><a href="welcome-packet.html" class="text-slate-200 hover:text-amber-400 transition">Welcome Packet</a></li>
               <li><a href="sermons.html" class="text-slate-200 hover:text-amber-400 transition">Sermons</a></li>
+              <li><a href="blog-archive.html" class="text-slate-200 hover:text-amber-400 transition">Blog & Revelations</a></li>
               <li><a href="calendar.html" class="text-slate-200 hover:text-amber-400 transition">Ministry Calendar</a></li>
               <li><a href="contact.html" class="text-slate-200 hover:text-amber-400 transition">Contact</a></li>
             </ul>
@@ -98,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li><a href="theology-school.html" class="text-slate-200 hover:text-amber-400 transition">Theology School</a></li>
               <li><a href="volunteer.html" class="text-slate-200 hover:text-amber-400 transition">Volunteer</a></li>
               <li><a href="testimonies.html" class="text-slate-200 hover:text-amber-400 transition">Testimonies</a></li>
+              <li><a href="kids-corner.html" class="text-slate-200 hover:text-amber-400 transition">Kids Corner</a></li>
               <li><a href="give.html" class="text-slate-200 hover:text-amber-400 transition">Give / Tithes</a></li>
             </ul>
           </div>
@@ -151,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </p>
 
           <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
-            <a href="privacy.html" class="text-slate-500 hover:text-slate-200 transition">Privacy</a>
+            <a href="privacy-policy.html" class="text-slate-500 hover:text-slate-200 transition">Privacy</a>
             <span class="text-slate-700">•</span>
-            <a href="terms.html" class="text-slate-500 hover:text-slate-200 transition">Terms</a>
+            <a href="terms-of-service.html" class="text-slate-500 hover:text-slate-200 transition">Terms</a>
           </div>
         </div>
       </div>
@@ -165,4 +170,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("sgYear");
   if (y) y.textContent = String(new Date().getFullYear());
 });
-
