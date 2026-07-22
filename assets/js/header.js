@@ -30,6 +30,7 @@
         <a href="welcome-packet.html" class="hover:text-amber-500 transition">Welcome Packet</a>
         <a href="sermons.html" class="hover:text-amber-500 transition">Sermons</a>
         <a href="media.html" class="hover:text-amber-500 transition">Media</a>
+        <a href="blog-archive.html" class="hover:text-amber-500 transition">Blog</a>
         <a href="theology-school.html" class="hover:text-amber-500 transition">Theology School</a>
         <a href="contact.html" class="hover:text-amber-500 transition">Contact</a>
       </nav>
@@ -59,6 +60,7 @@
         <a href="welcome-packet.html">Welcome Packet</a>
         <a href="sermons.html">Sermons</a>
         <a href="media.html">Media</a>
+        <a href="blog-archive.html">Blog</a>
         <a href="theology-school.html">Theology School</a>
         <a href="contact.html">Contact</a>
         <a href="login.html" class="text-blue-600"><i class="fas fa-user-lock mr-2"></i>Admin Login</a>

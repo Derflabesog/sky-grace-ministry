@@ -4,6 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!loginForm) return;
 
+  // If a verified administrator is already signed in, return them directly
+  // to the admin dashboard instead of asking for the password again.
+  (async () => {
+    const { data: sessionData } = await supabaseClient.auth.getSession();
+    const session = sessionData?.session;
+    if (!session?.user?.email) return;
+
+    const { data: existingAdmin } = await supabaseClient
+      .from("admin_users")
+      .select("email")
+      .eq("email", session.user.email)
+      .maybeSingle();
+
+    if (existingAdmin) {
+      loginStatus.textContent = "Admin session found. Opening dashboard...";
+      loginStatus.className = "mt-4 text-sm font-bold text-green-600";
+      window.location.href = "admin-dashboard.html";
+    }
+  })();
+
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
