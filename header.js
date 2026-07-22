@@ -1,7 +1,4 @@
-﻿﻿header-js-navigation-complete.txt
-
-
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿﻿﻿document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("site-header");
   if (!header) return;
 
