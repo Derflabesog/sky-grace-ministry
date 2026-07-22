@@ -190,9 +190,9 @@
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
           <p class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">Sky Grace Ministry TV</p>
-          <h2 class="text-2xl md:text-3xl font-black uppercase text-slate-900">Featured Sermons</h2>
+          <h2 class="text-2xl md:text-3xl font-black uppercase text-slate-900">Latest Sermons</h2>
           <p class="mt-2 text-slate-600 max-w-2xl">
-            The featured sermon rotates automatically. Tap a thumbnail to jump to a specific message.
+            Watch the newest public messages from Sky Grace Ministry TV. New YouTube uploads appear here automatically.
           </p>
         </div>
         <a href="https://www.youtube.com/@skygraceministryTV" target="_blank"
@@ -202,56 +202,33 @@
       </div>
 
       <div class="grid lg:grid-cols-5 gap-8 items-start">
-        <!-- Player Column -->
+        <!-- Automatically updated YouTube uploads playlist -->
         <div class="lg:col-span-3">
           <div class="rounded-[2rem] overflow-hidden border border-slate-200 bg-white soft-shadow">
-            <!-- Title Bar -->
             <div class="p-6 md:p-7 border-b border-slate-200">
-              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-amber-600">Now Playing</p>
-              <h3 id="sermonTitle" class="mt-2 font-black text-lg md:text-xl text-slate-900">
-                Loading title...
-              </h3>
-
-              <div class="mt-4 flex flex-wrap gap-3">
-                <button id="sermonPrev"
-                  class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white text-slate-900 font-black uppercase text-[11px] tracking-widest border border-slate-200 hover:bg-slate-50 transition">
-                  <i class="fas fa-arrow-left"></i> Prev
-                </button>
-
-                <button id="sermonToggle"
-                  class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-blue-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-blue-500 transition">
-                  <i class="fas fa-pause"></i> Auto
-                </button>
-
-                <button id="sermonNext"
-                  class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white text-slate-900 font-black uppercase text-[11px] tracking-widest border border-slate-200 hover:bg-slate-50 transition">
-                  Next <i class="fas fa-arrow-right"></i>
-                </button>
-
-                <a id="watchOnYoutubeBtn" href="https://www.youtube.com/watch?v=PXR21OXl8To" target="_blank"
-                  class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-red-600 text-white font-black uppercase text-[11px] tracking-widest hover:bg-red-500 transition">
-                  <i class="fas fa-circle-play"></i> Watch on YouTube
-                </a>
-              </div>
+              <p class="text-[11px] font-black uppercase tracking-[0.25em] text-red-600">Automatically Updated</p>
+              <h3 class="mt-2 font-black text-lg md:text-xl text-slate-900">Latest YouTube Messages</h3>
+              <p class="mt-2 text-sm text-slate-600">Choose any message from the playlist inside the video player.</p>
             </div>
 
-            <!-- Video -->
             <div class="bg-black">
               <div class="relative w-full pt-[56.25%]">
                 <iframe
-                  id="sermonPlayer"
                   class="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/PXR21OXl8To"
-                  title="Sky Grace Ministry TV - Featured Sermon"
+                  src="https://www.youtube.com/embed/videoseries?list=UUhnnlYdJtNtjr-tTeSdYnzw&rel=0"
+                  title="Latest sermons from Sky Grace Ministry TV"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen>
                 </iframe>
               </div>
             </div>
           </div>
-
-          <div id="sermonThumbStrip" class="mt-6 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+          <a href="https://www.youtube.com/@skygraceministryTV/videos" target="_blank" rel="noopener"
+             class="mt-5 inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 text-[11px] font-black uppercase tracking-widest text-white transition hover:bg-red-500">
+            <i class="fab fa-youtube"></i> View All Videos
+          </a>
         </div>
 
         <!-- Scripture / CTA Column -->
@@ -371,139 +348,6 @@
     AOS.init({ once: true, duration: 800 });
   </script>
 
-  <!-- Sermon rotation + dynamic titles + watch button + thumbnails -->
-  <script>
-    const SERMONS = [
-      { id: "PXR21OXl8To", url: "https://www.youtube.com/watch?v=PXR21OXl8To&t=3208s" },
-      { id: "ctDqcgFzKlg", url: "https://youtu.be/ctDqcgFzKlg" },
-      { id: "LfRVz5LyppQ", url: "https://www.youtube.com/watch?v=LfRVz5LyppQ" },
-      { id: "X9q_au1sEDk", url: "https://www.youtube.com/watch?v=X9q_au1sEDk&t=1514s" },
-      { id: "Hp9HZBYYtDI", url: "https://www.youtube.com/watch?v=Hp9HZBYYtDI" },
-    ];
-
-    const ROTATE_MS = 20000;
-
-    let index = 0;
-    let timer = null;
-    let autoOn = true;
-    const titleCache = new Map();
-
-    const player = document.getElementById("sermonPlayer");
-    const titleEl = document.getElementById("sermonTitle");
-    const watchBtn = document.getElementById("watchOnYoutubeBtn");
-    const strip = document.getElementById("sermonThumbStrip");
-
-    const btnPrev = document.getElementById("sermonPrev");
-    const btnNext = document.getElementById("sermonNext");
-    const btnTog  = document.getElementById("sermonToggle");
-
-    async function fetchTitle(videoId) {
-      if (titleCache.has(videoId)) return titleCache.get(videoId);
-
-      const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-      const oembedUrl = `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(videoUrl)}`;
-
-      try {
-        const res = await fetch(oembedUrl);
-        if (!res.ok) throw new Error("oEmbed failed");
-        const data = await res.json();
-        const t = data?.title || "Sky Grace Ministry Sermon";
-        titleCache.set(videoId, t);
-        return t;
-      } catch {
-        return "Sky Grace Ministry Sermon";
-      }
-    }
-
-    function stopTimer() {
-      if (timer) clearInterval(timer);
-      timer = null;
-    }
-
-    function startTimer() {
-      stopTimer();
-      timer = setInterval(() => setSermon(index + 1), ROTATE_MS);
-    }
-
-    function setActiveThumb() {
-      if (!strip) return;
-      strip.querySelectorAll("button[data-idx]").forEach((b) => {
-        const active = Number(b.dataset.idx) === index;
-        b.classList.toggle("ring-2", active);
-        b.classList.toggle("ring-amber-400", active);
-        b.classList.toggle("opacity-100", active);
-        b.classList.toggle("opacity-80", !active);
-      });
-    }
-
-    async function setSermon(i, { userAction = false } = {}) {
-      index = (i + SERMONS.length) % SERMONS.length;
-      const s = SERMONS[index];
-
-      if (player) player.src = `https://www.youtube.com/embed/${s.id}`;
-      if (watchBtn) watchBtn.href = s.url;
-
-      if (titleEl) {
-        titleEl.textContent = "Loading title...";
-        titleEl.textContent = await fetchTitle(s.id);
-      }
-
-      setActiveThumb();
-
-      if (userAction && autoOn) startTimer();
-    }
-
-    function toggleAuto() {
-      autoOn = !autoOn;
-      if (btnTog) {
-        btnTog.innerHTML = autoOn
-          ? '<i class="fas fa-pause"></i> Auto'
-          : '<i class="fas fa-play"></i> Auto';
-      }
-      if (autoOn) startTimer();
-      else stopTimer();
-    }
-
-    function buildThumbs() {
-      if (!strip) return;
-
-      strip.innerHTML = SERMONS.map((s, idx) => {
-        const thumb = `https://img.youtube.com/vi/${s.id}/hqdefault.jpg`;
-        return `
-          <button type="button" data-idx="${idx}"
-            class="text-left rounded-2xl overflow-hidden border border-slate-200 bg-white hover:-translate-y-1 transition opacity-80">
-            <img src="${thumb}" alt="Sermon thumbnail ${idx + 1}" class="w-full aspect-video object-cover" loading="lazy">
-            <div class="p-3">
-              <p class="text-[11px] font-black uppercase tracking-widest text-slate-500">
-                Sermon ${idx + 1}
-              </p>
-              <p class="mt-1 font-black text-sm text-slate-900 line-clamp-2">
-                Click to play
-              </p>
-            </div>
-          </button>
-        `;
-      }).join("");
-
-      strip.querySelectorAll("button[data-idx]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          setSermon(Number(btn.dataset.idx), { userAction: true });
-        });
-      });
-    }
-
-    btnPrev?.addEventListener("click", () => setSermon(index - 1, { userAction: true }));
-    btnNext?.addEventListener("click", () => setSermon(index + 1, { userAction: true }));
-    btnTog?.addEventListener("click", toggleAuto);
-
-    (async function preloadTitles() {
-      for (const s of SERMONS) fetchTitle(s.id);
-    })();
-
-    buildThumbs();
-    setSermon(0);
-    startTimer();
-  </script>
    <!-- Supabase Library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
