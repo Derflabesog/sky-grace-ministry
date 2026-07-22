@@ -1,4 +1,4 @@
-﻿﻿document.addEventListener("DOMContentLoaded", () => {
+﻿﻿﻿document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("site-header");
   if (!header) return;
 
@@ -34,11 +34,17 @@
         <a href="contact.html" class="hover:text-amber-500 transition">Contact</a>
       </nav>
 
-      <!-- ACTION BUTTON -->
-      <a href="live.html"
-         class="hidden lg:inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 px-6 py-3 rounded-full text-xs font-black tracking-widest text-white shadow-sm transition">
-        LIVE NOW
-      </a>
+      <!-- DESKTOP ACTION BUTTONS -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="login.html"
+           class="inline-flex items-center gap-2 border border-slate-300 bg-white hover:bg-slate-50 px-5 py-3 rounded-full text-xs font-black tracking-widest text-slate-900 shadow-sm transition">
+          <i class="fas fa-user-lock"></i> LOGIN
+        </a>
+        <a href="live.html"
+           class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 px-6 py-3 rounded-full text-xs font-black tracking-widest text-white shadow-sm transition">
+          <i class="fas fa-circle-play"></i> LIVE NOW
+        </a>
+      </div>
 
       <!-- MOBILE TOGGLE -->
       <button id="mobileMenuBtn" class="lg:hidden text-2xl text-slate-900">
@@ -55,6 +61,7 @@
         <a href="media.html">Media</a>
         <a href="theology-school.html">Theology School</a>
         <a href="contact.html">Contact</a>
+        <a href="login.html" class="text-blue-600"><i class="fas fa-user-lock mr-2"></i>Admin Login</a>
         <a href="live.html" class="text-red-600">Live Now</a>
       </nav>
     </div>
