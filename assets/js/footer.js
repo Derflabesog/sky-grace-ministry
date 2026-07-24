@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li><a href="theology-school.html" class="text-slate-200 hover:text-amber-400 transition">Theology School</a></li>
               <li><a href="volunteer.html" class="text-slate-200 hover:text-amber-400 transition">Volunteer</a></li>
               <li><a href="testimonies.html" class="text-slate-200 hover:text-amber-400 transition">Testimonies</a></li>
+              <li><a href="kids-corner.html" class="text-slate-200 hover:text-amber-400 transition">Kids Corner</a></li>
               <li><a href="give.html" class="text-slate-200 hover:text-amber-400 transition">Give / Tithes</a></li>
             </ul>
           </div>
