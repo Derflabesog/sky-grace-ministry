@@ -1,11 +1,11 @@
-﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Give / Tithes | Sky Grace Jesus Ministry</title>
-  <meta name="description" content="Support the work of Sky Grace Jesus Ministry. Give by EFT, mobile money, or online." />
+  <meta name="description" content="Support the work of Sky Grace Jesus Ministry by bank transfer or FNB eWallet." />
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -63,7 +63,7 @@
     <div class="container mx-auto px-6 py-16 md:py-20">
 
     <!-- Top Options -->
-    <section class="mt-10 grid lg:grid-cols-3 gap-6">
+    <section class="mt-10 grid md:grid-cols-2 gap-6">
       <!-- EFT -->
       <a href="#eft"
          class="group rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 hover:shadow-xl transition">
@@ -94,26 +94,12 @@
         </p>
       </a>
 
-      <!-- Online/Card -->
-      <a href="#online"
-         class="group rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 hover:shadow-xl transition">
-        <div class="flex items-start justify-between gap-4">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center">
-            <i class="fas fa-credit-card"></i>
-          </div>
-          <i class="fas fa-arrow-right text-slate-400 group-hover:translate-x-1 transition"></i>
-        </div>
-        <h2 class="mt-5 font-black uppercase tracking-widest text-sm">Card / Online</h2>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          Optional: add PayPal / PayFast / Flutterwave / PayToday link later.
-        </p>
-      </a>
     </section>
 
     <!-- Main Grid -->
     <section class="mt-10 grid lg:grid-cols-3 gap-6 items-start">
 
-      <!-- LEFT: EFT + Mobile + Online -->
+      <!-- LEFT: EFT + Mobile -->
       <div class="lg:col-span-2 space-y-6">
 
         <!-- EFT Card -->
@@ -303,22 +289,6 @@
           </div>
         </div>
 
-        <!-- Online / Card -->
-        <div id="online" class="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/30 p-7 md:p-8 shadow-sm">
-          <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
-            Card / Online (Optional)
-          </p>
-          <h2 class="mt-2 text-2xl font-black">Add a Payment Link Later</h2>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            If you later add PayPal / PayFast / Flutterwave / PayToday link, paste it here.
-          </p>
-
-          <div class="mt-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 p-4">
-            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Payment Link (Placeholder)</p>
-            <p class="mt-2 font-mono text-sm break-all">REPLACE_ONLINE_PAYMENT_LINK</p>
-          </div>
-        </div>
-
       </div>
 
       <!-- RIGHT: Confirmation Form -->
@@ -366,7 +336,6 @@
                       class="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-400">
                 <option value="EFT">EFT</option>
                 <option value="Mobile Money">Mobile Money</option>
-                <option value="Online/Card">Online/Card</option>
                 <option value="Other">Other</option>
               </select>
             </div>
