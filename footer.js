@@ -67,11 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
                  aria-label="Facebook">
                 <i class="fab fa-facebook-f text-blue-400 text-lg"></i>
               </a>
-            </div>
 
-            <p class="mt-4 text-[11px] text-slate-500">
-              (Instagram removed as requested)
-            </p>
+              <a href="https://wa.me/264812320825" target="_blank" rel="noopener"
+                 class="w-11 h-11 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center hover:-translate-y-0.5 hover:border-emerald-500/50 transition"
+                 aria-label="WhatsApp">
+                <i class="fab fa-whatsapp text-emerald-400 text-lg"></i>
+              </a>
+            </div>
           </div>
 
           <!-- Quick Links -->
@@ -83,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li><a href="index.html" class="text-slate-200 hover:text-amber-400 transition">Home</a></li>
               <li><a href="welcome-packet.html" class="text-slate-200 hover:text-amber-400 transition">Welcome Packet</a></li>
               <li><a href="sermons.html" class="text-slate-200 hover:text-amber-400 transition">Sermons</a></li>
+              <li><a href="blog-archive.html" class="text-slate-200 hover:text-amber-400 transition">Blog & Revelations</a></li>
               <li><a href="calendar.html" class="text-slate-200 hover:text-amber-400 transition">Ministry Calendar</a></li>
               <li><a href="contact.html" class="text-slate-200 hover:text-amber-400 transition">Contact</a></li>
             </ul>
@@ -116,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div>
                   <p class="font-bold text-slate-100">Location</p>
-                  <p class="text-slate-400">Windhoek, Namibia</p>
+                  <p class="text-slate-400">Okahandja Shopping Mall, Shop No. 32</p>
                 </div>
               </div>
 
@@ -125,8 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   <i class="fas fa-envelope text-blue-300"></i>
                 </div>
                 <div>
-                  <p class="font-bold text-slate-100">Contact</p>
-                  <a href="contact.html" class="text-slate-400 hover:text-white transition">Send a message →</a>
+                  <p class="font-bold text-slate-100">Church Office</p>
+                  <a href="tel:+264812320825" class="block text-slate-400 hover:text-white transition">+264 81 232 0825</a>
+                  <a href="contact.html" class="block text-slate-400 hover:text-white transition">Send a message →</a>
                 </div>
               </div>
 
@@ -152,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </p>
 
           <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
-            <a href="privacy.html" class="text-slate-500 hover:text-slate-200 transition">Privacy</a>
+            <a href="privacy-policy.html" class="text-slate-500 hover:text-slate-200 transition">Privacy</a>
             <span class="text-slate-700">•</span>
-            <a href="terms.html" class="text-slate-500 hover:text-slate-200 transition">Terms</a>
+            <a href="terms-of-service.html" class="text-slate-500 hover:text-slate-200 transition">Terms</a>
           </div>
         </div>
       </div>
