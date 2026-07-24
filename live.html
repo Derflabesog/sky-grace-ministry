@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Live Stream | Sky Grace Jesus Ministry</title>
+  <meta name="description" content="Watch Sky Grace Ministry TV live, take sermon notes, submit prayer requests, and support the ministry." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -11,233 +12,174 @@
 
   <style>
     #site-header:empty, #site-footer:empty { display: none; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
   </style>
 </head>
 
-<body class="bg-[#f1f5f9] text-slate-900 font-sans overflow-x-hidden">
-
+<body class="bg-slate-100 text-slate-900 font-sans antialiased">
   <div id="site-header"></div>
   <script src="./header.js" defer></script>
 
-  <!-- HERO (same style vibe as index) -->
   <section class="relative overflow-hidden bg-black min-h-[45vh] flex items-center">
-    <div class="absolute inset-0">
-      <img
-        src="assets/images/hero-elohim.jpg"
-        alt="Sky Grace Live Stream"
-        class="w-full h-full object-cover object-center md:object-[50%_35%]"
-      />
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(245,158,11,0.25),transparent_55%)]"></div>
+    <img
+      src="assets/images/hero-elohim.jpg"
+      alt="Sky Grace Ministry live broadcast"
+      class="absolute inset-0 h-full w-full object-cover object-center md:object-[50%_35%]"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-black/80"></div>
 
-    <div class="relative z-10 container mx-auto px-6 py-14">
-      <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300 mb-3">
-        <span class="w-2 h-2 rounded-full bg-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.8)]"></span>
-        Live Stream
+    <div class="relative z-10 container mx-auto px-6 py-16">
+      <p class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-amber-300">
+        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+        Live Broadcast
       </p>
-
-      <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
-        Sky Grace Ministry TV
-      </h1>
-
-      <p class="mt-3 text-slate-200 max-w-2xl">
-        Join us live, take notes, and stay connected through prayer and giving.
+      <h1 class="mt-4 text-4xl md:text-6xl font-black text-white">Sky Grace Ministry TV</h1>
+      <p class="mt-4 max-w-2xl text-slate-200">
+        Worship with us live. If no service is currently broadcasting, visit our YouTube channel for the latest full messages.
       </p>
     </div>
   </section>
 
-  <main class="container mx-auto px-6 py-10">
-    <div class="flex flex-col lg:flex-row gap-8">
-
-      <!-- VIDEO COLUMN -->
-      <div class="lg:w-9/12">
-        <div class="aspect-video bg-black rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/live_stream?channel=UCM5-QqxBV1E_J0wJ7t_ZQlQ"
-            title="Live Stream"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+  <main class="container mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+      <section class="lg:col-span-2">
+        <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-black shadow-xl">
+          <div class="relative w-full pt-[56.25%]">
+            <iframe
+              class="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/live_stream?channel=UChnnlYdJtNtjr-tTeSdYnzw&rel=0"
+              title="Sky Grace Ministry TV live stream"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
 
-        <div class="mt-6 bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
-          <h2 class="text-xl md:text-2xl font-black text-slate-900">
-            The Elijah Mandate: 2026 Vision Night
-          </h2>
-          <p class="text-slate-600 text-sm mt-2">
-            Apostle Poliano Jose Gomes Rodrigues | Streaming from Windhoek HQ
+        <div class="mt-6 rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-[0.25em] text-red-600">Official YouTube Channel</p>
+          <h2 class="mt-2 text-2xl font-black">Watch Sky Grace Ministry Live</h2>
+          <p class="mt-3 text-sm leading-6 text-slate-600">
+            The player becomes available whenever Sky Grace Ministry TV is broadcasting publicly. If the player says the video is unavailable, there is no active public livestream at that moment.
           </p>
-        </div>
-      </div>
 
-      <!-- SIDE COLUMN -->
-      <div class="lg:w-3/12 flex flex-col gap-4">
-
-        <!-- CHAT (LIGHT) -->
-        <div class="bg-white border border-slate-200 rounded-3xl flex-grow min-h-[380px] flex flex-col shadow-sm overflow-hidden">
-          <div class="p-4 border-b border-slate-200 flex justify-between items-center">
-            <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">Live Chat</span>
-            <span class="text-[10px] text-slate-500">2.4k Watching</span>
-          </div>
-
-          <div class="flex-grow p-4 space-y-4 overflow-y-auto text-xs text-slate-700">
-            <p><span class="text-amber-600 font-bold">Sister Grace:</span> Amen! Receiving from Namibia.</p>
-            <p><span class="text-blue-700 font-bold">Brother John:</span> The glory is here!</p>
-            <p><span class="text-slate-500 font-bold">Admin:</span> Please submit prayer requests on the Prayer Wall.</p>
-          </div>
-
-          <div class="p-4 border-t border-slate-200">
-            <input
-              type="text"
-              placeholder="Join the conversation..."
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs outline-none focus:border-amber-500"
-            />
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://www.youtube.com/@skygraceministryTV"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-red-500 transition">
+              <i class="fab fa-youtube"></i> Open YouTube Channel
+            </a>
+            <a
+              href="sermons.html"
+              class="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-slate-50 transition">
+              <i class="fas fa-layer-group"></i> Latest Sermons
+            </a>
           </div>
         </div>
+      </section>
 
-        <!-- GIVE BUTTON -->
-        <a
-          href="give.html"
-          class="bg-amber-500 text-slate-900 py-4 rounded-2xl text-center font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition shadow-sm">
-          Sow a Seed Locally
-        </a>
-
-        <!-- NOTES (LIGHT) -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
-          <div class="flex justify-between items-center mb-4">
-            <span class="text-[10px] font-black uppercase tracking-widest text-amber-600">Sermon Notes</span>
-            <div class="flex gap-2">
-              <button
-                onclick="shareNotes()"
-                class="text-[9px] bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-md transition">
-                <i class="fas fa-share-alt mr-1"></i> Share
-              </button>
-              <button
-                onclick="downloadNotesAsPDF()"
-                class="text-[9px] bg-amber-500 text-slate-900 hover:bg-amber-400 px-3 py-1 rounded-md transition font-bold">
-                <i class="fas fa-file-pdf mr-1"></i> PDF
-              </button>
-            </div>
-          </div>
+      <aside class="space-y-6">
+        <div class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-[0.25em] text-amber-600">Sermon Notes</p>
+          <h2 class="mt-2 text-xl font-black">Capture the message</h2>
 
           <textarea
             id="liveNotes"
-            class="w-full h-48 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-800 outline-none focus:border-amber-500 transition resize-none"
-            placeholder="Capture the revelation here..."></textarea>
+            class="mt-5 h-56 w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm outline-none focus:border-amber-500"
+            placeholder="Write your sermon notes here..."></textarea>
 
-          <p class="text-[9px] text-slate-500 mt-2 italic text-center">
-            Notes are automatically saved on this device.
-          </p>
+          <p class="mt-2 text-center text-[10px] italic text-slate-500">Notes are saved automatically on this device.</p>
 
-          <button
-            onclick="openPrayerModal()"
-            class="w-full mt-4 border border-amber-500 text-amber-700 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-amber-500 hover:text-slate-900 transition">
-            <i class="fas fa-hands-praying mr-2"></i> Need Prayer?
-          </button>
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              onclick="shareNotes()"
+              class="rounded-xl border border-slate-200 px-4 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-slate-50">
+              <i class="fas fa-share-alt mr-1"></i> Share
+            </button>
+            <button
+              type="button"
+              onclick="downloadNotesAsPDF()"
+              class="rounded-xl bg-amber-500 px-4 py-3 text-[10px] font-black uppercase tracking-widest hover:bg-amber-400">
+              <i class="fas fa-file-pdf mr-1"></i> PDF
+            </button>
+          </div>
         </div>
 
-      </div>
+        <a
+          href="prayer-wall.html"
+          class="flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-500 transition">
+          <i class="fas fa-hands-praying"></i> Submit Prayer Request
+        </a>
+
+        <a
+          href="give.html"
+          class="flex items-center justify-center gap-2 rounded-2xl bg-amber-500 px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-950 hover:bg-amber-400 transition">
+          <i class="fas fa-hand-holding-heart"></i> Give / Tithes
+        </a>
+      </aside>
     </div>
   </main>
-
-  <!-- PRAYER MODAL (LIGHT) -->
-  <div id="prayerModal" class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl border border-slate-200">
-      <div class="bg-slate-900 p-8 text-center text-white">
-        <h3 class="text-xl font-black uppercase tracking-widest">Submit Prayer Request</h3>
-        <p class="text-slate-300 text-[10px] mt-2">Our intercessors are standing by to pray with you.</p>
-      </div>
-
-      <form class="p-8 space-y-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl text-slate-900 outline-none focus:border-amber-500"
-        />
-        <textarea
-          placeholder="Tell us how we can pray for you..."
-          class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl text-slate-900 h-32 outline-none focus:border-amber-500 resize-none"></textarea>
-
-        <button
-          type="button"
-          onclick="closePrayerModal()"
-          class="w-full bg-amber-500 text-slate-900 py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-amber-400 transition">
-          Send to the Intercessors
-        </button>
-
-        <button
-          type="button"
-          onclick="closePrayerModal()"
-          class="w-full text-slate-500 text-[10px] font-bold uppercase">
-          Cancel
-        </button>
-      </form>
-    </div>
-  </div>
 
   <div id="site-footer"></div>
   <script src="./footer.js" defer></script>
 
   <script>
-    // Notes autosave
-    const notesArea = document.getElementById('liveNotes');
-    notesArea.value = localStorage.getItem('skyGraceLiveNotes') || "";
-    notesArea.addEventListener('input', () => {
-      localStorage.setItem('skyGraceLiveNotes', notesArea.value);
-    });
+    const notesArea = document.getElementById("liveNotes");
+
+    if (notesArea) {
+      notesArea.value = localStorage.getItem("skyGraceLiveNotes") || "";
+      notesArea.addEventListener("input", () => {
+        localStorage.setItem("skyGraceLiveNotes", notesArea.value);
+      });
+    }
 
     async function downloadNotesAsPDF() {
+      const notesText = notesArea?.value.trim() || "";
+      if (!notesText) {
+        alert("Please write your sermon notes before downloading.");
+        return;
+      }
+
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      const notesText = document.getElementById('liveNotes').value || "";
+      const documentPdf = new jsPDF();
       const date = new Date().toLocaleDateString();
 
-      doc.setFontSize(18);
-      doc.setTextColor(15, 23, 42);
-      doc.text("SKY GRACE JESUS MINISTRY", 20, 20);
-
-      doc.setFontSize(11);
-      doc.setTextColor(100, 116, 139);
-      doc.text(`Sermon Notes - ${date}`, 20, 30);
-      doc.line(20, 35, 190, 35);
-
-      doc.setFontSize(11);
-      doc.setTextColor(0, 0, 0);
-      const splitText = doc.splitTextToSize(notesText, 170);
-      doc.text(splitText, 20, 50);
-
-      doc.save(`Sermon-Notes-${date}.pdf`);
+      documentPdf.setFontSize(18);
+      documentPdf.text("SKY GRACE JESUS MINISTRY", 20, 20);
+      documentPdf.setFontSize(11);
+      documentPdf.text(`Sermon Notes - ${date}`, 20, 30);
+      documentPdf.line(20, 35, 190, 35);
+      documentPdf.text(documentPdf.splitTextToSize(notesText, 170), 20, 50);
+      documentPdf.save(`Sky-Grace-Sermon-Notes-${date}.pdf`);
     }
 
     async function shareNotes() {
-      const notesText = document.getElementById('liveNotes').value || "";
+      const notesText = notesArea?.value.trim() || "";
+      if (!notesText) {
+        alert("Please write your sermon notes before sharing.");
+        return;
+      }
+
       const shareData = {
-        title: 'My Sermon Notes - Sky Grace Jesus Ministry',
-        text: `Insights from today's service:\n\n${notesText}`,
+        title: "Sky Grace Ministry Sermon Notes",
+        text: notesText,
         url: window.location.href
       };
 
       if (navigator.share) {
-        try { await navigator.share(shareData); } catch (err) {}
+        try {
+          await navigator.share(shareData);
+        } catch (error) {
+          if (error.name !== "AbortError") alert("The notes could not be shared.");
+        }
       } else {
-        navigator.clipboard.writeText(notesText);
-        alert("Notes copied to clipboard!");
+        await navigator.clipboard.writeText(notesText);
+        alert("Notes copied to clipboard.");
       }
     }
-
-    function openPrayerModal() {
-      document.getElementById('prayerModal').classList.remove('hidden');
-    }
-    function closePrayerModal() {
-      document.getElementById('prayerModal').classList.add('hidden');
-    }
   </script>
-
 </body>
 </html>
