@@ -6,8 +6,8 @@
   <!-- TOP INFO BAR -->
   <div class="bg-blue-600 text-white text-xs font-semibold">
     <div class="container mx-auto px-6 py-2 flex flex-wrap gap-4 justify-between">
-      <span>2026 Vision Conference registrations opening soon</span>
-      <span>New sermon summary PDF available for download</span>
+      <span><i class="fas fa-clock mr-2"></i>Sunday Service: 09H00–12H00</span>
+      <span><i class="fas fa-location-dot mr-2"></i>Okahandja Shopping Mall, Shop No. 32 · +264 81 232 0825</span>
     </div>
   </div>
 
