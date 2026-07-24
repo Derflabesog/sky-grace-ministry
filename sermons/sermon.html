@@ -72,6 +72,45 @@
 
   <div id="site-footer"></div>
   <script src="../footer.js" defer></script>
+
+  <script>
+    // This page is inside /sermons/. Shared header and footer links are written
+    // for root pages, so prefix their internal paths after they are injected.
+    window.addEventListener("load", () => {
+      const sharedAreas = document.querySelectorAll("#site-header, #site-footer");
+
+      sharedAreas.forEach((area) => {
+        area.querySelectorAll("a[href]").forEach((link) => {
+          const href = link.getAttribute("href");
+          if (
+            href &&
+            !href.startsWith("../") &&
+            !href.startsWith("#") &&
+            !href.startsWith("http://") &&
+            !href.startsWith("https://") &&
+            !href.startsWith("mailto:") &&
+            !href.startsWith("tel:")
+          ) {
+            link.setAttribute("href", `../${href}`);
+          }
+        });
+
+        area.querySelectorAll("img[src]").forEach((image) => {
+          const src = image.getAttribute("src");
+          if (
+            src &&
+            !src.startsWith("../") &&
+            !src.startsWith("http://") &&
+            !src.startsWith("https://") &&
+            !src.startsWith("data:")
+          ) {
+            image.setAttribute("src", `../${src}`);
+          }
+        });
+      });
+    });
+  </script>
+
   <script src="../assets/js/sermons-data.js"></script>
   <script src="../assets/js/sermon-detail.js"></script>
 </body>
