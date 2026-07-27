@@ -158,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
             <a href="privacy-policy.html" class="text-slate-500 hover:text-slate-200 transition">Privacy</a>
             <span class="text-slate-700">•</span>
+            <a href="cookie-policy.html" class="text-slate-500 hover:text-slate-200 transition">Cookies</a>
+            <span class="text-slate-700">•</span>
             <a href="terms-of-service.html" class="text-slate-500 hover:text-slate-200 transition">Terms</a>
           </div>
         </div>
@@ -170,4 +172,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("sgYear");
   if (y) y.textContent = String(new Date().getFullYear());
 });
-
