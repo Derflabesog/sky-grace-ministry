@@ -1,195 +1,388 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Write Revelation | Sky Grace Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write Revelation | Sky Grace Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  >
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .field {
+      width: 100%;
+      border: 1px solid #dbe3ef;
+      border-radius: 0.9rem;
+      background: #f8fafc;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .field:focus {
+      border-color: #2563eb;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: #64748b;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .notice {
+      display: none;
+      border-radius: 0.85rem;
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .notice.show {
+      display: block;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 min-h-screen">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+<body class="min-h-screen bg-slate-50 text-slate-900 md:flex">
+  <div id="admin-sidebar-mount"></div>
+  <script src="admin-sidebar.js" defer></script>
 
+  <div class="min-w-0 flex-1">
+    <header class="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-slate-200 bg-white px-5 md:px-8">
+      <div>
+        <h1 class="text-base font-black">Write Revelation</h1>
+        <p class="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 sm:block">
+          Blog and ministry updates
+        </p>
+      </div>
 
+      <div class="flex items-center gap-2">
+        <a
+          href="manage-blog.html"
+          class="rounded-xl bg-slate-100 px-4 py-2.5 text-[10px] font-black uppercase tracking-widest text-slate-700 transition hover:bg-slate-200"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>Articles
+        </a>
+        <a
+          href="blog-archive.html"
+          target="_blank"
+          rel="noopener"
+          class="hidden rounded-xl bg-blue-50 px-4 py-2.5 text-[10px] font-black uppercase tracking-widest text-blue-700 transition hover:bg-blue-100 sm:inline-flex"
+        >
+          View public page <i class="fas fa-external-link-alt ml-2"></i>
+        </a>
+      </div>
+    </header>
 
+    <main class="mx-auto max-w-6xl p-5 md:p-8">
+      <div class="mb-7">
+        <p class="text-[10px] font-black uppercase tracking-[0.22em] text-blue-600">Content</p>
+        <h2 class="mt-2 text-2xl font-black md:text-3xl">Create a Ministry Article</h2>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+          Write a revelation, ministry update, or theological study. Required fields are marked with an asterisk.
+        </p>
+      </div>
 
+      <div class="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <form id="postForm" class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:p-8">
+          <input id="postId" type="hidden">
 
-
-
-
-
-
-
-
-
-    <!-- Global Header: Master Template with Sermons Dropdown -->
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="welcome-packet.html" class="hover:text-blue-400 transition">Welcome Packet</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <!-- Support Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-slate-400 font-bold text-xs">Support</span>
-      <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Privacy Policy</a>
-      <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Terms of Service</a>
-      <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Cookie Policy</a>
-      <a href="leadership-portal.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Admin Portal</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a>
-    <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-    <a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a>
-    <a href="give.html" class="hover:text-blue-400 transition">Give</a>
-    <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
-    <a href="live.html" class="mt-4 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">Watch Live</a>
-  </div>
-</div>
-
-<main class="p-8 max-w-4xl mx-auto">
-        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-            <div class="w-full h-64 bg-slate-100 flex flex-col items-center justify-center border-b border-slate-100 group cursor-pointer hover:bg-slate-200 transition">
-                <i class="fas fa-image text-slate-300 text-4xl mb-2 group-hover:text-blue-400"></i>
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Upload Cover Image</p>
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label class="label" for="postCategory">Category *</label>
+              <select id="postCategory" class="field" required>
+                <option value="New Revelation">New Revelation</option>
+                <option value="Ministry Update">Ministry Update</option>
+                <option value="Theological Study">Theological Study</option>
+                <option value="Devotional">Devotional</option>
+                <option value="Announcement">Announcement</option>
+              </select>
             </div>
 
-            <div class="p-10 space-y-8">
-                <input type="text" placeholder="Enter Prophetic Title..." 
-                       class="w-full text-4xl font-black text-slate-900 placeholder-slate-200 focus:outline-none border-none leading-tight">
-                
-                <div class="flex flex-wrap gap-4 border-y border-slate-50 py-4">
-                    <select class="bg-slate-50 border-none text-[10px] font-black uppercase text-blue-500 tracking-widest rounded-lg px-4 py-2 outline-none">
-                        <option>New Revelation</option>
-                        <option>Ministry Update</option>
-                        <option>Theological Study</option>
-                    </select>
-                    <div class="flex items-center gap-2 text-slate-400">
-                        <i class="fas fa-paper-plane text-xs"></i>
-                        <label class="text-[10px] font-bold uppercase cursor-pointer">
-                            <input type="checkbox" class="mr-1" checked> Send to 2,481 Email Subscribers
-                        </label>
-                    </div>
-                </div>
-
-                <textarea rows="15" placeholder="Release the Word here..." 
-                          class="w-full text-lg text-slate-600 leading-relaxed placeholder-slate-200 focus:outline-none border-none resize-none"></textarea>
+            <div>
+              <label class="label" for="postAuthor">Author *</label>
+              <input
+                id="postAuthor"
+                class="field"
+                type="text"
+                value="Sky Grace Ministry"
+                maxlength="100"
+                required
+              >
             </div>
-        </div>
+          </div>
+
+          <div class="mt-5">
+            <label class="label" for="postTitle">Article title *</label>
+            <input
+              id="postTitle"
+              class="field text-lg font-bold"
+              type="text"
+              placeholder="Enter the title"
+              maxlength="180"
+              required
+            >
+          </div>
+
+          <div class="mt-5">
+            <label class="label" for="postSummary">Short summary *</label>
+            <textarea
+              id="postSummary"
+              class="field min-h-24 resize-y"
+              placeholder="Write a short introduction for the article list"
+              maxlength="320"
+              required
+            ></textarea>
+            <p class="mt-2 text-right text-xs text-slate-400">
+              <span id="summaryCount">0</span>/320
+            </p>
+          </div>
+
+          <div class="mt-5">
+            <label class="label" for="coverImage">Cover image URL</label>
+            <input
+              id="coverImage"
+              class="field"
+              type="url"
+              placeholder="https://example.com/image.jpg"
+            >
+            <p class="mt-2 text-xs text-slate-400">
+              Optional. Use a complete HTTPS image address.
+            </p>
+          </div>
+
+          <div class="mt-5">
+            <label class="label" for="postContent">Article content *</label>
+            <textarea
+              id="postContent"
+              class="field min-h-[360px] resize-y leading-7"
+              placeholder="Write the full message here..."
+              required
+            ></textarea>
+          </div>
+
+          <div id="formNotice" class="notice mt-5" role="status" aria-live="polite"></div>
+
+          <div class="mt-7 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-between">
+            <button
+              id="clearButton"
+              type="button"
+              class="rounded-xl bg-slate-100 px-5 py-3 text-[10px] font-black uppercase tracking-widest text-slate-700 transition hover:bg-slate-200"
+            >
+              Clear
+            </button>
+
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <button
+                type="submit"
+                data-status="Draft"
+                class="rounded-xl border border-blue-200 bg-blue-50 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-blue-700 transition hover:bg-blue-100"
+              >
+                <i class="fas fa-save mr-2"></i>Save Draft
+              </button>
+              <button
+                type="submit"
+                data-status="Published"
+                class="rounded-xl bg-blue-600 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+              >
+                <i class="fas fa-paper-plane mr-2"></i>Publish
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="space-y-5">
+          <section class="rounded-3xl bg-slate-950 p-6 text-white shadow-sm">
+            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-300">Preview</p>
+            <div
+              id="previewImage"
+              class="mt-5 flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-slate-800 text-slate-500"
+            >
+              <i class="fas fa-image text-3xl"></i>
+            </div>
+            <p id="previewCategory" class="mt-5 text-[10px] font-black uppercase tracking-widest text-blue-300">
+              New Revelation
+            </p>
+            <h3 id="previewTitle" class="mt-2 break-words text-xl font-black">
+              Your article title
+            </h3>
+            <p id="previewSummary" class="mt-3 break-words text-sm leading-6 text-slate-300">
+              Your article summary will appear here.
+            </p>
+            <p id="previewAuthor" class="mt-5 text-xs font-bold text-slate-400">
+              Sky Grace Ministry
+            </p>
+          </section>
+
+          <section class="rounded-3xl border border-amber-200 bg-amber-50 p-6">
+            <div class="flex gap-3">
+              <i class="fas fa-circle-info mt-0.5 text-amber-600"></i>
+              <div>
+                <h3 class="font-black text-amber-950">Current publishing system</h3>
+                <p class="mt-2 text-sm leading-6 text-amber-900">
+                  Articles are saved in this browser and appear in the current Blog Management page.
+                  Do not clear browser storage until the database version is connected.
+                </p>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
     </main>
-<div id="site-footer"></div>
-<script src="./footer.js" defer></script>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "blogPosts";
+      const form = document.getElementById("postForm");
+      const titleInput = document.getElementById("postTitle");
+      const authorInput = document.getElementById("postAuthor");
+      const categoryInput = document.getElementById("postCategory");
+      const summaryInput = document.getElementById("postSummary");
+      const contentInput = document.getElementById("postContent");
+      const imageInput = document.getElementById("coverImage");
+      const summaryCount = document.getElementById("summaryCount");
+      const notice = document.getElementById("formNotice");
+
+      let requestedStatus = "Draft";
+
+      function readPosts() {
+        try {
+          const value = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          return Array.isArray(value) ? value : [];
+        } catch (error) {
+          console.error("Could not read saved articles.", error);
+          return [];
+        }
+      }
+
+      function showNotice(message, type = "success") {
+        notice.textContent = message;
+        notice.className =
+          "notice show mt-5 " +
+          (type === "error"
+            ? "border border-red-200 bg-red-50 text-red-700"
+            : "border border-green-200 bg-green-50 text-green-700");
+      }
+
+      function updatePreview() {
+        document.getElementById("previewTitle").textContent =
+          titleInput.value.trim() || "Your article title";
+        document.getElementById("previewSummary").textContent =
+          summaryInput.value.trim() || "Your article summary will appear here.";
+        document.getElementById("previewCategory").textContent = categoryInput.value;
+        document.getElementById("previewAuthor").textContent =
+          authorInput.value.trim() || "Sky Grace Ministry";
+
+        summaryCount.textContent = summaryInput.value.length;
+
+        const previewImage = document.getElementById("previewImage");
+        const imageUrl = imageInput.value.trim();
+
+        previewImage.replaceChildren();
+        if (imageUrl) {
+          const image = document.createElement("img");
+          image.src = imageUrl;
+          image.alt = "";
+          image.className = "h-full w-full object-cover";
+          image.addEventListener("error", () => {
+            previewImage.innerHTML = '<i class="fas fa-image text-3xl"></i>';
+          });
+          previewImage.appendChild(image);
+        } else {
+          previewImage.innerHTML = '<i class="fas fa-image text-3xl"></i>';
+        }
+      }
+
+      form.querySelectorAll('button[type="submit"]').forEach((button) => {
+        button.addEventListener("click", () => {
+          requestedStatus = button.dataset.status || "Draft";
+        });
+      });
+
+      [titleInput, authorInput, categoryInput, summaryInput, imageInput].forEach((field) => {
+        field.addEventListener("input", updatePreview);
+        field.addEventListener("change", updatePreview);
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) {
+          showNotice("Please complete all required fields.", "error");
+          return;
+        }
+
+        const posts = readPosts();
+        const now = new Date();
+        const post = {
+          id: Date.now(),
+          title: titleInput.value.trim(),
+          author: authorInput.value.trim(),
+          category: categoryInput.value,
+          summary: summaryInput.value.trim(),
+          content: contentInput.value.trim(),
+          coverImage: imageInput.value.trim(),
+          status: requestedStatus,
+          views: 0,
+          date: now.toLocaleDateString("en-NA", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          }),
+          createdAt: now.toISOString(),
+          updatedAt: now.toISOString()
+        };
+
+        posts.unshift(post);
+
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+          showNotice(
+            requestedStatus === "Published"
+              ? "Article published to the current Blog Management list."
+              : "Draft saved successfully."
+          );
+
+          if (requestedStatus === "Published") {
+            setTimeout(() => {
+              window.location.href = "manage-blog.html";
+            }, 800);
+          }
+        } catch (error) {
+          console.error("Could not save article.", error);
+          showNotice("The article could not be saved in this browser.", "error");
+        }
+      });
+
+      document.getElementById("clearButton").addEventListener("click", () => {
+        if (!confirm("Clear everything in this form?")) return;
+        form.reset();
+        authorInput.value = "Sky Grace Ministry";
+        requestedStatus = "Draft";
+        notice.className = "notice mt-5";
+        updatePreview();
+        titleInput.focus();
+      });
+
+      updatePreview();
+    })();
+  </script>
 </body>
 </html>
