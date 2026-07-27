@@ -1,251 +1,397 @@
 ﻿﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Registration | Sky Grace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Registration | Sky Grace Jesus Ministry</title>
+  <meta
+    name="description"
+    content="Register for an upcoming event at Sky Grace Jesus Ministry."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
+  </style>
 </head>
-<body class="bg-slate-100 font-sans py-12">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+<body class="min-h-screen bg-slate-100 text-slate-900 font-sans antialiased">
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
+  <main>
+    <section class="relative overflow-hidden bg-slate-950 px-6 py-16 text-white">
+      <img
+        src="assets/images/hero-elohim.jpg"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 h-full w-full object-cover opacity-20"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60"></div>
 
+      <div class="relative z-10 mx-auto max-w-6xl">
+        <p class="text-[11px] font-black uppercase tracking-[0.28em] text-amber-400">
+          Sky Grace Jesus Ministry
+        </p>
+        <h1 class="mt-4 text-4xl font-black md:text-6xl">
+          Event Registration
+        </h1>
+        <p class="mt-4 max-w-2xl text-slate-300">
+          Reserve your place for an upcoming ministry gathering.
+        </p>
+      </div>
+    </section>
 
+    <section class="px-6 py-14">
+      <div class="mx-auto grid max-w-6xl gap-7 lg:grid-cols-[1fr_1.1fr]">
+        <aside class="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-white shadow-sm">
+          <p class="text-[10px] font-black uppercase tracking-[0.25em] text-amber-400">
+            Selected Event
+          </p>
 
+          <div id="eventLoading" class="mt-6 flex items-center gap-3 text-slate-300">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            Loading event information...
+          </div>
 
+          <div id="eventDetails" class="mt-6 hidden">
+            <h2 id="eventTitle" class="text-3xl font-black"></h2>
+            <p id="eventDescription" class="mt-4 leading-7 text-slate-300"></p>
 
-
-
-
-
-
-
-
-    <!-- Global Header: Master Template with Sermons Dropdown -->
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="welcome-packet.html" class="hover:text-blue-400 transition">Welcome Packet</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    
-    <!-- Sermons Section -->
-    <div class="border-t border-slate-700 pt-3 mt-2">
-      <a href="sermons.html" class="hover:text-blue-400 transition text-blue-400 font-bold">ðŸŽ™ï¸ Sermons</a>
-      <a href="sermon-1.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Latest Message</a>
-      <a href="sermons.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">2025 Archives</a>
-      <a href="blog-archive.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">All Revelations</a>
-      <a href="testimonies.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Testimonies</a>
-    </div>
-
-    <!-- Ministry Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-blue-400 font-bold">ðŸ™ Ministry</span>
-      <a href="give.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Give / Tithes</a>
-      <a href="live.html" class="block text-xs text-slate-400 hover:text-red-500 transition ml-4">Watch Live</a>
-      <a href="volunteer.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Volunteer</a>
-      <a href="prayer-wall.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Prayer Wall</a>
-    </div>
-
-    <!-- Main Pages -->
-    <div class="border-t border-slate-700 pt-3">
-      <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-      <a href="contact.html" class="hover:text-blue-400 transition mt-2">Contact</a>
-    </div>
-
-    <!-- Support Section -->
-    <div class="border-t border-slate-700 pt-3">
-      <span class="text-slate-400 font-bold text-xs">Support</span>
-      <a href="privacy-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition mt-2 ml-4">Privacy Policy</a>
-      <a href="terms-of-service.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Terms of Service</a>
-      <a href="cookie-policy.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Cookie Policy</a>
-      <a href="leadership-portal.html" class="block text-xs text-slate-400 hover:text-blue-400 transition ml-4">Admin Portal</a>
-    </div>
-
-    <a href="live.html" class="mt-6 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">ðŸ”´ Watch Live</a>
-  </div>
-</div>
-
-<style>
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-.animate-marquee { animation: marquee 20s linear infinite; }
-</style>
-
-<div class="flex-1 flex flex-col p-6 gap-4 text-sm font-black uppercase text-slate-300 overflow-y-auto">
-    <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-    <a href="sermons.html" class="hover:text-blue-400 transition">Sermons</a>
-    <a href="theology-register.html" class="hover:text-blue-400 transition">Theology School</a>
-    <a href="prayer-wall.html" class="hover:text-blue-400 transition">Prayer Wall</a>
-    <a href="give.html" class="hover:text-blue-400 transition">Give</a>
-    <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
-    <a href="live.html" class="mt-4 bg-red-600 text-white py-3 rounded-lg text-center font-black hover:bg-red-500 transition">Watch Live</a>
-  </div>
-</div>
-
-<div class="container mx-auto px-6">
-        <div class="max-w-xl mx-auto bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-200">
-            <div class="bg-slate-900 p-10 text-center">
-                <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-900">
-                    <i class="fas fa-user-check"></i>
+            <div class="mt-7 space-y-4 border-t border-white/10 pt-6">
+              <div class="flex gap-4">
+                <i class="fas fa-calendar-days mt-1 text-amber-400"></i>
+                <div>
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Date</p>
+                  <p id="eventDate" class="mt-1 font-bold"></p>
                 </div>
-                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">Event Registration</h2>
-                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest">Sky Grace Jesus Ministry</p>
+              </div>
+
+              <div class="flex gap-4">
+                <i class="fas fa-clock mt-1 text-amber-400"></i>
+                <div>
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Time</p>
+                  <p id="eventTime" class="mt-1 font-bold"></p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <i class="fas fa-location-dot mt-1 text-amber-400"></i>
+                <div>
+                  <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Venue</p>
+                  <p id="eventVenue" class="mt-1 font-bold"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="eventError" class="mt-6 hidden rounded-2xl border border-red-400/30 bg-red-500/10 p-5 text-red-100">
+            <p class="font-black">Event unavailable</p>
+            <p id="eventErrorText" class="mt-2 text-sm"></p>
+            <a
+              href="calendar.html"
+              class="mt-5 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-amber-400"
+            >
+              <i class="fas fa-arrow-left"></i>
+              View Ministry Calendar
+            </a>
+          </div>
+        </aside>
+
+        <section class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm md:p-10">
+          <div>
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+              Attendee Details
+            </p>
+            <h2 class="mt-3 text-3xl font-black">Reserve Your Place</h2>
+            <p class="mt-2 text-slate-500">
+              Fields marked with * are required.
+            </p>
+          </div>
+
+          <form id="registrationForm" class="mt-8 space-y-5">
+            <input id="eventId" type="hidden" />
+
+            <div>
+              <label for="fullName" class="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                Full Name *
+              </label>
+              <input
+                id="fullName"
+                type="text"
+                required
+                autocomplete="name"
+                class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                placeholder="Enter your full name"
+              />
             </div>
 
-            <form action="#" class="p-10 space-y-6">
-                <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Full Name</label>
-                    <input type="text" placeholder="Enter your name" class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:border-amber-500 transition">
-                </div>
+            <div class="grid gap-5 md:grid-cols-2">
+              <div>
+                <label for="phone" class="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Phone / WhatsApp *
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  required
+                  autocomplete="tel"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  placeholder="+264..."
+                />
+              </div>
 
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Phone Number</label>
-                        <input type="tel" placeholder="+264..." class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:border-amber-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Home Branch</label>
-                        <select class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:border-amber-500 transition">
-                            <option>Okahandja HQ</option>
-                            <option>Windhoek</option>
-                            <option>Other / Online</option>
-                        </select>
-                    </div>
-                </div>
+              <div>
+                <label for="email" class="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  autocomplete="email"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  placeholder="you@example.com"
+                />
+              </div>
+            </div>
 
-                <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Select Event</label>
-                    <select class="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:border-amber-500 transition font-bold">
-                        <option>Spirit of Elijah Conference (Jan 18)</option>
-                        <option>Couples In Christ Seminar (Feb 14)</option>
-                        <option>Theology School Intake (2026)</option>
-                    </select>
-                </div>
+            <div class="grid gap-5 md:grid-cols-2">
+              <div>
+                <label for="branch" class="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Home Branch *
+                </label>
+                <select
+                  id="branch"
+                  required
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                >
+                  <option value="">Select a branch</option>
+                  <option>Okahandja HQ</option>
+                  <option>Windhoek</option>
+                  <option>Online</option>
+                  <option>Other</option>
+                </select>
+              </div>
 
-                <button type="submit" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-amber-500 hover:text-slate-900 transition-all">
-                    Submit Registration
-                </button>
+              <div>
+                <label for="guestCount" class="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Additional Guests
+                </label>
+                <input
+                  id="guestCount"
+                  type="number"
+                  min="0"
+                  max="20"
+                  value="0"
+                  class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                />
+              </div>
+            </div>
 
-                <p class="text-center text-[9px] text-slate-400 uppercase tracking-widest leading-relaxed">
-                    By registering, you agree to receive ministry updates via SMS/Email.<br>Your data is protected under ministry protocols.
-                </p>
-            </form>
-        </div>
-        
-        <div class="text-center mt-8">
-            <a href="calendar.html" class="text-xs font-bold text-slate-400 hover:text-slate-900 transition">
-                <i class="fas fa-arrow-left mr-2"></i> Back to Calendar
-            </a>
-        </div>
-    </div>
+            <label class="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
+              <input id="consent" type="checkbox" required class="mt-1 h-4 w-4" />
+              <span>
+                I agree that Sky Grace Jesus Ministry may use these details to manage this registration and contact me about this event.
+              </span>
+            </label>
 
-    <script>
-        // Function to get URL parameters
-        function getEventFromURL() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('event'); // Looks for ?event=name
-        }
+            <p id="formStatus" class="hidden rounded-2xl p-4 text-sm font-bold" role="status" aria-live="polite"></p>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const eventType = getEventFromURL();
-            const eventSelect = document.querySelector('select:last-of-type'); // Selects the Event dropdown
+            <button
+              id="submitButton"
+              type="submit"
+              disabled
+              class="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-blue-600 px-6 py-5 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <i class="fas fa-ticket"></i>
+              Complete Registration
+            </button>
+          </form>
 
-            if (eventType) {
-                // Mapping URL slugs to the select option text
-                if (eventType === 'elijah-conference') {
-                    eventSelect.value = 'Spirit of Elijah Conference (Jan 18)';
-                } else if (eventType === 'couples-seminar') {
-                    eventSelect.value = 'Couples In Christ Seminar (Feb 14)';
-                } else if (eventType === 'theology-intake') {
-                    eventSelect.value = 'Theology School Intake (2026)';
-                }
-            }
+          <a
+            href="calendar.html"
+            class="mt-6 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-500 transition hover:text-blue-600"
+          >
+            <i class="fas fa-arrow-left"></i>
+            Back to Calendar
+          </a>
+        </section>
+      </div>
+    </section>
+  </main>
 
-            // Handle Form Submission Redirect
-            const registrationForm = document.querySelector('form');
-            registrationForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // In a real scenario, you would send data to a server here
-                window.location.href = 'registration-success.html';
-            });
-        });
-    </script>
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+    const submitButton = document.getElementById("submitButton");
+    const formStatus = document.getElementById("formStatus");
+    let selectedEvent = null;
+
+    document.addEventListener("DOMContentLoaded", loadSelectedEvent);
+    form.addEventListener("submit", submitRegistration);
+
+    async function loadSelectedEvent() {
+      if (!window.supabaseClient) {
+        showEventError("Registration service is temporarily unavailable. Please contact the church office.");
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const eventId = params.get("event_id");
+      const eventName = params.get("event");
+
+      let query = supabaseClient
+        .from("ministry_events")
+        .select("id,title,event_date,event_time,venue,speaker,description,status")
+        .eq("status", "Published");
+
+      if (eventId) {
+        query = query.eq("id", eventId).limit(1);
+      } else if (eventName) {
+        query = query.eq("title", eventName).limit(1);
+      } else {
+        query = query
+          .gte("event_date", getTodayDateString())
+          .order("event_date", { ascending: true })
+          .order("event_time", { ascending: true })
+          .limit(1);
+      }
+
+      const { data, error } = await query;
+
+      if (error || !data || !data.length) {
+        showEventError(
+          error
+            ? "We could not load this event. Please return to the calendar and try again."
+            : "This event is not available for registration."
+        );
+        return;
+      }
+
+      selectedEvent = data[0];
+      document.getElementById("eventId").value = selectedEvent.id;
+      document.getElementById("eventTitle").textContent = selectedEvent.title;
+      document.getElementById("eventDescription").textContent =
+        selectedEvent.description || "Join Sky Grace Jesus Ministry for this special gathering.";
+      document.getElementById("eventDate").textContent = formatEventDate(selectedEvent.event_date);
+      document.getElementById("eventTime").textContent = formatEventTime(selectedEvent.event_time);
+      document.getElementById("eventVenue").textContent =
+        selectedEvent.venue || "Venue to be announced";
+
+      document.getElementById("eventLoading").classList.add("hidden");
+      document.getElementById("eventDetails").classList.remove("hidden");
+      submitButton.disabled = false;
+    }
+
+    async function submitRegistration(event) {
+      event.preventDefault();
+
+      if (!selectedEvent || !window.supabaseClient) {
+        showFormStatus("Registration service is not ready. Please refresh the page.", "error");
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.innerHTML =
+        '<i class="fas fa-circle-notch fa-spin"></i> Saving Registration';
+      hideFormStatus();
+
+      const registration = {
+        event_id: selectedEvent.id,
+        full_name: document.getElementById("fullName").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        email: document.getElementById("email").value.trim() || null,
+        branch: document.getElementById("branch").value,
+        guest_count: Number(document.getElementById("guestCount").value || 0),
+        status: "Registered"
+      };
+
+      const { error } = await supabaseClient
+        .from("event_registrations")
+        .insert(registration);
+
+      if (error) {
+        console.error("Event registration failed:", error);
+        showFormStatus(
+          "We could not save your registration. Please check your details and try again.",
+          "error"
+        );
+        resetSubmitButton();
+        return;
+      }
+
+      sessionStorage.setItem("skyGraceRegisteredEvent", selectedEvent.title);
+      window.location.href =
+        "registration-success.html?event=" + encodeURIComponent(selectedEvent.title);
+    }
+
+    function showEventError(message) {
+      document.getElementById("eventLoading").classList.add("hidden");
+      document.getElementById("eventDetails").classList.add("hidden");
+      document.getElementById("eventErrorText").textContent = message;
+      document.getElementById("eventError").classList.remove("hidden");
+      submitButton.disabled = true;
+    }
+
+    function showFormStatus(message, type) {
+      formStatus.textContent = message;
+      formStatus.className =
+        type === "error"
+          ? "rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700"
+          : "rounded-2xl border border-green-200 bg-green-50 p-4 text-sm font-bold text-green-700";
+    }
+
+    function hideFormStatus() {
+      formStatus.textContent = "";
+      formStatus.className = "hidden rounded-2xl p-4 text-sm font-bold";
+    }
+
+    function resetSubmitButton() {
+      submitButton.disabled = false;
+      submitButton.innerHTML =
+        '<i class="fas fa-ticket"></i> Complete Registration';
+    }
+
+    function getTodayDateString() {
+      const now = new Date();
+      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+      return local.toISOString().split("T")[0];
+    }
+
+    function formatEventDate(value) {
+      if (!value) return "Date to be announced";
+      const date = new Date(value + "T00:00:00");
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleDateString("en-NA", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    function formatEventTime(value) {
+      if (!value) return "Time to be announced";
+      return String(value).slice(0, 5);
+    }
+  </script>
 </body>
 </html>
