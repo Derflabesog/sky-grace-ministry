@@ -1,29 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://derflabesog.github.io/sky-grace-ministry/index.html</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/</loc>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://derflabesog.github.io/sky-grace-ministry/sermons.html</loc>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/welcome-packet.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://derflabesog.github.io/sky-grace-ministry/give.html</loc>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/sermons.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/media.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/blog-archive.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/theology-school.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/calendar.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://derflabesog.github.io/sky-grace-ministry/live.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/give.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/prayer-wall.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://derflabesog.github.io/sky-grace-ministry/contact.html</loc>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/testimonies.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/volunteer.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://derflabesog.github.io/sky-grace-ministry/theology-register.html</loc>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/membership.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/kids-corner.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/contact.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/privacy-policy.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://derflabesog.github.io/sky-grace-ministry/terms-of-service.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
