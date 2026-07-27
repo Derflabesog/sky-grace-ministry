@@ -1,39 +1,77 @@
-﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
-<html lang="en">
+﻿﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | Sky Grace Jesus Ministry</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Sky Grace Jesus Ministry</title>
+  <meta name="description" content="The requested Sky Grace Jesus Ministry page could not be found." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    #site-header:empty,
+    #site-footer:empty {
+      display: none;
+    }
+  </style>
 </head>
-<body class="bg-[#0f172a] text-white font-sans flex items-center justify-center min-vh-100 h-screen">
-<div id="site-header"></div>
-<script src="header.js" defer></script>
 
+<body class="min-h-screen bg-slate-950 text-white font-sans antialiased flex flex-col">
+  <div id="site-header"></div>
+  <script src="./header.js" defer></script>
 
+  <main class="relative flex flex-1 items-center justify-center overflow-hidden px-6 py-20">
+    <img
+      src="assets/images/hero-elohim.jpg"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover opacity-20"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/90 to-slate-950"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.15),transparent_55%)]"></div>
 
+    <section class="relative z-10 mx-auto max-w-2xl text-center">
+      <p class="text-[11px] font-black uppercase tracking-[0.3em] text-amber-400">
+        Sky Grace Jesus Ministry
+      </p>
 
+      <h1 class="mt-5 text-8xl md:text-9xl font-black leading-none text-white">
+        404
+      </h1>
 
+      <h2 class="mt-6 text-2xl md:text-4xl font-black">
+        This page could not be found
+      </h2>
 
+      <p class="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-300">
+        The page may have moved, the address may be incorrect, or the content may no longer be available.
+      </p>
 
-
-
-
-
-
-
-    <div class="text-center px-6">
-        <h1 class="text-9xl font-black text-slate-800 animate-pulse">404</h1>
-        <h2 class="text-2xl font-bold mt-4 mb-6 uppercase tracking-widest">Seek and ye shall find...</h2>
-        <p class="text-slate-400 max-w-md mx-auto mb-8 text-sm leading-relaxed">
-            The page you are looking for has been moved or does not exist. Let us guide you back to the main sanctuary.
-        </p>
-        <a href="index.html" class="inline-block bg-white text-[#0f172a] px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-slate-200 transition-all transform hover:scale-105">
-            Return to Homepage
+      <div class="mt-9 flex flex-col sm:flex-row justify-center gap-3">
+        <a
+          href="index.html"
+          class="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-500 px-7 py-4 text-xs font-black uppercase tracking-widest text-slate-950 transition hover:bg-amber-400"
+        >
+          <i class="fas fa-house"></i>
+          Return Home
         </a>
-    </div>
 
-    <div id="site-footer"></div>
-    <script src="./footer.js" defer></script>
+        <a
+          href="contact.html"
+          class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-7 py-4 text-xs font-black uppercase tracking-widest text-white transition hover:bg-white/15"
+        >
+          <i class="fas fa-envelope"></i>
+          Contact Us
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="./footer.js" defer></script>
 </body>
 </html>
